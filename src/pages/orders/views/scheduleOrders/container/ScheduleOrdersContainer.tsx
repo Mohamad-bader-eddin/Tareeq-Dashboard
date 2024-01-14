@@ -29,12 +29,16 @@ const ScheduleOrdersContainer = () => {
           rows={initialRows}
           title={t("scheduled_orders")}
           totalCount={20}
+          loading={false}
         />
         <GenericDialog
           open={openAssignDialog}
           setOpen={setOPenAssignDialog}
           fullScreen={true}
-          elementContent={<Table columns={AssignCol} rows={AssignRow} />}
+          handleAgree={() => {}}
+          elementContent={
+            <Table columns={AssignCol} rows={AssignRow} loading={false} />
+          }
         />
       </PaperContainer>
     </Layout>

@@ -27,12 +27,16 @@ const PendingOrdersContainer = () => {
           rows={initialRows}
           title={t("pending_orders")}
           totalCount={5}
+          loading={false}
         />
         <GenericDialog
           open={openAssignDialog}
           setOpen={setOPenAssignDialog}
           fullScreen={true}
-          elementContent={<Table columns={AssignCol} rows={AssignRow} />}
+          elementContent={
+            <Table columns={AssignCol} rows={AssignRow} loading={false} />
+          }
+          handleAgree={() => {}}
         />
       </PaperContainer>
     </Layout>

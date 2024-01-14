@@ -100,17 +100,22 @@ const ActionButton = ({ type }: ActionButtonProps) => {
         open={openAssignDialog}
         setOpen={setOPenAssignDialog}
         fullScreen={true}
-        elementContent={<Table columns={columns} rows={initialRows} />}
+        handleAgree={() => {}}
+        elementContent={
+          <Table columns={columns} rows={initialRows} loading={false} />
+        }
       />
       <GenericDialog
         open={openCancelDialog}
         setOpen={setOPenCancelDialog}
         elementContent={t("delete_order_message")}
+        handleAgree={() => {}}
       />
       <GenericDialog
         open={openBreakDialog}
         setOpen={setOpenBreakDialog}
         elementContent={t("block_order_message")}
+        handleAgree={() => {}}
       />
     </div>
   );

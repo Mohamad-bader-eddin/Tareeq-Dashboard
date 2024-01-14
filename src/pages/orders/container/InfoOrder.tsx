@@ -131,6 +131,7 @@ const InfoOrder = () => {
           rows={shopperRow}
           title={t("shoppers")}
           totalCount={5}
+          loading={false}
         />
       </PaperContainer>
       <PaperContainer>
@@ -139,6 +140,7 @@ const InfoOrder = () => {
           rows={logRow}
           title={t("order_log")}
           totalCount={5}
+          loading={false}
         />
       </PaperContainer>
     </Layout>

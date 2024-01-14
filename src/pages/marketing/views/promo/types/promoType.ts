@@ -12,6 +12,6 @@ export type PromoRow = {
     id: string;
     code: string;
     amount: string;
-    isActive: string;
+    isActive: boolean;
     createdAt: string
 }

@@ -23,6 +23,7 @@ const UserUsedThisCouponContainer = () => {
           rows={initialRows}
           title={t("user_used_this_coupon")}
           totalCount={80}
+          loading={false}
         />
       </PaperContainer>
     </Layout>

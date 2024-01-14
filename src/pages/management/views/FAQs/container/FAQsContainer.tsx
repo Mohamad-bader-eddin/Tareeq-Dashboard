@@ -40,11 +40,13 @@ const FAQsContainer = () => {
           rows={initialRows}
           title={t("faqs")}
           totalCount={20}
+          loading={false}
         />
         <GenericDialog
           open={openDeleteDialog}
           setOpen={setOpenDeleteDialog}
           elementContent={t("delete_message")}
+          handleAgree={() => {}}
         />
       </PaperContainer>
     </Layout>

@@ -19,6 +19,7 @@ const CanceledOrdersContainer = () => {
           rows={initialRows}
           title={t("canceled_orders")}
           totalCount={200}
+          loading={false}
         />
       </PaperContainer>
     </Layout>

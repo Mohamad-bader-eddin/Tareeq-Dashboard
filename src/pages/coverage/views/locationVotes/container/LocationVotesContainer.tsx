@@ -28,11 +28,13 @@ const LocationVotesContainer = () => {
           rows={initialRows}
           title={t("votes")}
           totalCount={2000}
+          loading={false}
         />
         <GenericDialog
           open={openDeleteDialog}
           setOpen={setOpenDeleteDialog}
           elementContent={t("delete_message")}
+          handleAgree={() => {}}
         />
       </PaperContainer>
     </Layout>

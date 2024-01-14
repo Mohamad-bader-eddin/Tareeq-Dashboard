@@ -18,7 +18,9 @@ const polygonPaths = [
 
 const MapWithPolygons = () => {
   return (
-    <LoadScript googleMapsApiKey="AIzaSyCiyuZuf6jsA7mtfN_Q25tGuPEJyh4zTZA">
+    <LoadScript
+      googleMapsApiKey={`${import.meta.env.VITE_REACT_APP_GOOGLE_MAPS_API_KEY}`}
+    >
       <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={12}>
         <Polygon
           paths={polygonPaths}

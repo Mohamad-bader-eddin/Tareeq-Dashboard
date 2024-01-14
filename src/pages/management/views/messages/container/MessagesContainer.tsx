@@ -28,11 +28,13 @@ const MessagesContainer = () => {
           rows={initialRows}
           title={t("messsages")}
           totalCount={4000}
+          loading={false}
         />
         <GenericDialog
           open={openDeleteDialog}
           setOpen={setOpenDeleteDialog}
           elementContent={t("delete_message")}
+          handleAgree={() => {}}
         />
       </PaperContainer>
     </Layout>

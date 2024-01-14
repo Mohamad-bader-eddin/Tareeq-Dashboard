@@ -31,11 +31,13 @@ const BlackListContainer = () => {
           rows={initialRows}
           title={t("black_list")}
           totalCount={120}
+          loading={false}
         />
         <GenericDialog
           open={openDeleteDialog}
           setOpen={setOpenDeleteDialog}
           elementContent={t("delete_message")}
+          handleAgree={() => {}}
         />
       </PaperContainer>
     </Layout>

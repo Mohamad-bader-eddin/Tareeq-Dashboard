@@ -20,6 +20,7 @@ const ActiveOrdersContainer = () => {
           rows={initialRows}
           title={t("active_orders")}
           totalCount={5}
+          loading={false}
         />
       </PaperContainer>
     </Layout>

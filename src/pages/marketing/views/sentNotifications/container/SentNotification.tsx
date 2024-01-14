@@ -20,11 +20,13 @@ const SentNotification = () => {
           rows={initialRows}
           title={t("sent_notifications")}
           totalCount={8000}
+          loading={false}
         />
         <GenericDialog
           open={openDeleteDialog}
           setOpen={setOpenDeleteDialog}
           elementContent={t("delete_message")}
+          handleAgree={() => {}}
         />
       </PaperContainer>
     </Layout>

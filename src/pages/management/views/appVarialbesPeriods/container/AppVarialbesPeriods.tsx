@@ -43,11 +43,13 @@ const AppVarialbesPeriods = () => {
           rows={initialRows}
           title={t("app_variables_periods")}
           totalCount={40}
+          loading={false}
         />
         <GenericDialog
           open={openDeleteDialog}
           setOpen={setOpenDeleteDialog}
           elementContent={t("delete_message")}
+          handleAgree={() => {}}
         />
       </PaperContainer>
     </Layout>

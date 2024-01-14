@@ -5,10 +5,10 @@ const useShoppersRows = ({ data }: { data: Drivers[] }) => {
   const rows: DriversRows[] = [];
   data?.forEach((el) =>
     rows.push({
-      id: el.id,
+      id: el.id as number,
       name: el.name,
       phone: el.phone,
-      registerDate: format(new Date(el.created_at), "dd/MM/yyyy"),
+      registerDate: format(new Date(el.created_at as Date), "dd/MM/yyyy"),
     })
   );
   return { rows };

@@ -19,6 +19,7 @@ const ArrivedOrdersContainer = () => {
           rows={initialRows}
           title={t("arrived_orders")}
           totalCount={1000}
+          loading={false}
         />
       </PaperContainer>
     </Layout>
