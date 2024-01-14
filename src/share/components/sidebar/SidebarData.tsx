@@ -1,6 +1,6 @@
 // import HouseIcon from "@mui/icons-material/House";
 import StyleIcon from "@mui/icons-material/Style";
-import AddCircleIcon from "@mui/icons-material/AddCircle";
+// import AddCircleIcon from "@mui/icons-material/AddCircle";
 import GroupIcon from "@mui/icons-material/Group";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import BarChartIcon from "@mui/icons-material/BarChart";
@@ -43,21 +43,21 @@ export const SidebarData = [
       },
     ],
   },
-  {
-    title: "create_new_order",
-    path: "/create-new-order",
-    icon: <AddCircleIcon />,
-    subNav: [
-      {
-        title: "courier_on_demand",
-        path: "/create-new-order/courier-on-demand",
-      },
-      {
-        title: "P2P",
-        path: "/create-new-order/p2p",
-      },
-    ],
-  },
+  // {
+  //   title: "create_new_order",
+  //   path: "/create-new-order",
+  //   icon: <AddCircleIcon />,
+  //   subNav: [
+  //     {
+  //       title: "courier_on_demand",
+  //       path: "/create-new-order/courier-on-demand",
+  //     },
+  //     {
+  //       title: "P2P",
+  //       path: "/create-new-order/p2p",
+  //     },
+  //   ],
+  // },
   {
     title: "vehicle_type",
     path: "/vehicles",
