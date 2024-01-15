@@ -23,7 +23,12 @@ const useActiveOrdersContainerColumn = () => {
         width: 200,
         editable: true,
         renderCell: (params) => {
-          return <AppLink path="/users/clients/info" name={params.value} />;
+          return (
+            <AppLink
+              path={`/users/clients/${params.row.customerId}`}
+              name={params.value}
+            />
+          );
         },
       },
       {
@@ -57,7 +62,12 @@ const useActiveOrdersContainerColumn = () => {
         align: "center",
         headerAlign: "center",
         renderCell: (params) => {
-          return <AppLink path="/users/clients/info" name={params.value} />;
+          return (
+            <AppLink
+              path={`/users/shoppers/${params.row.shopperId}`}
+              name={params.value}
+            />
+          );
         },
       },
       {

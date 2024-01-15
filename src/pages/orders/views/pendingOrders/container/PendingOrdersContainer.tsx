@@ -9,13 +9,52 @@ import GenericDialog from "../../../../../share/components/Dialog/GenericDialog"
 import useAssignOrderToColumn from "../../../hooks/useAssignOrderToColumn";
 import useAssignOrderToRows from "../../../hooks/useAssignOrderToRows";
 import { useState } from "react";
+import useOrdersQuery from "../../../hooks/useOrdersQuery";
+import { GridRowId } from "@mui/x-data-grid";
+import useAssignOrderQuery from "../../../hooks/useAssignOrderQuery";
+import GenericAlert from "../../../../../share/components/alert/GenericAlert";
+import useDeiversQuery from "../../../../users/views/shoppers/hooks/useDeiversQuery";
 
 const PendingOrdersContainer = () => {
   const [openAssignDialog, setOPenAssignDialog] = useState(false);
-  const { columns } = usePendingOrdersColumns({ setOpen: setOPenAssignDialog });
-  const { initialRows } = usePendingOrdersRows();
-  const { columns: AssignCol } = useAssignOrderToColumn();
-  const { initialRows: AssignRow } = useAssignOrderToRows();
+  const [idOrder, setIdOrder] = useState<GridRowId | null>(null);
+  const [openError, setOpenError] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
+  const [openSucsses, setOpenSucsses] = useState(false);
+  const [msg, setMsg] = useState("");
+  const { data, isLoading } = useOrdersQuery();
+  const { columns } = usePendingOrdersColumns({
+    setOpen: setOPenAssignDialog,
+    setIdOrder,
+  });
+  const { rows } = usePendingOrdersRows({ data: data?.data.content });
+  const { mutate } = useAssignOrderQuery();
+  const handleAssignOrder = (id: GridRowId) => {
+    mutate(
+      {
+        driver_id: id as string,
+        order_id: idOrder as string,
+      },
+      {
+        onSuccess: (response) => {
+          setOpenSucsses(true);
+          setMsg(response.data.message);
+          setOPenAssignDialog(false);
+        },
+        onError: (error) => {
+          const err = error as Error;
+          setOpenError(true);
+          setErrorMsg(err.message);
+          setOPenAssignDialog(false);
+        },
+      }
+    );
+  };
+  const { data: driverData, isLoading: driverLoading } = useDeiversQuery();
+  const { columns: AssignCol } = useAssignOrderToColumn({ handleAssignOrder });
+  const { rows: AssignRow } = useAssignOrderToRows({
+    data: driverData?.data.content,
+  });
   const { t } = useTranslation();
 
   return (
@@ -24,19 +63,35 @@ const PendingOrdersContainer = () => {
         <OrdersHead />
         <Table
           columns={columns}
-          rows={initialRows}
+          rows={rows}
           title={t("pending_orders")}
           totalCount={5}
-          loading={false}
+          loading={isLoading}
         />
         <GenericDialog
           open={openAssignDialog}
           setOpen={setOPenAssignDialog}
           fullScreen={true}
           elementContent={
-            <Table columns={AssignCol} rows={AssignRow} loading={false} />
+            <Table
+              columns={AssignCol}
+              rows={AssignRow}
+              loading={driverLoading}
+            />
           }
-          handleAgree={() => {}}
+          handleAgree={() => setOPenAssignDialog(false)}
+        />
+        <GenericAlert
+          open={openError}
+          setOpen={setOpenError}
+          type="error"
+          msg={errorMsg}
+        />
+        <GenericAlert
+          open={openSucsses}
+          setOpen={setOpenSucsses}
+          type="success"
+          msg={msg}
         />
       </PaperContainer>
     </Layout>

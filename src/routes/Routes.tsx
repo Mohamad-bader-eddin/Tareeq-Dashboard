@@ -125,7 +125,14 @@ const Routes = () => {
         path="/users/shoppers/add-shopper"
         element={<CreateShopperContainer />}
       />
-      <Route path="/users/shoppers/:id" element={<InfoContainer />} />
+      <Route
+        path="/users/shoppers/:id"
+        element={
+          <RequireAuth allowedRoles={["admin"]}>
+            <InfoContainer />
+          </RequireAuth>
+        }
+      />
       <Route
         path="/users/clients"
         element={
@@ -134,7 +141,14 @@ const Routes = () => {
           </RequireAuth>
         }
       />
-      <Route path="/users/clients/:id" element={<Clietntinfo />} />
+      <Route
+        path="/users/clients/:id"
+        element={
+          <RequireAuth allowedRoles={["admin"]}>
+            <Clietntinfo />
+          </RequireAuth>
+        }
+      />
       <Route path="/users/black-list" element={<BlackListContainer />} />
       <Route path="/bird-eye" element={<BirdEye />} />
       <Route

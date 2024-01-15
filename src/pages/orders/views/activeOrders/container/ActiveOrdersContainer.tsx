@@ -5,11 +5,13 @@ import Table from "../../../../../share/components/table/Table";
 import OrdersHead from "../../../components/OrdersHead";
 import useActiveOrdersContainerColumn from "../hooks/useActiveOrdersContainerColumn";
 import useActiveOrdersContainerRows from "../hooks/useActiveOrdersContainerRows";
+import useOrdersQuery from "../../../hooks/useOrdersQuery";
 
 const ActiveOrdersContainer = () => {
   const { t } = useTranslation();
+  const { data, isLoading } = useOrdersQuery();
   const { columns } = useActiveOrdersContainerColumn();
-  const { initialRows } = useActiveOrdersContainerRows();
+  const { rows } = useActiveOrdersContainerRows({ data: data?.data.content });
 
   return (
     <Layout>
@@ -17,10 +19,10 @@ const ActiveOrdersContainer = () => {
         <OrdersHead type="active" />
         <Table
           columns={columns}
-          rows={initialRows}
+          rows={rows}
           title={t("active_orders")}
           totalCount={5}
-          loading={false}
+          loading={isLoading}
         />
       </PaperContainer>
     </Layout>

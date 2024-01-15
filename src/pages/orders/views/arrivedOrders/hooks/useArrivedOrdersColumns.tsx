@@ -23,7 +23,12 @@ const useArrivedOrdersColumns = () => {
         width: 150,
         editable: true,
         renderCell: (params) => {
-          return <AppLink path="/users/clients/info" name={params.value} />;
+          return (
+            <AppLink
+              path={`/users/clients/${params.row.customerId}`}
+              name={params.value}
+            />
+          );
         },
       },
       {
@@ -65,7 +70,12 @@ const useArrivedOrdersColumns = () => {
         align: "center",
         headerAlign: "center",
         renderCell: (params) => {
-          return <AppLink path="/users/clients/info" name={params.value} />;
+          return (
+            <AppLink
+              path={`/users/shoppers/${params.row.shopperId}`}
+              name={params.value}
+            />
+          );
         },
       },
       {

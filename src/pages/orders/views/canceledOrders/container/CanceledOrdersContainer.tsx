@@ -5,21 +5,23 @@ import Layout from "../../../../../share/components/layout/Layout";
 import PaperContainer from "../../../../../share/components/Paper/PaperContainer";
 import OrdersHead from "../../../components/OrdersHead";
 import Table from "../../../../../share/components/table/Table";
+import useOrdersQuery from "../../../hooks/useOrdersQuery";
 
 const CanceledOrdersContainer = () => {
   const { t } = useTranslation();
+  const { data, isLoading } = useOrdersQuery();
   const { columns } = useCanceledOrdersColumns();
-  const { initialRows } = useCanceledOrdersRows();
+  const { rows } = useCanceledOrdersRows({ data: data?.data.content });
   return (
     <Layout>
       <PaperContainer>
         <OrdersHead />
         <Table
           columns={columns}
-          rows={initialRows}
+          rows={rows}
           title={t("canceled_orders")}
           totalCount={200}
-          loading={false}
+          loading={isLoading}
         />
       </PaperContainer>
     </Layout>

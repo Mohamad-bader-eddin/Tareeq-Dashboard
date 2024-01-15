@@ -52,14 +52,14 @@ const useCanceledOrdersColumns = () => {
       },
       {
         field: "canceledAt",
-        headerName: t("placed_on"),
+        headerName: t("canceled_at"),
         width: 175,
         align: "center",
         headerAlign: "center",
       },
       {
-        field: "approvedShopper",
-        headerName: t("approved_shopper"),
+        field: "shopper",
+        headerName: t("shopper"),
         width: 150,
         align: "center",
         headerAlign: "center",

@@ -1,7 +1,7 @@
 import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
 import TravelExploreIcon from "@mui/icons-material/TravelExplore";
-import AssignmentTurnedInIcon from "@mui/icons-material/AssignmentTurnedIn";
+// import AssignmentTurnedInIcon from "@mui/icons-material/AssignmentTurnedIn";
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 import DoDisturbIcon from "@mui/icons-material/DoDisturb";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
@@ -10,9 +10,9 @@ import { Menu } from "@mui/material";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import GenericDialog from "../../../share/components/Dialog/GenericDialog";
-import Table from "../../../share/components/table/Table";
-import useAssignOrderToColumn from "../hooks/useAssignOrderToColumn";
-import useAssignOrderToRows from "../hooks/useAssignOrderToRows";
+// import Table from "../../../share/components/table/Table";
+// import useAssignOrderToColumn from "../hooks/useAssignOrderToColumn";
+// import useAssignOrderToRows from "../hooks/useAssignOrderToRows";
 import { useTranslation } from "react-i18next";
 
 const ActionButton = ({ type }: ActionButtonProps) => {
@@ -20,10 +20,10 @@ const ActionButton = ({ type }: ActionButtonProps) => {
   const { t } = useTranslation();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [openCancelDialog, setOPenCancelDialog] = useState(false);
-  const [openAssignDialog, setOPenAssignDialog] = useState(false);
+  // const [openAssignDialog, setOPenAssignDialog] = useState(false);
   const [openBreakDialog, setOpenBreakDialog] = useState(false);
-  const { columns } = useAssignOrderToColumn();
-  const { initialRows } = useAssignOrderToRows();
+  // const { columns } = useAssignOrderToColumn();
+  // const { initialRows } = useAssignOrderToRows();
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
@@ -40,10 +40,10 @@ const ActionButton = ({ type }: ActionButtonProps) => {
     navigate(`/orders/info-orders/${type}`);
     setAnchorEl(null);
   };
-  const handleAssignTo = () => {
-    setOPenAssignDialog(true);
-    setAnchorEl(null);
-  };
+  // const handleAssignTo = () => {
+  //   // setOPenAssignDialog(true);
+  //   setAnchorEl(null);
+  // };
   const handleCancel = () => {
     setOPenCancelDialog(true);
     setAnchorEl(null);
@@ -77,12 +77,12 @@ const ActionButton = ({ type }: ActionButtonProps) => {
           <HelpOutlineIcon sx={{ marginInlineEnd: "15px" }} />
           {t("info")}
         </MenuItem>
-        {type === "pending" && (
+        {/* {type === "pending" && (
           <MenuItem onClick={handleAssignTo} disableRipple>
             <AssignmentTurnedInIcon sx={{ marginInlineEnd: "15px" }} />
             {t("assign_to")}
           </MenuItem>
-        )}
+        )} */}
         {type === "active" && (
           <MenuItem onClick={handleBreak} disableRipple>
             <DoDisturbOnIcon sx={{ marginInlineEnd: "15px" }} />
@@ -96,7 +96,7 @@ const ActionButton = ({ type }: ActionButtonProps) => {
           </MenuItem>
         )}
       </Menu>
-      <GenericDialog
+      {/* <GenericDialog
         open={openAssignDialog}
         setOpen={setOPenAssignDialog}
         fullScreen={true}
@@ -104,7 +104,7 @@ const ActionButton = ({ type }: ActionButtonProps) => {
         elementContent={
           <Table columns={columns} rows={initialRows} loading={false} />
         }
-      />
+      /> */}
       <GenericDialog
         open={openCancelDialog}
         setOpen={setOPenCancelDialog}

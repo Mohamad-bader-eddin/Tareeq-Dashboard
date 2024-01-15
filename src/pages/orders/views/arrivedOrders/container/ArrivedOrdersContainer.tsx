@@ -5,10 +5,12 @@ import Table from "../../../../../share/components/table/Table";
 import OrdersHead from "../../../components/OrdersHead";
 import useArrivedOrdersColumns from "../hooks/useArrivedOrdersColumns";
 import useArrivedOrdersRows from "../hooks/useArrivedOrdersRows";
+import useOrdersQuery from "../../../hooks/useOrdersQuery";
 
 const ArrivedOrdersContainer = () => {
+  const { data, isLoading } = useOrdersQuery();
   const { columns } = useArrivedOrdersColumns();
-  const { initialRows } = useArrivedOrdersRows();
+  const { rows } = useArrivedOrdersRows({ data: data?.data.content });
   const { t } = useTranslation();
   return (
     <Layout>
@@ -16,10 +18,10 @@ const ArrivedOrdersContainer = () => {
         <OrdersHead />
         <Table
           columns={columns}
-          rows={initialRows}
+          rows={rows}
           title={t("arrived_orders")}
           totalCount={1000}
-          loading={false}
+          loading={isLoading}
         />
       </PaperContainer>
     </Layout>

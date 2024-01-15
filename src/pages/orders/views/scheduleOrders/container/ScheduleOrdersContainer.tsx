@@ -9,15 +9,54 @@ import OrdersHead from "../../../components/OrdersHead";
 import Table from "../../../../../share/components/table/Table";
 import GenericDialog from "../../../../../share/components/Dialog/GenericDialog";
 import { useTranslation } from "react-i18next";
+import { GridRowId } from "@mui/x-data-grid";
+import useOrdersQuery from "../../../hooks/useOrdersQuery";
+import GenericAlert from "../../../../../share/components/alert/GenericAlert";
+import useDeiversQuery from "../../../../users/views/shoppers/hooks/useDeiversQuery";
+import useAssignOrderQuery from "../../../hooks/useAssignOrderQuery";
 
 const ScheduleOrdersContainer = () => {
   const [openAssignDialog, setOPenAssignDialog] = useState(false);
+  const [idOrder, setIdOrder] = useState<GridRowId | null>(null);
+  const [openError, setOpenError] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
+  const [openSucsses, setOpenSucsses] = useState(false);
+  const [msg, setMsg] = useState("");
+  const { data, isLoading } = useOrdersQuery();
   const { columns } = useScheduleOrdersColumns({
     setOpen: setOPenAssignDialog,
+    setIdOrder,
   });
-  const { initialRows } = useScheduleOrdersRows();
-  const { columns: AssignCol } = useAssignOrderToColumn();
-  const { initialRows: AssignRow } = useAssignOrderToRows();
+  const { rows } = useScheduleOrdersRows({ data: data?.data.content });
+  const { mutate } = useAssignOrderQuery();
+  const handleAssignOrder = (id: GridRowId) => {
+    mutate(
+      {
+        driver_id: id as string,
+        order_id: idOrder as string,
+      },
+      {
+        onSuccess: (response) => {
+          setOpenSucsses(true);
+          setMsg(response.data.message);
+          setOPenAssignDialog(false);
+        },
+        onError: (error) => {
+          const err = error as Error;
+          setOpenError(true);
+          setErrorMsg(err.message);
+          setOPenAssignDialog(false);
+        },
+      }
+    );
+  };
+  const { data: driverData, isLoading: driverLoading } = useDeiversQuery();
+  const { columns: AssignCol } = useAssignOrderToColumn({
+    handleAssignOrder,
+  });
+  const { rows: AssignRow } = useAssignOrderToRows({
+    data: driverData?.data.content,
+  });
   const { t } = useTranslation();
 
   return (
@@ -26,10 +65,10 @@ const ScheduleOrdersContainer = () => {
         <OrdersHead />
         <Table
           columns={columns}
-          rows={initialRows}
+          rows={rows}
           title={t("scheduled_orders")}
           totalCount={20}
-          loading={false}
+          loading={isLoading}
         />
         <GenericDialog
           open={openAssignDialog}
@@ -37,8 +76,24 @@ const ScheduleOrdersContainer = () => {
           fullScreen={true}
           handleAgree={() => {}}
           elementContent={
-            <Table columns={AssignCol} rows={AssignRow} loading={false} />
+            <Table
+              columns={AssignCol}
+              rows={AssignRow}
+              loading={driverLoading}
+            />
           }
+        />
+        <GenericAlert
+          open={openError}
+          setOpen={setOpenError}
+          type="error"
+          msg={errorMsg}
+        />
+        <GenericAlert
+          open={openSucsses}
+          setOpen={setOpenSucsses}
+          type="success"
+          msg={msg}
         />
       </PaperContainer>
     </Layout>

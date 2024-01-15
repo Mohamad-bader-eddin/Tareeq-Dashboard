@@ -1,5 +1,5 @@
 import { Box, Button } from "@mui/material";
-import { GridColDef } from "@mui/x-data-grid";
+import { GridColDef, GridRowId } from "@mui/x-data-grid";
 import ActionButton from "../../../components/ActionButton";
 import { useTranslation } from "react-i18next";
 import AppLink from "../../../../../share/components/link/AppLink";
@@ -7,6 +7,7 @@ import { Dispatch, SetStateAction, useMemo } from "react";
 
 const useScheduleOrdersColumns = ({
   setOpen,
+  setIdOrder,
 }: useScheduleOrdersColumnsProps) => {
   const { t } = useTranslation();
   const columns = useMemo(() => {
@@ -26,7 +27,12 @@ const useScheduleOrdersColumns = ({
         width: 200,
         editable: true,
         renderCell: (params) => {
-          return <AppLink path="/users/clients/info" name={params.value} />;
+          return (
+            <AppLink
+              path={`/users/clients/${params.row.customerId}`}
+              name={params.value}
+            />
+          );
         },
       },
       {
@@ -66,13 +72,16 @@ const useScheduleOrdersColumns = ({
         width: 150,
         align: "center",
         headerAlign: "center",
-        renderCell: () => {
+        renderCell: (params) => {
           return (
             <Box>
               <Button
                 variant="outlined"
                 color="error"
-                onClick={() => setOpen(true)}
+                onClick={() => {
+                  setOpen(true);
+                  setIdOrder(params.id);
+                }}
               >
                 {t("assign_to")}
               </Button>
@@ -99,5 +108,6 @@ const useScheduleOrdersColumns = ({
 
 type useScheduleOrdersColumnsProps = {
   setOpen: Dispatch<SetStateAction<boolean>>;
+  setIdOrder: Dispatch<SetStateAction<GridRowId | null>>;
 };
 export default useScheduleOrdersColumns;
