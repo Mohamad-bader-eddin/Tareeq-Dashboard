@@ -110,7 +110,10 @@ const AddAppVarialbesPeriodsForm = ({
             <Input formik={formik} label="D" name="D" type="number" />
             <Input formik={formik} label="L" name="L" type="number" /> */}
             <Box sx={{ width: "200px" }}>
-              <SubmitButton name={t("save")} disabled={!formik.isValid} />
+              <SubmitButton
+                name={t("save")}
+                disabled={!formik.isValid || formik.isSubmitting}
+              />
             </Box>
           </Form>
         );

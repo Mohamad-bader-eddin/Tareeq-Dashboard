@@ -27,7 +27,10 @@ const useAddAppVarialbesPeriodsFormValidation = ({
     minimum_value: data?.minimum_value || 0,
     extra_value: data?.extra_value || 0,
     initial_value: data?.initial_value || 0,
-    vehicleType: null,
+    vehicleType: {
+      id: data?.vehicle_type?.id as string,
+      name: data?.vehicle_type?.name as string,
+    },
   };
 
   const validationSchema = Yup.object({
@@ -77,7 +80,7 @@ const useAddAppVarialbesPeriodsFormValidation = ({
           setOpenSucsses(true);
           setMsg(response.data.message);
           formikHelpers.setSubmitting(false);
-          formikHelpers.resetForm();
+          // formikHelpers.resetForm();
         },
         onError: (error) => {
           const err = error as Error;

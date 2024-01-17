@@ -1,3 +1,5 @@
+import { Vehicle } from "../../../../vehicles/types/Vehicles";
+
 export type VarialbesPeriods = {
     id?: string;
     from: string;
@@ -7,6 +9,7 @@ export type VarialbesPeriods = {
     minimum_value: number;
     extra_value: number;
     initial_value: number;
+    vehicle_type?: Vehicle;
     vehicle_type_id: string;
     created_at?: Date;
 }
