@@ -9,11 +9,11 @@ import GenericDialog from "../../../../../share/components/Dialog/GenericDialog"
 import useAssignOrderToColumn from "../../../hooks/useAssignOrderToColumn";
 import useAssignOrderToRows from "../../../hooks/useAssignOrderToRows";
 import { useState } from "react";
-import useOrdersQuery from "../../../hooks/useOrdersQuery";
 import { GridRowId } from "@mui/x-data-grid";
 import useAssignOrderQuery from "../../../hooks/useAssignOrderQuery";
 import GenericAlert from "../../../../../share/components/alert/GenericAlert";
 import useDeiversQuery from "../../../../users/views/shoppers/hooks/useDeiversQuery";
+import usePendingOrdersQuery from "../hooks/usePendingOrdersQuery";
 
 const PendingOrdersContainer = () => {
   const [openAssignDialog, setOPenAssignDialog] = useState(false);
@@ -22,7 +22,7 @@ const PendingOrdersContainer = () => {
   const [errorMsg, setErrorMsg] = useState("");
   const [openSucsses, setOpenSucsses] = useState(false);
   const [msg, setMsg] = useState("");
-  const { data, isLoading } = useOrdersQuery();
+  const { data, isLoading } = usePendingOrdersQuery();
   const { columns } = usePendingOrdersColumns({
     setOpen: setOPenAssignDialog,
     setIdOrder,
@@ -65,7 +65,7 @@ const PendingOrdersContainer = () => {
           columns={columns}
           rows={rows}
           title={t("pending_orders")}
-          totalCount={5}
+          totalCount={data?.data.content.length}
           loading={isLoading}
         />
         <GenericDialog

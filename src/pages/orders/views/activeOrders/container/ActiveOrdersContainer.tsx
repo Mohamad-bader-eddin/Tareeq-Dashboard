@@ -5,11 +5,11 @@ import Table from "../../../../../share/components/table/Table";
 import OrdersHead from "../../../components/OrdersHead";
 import useActiveOrdersContainerColumn from "../hooks/useActiveOrdersContainerColumn";
 import useActiveOrdersContainerRows from "../hooks/useActiveOrdersContainerRows";
-import useOrdersQuery from "../../../hooks/useOrdersQuery";
+import useAvtiveOrdersQuery from "../hooks/useAvtiveOrdersQuery";
 
 const ActiveOrdersContainer = () => {
   const { t } = useTranslation();
-  const { data, isLoading } = useOrdersQuery();
+  const { data, isLoading } = useAvtiveOrdersQuery();
   const { columns } = useActiveOrdersContainerColumn();
   const { rows } = useActiveOrdersContainerRows({ data: data?.data.content });
 
@@ -21,7 +21,7 @@ const ActiveOrdersContainer = () => {
           columns={columns}
           rows={rows}
           title={t("active_orders")}
-          totalCount={5}
+          totalCount={data?.data.content.length}
           loading={isLoading}
         />
       </PaperContainer>

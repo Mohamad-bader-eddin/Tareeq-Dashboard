@@ -10,10 +10,10 @@ import Table from "../../../../../share/components/table/Table";
 import GenericDialog from "../../../../../share/components/Dialog/GenericDialog";
 import { useTranslation } from "react-i18next";
 import { GridRowId } from "@mui/x-data-grid";
-import useOrdersQuery from "../../../hooks/useOrdersQuery";
 import GenericAlert from "../../../../../share/components/alert/GenericAlert";
 import useDeiversQuery from "../../../../users/views/shoppers/hooks/useDeiversQuery";
 import useAssignOrderQuery from "../../../hooks/useAssignOrderQuery";
+import useScheduleOrdersQuery from "../hooks/useScheduleOrdersQuery";
 
 const ScheduleOrdersContainer = () => {
   const [openAssignDialog, setOPenAssignDialog] = useState(false);
@@ -22,7 +22,7 @@ const ScheduleOrdersContainer = () => {
   const [errorMsg, setErrorMsg] = useState("");
   const [openSucsses, setOpenSucsses] = useState(false);
   const [msg, setMsg] = useState("");
-  const { data, isLoading } = useOrdersQuery();
+  const { data, isLoading } = useScheduleOrdersQuery();
   const { columns } = useScheduleOrdersColumns({
     setOpen: setOPenAssignDialog,
     setIdOrder,
@@ -67,7 +67,7 @@ const ScheduleOrdersContainer = () => {
           columns={columns}
           rows={rows}
           title={t("scheduled_orders")}
-          totalCount={20}
+          totalCount={data?.data.content.length}
           loading={isLoading}
         />
         <GenericDialog
