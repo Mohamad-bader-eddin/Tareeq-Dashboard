@@ -1,65 +1,18 @@
-import { GridRowsProp } from "@mui/x-data-grid";
-import { randomId, randomCreatedDate } from "@mui/x-data-grid-generator";
-import { useMemo } from "react";
+import {
+  VarialbesPeriods,
+  VarialbesPeriodsRow,
+} from "../types/AppVarialbesPeriodsType";
 
-const useAppVarialbesPeriodsRows = () => {
-  const initialRows = useMemo(() => {
-    const tableRows: GridRowsProp = [
-      {
-        id: randomId(),
-        periodTimeFrom: randomCreatedDate().toLocaleString("en-uk", {
-          day: "numeric",
-          month: "short",
-          year: "numeric",
-          hour: "numeric",
-          minute: "numeric",
-        }),
-        periodTimeTo: randomCreatedDate().toLocaleString("en-uk", {
-          day: "numeric",
-          month: "short",
-          year: "numeric",
-          hour: "numeric",
-          minute: "numeric",
-        }),
-      },
-      {
-        id: randomId(),
-        periodTimeFrom: randomCreatedDate().toLocaleString("en-uk", {
-          day: "numeric",
-          month: "short",
-          year: "numeric",
-          hour: "numeric",
-          minute: "numeric",
-        }),
-        periodTimeTo: randomCreatedDate().toLocaleString("en-uk", {
-          day: "numeric",
-          month: "short",
-          year: "numeric",
-          hour: "numeric",
-          minute: "numeric",
-        }),
-      },
-      {
-        id: randomId(),
-        periodTimeFrom: randomCreatedDate().toLocaleString("en-uk", {
-          day: "numeric",
-          month: "short",
-          year: "numeric",
-          hour: "numeric",
-          minute: "numeric",
-        }),
-        periodTimeTo: randomCreatedDate().toLocaleString("en-uk", {
-          day: "numeric",
-          month: "short",
-          year: "numeric",
-          hour: "numeric",
-          minute: "numeric",
-        }),
-      },
-    ];
-    return tableRows;
-  }, []);
-  return { initialRows };
+const useAppVarialbesPeriodsRows = ({ data }: { data: VarialbesPeriods[] }) => {
+  const rows: VarialbesPeriodsRow[] = [];
+  data?.forEach((el) =>
+    rows.push({
+      id: el.id as string,
+      periodTimeFrom: el.from,
+      periodTimeTo: el.to,
+    })
+  );
+  return { rows };
 };
 
 export default useAppVarialbesPeriodsRows;

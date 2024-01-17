@@ -226,5 +226,9 @@
   "type": "نوع",
   "once": "مرة",
   "slider": "سلايدر",
-  "add_slide": "إضافة سلايد"
+  "add_slide": "إضافة سلايد",
+  "price_by_minute": "سعر بالدقيقة",
+  "minimum_value": "قيمة الصغرى",
+  "extra_value": "قيمة الإضافية",
+  "initial_value": "قيمة الابتدائية"
 }

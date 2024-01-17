@@ -1,12 +1,12 @@
-import { GridActionsCellItem, GridColDef } from "@mui/x-data-grid";
-import { Dispatch, SetStateAction, useMemo } from "react";
+import { GridActionsCellItem, GridColDef, GridRowId } from "@mui/x-data-grid";
+import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import DeleteIcon from "@mui/icons-material/DeleteOutlined";
 import EditIcon from "@mui/icons-material/Edit";
 
 const useAppVarialbesPeriodsColumns = ({
-  setOpenDeleteDialog,
-  handleAddAppVarialbesPeriod,
+  handleOpenDialog,
+  handleInfo,
 }: useAppVarialbesPeriodsColumnsProps) => {
   const { t } = useTranslation();
   const columns = useMemo(() => {
@@ -40,19 +40,19 @@ const useAppVarialbesPeriodsColumns = ({
         width: 150,
         align: "center",
         headerAlign: "center",
-        renderCell: () => {
+        renderCell: (params) => {
           return [
             <GridActionsCellItem
               icon={<EditIcon />}
               label="Edit"
               color="info"
-              onClick={() => handleAddAppVarialbesPeriod()}
+              onClick={() => handleInfo(params.id)}
             />,
             <GridActionsCellItem
               icon={<DeleteIcon />}
               label="Delete"
               color="error"
-              onClick={() => setOpenDeleteDialog(true)}
+              onClick={() => handleOpenDialog(params.id)}
             />,
           ];
         },
@@ -65,7 +65,9 @@ const useAppVarialbesPeriodsColumns = ({
 };
 
 type useAppVarialbesPeriodsColumnsProps = {
-  setOpenDeleteDialog: Dispatch<SetStateAction<boolean>>;
-  handleAddAppVarialbesPeriod: () => void;
+  // eslint-disable-next-line no-unused-vars
+  handleOpenDialog: (id: GridRowId) => void;
+  // eslint-disable-next-line no-unused-vars
+  handleInfo: (id: GridRowId) => void;
 };
 export default useAppVarialbesPeriodsColumns;

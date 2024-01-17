@@ -1,11 +1,14 @@
 import { Form, Formik } from "formik";
 import { AddAppVarialbesPeriodsFormType } from "../types/AddAppVarialbesPeriodsFormType";
-import TimeInput from "../../../../../../share/components/time/TimeInput";
+import TimeInput from "../../../../../../../share/components/time/TimeInput";
 import { useTranslation } from "react-i18next";
 import { Box, Divider } from "@mui/material";
 import { MathInfo } from "./AddAppVarialbesPeriodsForm.style";
-import Input from "../../../../../../share/components/Input/Input";
-import SubmitButton from "../../../../../../share/components/submitButton/SubmitButton";
+import Input from "../../../../../../../share/components/Input/Input";
+import SubmitButton from "../../../../../../../share/components/submitButton/SubmitButton";
+import AutocompleteInput from "../../../../../../../share/components/autoComplete/AutocompleteInput";
+import useVehiclesQuery from "../../../../../../vehicles/hooks/useVehiclesQuery";
+import useVehiclesMapper from "../../../../../../users/views/shoppers/views/createShopper/hooks/useVehiclesMapper";
 
 const AddAppVarialbesPeriodsForm = ({
   initialValues,
@@ -13,6 +16,10 @@ const AddAppVarialbesPeriodsForm = ({
   validationSchema,
 }: AddAppVarialbesPeriodsFormType) => {
   const { t } = useTranslation();
+  const { data: vehicles, isLoading: vehiclesLoading } = useVehiclesQuery();
+  const { vehiclesOptions } = useVehiclesMapper({
+    data: vehicles?.data.content,
+  });
   return (
     <Formik
       initialValues={initialValues}
@@ -22,16 +29,16 @@ const AddAppVarialbesPeriodsForm = ({
       {(formik) => {
         return (
           <Form>
-            <TimeInput formik={formik} label={t("from")} name="from" />
-            <TimeInput formik={formik} label={t("to")} name="to" />
-            <Divider />
             <MathInfo>
               <h3>Taxi Variables:</h3>
               <h4 className="math">
+                Total = X + ( Y * ( expected_kilometers ) + ( Z * Minutes))
+              </h4>
+              {/* <h4 className="math">
                 Total = X + ( Y * pow ( expected_kilometers , power ) ) + ( Z *
                 Minutes ) + S
-              </h4>
-              <p>power variable equals:</p>
+              </h4> */}
+              {/* <p>power variable equals:</p>
               <p>
                 Power1 <span>when</span> 15km &lt; expected_kilometers &lt; 20km
               </p>
@@ -44,26 +51,49 @@ const AddAppVarialbesPeriodsForm = ({
               <p>
                 P value <span>is the minimum value that should </span>Total{" "}
                 <span>not lesser than it, So if</span> Total &lt; P then Total=P
-              </p>
+              </p> */}
             </MathInfo>
-            <Input formik={formik} label="X" name="X" type="number" />
-            <Input formik={formik} label="Y" name="Y" type="number" />
-            <Input formik={formik} label="Z" name="Z" type="number" />
-            <Input formik={formik} label="S" name="S" type="number" />
-            <Input formik={formik} label="P" name="P" type="number" />
-            <Input
-              formik={formik}
-              label="Power 1"
-              name="Power1"
-              type="number"
-            />
-            <Input
-              formik={formik}
-              label="Power 2"
-              name="Power2"
-              type="number"
-            />
             <Divider />
+            <TimeInput formik={formik} label={t("from")} name="from" />
+            <TimeInput formik={formik} label={t("to")} name="to" />
+            <Input
+              formik={formik}
+              label={t("price_by_minute")}
+              name="price_by_minute"
+              type="number"
+            />
+            <Input
+              formik={formik}
+              label={t("price_by_km")}
+              name="price_by_km"
+              type="number"
+            />
+            <Input
+              formik={formik}
+              label={t("minimum_value")}
+              name="minimum_value"
+              type="number"
+            />
+            <Input
+              formik={formik}
+              label={t("extra_value")}
+              name="extra_value"
+              type="number"
+            />
+            <Input
+              formik={formik}
+              label={t("initial_value")}
+              name="initial_value"
+              type="number"
+            />
+            <AutocompleteInput
+              formik={formik}
+              label={t("vehicle_type")}
+              name="vehicleType"
+              options={vehiclesOptions}
+              loading={vehiclesLoading}
+            />
+            {/* <Divider />
             <MathInfo>
               <h3>P2P Variables:</h3>
               <h4 className="math">
@@ -78,7 +108,7 @@ const AddAppVarialbesPeriodsForm = ({
             <Input formik={formik} label="B" name="B" type="number" />
             <Input formik={formik} label="C" name="C" type="number" />
             <Input formik={formik} label="D" name="D" type="number" />
-            <Input formik={formik} label="L" name="L" type="number" />
+            <Input formik={formik} label="L" name="L" type="number" /> */}
             <Box sx={{ width: "200px" }}>
               <SubmitButton name={t("save")} disabled={!formik.isValid} />
             </Box>

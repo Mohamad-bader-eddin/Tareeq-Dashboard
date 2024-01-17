@@ -1,15 +1,25 @@
 import { useTranslation } from "react-i18next";
-import PaperContainer from "../../../../../../share/components/Paper/PaperContainer";
-import Layout from "../../../../../../share/components/layout/Layout";
-import Breadcrumb from "../../../../../../share/components/breadcrumbs/Breadcrumb";
+import PaperContainer from "../../../../../../../share/components/Paper/PaperContainer";
+import Layout from "../../../../../../../share/components/layout/Layout";
+import Breadcrumb from "../../../../../../../share/components/breadcrumbs/Breadcrumb";
 import { Typography } from "@mui/material";
 import useAddAppVarialbesPeriodsFormValidation from "../hooks/useAddAppVarialbesPeriodsFormValidation";
 import AddAppVarialbesPeriodsForm from "../components/AddAppVarialbesPeriodsForm";
+import GenericAlert from "../../../../../../../share/components/alert/GenericAlert";
 
 const AddAppVarialbesPeriods = () => {
   const { t } = useTranslation();
-  const { initialValues, onSubmit, validationSchema } =
-    useAddAppVarialbesPeriodsFormValidation();
+  const {
+    initialValues,
+    onSubmit,
+    validationSchema,
+    errorMsg,
+    openError,
+    setOpenError,
+    msg,
+    openSucsses,
+    setOpenSucsses,
+  } = useAddAppVarialbesPeriodsFormValidation();
   const breadcrumbsTracks = [
     {
       path: "/management/app-varialbes-periods",
@@ -30,6 +40,18 @@ const AddAppVarialbesPeriods = () => {
           initialValues={initialValues}
           onSubmit={onSubmit}
           validationSchema={validationSchema}
+        />
+        <GenericAlert
+          open={openSucsses}
+          setOpen={setOpenSucsses}
+          type="success"
+          msg={msg}
+        />
+        <GenericAlert
+          open={openError}
+          setOpen={setOpenError}
+          type="error"
+          msg={errorMsg}
         />
       </PaperContainer>
     </Layout>

@@ -31,7 +31,7 @@ import PushNotifications from "../pages/marketing/views/pushNotifications/contai
 import SentNotification from "../pages/marketing/views/sentNotifications/container/SentNotification";
 import OperationTimeContainer from "../pages/management/views/operationTime/container/OperationTimeContainer";
 import AppVarialbesPeriods from "../pages/management/views/appVarialbesPeriods/container/AppVarialbesPeriods";
-import AddAppVarialbesPeriods from "../pages/management/views/appVarialbesPeriods/views/container/AddAppVarialbesPeriods";
+import AddAppVarialbesPeriods from "../pages/management/views/appVarialbesPeriods/views/add/container/AddAppVarialbesPeriods";
 import OtherAppVariables from "../pages/management/views/otherAppVariables/container/OtherAppVariables";
 import ShopperLimitContainer from "../pages/management/views/shopperLimit/container/ShopperLimitContainer";
 import AppPhoneNumberContainer from "../pages/management/views/appPhoneNumber/container/AppPhoneNumberContainer";
@@ -49,6 +49,7 @@ import SliderContainer from "../pages/slider/container/SliderContainer";
 import AddSlideContainer from "../pages/slider/views/addSlide/container/AddSlideContainer";
 import InfoSlideContainer from "../pages/slider/views/infoSlide/container/InfoSlideContainer";
 import InfoPolygonContainer from "../pages/coverage/views/polygons/views/InfoPolygonContainer";
+import InfoAppVarialbesPeriods from "../pages/management/views/appVarialbesPeriods/views/info/container/InfoAppVarialbesPeriods";
 
 const Routes = () => {
   return (
@@ -278,11 +279,27 @@ const Routes = () => {
       />
       <Route
         path="/management/app-varialbes-periods"
-        element={<AppVarialbesPeriods />}
+        element={
+          <RequireAuth allowedRoles={["admin"]}>
+            <AppVarialbesPeriods />
+          </RequireAuth>
+        }
       />
       <Route
         path="/management/add-app-varialbes-periods"
-        element={<AddAppVarialbesPeriods />}
+        element={
+          <RequireAuth allowedRoles={["admin"]}>
+            <AddAppVarialbesPeriods />
+          </RequireAuth>
+        }
+      />
+      <Route
+        path="/management/app-varialbes-periods/:id"
+        element={
+          <RequireAuth allowedRoles={["admin"]}>
+            <InfoAppVarialbesPeriods />
+          </RequireAuth>
+        }
       />
       <Route
         path="/management/other-app-variables"

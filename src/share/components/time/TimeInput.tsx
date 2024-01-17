@@ -29,13 +29,13 @@ const TimeInput = <T extends Record<string, unknown>>({
   });
 
   const handleSetValue = (value: Date | null) => {
-    const time = value?.toLocaleTimeString("en-uk", {
-      hour: "2-digit",
-      minute: "2-digit",
-      second: "2-digit",
-      hourCycle: "h11",
-    });
-    console.log(time);
+    // const time = value?.toLocaleTimeString("en-uk", {
+    //   hour: "2-digit",
+    //   minute: "2-digit",
+    //   second: "2-digit",
+    //   hourCycle: "h11",
+    // });
+    // console.log(time);
 
     formik.setFieldValue(name, value);
   };

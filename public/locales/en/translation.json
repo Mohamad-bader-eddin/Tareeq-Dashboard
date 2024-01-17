@@ -226,5 +226,9 @@
   "type": "Type",
   "once": "Once",
   "slider": "Slider",
-  "add_slide": "Add Slide"
+  "add_slide": "Add Slide",
+  "price_by_minute": "Price by minute",
+  "minimum_value": "Minimum value",
+  "extra_value": "Extra value",
+  "initial_value": "Initial value"
 }
