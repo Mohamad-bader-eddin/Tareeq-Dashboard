@@ -2,8 +2,8 @@
 import StyleIcon from "@mui/icons-material/Style";
 // import AddCircleIcon from "@mui/icons-material/AddCircle";
 import GroupIcon from "@mui/icons-material/Group";
-import LocationOnIcon from "@mui/icons-material/LocationOn";
-import BarChartIcon from "@mui/icons-material/BarChart";
+// import LocationOnIcon from "@mui/icons-material/LocationOn";
+// import BarChartIcon from "@mui/icons-material/BarChart";
 import MapIcon from "@mui/icons-material/Map";
 import LocalActivityIcon from "@mui/icons-material/LocalActivity";
 import SettingsSuggestIcon from "@mui/icons-material/SettingsSuggest";
@@ -82,16 +82,16 @@ export const SidebarData = [
       },
     ],
   },
-  {
-    title: "bird_eye",
-    path: "/bird-eye",
-    icon: <LocationOnIcon />,
-  },
-  {
-    title: "stats",
-    path: "/stats",
-    icon: <BarChartIcon />,
-  },
+  // {
+  //   title: "bird_eye",
+  //   path: "/bird-eye",
+  //   icon: <LocationOnIcon />,
+  // },
+  // {
+  //   title: "stats",
+  //   path: "/stats",
+  //   icon: <BarChartIcon />,
+  // },
   {
     title: "slider",
     path: "/slider",
@@ -110,10 +110,10 @@ export const SidebarData = [
         title: "polygons",
         path: "/coverage/polygons",
       },
-      {
-        title: "location_votes",
-        path: "/coverage/location-votes",
-      },
+      // {
+      //   title: "location_votes",
+      //   path: "/coverage/location-votes",
+      // },
     ],
   },
   {
@@ -125,14 +125,14 @@ export const SidebarData = [
         title: "promo",
         path: "/marketing/promo",
       },
-      {
-        title: "push_notifications",
-        path: "/marketing/push-notifications",
-      },
-      {
-        title: "sent_notifications",
-        path: "/marketing/sent-notifications",
-      },
+      // {
+      //   title: "push_notifications",
+      //   path: "/marketing/push-notifications",
+      // },
+      // {
+      //   title: "sent_notifications",
+      //   path: "/marketing/sent-notifications",
+      // },
     ],
   },
   {
@@ -152,22 +152,22 @@ export const SidebarData = [
         title: "other_app_variables",
         path: "/management/other-app-variables",
       },
-      {
-        title: "shopper_limit",
-        path: "/management/shopper-limit",
-      },
+      // {
+      //   title: "shopper_limit",
+      //   path: "/management/shopper-limit",
+      // },
       {
         title: "app_phone_number",
         path: "/management/app-phone-number",
       },
-      {
-        title: "notifications",
-        path: "/management/notifications",
-      },
-      {
-        title: "messsages",
-        path: "/management/messsages",
-      },
+      // {
+      //   title: "notifications",
+      //   path: "/management/notifications",
+      // },
+      // {
+      //   title: "messsages",
+      //   path: "/management/messsages",
+      // },
       {
         title: "faqs",
         path: "/management/faqs",
