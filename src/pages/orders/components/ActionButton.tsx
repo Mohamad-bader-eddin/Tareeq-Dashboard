@@ -20,6 +20,7 @@ import useCancelOrderQuery from "../hooks/useCancelOrderQuery";
 import useAvtiveOrdersQuery from "../views/activeOrders/hooks/useAvtiveOrdersQuery";
 import usePendingOrdersQuery from "../views/pendingOrders/hooks/usePendingOrdersQuery";
 import useScheduleOrdersQuery from "../views/scheduleOrders/hooks/useScheduleOrdersQuery";
+import useBreakOrderQuery from "../hooks/useBreakOrderQuery";
 
 const ActionButton = ({ type, id }: ActionButtonProps) => {
   const navigate = useNavigate();
@@ -32,6 +33,7 @@ const ActionButton = ({ type, id }: ActionButtonProps) => {
   const [openSucssesCancel, setOpenSucssesCancel] = useState(false);
   const [msgCancel, setMsgCancel] = useState("");
   const { mutate } = useCancelOrderQuery();
+  const { mutate: breakMutate } = useBreakOrderQuery();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [openCancelDialog, setOPenCancelDialog] = useState(false);
   // const [openAssignDialog, setOPenAssignDialog] = useState(false);
@@ -87,6 +89,24 @@ const ActionButton = ({ type, id }: ActionButtonProps) => {
   const handleBreak = () => {
     setOpenBreakDialog(true);
     setAnchorEl(null);
+  };
+  const handelAgreeBreak = () => {
+    breakMutate(id as GridRowId, {
+      onSuccess: (response) => {
+        setOpenSucssesCancel(true);
+        setMsgCancel(response.data.message);
+        if (type === "active") {
+          activeRefetch();
+        }
+        setOpenBreakDialog(false);
+      },
+      onError: (error) => {
+        const err = error as Error;
+        setOpenErrorCancel(true);
+        setErrorMsgCancel(err.message);
+        setOpenBreakDialog(false);
+      },
+    });
   };
   return (
     <div>
@@ -151,7 +171,7 @@ const ActionButton = ({ type, id }: ActionButtonProps) => {
         open={openBreakDialog}
         setOpen={setOpenBreakDialog}
         elementContent={t("block_order_message")}
-        handleAgree={() => {}}
+        handleAgree={handelAgreeBreak}
       />
       <GenericAlert
         open={openErrorCancel}
