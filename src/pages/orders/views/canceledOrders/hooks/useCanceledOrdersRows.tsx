@@ -12,8 +12,8 @@ const useCanceledOrdersRows = ({ data }: { data: Order[] }) => {
       status: el.status,
       totalExpected: el.total_expected,
       placedon: format(new Date(el.created_at as Date), "dd/MM/yyyy"),
-      shopper: el.driver.name,
-      shopperId: el.driver.id,
+      shopper: el?.driver?.name,
+      shopperId: el?.driver?.id,
     })
   );
   return { rows };

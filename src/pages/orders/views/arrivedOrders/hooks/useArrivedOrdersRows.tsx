@@ -12,8 +12,8 @@ const useArrivedOrdersRows = ({ data }: { data: Order[] }) => {
       status: el.status,
       totalExpected: el.total_expected,
       // arrivedAt: format(new Date(el.order_date as Date), "dd/MM/yyyy"),
-      shopper: el.driver.name,
-      shopperId: el.driver.id,
+      shopper: el?.driver?.name,
+      shopperId: el?.driver?.id,
       // rating: el?.rate,
     })
   );
