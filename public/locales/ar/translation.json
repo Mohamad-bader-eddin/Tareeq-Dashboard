@@ -62,6 +62,7 @@
   "not_verified": "لم يتم التحقق",
   "delete_addresses": "حذف العناوين",
   "block_order_message": "هل تريد إيقاف هذا الطلب ..؟ّّ!",
+  "cancel_order_message": "هل تريد الغاء هذا الطلب ..؟ّّ!",
   "break": "ايقاف",
   "total_paid": "مجمموع الدفع",
   "credits_used": "اعتمادات المستخدمة",

@@ -95,8 +95,8 @@ const useScheduleOrdersColumns = ({
         width: 150,
         align: "center",
         headerAlign: "center",
-        renderCell: () => {
-          return <ActionButton type="schedule" />;
+        renderCell: (params) => {
+          return <ActionButton type="schedule" id={params.id} />;
         },
       },
     ];

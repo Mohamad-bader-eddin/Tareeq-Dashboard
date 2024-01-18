@@ -62,6 +62,7 @@
   "not_verified": "Not Verified",
   "delete_addresses": "Delete Addresses",
   "block_order_message": "Do you want to break this order ..?!",
+  "cancel_order_message": "Do you want to cancel this order ..?!",
   "break": "Break",
   "total_paid": "Total Paid",
   "credits_used": "Credits Used",

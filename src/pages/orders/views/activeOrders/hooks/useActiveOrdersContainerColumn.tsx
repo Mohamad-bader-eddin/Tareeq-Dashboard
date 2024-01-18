@@ -76,8 +76,8 @@ const useActiveOrdersContainerColumn = () => {
         width: 150,
         align: "center",
         headerAlign: "center",
-        renderCell: () => {
-          return <ActionButton type="active" />;
+        renderCell: (params) => {
+          return <ActionButton type="active" id={params.id} />;
         },
       },
     ];

@@ -14,10 +14,24 @@ import GenericDialog from "../../../share/components/Dialog/GenericDialog";
 // import useAssignOrderToColumn from "../hooks/useAssignOrderToColumn";
 // import useAssignOrderToRows from "../hooks/useAssignOrderToRows";
 import { useTranslation } from "react-i18next";
+import { GridRowId } from "@mui/x-data-grid";
+import GenericAlert from "../../../share/components/alert/GenericAlert";
+import useCancelOrderQuery from "../hooks/useCancelOrderQuery";
+import useAvtiveOrdersQuery from "../views/activeOrders/hooks/useAvtiveOrdersQuery";
+import usePendingOrdersQuery from "../views/pendingOrders/hooks/usePendingOrdersQuery";
+import useScheduleOrdersQuery from "../views/scheduleOrders/hooks/useScheduleOrdersQuery";
 
-const ActionButton = ({ type }: ActionButtonProps) => {
+const ActionButton = ({ type, id }: ActionButtonProps) => {
   const navigate = useNavigate();
   const { t } = useTranslation();
+  const { refetch: activeRefetch } = useAvtiveOrdersQuery();
+  const { refetch: pendingRefetch } = usePendingOrdersQuery();
+  const { refetch: scheduleRefetch } = useScheduleOrdersQuery();
+  const [openErrorCancel, setOpenErrorCancel] = useState(false);
+  const [errorMsgCancel, setErrorMsgCancel] = useState("");
+  const [openSucssesCancel, setOpenSucssesCancel] = useState(false);
+  const [msgCancel, setMsgCancel] = useState("");
+  const { mutate } = useCancelOrderQuery();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [openCancelDialog, setOPenCancelDialog] = useState(false);
   // const [openAssignDialog, setOPenAssignDialog] = useState(false);
@@ -47,6 +61,28 @@ const ActionButton = ({ type }: ActionButtonProps) => {
   const handleCancel = () => {
     setOPenCancelDialog(true);
     setAnchorEl(null);
+  };
+  const handelAgreeCancel = () => {
+    mutate(id as GridRowId, {
+      onSuccess: (response) => {
+        setOpenSucssesCancel(true);
+        setMsgCancel(response.data.message);
+        if (type === "active") {
+          activeRefetch();
+        } else if (type === "pending") {
+          pendingRefetch();
+        } else if (type === "schedule") {
+          scheduleRefetch();
+        }
+        setOPenCancelDialog(false);
+      },
+      onError: (error) => {
+        const err = error as Error;
+        setOpenErrorCancel(true);
+        setErrorMsgCancel(err.message);
+        setOPenCancelDialog(false);
+      },
+    });
   };
   const handleBreak = () => {
     setOpenBreakDialog(true);
@@ -108,8 +144,8 @@ const ActionButton = ({ type }: ActionButtonProps) => {
       <GenericDialog
         open={openCancelDialog}
         setOpen={setOPenCancelDialog}
-        elementContent={t("delete_order_message")}
-        handleAgree={() => {}}
+        elementContent={t("cancel_order_message")}
+        handleAgree={handelAgreeCancel}
       />
       <GenericDialog
         open={openBreakDialog}
@@ -117,12 +153,25 @@ const ActionButton = ({ type }: ActionButtonProps) => {
         elementContent={t("block_order_message")}
         handleAgree={() => {}}
       />
+      <GenericAlert
+        open={openErrorCancel}
+        setOpen={setOpenErrorCancel}
+        type="error"
+        msg={errorMsgCancel}
+      />
+      <GenericAlert
+        open={openSucssesCancel}
+        setOpen={setOpenSucssesCancel}
+        type="success"
+        msg={msgCancel}
+      />
     </div>
   );
 };
 
 type ActionButtonProps = {
   type: "active" | "pending" | "arrived" | "canceled" | "schedule";
+  id?: GridRowId;
 };
 
 export default ActionButton;

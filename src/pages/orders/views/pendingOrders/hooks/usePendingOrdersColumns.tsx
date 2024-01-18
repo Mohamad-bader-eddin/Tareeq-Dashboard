@@ -88,8 +88,8 @@ const usePendingOrdersColumns = ({
         width: 150,
         align: "center",
         headerAlign: "center",
-        renderCell: () => {
-          return <ActionButton type="pending" />;
+        renderCell: (params) => {
+          return <ActionButton type="pending" id={params.id} />;
         },
       },
     ];
