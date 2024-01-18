@@ -14,7 +14,7 @@ const useCreateShopperValidation = () => {
   const { t } = useTranslation();
   const initialValues = {
     name: "",
-    email: "",
+    // email: "",
     password: "",
     phone: "",
     zone: null,
@@ -26,14 +26,25 @@ const useCreateShopperValidation = () => {
     description: "",
     vehicleType: null,
     shopperPicture: undefined,
+    vehiclePicture: undefined,
   };
 
   const validationSchema = Yup.object().shape({
     name: Yup.string().required(t("required")),
-    email: Yup.string()
-      .email(t("invalid_email_format"))
+    // email: Yup.string()
+    //   .email(t("invalid_email_format"))
+    //   .required(t("required")),
+    password: Yup.string()
+      .min(8, "Password must be at least 8 characters")
+      .max(20, "Password must be at most 20 characters")
+      .matches(/[a-z]/, "Password must contain at least one lowercase letter")
+      .matches(/[A-Z]/, "Password must contain at least one uppercase letter")
+      .matches(/\d/, "Password must contain at least one digit")
+      .matches(
+        /[!@#$%^&*(),.?":{}|<>]/,
+        "Password must contain at least one special character"
+      )
       .required(t("required")),
-    password: Yup.string().required(t("required")),
     phone: Yup.string().required(t("required")),
     zone: Yup.object()
       .shape({
@@ -53,38 +64,37 @@ const useCreateShopperValidation = () => {
         name: Yup.string().required(t("required")),
       })
       .required(t("required")),
-    // carPicture: Yup.mixed()
-    //   .required(t("image_is_required"))
-    //   .test("fileSize", t("file_size_is_too_large"), (value) => {
-    //     if (!value) return false;
-    //     return (value as File).size <= 5242880; // 5MB
-    //   })
-    //   .test("fileType", t("invalid_file_type"), (value) => {
-    //     if (!value) return false;
-    //     const file = value as File;
-    //     return (
-    //       ["image/jpeg", "image/jpg", "image/png"].includes(file.type) ||
-    //       file.name.endsWith(".jpeg") ||
-    //       file.name.endsWith(".jpg") ||
-    //       file.name.endsWith(".png")
-    //     );
-    //   }),
-    // shopperPicture: Yup.mixed()
-    //   .required(t("image_is_required"))
-    //   .test("fileSize", t("file_size_is_too_large"), (value) => {
-    //     if (!value) return false;
-    //     return (value as File).size <= 5242880; // 5MB
-    //   })
-    //   .test("fileType", t("invalid_file_type"), (value) => {
-    //     if (!value) return false;
-    //     const file = value as File;
-    //     return (
-    //       ["image/jpeg", "image/jpg", "image/png"].includes(file.type) ||
-    //       file.name.endsWith(".jpeg") ||
-    //       file.name.endsWith(".jpg") ||
-    //       file.name.endsWith(".png")
-    //     );
-    //   }),
+    vehiclePicture: Yup.mixed()
+      .test("fileSize", t("file_size_is_too_large"), (value) => {
+        if (!value) return false;
+        return (value as File).size <= 5242880; // 5MB
+      })
+      .test("fileType", t("invalid_file_type"), (value) => {
+        if (!value) return false;
+        const file = value as File;
+        return (
+          ["image/jpeg", "image/jpg", "image/png"].includes(file.type) ||
+          file.name.endsWith(".jpeg") ||
+          file.name.endsWith(".jpg") ||
+          file.name.endsWith(".png")
+        );
+      }),
+    shopperPicture: Yup.mixed()
+      .test("fileSize", t("file_size_is_too_large"), (value) => {
+        if (!value) return false;
+        return (value as File).size <= 5242880; // 5MB
+      })
+      .test("fileType", t("invalid_file_type"), (value) => {
+        if (!value) return false;
+        const file = value as File;
+        return (
+          ["image/jpeg", "image/jpg", "image/png"].includes(file.type) ||
+          file.name.endsWith(".jpeg") ||
+          file.name.endsWith(".jpg") ||
+          file.name.endsWith(".png")
+        );
+      }),
+    // .required(t("image_is_required"))
   });
 
   const onSubmit = (
@@ -94,7 +104,7 @@ const useCreateShopperValidation = () => {
     mutate(
       {
         name: values.name,
-        email: values.email,
+        // email: values.email,
         password: values.password,
         phone: values.phone,
         brand: values.brand,
@@ -105,6 +115,8 @@ const useCreateShopperValidation = () => {
         description: values.description,
         vehicle_type_id: values.vehicleType?.id as string,
         zone_id: values.zone?.id as string,
+        vehicle_image: values.vehiclePicture as File,
+        driver_image: values.shopperPicture as File,
       },
       {
         onSuccess: (response) => {
@@ -114,6 +126,8 @@ const useCreateShopperValidation = () => {
           formikHelpers.resetForm();
         },
         onError: (error) => {
+          console.log(error);
+
           const err = error as Error;
           setOpenError(true);
           setErrorMsg(err.message);

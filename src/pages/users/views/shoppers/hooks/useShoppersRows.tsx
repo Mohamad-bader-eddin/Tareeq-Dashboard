@@ -9,6 +9,7 @@ const useShoppersRows = ({ data }: { data: Drivers[] }) => {
       name: el.name,
       phone: el.phone,
       registerDate: format(new Date(el.created_at as Date), "dd/MM/yyyy"),
+      zone: el?.zone?.name,
     })
   );
   return { rows };

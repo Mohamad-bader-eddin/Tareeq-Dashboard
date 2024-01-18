@@ -43,7 +43,7 @@ const CreateNewShopperForm = ({
             title={t("upload_shopper_picture")}
           />
           <Input formik={formik} label={t("name")} name="name" />
-          <Input formik={formik} label={t("email")} name="email" />
+          {/* <Input formik={formik} label={t("email")} name="email" /> */}
           <PasswordInput
             formik={formik}
             label={t("password")}
@@ -59,7 +59,7 @@ const CreateNewShopperForm = ({
           />
           <UploadImage
             formik={formik}
-            name="carPicture"
+            name="vehiclePicture"
             title={t("upload_car_picture")}
           />
           <Input formik={formik} label={t("model_number")} name="modelNumber" />

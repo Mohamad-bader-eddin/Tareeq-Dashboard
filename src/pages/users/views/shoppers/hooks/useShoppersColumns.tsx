@@ -1,4 +1,4 @@
-import { Button, Checkbox } from "@mui/material";
+import { Button } from "@mui/material";
 import { GridActionsCellItem, GridColDef, GridRowId } from "@mui/x-data-grid";
 import { Dispatch, SetStateAction, useMemo } from "react";
 import { useTranslation } from "react-i18next";
@@ -85,16 +85,16 @@ const useShoppersColumns = ({
         align: "center",
         headerAlign: "center",
       },
-      {
-        field: "online",
-        headerName: t("online"),
-        width: 100,
-        align: "center",
-        headerAlign: "center",
-        renderCell: () => {
-          return <Checkbox />;
-        },
-      },
+      // {
+      //   field: "online",
+      //   headerName: t("online"),
+      //   width: 100,
+      //   align: "center",
+      //   headerAlign: "center",
+      //   renderCell: () => {
+      //     return <Checkbox />;
+      //   },
+      // },
       {
         field: "action",
         headerName: t("action"),

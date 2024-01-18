@@ -4,7 +4,7 @@ import { Option } from "../../../../../../../share/types";
 
 export type initialValuesType = {
     name: string;
-    email: string;
+    // email: string;
     password: string;
     phone: string;
     zone: Option | null;
@@ -15,12 +15,13 @@ export type initialValuesType = {
     color: string;
     description: string;
     vehicleType: Option | null;
-    // shopperPicture: File | undefined;
+    shopperPicture: File | undefined | string;
+    vehiclePicture: File | undefined | string;
 }
 
 export type validationSchemaType = Yup.ObjectSchema<{
     name: string;
-    email: string;
+    // email: string;
     password: string;
     phone: string;
     zone: {
@@ -39,7 +40,7 @@ export type validationSchemaType = Yup.ObjectSchema<{
     };
 }, Yup.AnyObject, {
     name: undefined;
-    email: undefined;
+    // email: undefined;
     password: undefined;
     phone: undefined;
     zone: {
