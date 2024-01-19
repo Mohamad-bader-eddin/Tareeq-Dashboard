@@ -8,8 +8,7 @@ const useClientsRows = ({ data }: { data: Client[] }) => {
       id: el.id,
       name: el.name,
       phone: el.phone,
-      email: el.email,
-      platform: el.platform,
+      // platform: el.platform,
       joinDate: format(new Date(el.created_at), "dd/MM/yyyy"),
     })
   );

@@ -34,20 +34,13 @@ const useShoppersColumns = ({
         align: "center",
         headerAlign: "center",
       },
-      {
-        field: "email",
-        headerName: t("email"),
-        width: 150,
-        align: "center",
-        headerAlign: "center",
-      },
-      {
-        field: "platform",
-        headerName: t("platform"),
-        width: 200,
-        align: "center",
-        headerAlign: "center",
-      },
+      // {
+      //   field: "platform",
+      //   headerName: t("platform"),
+      //   width: 200,
+      //   align: "center",
+      //   headerAlign: "center",
+      // },
       {
         field: "joinDate",
         headerName: t("join_date"),

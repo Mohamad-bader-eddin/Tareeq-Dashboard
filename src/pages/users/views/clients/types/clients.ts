@@ -13,22 +13,18 @@ export type Address = {
 export type Client = {
     address: Address[];
     created_at: Date;
-    email: string;
     id: number;
     image: string;
     name: string;
     phone: string;
     phone_verified_at: Date;
-    platform: string;
 }
 
 export type ClientRows = {
     joinDate: string;
-    email: string;
     id: number;
     name: string;
     phone: string;
-    platform: string;
 }
 
 export type AddressRows = {
