@@ -20,7 +20,6 @@ const useBlackListColumns = ({
         field: "phone",
         headerName: t("phone"),
         width: 250,
-        editable: true,
         align: "center",
         headerAlign: "center",
       },

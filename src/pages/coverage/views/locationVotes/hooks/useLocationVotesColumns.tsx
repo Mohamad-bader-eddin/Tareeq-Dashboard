@@ -24,7 +24,6 @@ const useLocationVotesColumns = ({
         align: "center",
         headerAlign: "center",
         width: 250,
-        editable: true,
       },
       {
         field: "createdAt",
@@ -32,7 +31,6 @@ const useLocationVotesColumns = ({
         align: "center",
         headerAlign: "center",
         width: 250,
-        editable: true,
       },
       {
         field: "action",

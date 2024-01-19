@@ -20,7 +20,6 @@ const useUserUsedThisCouponColumns = () => {
         align: "center",
         headerAlign: "center",
         width: 250,
-        editable: true,
         renderCell: (params) => {
           return <AppLink path="/users/clients/info" name={params.value} />;
         },
@@ -31,7 +30,6 @@ const useUserUsedThisCouponColumns = () => {
         align: "center",
         headerAlign: "center",
         width: 250,
-        editable: true,
       },
       {
         field: "createdAt",
@@ -39,7 +37,6 @@ const useUserUsedThisCouponColumns = () => {
         align: "center",
         headerAlign: "center",
         width: 250,
-        editable: true,
       },
     ];
     return tableCol;

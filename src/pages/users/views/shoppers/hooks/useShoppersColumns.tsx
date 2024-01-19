@@ -26,13 +26,11 @@ const useShoppersColumns = ({
         align: "center",
         headerAlign: "center",
         width: 200,
-        editable: true,
       },
       {
         field: "phone",
         headerName: t("phone"),
         width: 200,
-        editable: true,
         align: "center",
         headerAlign: "center",
       },

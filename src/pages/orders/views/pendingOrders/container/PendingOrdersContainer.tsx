@@ -2,7 +2,7 @@ import { useTranslation } from "react-i18next";
 import PaperContainer from "../../../../../share/components/Paper/PaperContainer";
 import Layout from "../../../../../share/components/layout/Layout";
 import Table from "../../../../../share/components/table/Table";
-import OrdersHead from "../../../components/OrdersHead";
+// import OrdersHead from "../../../components/OrdersHead";
 import usePendingOrdersColumns from "../hooks/usePendingOrdersColumns";
 import usePendingOrdersRows from "../hooks/usePendingOrdersRows";
 import GenericDialog from "../../../../../share/components/Dialog/GenericDialog";
@@ -60,7 +60,7 @@ const PendingOrdersContainer = () => {
   return (
     <Layout>
       <PaperContainer>
-        <OrdersHead />
+        {/* <OrdersHead /> */}
         <Table
           columns={columns}
           rows={rows}

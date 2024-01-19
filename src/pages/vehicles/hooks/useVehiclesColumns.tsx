@@ -24,13 +24,11 @@ const useVehiclesColumns = ({
         align: "center",
         headerAlign: "center",
         width: 250,
-        editable: true,
       },
       {
         field: "priceByTime",
         headerName: t("price_by_time"),
         width: 150,
-        editable: true,
         align: "center",
         headerAlign: "center",
       },

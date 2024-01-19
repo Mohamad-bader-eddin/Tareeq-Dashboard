@@ -125,10 +125,12 @@ const ActionButton = ({ type, id }: ActionButtonProps) => {
         {t("actions")}
       </Button>
       <Menu anchorEl={anchorEl} open={open} onClose={handleClose}>
-        <MenuItem onClick={handleTrack} disableRipple>
-          <TravelExploreIcon sx={{ marginInlineEnd: "15px" }} />
-          {t("track")}
-        </MenuItem>
+        {(type === "pending" || type === "active" || type === "schedule") && (
+          <MenuItem onClick={handleTrack} disableRipple>
+            <TravelExploreIcon sx={{ marginInlineEnd: "15px" }} />
+            {t("track")}
+          </MenuItem>
+        )}
         <MenuItem onClick={handleInfo} disableRipple>
           <HelpOutlineIcon sx={{ marginInlineEnd: "15px" }} />
           {t("info")}

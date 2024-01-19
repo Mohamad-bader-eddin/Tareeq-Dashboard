@@ -24,7 +24,6 @@ const useZoneColumn = ({
         align: "center",
         headerAlign: "center",
         width: 250,
-        editable: true,
       },
       {
         field: "action",

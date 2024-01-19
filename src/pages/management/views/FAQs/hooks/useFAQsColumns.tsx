@@ -24,7 +24,6 @@ const useFAQsColumns = ({
         align: "center",
         headerAlign: "center",
         width: 350,
-        editable: true,
       },
       {
         field: "action",

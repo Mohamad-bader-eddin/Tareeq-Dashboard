@@ -73,8 +73,10 @@ const initialRows: GridRowsProp = [
 ];
 
 interface EditToolbarProps {
+  // eslint-disable-next-line no-unused-vars
   setRows: (newRows: (oldRows: GridRowsProp) => GridRowsProp) => void;
   setRowModesModel: (
+    // eslint-disable-next-line no-unused-vars
     newModel: (oldModel: GridRowModesModel) => GridRowModesModel
   ) => void;
 }
@@ -151,7 +153,7 @@ export default function OrdersContainer() {
   };
 
   const columns: GridColDef[] = [
-    { field: "name", headerName: "Name", width: 180, editable: true },
+    { field: "name", headerName: "Name", width: 180 },
     {
       field: "age",
       headerName: "Age",
@@ -159,22 +161,17 @@ export default function OrdersContainer() {
       width: 80,
       align: "left",
       headerAlign: "left",
-      editable: true,
     },
     {
       field: "joinDate",
       headerName: "Join date",
       type: "date",
       width: 180,
-      editable: true,
     },
     {
       field: "role",
       headerName: "Department",
       width: 220,
-      editable: true,
-      type: "singleSelect",
-      valueOptions: ["Market", "Finance", "Development"],
     },
     {
       field: "actions",

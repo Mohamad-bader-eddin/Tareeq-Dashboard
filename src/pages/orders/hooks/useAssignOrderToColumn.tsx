@@ -14,13 +14,11 @@ const useAssignOrderToColumn = ({
       align: "center",
       headerAlign: "center",
       width: 250,
-      editable: true,
     },
     {
       field: "completedTripsToday",
       headerName: t("completed_trips_today"),
       width: 250,
-      editable: true,
       align: "center",
       headerAlign: "center",
     },

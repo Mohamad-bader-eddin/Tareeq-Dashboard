@@ -22,14 +22,14 @@ const useSentNotificationColumns = ({
         align: "center",
         headerAlign: "center",
         width: 250,
-        editable: true,
-        type: "singleSelect",
-        valueOptions: [
-          t("all"),
-          t("clients"),
-          t("shoppers"),
-          t("specified_user"),
-        ],
+        // editable: true,
+        // type: "singleSelect",
+        // valueOptions: [
+        //   t("all"),
+        //   t("clients"),
+        //   t("shoppers"),
+        //   t("specified_user"),
+        // ],
       },
       {
         field: "title",
@@ -37,7 +37,6 @@ const useSentNotificationColumns = ({
         align: "center",
         headerAlign: "center",
         width: 250,
-        editable: true,
       },
       {
         field: "message",
@@ -45,7 +44,6 @@ const useSentNotificationColumns = ({
         align: "center",
         headerAlign: "center",
         width: 250,
-        editable: true,
       },
       {
         field: "createdAt",
@@ -53,7 +51,6 @@ const useSentNotificationColumns = ({
         align: "center",
         headerAlign: "center",
         width: 250,
-        editable: true,
       },
       {
         field: "action",

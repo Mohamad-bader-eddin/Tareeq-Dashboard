@@ -3,7 +3,7 @@ import useCanceledOrdersColumns from "../hooks/useCanceledOrdersColumns";
 import useCanceledOrdersRows from "../hooks/useCanceledOrdersRows";
 import Layout from "../../../../../share/components/layout/Layout";
 import PaperContainer from "../../../../../share/components/Paper/PaperContainer";
-import OrdersHead from "../../../components/OrdersHead";
+// import OrdersHead from "../../../components/OrdersHead";
 import Table from "../../../../../share/components/table/Table";
 import useCanceledOrdersQuery from "../hooks/useCanceledOrdersQuery";
 
@@ -15,7 +15,7 @@ const CanceledOrdersContainer = () => {
   return (
     <Layout>
       <PaperContainer>
-        <OrdersHead />
+        {/* <OrdersHead /> */}
         <Table
           columns={columns}
           rows={rows}

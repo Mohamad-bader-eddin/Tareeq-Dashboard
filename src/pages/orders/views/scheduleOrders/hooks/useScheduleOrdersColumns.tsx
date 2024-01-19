@@ -25,7 +25,6 @@ const useScheduleOrdersColumns = ({
         align: "center",
         headerAlign: "center",
         width: 200,
-        editable: true,
         renderCell: (params) => {
           return (
             <AppLink

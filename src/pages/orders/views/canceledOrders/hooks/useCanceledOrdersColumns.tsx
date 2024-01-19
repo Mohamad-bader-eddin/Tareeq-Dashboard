@@ -21,7 +21,6 @@ const useCanceledOrdersColumns = () => {
         align: "center",
         headerAlign: "center",
         width: 150,
-        editable: true,
         renderCell: (params) => {
           return <AppLink path="/users/clients/info" name={params.value} />;
         },

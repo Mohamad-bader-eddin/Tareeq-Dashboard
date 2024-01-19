@@ -27,7 +27,6 @@ const usePromoColumns = ({
         align: "center",
         headerAlign: "center",
         width: 250,
-        editable: true,
       },
       {
         field: "amount",
@@ -35,7 +34,6 @@ const usePromoColumns = ({
         align: "center",
         headerAlign: "center",
         width: 250,
-        editable: true,
       },
       {
         field: "isActive",
@@ -43,9 +41,6 @@ const usePromoColumns = ({
         align: "center",
         headerAlign: "center",
         width: 250,
-        editable: true,
-        type: "singleSelect",
-        valueOptions: ["Disabled", "Active"],
         renderCell: (params) => {
           if (params.value) {
             return (
@@ -67,7 +62,6 @@ const usePromoColumns = ({
         align: "center",
         headerAlign: "center",
         width: 250,
-        editable: true,
       },
       {
         field: "action",

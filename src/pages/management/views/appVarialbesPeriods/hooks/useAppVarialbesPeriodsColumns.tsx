@@ -24,7 +24,6 @@ const useAppVarialbesPeriodsColumns = ({
         align: "center",
         headerAlign: "center",
         width: 250,
-        editable: true,
       },
       {
         field: "periodTimeTo",
@@ -32,7 +31,6 @@ const useAppVarialbesPeriodsColumns = ({
         align: "center",
         headerAlign: "center",
         width: 250,
-        editable: true,
       },
       {
         field: "action",

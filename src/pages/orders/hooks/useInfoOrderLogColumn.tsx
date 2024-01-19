@@ -10,13 +10,11 @@ const useInfoOrderLogColumn = () => {
       align: "center",
       headerAlign: "center",
       width: 250,
-      editable: true,
     },
     {
       field: "log",
       headerName: t("log"),
       width: 250,
-      editable: true,
       type: "singleSelect",
       valueOptions: ["Pending", "En Route", "Canceled", "Scheduled"],
       align: "center",

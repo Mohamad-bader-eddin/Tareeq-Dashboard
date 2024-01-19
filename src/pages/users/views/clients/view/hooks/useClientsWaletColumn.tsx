@@ -12,13 +12,11 @@ const useClientsWaletColumn = () => {
         align: "center",
         headerAlign: "center",
         width: 200,
-        editable: true,
       },
       {
         field: "reason",
         headerName: t("reason"),
         width: 100,
-        editable: true,
         align: "center",
         headerAlign: "center",
       },

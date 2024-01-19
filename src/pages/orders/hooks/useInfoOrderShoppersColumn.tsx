@@ -17,7 +17,6 @@ const useInfoOrderShoppersColumn = () => {
       align: "center",
       headerAlign: "center",
       width: 250,
-      editable: true,
     },
     {
       field: "name",
@@ -30,9 +29,6 @@ const useInfoOrderShoppersColumn = () => {
       field: "status",
       headerName: t("status"),
       width: 200,
-      editable: true,
-      type: "singleSelect",
-      valueOptions: ["Pending", "En Route", "Canceled", "Scheduled"],
       align: "center",
       headerAlign: "center",
     },

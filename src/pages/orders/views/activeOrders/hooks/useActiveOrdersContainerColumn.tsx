@@ -21,7 +21,6 @@ const useActiveOrdersContainerColumn = () => {
         align: "center",
         headerAlign: "center",
         width: 200,
-        editable: true,
         renderCell: (params) => {
           return (
             <AppLink
@@ -35,9 +34,6 @@ const useActiveOrdersContainerColumn = () => {
         field: "status",
         headerName: t("status"),
         width: 100,
-        // editable: true,
-        type: "singleSelect",
-        // valueOptions: ["Pending", "En Route", "Canceled", "Scheduled"],
         align: "center",
         headerAlign: "center",
       },
