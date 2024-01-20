@@ -8,6 +8,7 @@ export type Order = {
     order_date: Date;
     is_schedule: boolean;
     cancel_reason_id: null;
+    arrive_to_customer_at?: Date;
     created_at: Date;
     driver: Driver;
     user: User;

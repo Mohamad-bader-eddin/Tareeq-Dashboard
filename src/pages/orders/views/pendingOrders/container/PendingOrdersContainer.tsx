@@ -71,7 +71,6 @@ const PendingOrdersContainer = () => {
         <GenericDialog
           open={openAssignDialog}
           setOpen={setOPenAssignDialog}
-          fullScreen={true}
           elementContent={
             <Table
               columns={AssignCol}
