@@ -11,7 +11,6 @@ const useClientsInfoValidation = ({ data }: { data: Client }) => {
   const initialValues = {
     joinDate: new Date(data?.created_at) || null,
     name: data?.name || "",
-    email: data?.email || "",
     phone: data?.phone || "",
     birthDate: null,
     isVerified: false,
@@ -35,7 +34,6 @@ const useClientsInfoValidation = ({ data }: { data: Client }) => {
     mutate(
       {
         name: values.name,
-        email: values.email,
         phone: values.phone,
       },
       {
