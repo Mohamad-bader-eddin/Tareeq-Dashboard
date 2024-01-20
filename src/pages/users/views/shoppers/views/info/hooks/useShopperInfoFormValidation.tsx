@@ -19,7 +19,6 @@ const useShopperInfoFormValidation = ({
   const initialValues = {
     registerDate: new Date(data?.created_at as Date),
     name: data?.name || "",
-    email: data?.email || "",
     phone: data?.phone || "",
     zone: zoneOptions.find((option) => option.id === data?.zone_id) || null,
     modelNumber: data?.model_number || "",
@@ -38,9 +37,6 @@ const useShopperInfoFormValidation = ({
 
   const validationSchema = Yup.object().shape({
     name: Yup.string().required(t("required")),
-    email: Yup.string()
-      .email(t("invalid_email_format"))
-      .required(t("required")),
     password: Yup.string().required(t("required")),
     phone: Yup.string().required(t("required")),
     zone: Yup.object()

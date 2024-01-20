@@ -5,7 +5,6 @@ import { Option } from "../../../../../../../share/types";
 export type initialValuesType = {
     registerDate: Date
     name: string;
-    email: string;
     phone: string;
     zone: Option | null;
     modelNumber: string;
@@ -22,7 +21,6 @@ export type initialValuesType = {
 
 export type validationSchemaType = Yup.ObjectSchema<{
     name: string;
-    email: string;
     phone: string;
     zone: {
         name: string;
@@ -40,7 +38,6 @@ export type validationSchemaType = Yup.ObjectSchema<{
     };
 }, Yup.AnyObject, {
     name: undefined;
-    email: undefined;
     password: undefined;
     phone: undefined;
     zone: {

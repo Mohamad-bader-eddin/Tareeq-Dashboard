@@ -140,26 +140,26 @@ export const SidebarData = [
     path: "/management",
     icon: <SettingsSuggestIcon />,
     subNav: [
-      {
-        title: "operation_time",
-        path: "/management/operation-time",
-      },
+      // {
+      //   title: "operation_time",
+      //   path: "/management/operation-time",
+      // },
       {
         title: "app_variables_periods",
         path: "/management/app-varialbes-periods",
       },
-      {
-        title: "other_app_variables",
-        path: "/management/other-app-variables",
-      },
+      // {
+      //   title: "other_app_variables",
+      //   path: "/management/other-app-variables",
+      // },
       // {
       //   title: "shopper_limit",
       //   path: "/management/shopper-limit",
       // },
-      {
-        title: "app_phone_number",
-        path: "/management/app-phone-number",
-      },
+      // {
+      //   title: "app_phone_number",
+      //   path: "/management/app-phone-number",
+      // },
       // {
       //   title: "notifications",
       //   path: "/management/notifications",
@@ -168,10 +168,10 @@ export const SidebarData = [
       //   title: "messsages",
       //   path: "/management/messsages",
       // },
-      {
-        title: "faqs",
-        path: "/management/faqs",
-      },
+      // {
+      //   title: "faqs",
+      //   path: "/management/faqs",
+      // },
     ],
   },
 ];
