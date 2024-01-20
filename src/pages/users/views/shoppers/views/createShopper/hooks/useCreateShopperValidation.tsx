@@ -17,7 +17,7 @@ const useCreateShopperValidation = () => {
     // email: "",
     password: "",
     phone: "",
-    driverProfit: 0,
+    driverProfit: "",
     zone: null,
     modelNumber: "",
     brand: "",

@@ -4,7 +4,7 @@ export type AssignOrder = {
 }
 
 export type AssignDriver = {
-    id: number,
+    id: string,
     shopper: string;
     completedTripsToday?: number;
 }
