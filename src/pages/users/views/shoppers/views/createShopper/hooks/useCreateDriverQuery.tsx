@@ -8,6 +8,7 @@ const addDriver = (driver: Drivers) => {
   formData.append("password", driver.password);
   formData.append("phone", driver.phone);
   formData.append("zone_id", driver.zone_id);
+  formData.append("driver_profit", driver.driver_profit as string);
   formData.append("brand", driver.brand);
   formData.append("color", driver.color);
   formData.append("model_number", driver.model_number);

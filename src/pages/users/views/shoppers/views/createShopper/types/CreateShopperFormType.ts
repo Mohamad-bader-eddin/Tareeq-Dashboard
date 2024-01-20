@@ -7,6 +7,7 @@ export type initialValuesType = {
     // email: string;
     password: string;
     phone: string;
+    driverProfit: string;
     zone: Option | null;
     modelNumber: string;
     brand: string;
@@ -23,6 +24,7 @@ export type validationSchemaType = Yup.ObjectSchema<{
     name: string;
     // email: string;
     password: string;
+    driverProfit: string;
     phone: string;
     zone: {
         name: string;
@@ -42,6 +44,7 @@ export type validationSchemaType = Yup.ObjectSchema<{
     name: undefined;
     // email: undefined;
     password: undefined;
+    driverProfit: undefined;
     phone: undefined;
     zone: {
         id: undefined;

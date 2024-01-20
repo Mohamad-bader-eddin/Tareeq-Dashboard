@@ -17,6 +17,7 @@ const useCreateShopperValidation = () => {
     // email: "",
     password: "",
     phone: "",
+    driverProfit: 0,
     zone: null,
     modelNumber: "",
     brand: "",
@@ -34,6 +35,7 @@ const useCreateShopperValidation = () => {
     // email: Yup.string()
     //   .email(t("invalid_email_format"))
     //   .required(t("required")),
+    driverProfit: Yup.string().required(t("required")),
     password: Yup.string()
       .min(8, "Password must be at least 8 characters")
       .max(20, "Password must be at most 20 characters")
@@ -64,36 +66,36 @@ const useCreateShopperValidation = () => {
         name: Yup.string().required(t("required")),
       })
       .required(t("required")),
-    vehiclePicture: Yup.mixed()
-      .test("fileSize", t("file_size_is_too_large"), (value) => {
-        if (!value) return false;
-        return (value as File).size <= 5242880; // 5MB
-      })
-      .test("fileType", t("invalid_file_type"), (value) => {
-        if (!value) return false;
-        const file = value as File;
-        return (
-          ["image/jpeg", "image/jpg", "image/png"].includes(file.type) ||
-          file.name.endsWith(".jpeg") ||
-          file.name.endsWith(".jpg") ||
-          file.name.endsWith(".png")
-        );
-      }),
-    shopperPicture: Yup.mixed()
-      .test("fileSize", t("file_size_is_too_large"), (value) => {
-        if (!value) return false;
-        return (value as File).size <= 5242880; // 5MB
-      })
-      .test("fileType", t("invalid_file_type"), (value) => {
-        if (!value) return false;
-        const file = value as File;
-        return (
-          ["image/jpeg", "image/jpg", "image/png"].includes(file.type) ||
-          file.name.endsWith(".jpeg") ||
-          file.name.endsWith(".jpg") ||
-          file.name.endsWith(".png")
-        );
-      }),
+    // vehiclePicture: Yup.mixed()
+    //   .test("fileSize", t("file_size_is_too_large"), (value) => {
+    //     if (!value) return false;
+    //     return (value as File).size <= 5242880; // 5MB
+    //   })
+    //   .test("fileType", t("invalid_file_type"), (value) => {
+    //     if (!value) return false;
+    //     const file = value as File;
+    //     return (
+    //       ["image/jpeg", "image/jpg", "image/png"].includes(file.type) ||
+    //       file.name.endsWith(".jpeg") ||
+    //       file.name.endsWith(".jpg") ||
+    //       file.name.endsWith(".png")
+    //     );
+    //   }),
+    // shopperPicture: Yup.mixed()
+    //   .test("fileSize", t("file_size_is_too_large"), (value) => {
+    //     if (!value) return false;
+    //     return (value as File).size <= 5242880; // 5MB
+    //   })
+    //   .test("fileType", t("invalid_file_type"), (value) => {
+    //     if (!value) return false;
+    //     const file = value as File;
+    //     return (
+    //       ["image/jpeg", "image/jpg", "image/png"].includes(file.type) ||
+    //       file.name.endsWith(".jpeg") ||
+    //       file.name.endsWith(".jpg") ||
+    //       file.name.endsWith(".png")
+    //     );
+    //   }),
     // .required(t("image_is_required"))
   });
 
@@ -109,6 +111,7 @@ const useCreateShopperValidation = () => {
         phone: values.phone,
         brand: values.brand,
         color: values.color,
+        driver_profit: values.driverProfit,
         model_number: values.modelNumber,
         minifacture_year: values.minifactureYear,
         plat_number: values.platNumber,

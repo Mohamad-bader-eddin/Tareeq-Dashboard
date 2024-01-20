@@ -10,6 +10,7 @@ const useShopperInfoFormValidation = ({ data }: { data: Drivers }) => {
   const initialValues = {
     registerDate: new Date(data?.created_at as Date),
     name: data?.name || "",
+    driverProfit: data?.driver_profit || "",
     phone: data?.phone || "",
     zone:
       {
@@ -27,9 +28,9 @@ const useShopperInfoFormValidation = ({ data }: { data: Drivers }) => {
         id: data?.vehicle?.vehicle_type?.id as string,
         name: data?.vehicle?.vehicle_type?.name as string,
       } || null,
-    // shopperPicture: undefined,
+    carPicture: data?.vehicle?.image || undefined,
     // isOnline: false,
-    // shopperPicture: undefined,
+    shopperPicture: data?.image || undefined,
   };
 
   const validationSchema = Yup.object().shape({
@@ -45,6 +46,7 @@ const useShopperInfoFormValidation = ({ data }: { data: Drivers }) => {
     modelNumber: Yup.string().required(t("required")),
     brand: Yup.string().required(t("required")),
     platNumber: Yup.string().required(t("required")),
+    driverProfit: Yup.string().required(t("required")),
     minifactureYear: Yup.string().required(t("required")),
     color: Yup.string().required(t("required")),
     description: Yup.string().required(t("required")),

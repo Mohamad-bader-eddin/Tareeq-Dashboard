@@ -3,7 +3,7 @@ import { ShopperInfoFormType } from "../types/ShopperInfoFormType";
 import { useTranslation } from "react-i18next";
 import UploadImage from "../../../../../../../share/components/uploadImage/UploadImage";
 import Input from "../../../../../../../share/components/Input/Input";
-import SubmitButton from "../../../../../../../share/components/submitButton/SubmitButton";
+// import SubmitButton from "../../../../../../../share/components/submitButton/SubmitButton";
 import { Box, Button, Stack } from "@mui/material";
 import DateInput from "../../../../../../../share/components/date/DateInput";
 // import GenericMap from "../../../../../../../share/components/map/GenericMap";
@@ -45,6 +45,12 @@ const ShopperInfoForm = ({
           />
           <Input formik={formik} label={t("name")} name="name" />
           <Input formik={formik} label={t("phone")} name="phone" />
+          <Input
+            formik={formik}
+            label={t("shopper_earning")}
+            name="driverProfit"
+            type="number"
+          />
           <AutocompleteInput
             formik={formik}
             label={t("zone")}
@@ -124,12 +130,12 @@ const ShopperInfoForm = ({
             textarea={true}
           /> */}
           {/* <GenericMap /> */}
-          <Box sx={{ width: "200px" }}>
+          {/* <Box sx={{ width: "200px" }}>
             <SubmitButton
               name={t("edit")}
               disabled={!formik.isValid || formik.isSubmitting}
             />
-          </Box>
+          </Box> */}
         </Form>
       )}
     </Formik>

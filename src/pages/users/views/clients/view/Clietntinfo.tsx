@@ -32,7 +32,7 @@ const Clietntinfo = () => {
     initialValues: addFundsValues,
     onSubmit: addFundsOnSubmit,
     validationSchema: addFundsvalidationSchema,
-  } = useAddFundsFormValidation();
+  } = useAddFundsFormValidation("1");
   const { columns } = useClientsWaletColumn();
   const { initialRows } = useClientsWaletRows();
   const breadcrumbsTracks = [{ path: "/users/clients", name: t("clients") }];

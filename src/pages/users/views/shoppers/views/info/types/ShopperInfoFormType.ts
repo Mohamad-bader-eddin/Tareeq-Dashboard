@@ -10,13 +10,14 @@ export type initialValuesType = {
     modelNumber: string;
     brand: string;
     platNumber: string;
+    driverProfit: string;
     minifactureYear: string;
     color: string;
     description: string;
     vehicleType: Option | null;
     // isOnline: boolean;
-    // carPicture: File | undefined;
-    // shopperPicture?: File | undefined;
+    carPicture: File | undefined | string;
+    shopperPicture?: File | undefined | string;
 }
 
 export type validationSchemaType = Yup.ObjectSchema<{
@@ -29,6 +30,7 @@ export type validationSchemaType = Yup.ObjectSchema<{
     modelNumber: string;
     brand: string;
     platNumber: string;
+    driverProfit: string;
     minifactureYear: string;
     color: string;
     description: string;
@@ -47,6 +49,7 @@ export type validationSchemaType = Yup.ObjectSchema<{
     modelNumber: undefined;
     brand: undefined;
     platNumber: undefined;
+    driverProfit: undefined;
     minifactureYear: undefined;
     color: undefined;
     description: undefined;

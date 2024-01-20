@@ -2,12 +2,14 @@ import { Zone } from "../../../../../share/types";
 import { Vehicle } from "../../../../vehicles/types/Vehicles";
 
 export type Drivers = {
-    id?: number;
+    id?: string;
     name: string;
     phone: string;
     email?: string;
     password: string;
+    driver_profit?: string;
     zone_id: string;
+    image?: string;
     zone?: Zone;
     vehicle?: {
         id: string;
@@ -32,6 +34,7 @@ export type Drivers = {
     created_at?: Date;
     vehicle_image?: File | undefined | string;
     driver_image?: File | undefined | string;
+    transactions?: transactions[]
 }
 
 export type DriversRows = {
@@ -44,4 +47,15 @@ export type DriversRows = {
     completedOrdersToday?: number;
     shopperEarning?: number;
     online?: boolean;
+}
+
+type transactions = {
+    id: string;
+    status: string;
+    amount: string;
+    created_at: Date;
+    transaction_type?: {
+        id: string;
+        description: string;
+    }
 }

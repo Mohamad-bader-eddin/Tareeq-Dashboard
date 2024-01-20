@@ -50,6 +50,12 @@ const CreateNewShopperForm = ({
             name="password"
           />
           <Input formik={formik} label={t("phone")} name="phone" />
+          <Input
+            formik={formik}
+            label={t("shopper_earning")}
+            name="driverProfit"
+            type="number"
+          />
           <AutocompleteInput
             formik={formik}
             label={t("zone")}
