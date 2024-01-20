@@ -38,14 +38,14 @@ export type Drivers = {
 }
 
 export type DriversRows = {
-    id: number;
+    id: string;
     name: string;
     phone: string;
     zone?: string;
     registerDate: string;
     lastOnline?: string;
     completedOrdersToday?: number;
-    shopperEarning?: number;
+    shopperEarning?: string;
     online?: boolean;
 }
 
