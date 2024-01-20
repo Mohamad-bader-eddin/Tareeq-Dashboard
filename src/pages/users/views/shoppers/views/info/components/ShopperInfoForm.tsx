@@ -90,11 +90,11 @@ const ShopperInfoForm = ({
               {t("add_vehicle_type")}
             </Button>
           </Stack>
-          <UploadImage
+          {/* <UploadImage
             formik={formik}
             name="carPicture"
             title={t("upload_car_picture")}
-          />
+          /> */}
           {/* <FormControlLabel
             onChange={formik.handleChange}
             value={formik.values["isOnline"]}

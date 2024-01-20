@@ -4,6 +4,9 @@ import Input from "../../../share/components/Input/Input";
 import { useTranslation } from "react-i18next";
 import SubmitButton from "../../../share/components/submitButton/SubmitButton";
 import { Box } from "@mui/material";
+import AutocompleteInput from "../../../share/components/autoComplete/AutocompleteInput";
+import useTransactionsQuery from "./useTransactionsQuery";
+import useTransactionMapper from "./useTransactionMapper";
 
 const AddFundsForm = ({
   initialValues,
@@ -11,6 +14,10 @@ const AddFundsForm = ({
   validationSchema,
 }: AddFundsFormType) => {
   const { t } = useTranslation();
+  const { data, isLoading } = useTransactionsQuery();
+  const { transactionOptions } = useTransactionMapper({
+    data: data?.data.content,
+  });
   return (
     <Formik
       initialValues={initialValues}
@@ -20,13 +27,14 @@ const AddFundsForm = ({
       {(formik) => {
         return (
           <Form>
-            <Input formik={formik} label={t("amount")} name="amount" />
-            <Input
+            <AutocompleteInput
               formik={formik}
-              label={t("description")}
-              name="description"
-              textarea={true}
+              label="Transaction Type"
+              name="transactionType"
+              loading={isLoading}
+              options={transactionOptions}
             />
+            <Input formik={formik} label={t("amount")} name="amount" />
             <Box sx={{ width: "200px" }}>
               <SubmitButton name={t("save")} disabled={!formik.isValid} />
             </Box>

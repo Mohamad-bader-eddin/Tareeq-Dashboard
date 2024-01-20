@@ -1,17 +1,24 @@
 import { FormikHelpers } from "formik";
 import * as Yup from "yup";
+import { Option } from "../../../share/types";
 
 export type initialValuesType = {
     amount: string;
-    description: string;
+    transactionType: Option | null;
 }
 
 export type validationSchemaType = Yup.ObjectSchema<{
     amount: string;
-    description: string;
+    transactionType: {
+        name: string;
+        id: string;
+    };
 }, Yup.AnyObject, {
     amount: undefined;
-    description: undefined;
+    transactionType: {
+        id: undefined;
+        name: undefined;
+    };
 }, "">
 
 // eslint-disable-next-line no-unused-vars

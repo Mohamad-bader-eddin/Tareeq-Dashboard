@@ -7,11 +7,16 @@ const useAddFundsFormValidation = () => {
   const { t } = useTranslation();
   const initialValues = {
     amount: "",
-    description: "",
+    transactionType: null,
   };
   const validationSchema = Yup.object({
     amount: Yup.string().required(t("required")),
-    description: Yup.string().required(t("required")),
+    transactionType: Yup.object()
+      .shape({
+        id: Yup.string().required(t("required")),
+        name: Yup.string().required(t("required")),
+      })
+      .required(t("required")),
   });
 
   const onSubmit = (
