@@ -1,13 +1,13 @@
 import { Button } from "@mui/material";
 import { GridActionsCellItem, GridColDef, GridRowId } from "@mui/x-data-grid";
-import { Dispatch, SetStateAction, useMemo } from "react";
+import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
 import PreviewIcon from "@mui/icons-material/Preview";
 import DeleteIcon from "@mui/icons-material/DeleteOutlined";
 
 const useShoppersColumns = ({
-  setOpenDeleteDialog,
+  handleOpenDialog,
   handleInfo,
 }: useShoppersColumnsProps) => {
   const { t } = useTranslation();
@@ -111,7 +111,7 @@ const useShoppersColumns = ({
               icon={<DeleteIcon />}
               label="Delete"
               color="error"
-              onClick={() => setOpenDeleteDialog(true)}
+              onClick={() => handleOpenDialog(params.id)}
             />,
           ];
         },
@@ -124,7 +124,8 @@ const useShoppersColumns = ({
 };
 
 type useShoppersColumnsProps = {
-  setOpenDeleteDialog: Dispatch<SetStateAction<boolean>>;
+  // eslint-disable-next-line no-unused-vars
+  handleOpenDialog: (id: GridRowId) => void;
   // eslint-disable-next-line no-unused-vars
   handleInfo: (id: GridRowId) => void;
 };

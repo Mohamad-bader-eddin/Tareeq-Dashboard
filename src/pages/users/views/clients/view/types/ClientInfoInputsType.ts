@@ -30,3 +30,9 @@ export type ClientInfoInputsProps = {
     validationSchema: validationSchemaType;
     onSubmit: onSubmitType
 }
+
+export type TransactionType = {
+    amount: string;
+    transaction_type_id: string;
+    user_id: string;
+}

@@ -18,6 +18,7 @@ export type Client = {
     name: string;
     phone: string;
     phone_verified_at: Date;
+    transactions: Transactions[]
 }
 
 export type ClientRows = {
@@ -32,4 +33,15 @@ export type AddressRows = {
     address: string;
     isSavedAddress: boolean;
     dateAdded: string;
+}
+
+type Transactions = {
+    id: string;
+    status: string;
+    amount: string;
+    created_at: Date;
+    transaction_type?: {
+        id: string;
+        description: string;
+    }
 }

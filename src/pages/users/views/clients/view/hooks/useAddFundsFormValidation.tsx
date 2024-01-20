@@ -1,14 +1,14 @@
 import { FormikHelpers } from "formik";
 import * as Yup from "yup";
 import { useTranslation } from "react-i18next";
-import { initialValuesType } from "../types/AddFundsFormType";
-import useAddFundsWalletQuery from "./useAddFundsWalletQuery";
 import { useState } from "react";
-import useInfoDriverQuery from "../views/shoppers/views/info/hooks/useInfoDriverQuery";
+import { initialValuesType } from "../../../../types/AddFundsFormType";
+import useAddFundsWalletQuery from "./useAddFundsWalletQuery";
+import useClientInfoQuery from "./useClientInfoQuery";
 
 const useAddFundsFormValidation = (id: string) => {
   const { t } = useTranslation();
-  const { refetch } = useInfoDriverQuery(id as string);
+  const { refetch } = useClientInfoQuery(id as string);
   const [openError, setOpenError] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
   const [openSucsses, setOpenSucsses] = useState(false);
@@ -36,7 +36,7 @@ const useAddFundsFormValidation = (id: string) => {
       {
         amount: values.amount as string,
         transaction_type_id: values.transactionType?.id as string,
-        driver_id: id,
+        user_id: id,
       },
       {
         onSuccess: (response) => {
