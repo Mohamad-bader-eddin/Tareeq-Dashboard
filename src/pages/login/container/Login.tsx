@@ -53,10 +53,9 @@ const Login = () => {
           formikHelpers.resetForm();
           navigate(redirectPath, { replace: true });
         },
-        onError: (error) => {
-          const err = error as Error;
+        onError: () => {
           setOpenError(true);
-          setErrorMsg(err.message);
+          setErrorMsg("Invalid Email Or Password");
         },
       }
     );

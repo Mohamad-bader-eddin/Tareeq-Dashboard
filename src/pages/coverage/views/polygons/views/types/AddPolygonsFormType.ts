@@ -17,16 +17,16 @@ export type validationSchemaType = Yup.ObjectSchema<{
         name: string;
         id: string;
     };
-    locations: {
-        latitude: number;
-        longitude: number;
-    }[] | undefined;
+    // locations: {
+    //     latitude: number;
+    //     longitude: number;
+    // }[] | undefined;
 }, Yup.AnyObject, {
     zone: {
         id: undefined;
         name: undefined;
     };
-    locations: "";
+    // locations: "";
 }, "">
 
 export type onSubmitType = (
@@ -51,3 +51,8 @@ export type AddPolygonsFormError = {
     zone: string;
     locations: LocationError[];
 }
+
+export type Markers = {
+    id: number;
+    position: google.maps.LatLngLiteral;
+};

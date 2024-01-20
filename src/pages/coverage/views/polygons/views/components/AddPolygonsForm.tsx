@@ -1,16 +1,17 @@
-import { FieldArray, Form, Formik } from "formik";
+import { Form, Formik } from "formik";
 import { useTranslation } from "react-i18next";
-import { AddPolygonsFormType, Location } from "../types/AddPolygonsFormType";
-import { Box, Stack, IconButton } from "@mui/material";
-import Input from "../../../../../../share/components/Input/Input";
+import { AddPolygonsFormType } from "../types/AddPolygonsFormType";
+// import { Box, Stack, IconButton } from "@mui/material";
+// import Input from "../../../../../../share/components/Input/Input";
 import SubmitButton from "../../../../../../share/components/submitButton/SubmitButton";
-import DeleteIcon from "@mui/icons-material/Delete";
-import AddCircleIcon from "@mui/icons-material/AddCircle";
-import useMedeaQueries from "../../../../../../share/utils/useMideaQuery";
-import { AddPolygonsFormError } from "../types/AddPolygonsFormType";
+// import DeleteIcon from "@mui/icons-material/Delete";
+// import AddCircleIcon from "@mui/icons-material/AddCircle";
+// import useMedeaQueries from "../../../../../../share/utils/useMideaQuery";
+// import { AddPolygonsFormError } from "../types/AddPolygonsFormType";
 import AutocompleteInput from "../../../../../../share/components/autoComplete/AutocompleteInput";
 import useZoneQuery from "../../../../../../share/hooks/useZoneQuery";
 import useZoneMaper from "../../../../../../share/hooks/useZoneMaper";
+import PolygonsMap from "../../components/PolygonsMap";
 
 const AddPolygonsForm = ({
   initialValues,
@@ -18,7 +19,7 @@ const AddPolygonsForm = ({
   validationSchema,
 }: AddPolygonsFormType) => {
   const { t } = useTranslation();
-  const { laptop } = useMedeaQueries();
+  // const { laptop } = useMedeaQueries();
   const { data, isLoading } = useZoneQuery();
   const { options } = useZoneMaper({ data: data?.data.content });
 
@@ -38,7 +39,8 @@ const AddPolygonsForm = ({
               options={options}
               loading={isLoading}
             />
-            <FieldArray name="locations">
+            <PolygonsMap formik={formik} />
+            {/* <FieldArray name="locations">
               {({ push, remove }) => (
                 <Box>
                   {formik.values.locations.map((location, index) => (
@@ -141,8 +143,11 @@ const AddPolygonsForm = ({
                   ))}
                 </Box>
               )}
-            </FieldArray>
-            <SubmitButton name={t("add")} disabled={!formik.isValid} />
+            </FieldArray> */}
+            <SubmitButton
+              name={t("add")}
+              disabled={!formik.isValid || formik.isSubmitting}
+            />
           </Form>
         );
       }}

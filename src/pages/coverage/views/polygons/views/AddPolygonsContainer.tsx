@@ -5,11 +5,21 @@ import { useTranslation } from "react-i18next";
 import { Typography } from "@mui/material";
 import useAddPolygonValidation from "./hooks/useAddPolygonValidation";
 import AddPolygonsForm from "./components/AddPolygonsForm";
+import GenericAlert from "../../../../../share/components/alert/GenericAlert";
 
 const AddPolygonsContainer = () => {
   const { t } = useTranslation();
-  const { initialValues, onSubmit, validationSchema } =
-    useAddPolygonValidation();
+  const {
+    initialValues,
+    onSubmit,
+    validationSchema,
+    errorMsg,
+    openError,
+    setOpenError,
+    msg,
+    openSucsses,
+    setOpenSucsses,
+  } = useAddPolygonValidation();
   const breadcrumbsTracks = [
     { path: "/coverage/polygons", name: t("polygons") },
   ];
@@ -24,6 +34,18 @@ const AddPolygonsContainer = () => {
           initialValues={initialValues}
           onSubmit={onSubmit}
           validationSchema={validationSchema}
+        />
+        <GenericAlert
+          open={openSucsses}
+          setOpen={setOpenSucsses}
+          type="success"
+          msg={msg}
+        />
+        <GenericAlert
+          open={openError}
+          setOpen={setOpenError}
+          type="error"
+          msg={errorMsg}
         />
       </PaperContainer>
     </Layout>

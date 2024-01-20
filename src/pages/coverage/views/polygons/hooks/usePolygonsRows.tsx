@@ -5,6 +5,7 @@ const usePolygonsRows = ({ data }: { data: Polygons[] }) => {
   data?.forEach((el) =>
     rows.push({
       id: el.id as string,
+      zoneName: el.zone?.name as string,
     })
   );
   return { rows };
