@@ -6,7 +6,7 @@ import Input from "../../../../../../../share/components/Input/Input";
 import SubmitButton from "../../../../../../../share/components/submitButton/SubmitButton";
 import { Box, Button, Stack } from "@mui/material";
 import DateInput from "../../../../../../../share/components/date/DateInput";
-import GenericMap from "../../../../../../../share/components/map/GenericMap";
+// import GenericMap from "../../../../../../../share/components/map/GenericMap";
 import AutocompleteInput from "../../../../../../../share/components/autoComplete/AutocompleteInput";
 import { useNavigate } from "react-router-dom";
 
@@ -123,7 +123,7 @@ const ShopperInfoForm = ({
             name="carDescription"
             textarea={true}
           /> */}
-          <GenericMap />
+          {/* <GenericMap /> */}
           <Box sx={{ width: "200px" }}>
             <SubmitButton
               name={t("edit")}

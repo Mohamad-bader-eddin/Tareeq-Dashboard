@@ -45,8 +45,6 @@ const InfoContainer = () => {
   const { initialValues, onSubmit, validationSchema } =
     useShopperInfoFormValidation({
       data: data?.data.content,
-      vehiclesOptions,
-      zoneOptions: options,
     });
   const breadcrumbsTracks = [{ path: "/users/shoppers", name: t("drivers") }];
   return (

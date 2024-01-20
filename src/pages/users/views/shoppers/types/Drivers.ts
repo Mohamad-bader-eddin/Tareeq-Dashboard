@@ -1,4 +1,5 @@
 import { Zone } from "../../../../../share/types";
+import { Vehicle } from "../../../../vehicles/types/Vehicles";
 
 export type Drivers = {
     id?: number;
@@ -19,6 +20,7 @@ export type Drivers = {
         description: string;
         vehicle_type_id: string;
         created_at: Date;
+        vehicle_type: Vehicle
     };
     model_number: string;
     brand: string;

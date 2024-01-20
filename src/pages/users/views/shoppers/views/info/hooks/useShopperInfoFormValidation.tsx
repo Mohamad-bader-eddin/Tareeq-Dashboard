@@ -3,33 +3,30 @@ import { FormikHelpers } from "formik";
 import { useTranslation } from "react-i18next";
 import { initialValuesType } from "../types/ShopperInfoFormType";
 import { Drivers } from "../../../types/Drivers";
-import { Option } from "../../../../../../../share/types";
 
-const useShopperInfoFormValidation = ({
-  data,
-  zoneOptions,
-  vehiclesOptions,
-}: {
-  data: Drivers;
-  zoneOptions: Option[];
-  vehiclesOptions: Option[];
-}) => {
+const useShopperInfoFormValidation = ({ data }: { data: Drivers }) => {
   const { t } = useTranslation();
 
   const initialValues = {
     registerDate: new Date(data?.created_at as Date),
     name: data?.name || "",
     phone: data?.phone || "",
-    zone: zoneOptions.find((option) => option.id === data?.zone_id) || null,
-    modelNumber: data?.model_number || "",
-    brand: data?.brand || "",
-    platNumber: data?.plat_number || "",
-    minifactureYear: data?.minifacture_year || "",
-    color: data?.color || "",
-    description: data?.description || "",
+    zone:
+      {
+        id: data?.zone?.id as string,
+        name: data?.zone?.name as string,
+      } || null,
+    modelNumber: data?.vehicle?.model_number || "",
+    brand: data?.vehicle?.brand || "",
+    platNumber: data?.vehicle?.plat_number || "",
+    minifactureYear: data?.vehicle?.minifacture_year || "",
+    color: data?.vehicle?.color || "",
+    description: data?.vehicle?.description || "",
     vehicleType:
-      vehiclesOptions.find((option) => option.id === data?.vehicle_type_id) ||
-      null,
+      {
+        id: data?.vehicle?.vehicle_type?.id as string,
+        name: data?.vehicle?.vehicle_type?.name as string,
+      } || null,
     // shopperPicture: undefined,
     // isOnline: false,
     // shopperPicture: undefined,
