@@ -98,8 +98,8 @@ const useArrivedOrdersColumns = () => {
         width: 150,
         align: "center",
         headerAlign: "center",
-        renderCell: () => {
-          return <ActionButton type="arrived" />;
+        renderCell: (params) => {
+          return <ActionButton type="arrived" id={params.id} />;
         },
       },
     ];

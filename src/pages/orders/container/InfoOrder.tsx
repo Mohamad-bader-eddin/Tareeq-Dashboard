@@ -1,26 +1,30 @@
 import PaperContainer from "../../../share/components/Paper/PaperContainer";
 import Breadcrumb from "../../../share/components/breadcrumbs/Breadcrumb";
 import Layout from "../../../share/components/layout/Layout";
-import { Typography } from "@mui/material";
+import { Backdrop, Typography } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import { StyledInfo } from "../style/InfoOrder.style";
 import TripOriginOutlinedIcon from "@mui/icons-material/TripOriginOutlined";
-import Table from "../../../share/components/table/Table";
-import useInfoOrderShoppersColumn from "../hooks/useInfoOrderShoppersColumn";
-import useInfoOrderShoppersRows from "../hooks/useInfoOrderShoppersRows";
-import useInfoOrderLogColumn from "../hooks/useInfoOrderLogColumn";
-import useInfoOrderLogRows from "../hooks/useInfoOrderLogRows";
+// import Table from "../../../share/components/table/Table";
+// import useInfoOrderShoppersColumn from "../hooks/useInfoOrderShoppersColumn";
+// import useInfoOrderShoppersRows from "../hooks/useInfoOrderShoppersRows";
+// import useInfoOrderLogColumn from "../hooks/useInfoOrderLogColumn";
+// import useInfoOrderLogRows from "../hooks/useInfoOrderLogRows";
 import { useDarkMode } from "../../../context/DarkMode";
 import { useParams } from "react-router-dom";
+import useOrderQuery from "../hooks/useOrderQuery";
+import Spinner from "../../../share/components/Spinner";
 
 const InfoOrder = () => {
   const { t } = useTranslation();
   const { darkMode } = useDarkMode();
-  const { columns: shoppersCol } = useInfoOrderShoppersColumn();
-  const { initialRows: shopperRow } = useInfoOrderShoppersRows();
-  const { columns: logCol } = useInfoOrderLogColumn();
-  const { initialRows: logRow } = useInfoOrderLogRows();
-  const { type } = useParams();
+  // const { columns: shoppersCol } = useInfoOrderShoppersColumn();
+  // const { initialRows: shopperRow } = useInfoOrderShoppersRows();
+  // const { columns: logCol } = useInfoOrderLogColumn();
+  // const { initialRows: logRow } = useInfoOrderLogRows();
+  const { type, id } = useParams();
+  const { data, isLoading } = useOrderQuery(id as string);
+
   const track = () => {
     switch (type) {
       case "active":
@@ -49,83 +53,97 @@ const InfoOrder = () => {
       <Breadcrumb tracks={breadcrumbsTracks} current={t("info")} />
       <PaperContainer>
         <Typography variant="h5" sx={{ marginBottom: "15px" }}>
-          {t("info")} ( {t("order_no")} 31840 )
+          {t("info")} ( {t("order_no")} {data?.data?.content?.id} )
         </Typography>
-        <StyledInfo $darkMode={darkMode}>
-          <div className="row">
-            <div className="col-6">
-              <h4 className="atr">
-                <span>
-                  <TripOriginOutlinedIcon sx={{ fontSize: "15px" }} />
-                </span>
-                {t("expected_distance")} :
-              </h4>
-              <h4 className="val">4.676 KM</h4>
+        {isLoading ? (
+          <Backdrop
+            sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+            open={isLoading}
+          >
+            <Spinner />
+          </Backdrop>
+        ) : (
+          <StyledInfo $darkMode={darkMode}>
+            <div className="row">
+              <div className="col-6">
+                <h4 className="atr">
+                  <span>
+                    <TripOriginOutlinedIcon sx={{ fontSize: "15px" }} />
+                  </span>
+                  {t("expected_distance")} :
+                </h4>
+                <h4 className="val">
+                  {data?.data?.content?.distance_expected} KM
+                </h4>
+              </div>
+              <div className="col-6">
+                <h4 className="atr">
+                  <span>
+                    <TripOriginOutlinedIcon sx={{ fontSize: "15px" }} />
+                  </span>
+                  {t("real_distance")} :
+                </h4>
+                <h4 className="val">
+                  {" "}
+                  {data?.data?.content?.total_expected} KM
+                </h4>
+              </div>
             </div>
-            <div className="col-6">
-              <h4 className="atr">
-                <span>
-                  <TripOriginOutlinedIcon sx={{ fontSize: "15px" }} />
-                </span>
-                {t("real_distance")} :
-              </h4>
-              <h4 className="val">1.66511 KM</h4>
+            <div className="row">
+              <div className="col-6">
+                <h4 className="atr">
+                  <span>
+                    <TripOriginOutlinedIcon sx={{ fontSize: "15px" }} />
+                  </span>
+                  {t("placed_on")} :
+                </h4>
+                <h4 className="val">{data?.data?.content?.created_at}</h4>
+              </div>
+              <div className="col-6">
+                <h4 className="atr">
+                  <span>
+                    <TripOriginOutlinedIcon sx={{ fontSize: "15px" }} />
+                  </span>
+                  {t("assigned_at")} :
+                </h4>
+                <h4 className="val">2023-09-30 15:35:53</h4>
+              </div>
             </div>
-          </div>
-          <div className="row">
-            <div className="col-6">
-              <h4 className="atr">
-                <span>
-                  <TripOriginOutlinedIcon sx={{ fontSize: "15px" }} />
-                </span>
-                {t("placed_on")} :
-              </h4>
-              <h4 className="val">2023-09-30 15:35:53</h4>
+            <div className="row">
+              <div className="col-6">
+                <h4 className="atr">
+                  <span>
+                    <TripOriginOutlinedIcon sx={{ fontSize: "15px" }} />
+                  </span>
+                  {t("accepted_at")} :
+                </h4>
+                <h4 className="val">{data?.data?.content?.accepted_at}</h4>
+              </div>
+              <div className="col-6">
+                <h4 className="atr">
+                  <span>
+                    <TripOriginOutlinedIcon sx={{ fontSize: "15px" }} />
+                  </span>
+                  {t("arrive_to_customer_location")} :
+                </h4>
+                <h4 className="val"> {data?.data?.content?.completed_at}</h4>
+              </div>
             </div>
-            <div className="col-6">
-              <h4 className="atr">
-                <span>
-                  <TripOriginOutlinedIcon sx={{ fontSize: "15px" }} />
-                </span>
-                {t("assigned_at")} :
-              </h4>
-              <h4 className="val">2023-09-30 15:35:53</h4>
+            <div className="row">
+              <div className="col-6">
+                <h4 className="atr">
+                  <span>
+                    <TripOriginOutlinedIcon sx={{ fontSize: "15px" }} />
+                  </span>
+                  {t("arrived_at")} :
+                </h4>
+                <h4 className="val">2023-09-30 15:35:53</h4>
+              </div>
             </div>
-          </div>
-          <div className="row">
-            <div className="col-6">
-              <h4 className="atr">
-                <span>
-                  <TripOriginOutlinedIcon sx={{ fontSize: "15px" }} />
-                </span>
-                {t("accepted_at")} :
-              </h4>
-              <h4 className="val">2023-09-30 15:35:53</h4>
-            </div>
-            <div className="col-6">
-              <h4 className="atr">
-                <span>
-                  <TripOriginOutlinedIcon sx={{ fontSize: "15px" }} />
-                </span>
-                {t("arrive_to_customer_location")} :
-              </h4>
-              <h4 className="val">2023-09-30 15:35:53</h4>
-            </div>
-          </div>
-          <div className="row">
-            <div className="col-6">
-              <h4 className="atr">
-                <span>
-                  <TripOriginOutlinedIcon sx={{ fontSize: "15px" }} />
-                </span>
-                {t("arrived_at")} :
-              </h4>
-              <h4 className="val">2023-09-30 15:35:53</h4>
-            </div>
-          </div>
-        </StyledInfo>
+          </StyledInfo>
+        )}
       </PaperContainer>
-      <PaperContainer>
+      {/* <PaperContainer>
         <Table
           columns={shoppersCol}
           rows={shopperRow}
@@ -142,7 +160,7 @@ const InfoOrder = () => {
           totalCount={5}
           loading={false}
         />
-      </PaperContainer>
+      </PaperContainer> */}
     </Layout>
   );
 };

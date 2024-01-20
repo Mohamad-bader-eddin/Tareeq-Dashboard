@@ -53,7 +53,7 @@ const ActionButton = ({ type, id }: ActionButtonProps) => {
     setAnchorEl(null);
   };
   const handleInfo = () => {
-    navigate(`/orders/info-orders/${type}`);
+    navigate(`/orders/info-orders/${type}/${id}`);
     setAnchorEl(null);
   };
   // const handleAssignTo = () => {

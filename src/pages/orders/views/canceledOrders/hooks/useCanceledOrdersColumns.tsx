@@ -81,8 +81,8 @@ const useCanceledOrdersColumns = () => {
         width: 150,
         align: "center",
         headerAlign: "center",
-        renderCell: () => {
-          return <ActionButton type="canceled" />;
+        renderCell: (params) => {
+          return <ActionButton type="canceled" id={params.id} />;
         },
       },
     ];

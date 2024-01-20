@@ -67,7 +67,14 @@ const Routes = () => {
         }
       />
       <Route path="/orders/track-order/:type" element={<TrackOrders />} />
-      <Route path="/orders/info-orders/:type" element={<InfoOrder />} />
+      <Route
+        path="/orders/info-orders/:type/:id"
+        element={
+          <RequireAuth allowedRoles={["admin"]}>
+            <InfoOrder />
+          </RequireAuth>
+        }
+      />
       <Route path="/orders/active-orders" element={<ActiveOrdersContainer />} />
       <Route
         path="/orders/arrived-orders"
