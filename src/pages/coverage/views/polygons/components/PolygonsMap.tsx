@@ -36,9 +36,7 @@ const PolygonsMap = <T extends Record<string, unknown>>({
   };
 
   return (
-    <LoadScript
-      googleMapsApiKey={`${import.meta.env.VITE_REACT_APP_GOOGLE_MAPS_API_KEY}`}
-    >
+    <LoadScript googleMapsApiKey="AIzaSyCiyuZuf6jsA7mtfN_Q25tGuPEJyh4zTZA">
       <GoogleMap
         center={{ lat: 33.513674, lng: 36.276526 }}
         zoom={13}
