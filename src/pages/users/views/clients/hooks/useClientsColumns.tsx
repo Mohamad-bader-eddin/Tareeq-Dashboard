@@ -3,8 +3,8 @@ import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import PreviewIcon from "@mui/icons-material/Preview";
 import DeleteIcon from "@mui/icons-material/DeleteOutlined";
-import CheckIcon from "@mui/icons-material/Check";
-import CloseIcon from "@mui/icons-material/Close";
+// import CheckIcon from "@mui/icons-material/Check";
+// import CloseIcon from "@mui/icons-material/Close";
 
 const useShoppersColumns = ({
   handleOpenDialog,
@@ -44,14 +44,14 @@ const useShoppersColumns = ({
       {
         field: "joinDate",
         headerName: t("join_date"),
-        width: 300,
+        width: 200,
         align: "center",
         headerAlign: "center",
       },
       {
         field: "firstOrderDate",
         headerName: t("first_order_date"),
-        width: 300,
+        width: 200,
         align: "center",
         headerAlign: "center",
       },
@@ -62,20 +62,20 @@ const useShoppersColumns = ({
         align: "center",
         headerAlign: "center",
       },
-      {
-        field: "isVerified",
-        headerName: t("is_verified?"),
-        width: 150,
-        align: "center",
-        headerAlign: "center",
-        renderCell: (params) => {
-          if (params.value) {
-            return <CheckIcon color="success" />;
-          } else {
-            return <CloseIcon color="error" />;
-          }
-        },
-      },
+      // {
+      //   field: "isVerified",
+      //   headerName: t("is_verified?"),
+      //   width: 150,
+      //   align: "center",
+      //   headerAlign: "center",
+      //   renderCell: (params) => {
+      //     if (params.value) {
+      //       return <CheckIcon color="success" />;
+      //     } else {
+      //       return <CloseIcon color="error" />;
+      //     }
+      //   },
+      // },
       {
         field: "action",
         headerName: t("action"),
