@@ -58,6 +58,7 @@ const VehiclesContainer = () => {
       <PaperContainer>
         <Button
           variant="outlined"
+          size="small"
           endIcon={<DirectionsCarFilledIcon />}
           onClick={handleAddVehicle}
           sx={{

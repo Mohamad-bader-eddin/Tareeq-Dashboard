@@ -63,6 +63,7 @@ const AppVarialbesPeriods = () => {
         <Button
           variant="outlined"
           endIcon={<AddTwoToneIcon />}
+          size="small"
           onClick={handleAddAppVarialbesPeriod}
           sx={{
             ".css-9tj150-MuiButton-endIcon": {

@@ -33,12 +33,12 @@ const Table = ({
   });
   return (
     <ThemeProvider theme={darkTheme}>
-      <Typography variant="h5" sx={{ marginBottom: "15px" }}>
+      <Typography variant="h6" sx={{ marginBottom: "15px" }}>
         {title ? title : ""} {totalCount ? ` - ${totalCount}` : ""}
       </Typography>
       <Box
         sx={{
-          height: "500px",
+          height: "450px",
         }}
       >
         <DataGrid

@@ -60,6 +60,7 @@ const ShoppersContainer = () => {
           variant="outlined"
           endIcon={<PersonAddIcon />}
           onClick={handleAddShopper}
+          size="small"
           sx={{
             ".css-9tj150-MuiButton-endIcon": {
               marginInline: "8px -4px !important",

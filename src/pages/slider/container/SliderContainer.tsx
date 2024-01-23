@@ -62,6 +62,7 @@ const SliderContainer = () => {
           variant="outlined"
           endIcon={<AddPhotoAlternateIcon />}
           onClick={handleAddSlide}
+          size="small"
           sx={{
             ".css-9tj150-MuiButton-endIcon": {
               marginInline: "8px -4px !important",
