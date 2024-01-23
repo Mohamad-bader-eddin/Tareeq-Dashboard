@@ -10,7 +10,7 @@ const BirdEye = () => {
   return (
     <Layout>
       <PaperContainer>
-        <Typography variant="h5" sx={{ mb: "20px" }}>
+        <Typography variant="h6" sx={{ mb: "20px" }}>
           {t("bird_eye")}
         </Typography>
         {/* <GenericMap /> */}

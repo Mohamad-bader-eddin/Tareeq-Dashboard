@@ -17,7 +17,7 @@ const ViewMessageContainer = () => {
     <Layout>
       <Breadcrumb tracks={breadcrumbsTracks} current={t("view_message")} />
       <PaperContainer>
-        <Typography variant="h5" sx={{ marginBottom: "15px" }}>
+        <Typography variant="h6" sx={{ marginBottom: "15px" }}>
           {t("view_message")}
         </Typography>
         <StyledInfo $darkMode={darkMode}>

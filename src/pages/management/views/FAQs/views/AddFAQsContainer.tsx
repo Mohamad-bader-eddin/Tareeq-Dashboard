@@ -20,7 +20,7 @@ const AddFAQsContainer = () => {
     <Layout>
       <Breadcrumb tracks={breadcrumbsTracks} current={t("add_faqs")} />
       <PaperContainer>
-        <Typography variant="h5" sx={{ mb: "15px" }}>
+        <Typography variant="h6" sx={{ mb: "15px" }}>
           {t("add_faqs")}
         </Typography>
         <AddFAQsForm

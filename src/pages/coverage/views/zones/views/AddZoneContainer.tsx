@@ -25,7 +25,7 @@ const AddZoneContainer = () => {
     <Layout>
       <Breadcrumb tracks={breadcrumbsTracks} current={t("add_zone")} />
       <PaperContainer>
-        <Typography variant="h5" sx={{ mb: "20px" }}>
+        <Typography variant="h6" sx={{ mb: "20px" }}>
           {t("add_zone")}
         </Typography>
         <AddZoneForm

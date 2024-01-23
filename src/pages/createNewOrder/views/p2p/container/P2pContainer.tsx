@@ -15,7 +15,7 @@ const P2pContainer = () => {
   return (
     <Layout>
       <PaperContainer>
-        <Typography variant="h5" sx={{ mb: "15px" }}>
+        <Typography variant="h6" sx={{ mb: "15px" }}>
           P2P
         </Typography>
         {phone ? (

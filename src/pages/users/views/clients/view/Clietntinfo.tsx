@@ -72,7 +72,7 @@ const Clietntinfo = () => {
         </>
       )}
       {/* <PaperContainer>
-        <Typography variant="h5" sx={{ marginBottom: "15px" }}>
+        <Typography variant="h6" sx={{ marginBottom: "15px" }}>
           {t("change_password")}
         </Typography>
         <ChangePasswordForm
@@ -82,7 +82,7 @@ const Clietntinfo = () => {
         />
       </PaperContainer> */}
       <PaperContainer>
-        <Typography variant="h5" sx={{ marginBottom: "15px" }}>
+        <Typography variant="h6" sx={{ marginBottom: "15px" }}>
           {t("add_funds_to_the_wallet")}
         </Typography>
         <AddFundsForm

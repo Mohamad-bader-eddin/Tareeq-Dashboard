@@ -66,7 +66,7 @@ const InfoContainer = () => {
         </Backdrop>
       ) : (
         <PaperContainer>
-          <Typography variant="h5" sx={{ mb: "20px" }}>
+          <Typography variant="h6" sx={{ mb: "20px" }}>
             {t("info")}
           </Typography>
           <ShopperInfoForm
@@ -81,7 +81,7 @@ const InfoContainer = () => {
         </PaperContainer>
       )}
       {/* <PaperContainer>
-        <Typography variant="h5" sx={{ marginBottom: "15px" }}>
+        <Typography variant="h6" sx={{ marginBottom: "15px" }}>
           {t("change_password")}
         </Typography>
         <ChangePasswordForm
@@ -91,7 +91,7 @@ const InfoContainer = () => {
         />
       </PaperContainer> */}
       <PaperContainer>
-        <Typography variant="h5" sx={{ marginBottom: "15px" }}>
+        <Typography variant="h6" sx={{ marginBottom: "15px" }}>
           {t("add_funds_to_the_wallet")}
         </Typography>
         <AddFundsForm

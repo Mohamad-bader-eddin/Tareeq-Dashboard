@@ -25,7 +25,7 @@ const CreateShopperContainer = () => {
     <Layout>
       <Breadcrumb tracks={breadcrumbsTracks} current={t("add_new_shopper")} />
       <PaperContainer>
-        <Typography variant="h5" sx={{ mb: "20px" }}>
+        <Typography variant="h6" sx={{ mb: "20px" }}>
           {t("add_new_shopper")}
         </Typography>
         <CreateNewShopperForm

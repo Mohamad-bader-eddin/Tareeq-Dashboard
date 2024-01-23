@@ -18,7 +18,7 @@ const ViewLocationVote = () => {
     <Layout>
       <PaperContainer>
         <Box>
-          <Typography variant="h5" sx={{ marginBottom: "15px" }}>
+          <Typography variant="h6" sx={{ marginBottom: "15px" }}>
             {t("view_location_vote")}
           </Typography>
           <ClientInfo $darkMode={darkMode}>

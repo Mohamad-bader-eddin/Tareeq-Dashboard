@@ -11,7 +11,7 @@ const NotificationsContainer = () => {
   return (
     <Layout>
       <PaperContainer>
-        <Typography variant="h5" sx={{ mb: "15px" }}>
+        <Typography variant="h6" sx={{ mb: "15px" }}>
           {t("notifications")}
         </Typography>
         <NotificationsForm initialValues={initialValues} onSubmit={onSubmit} />

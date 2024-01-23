@@ -52,7 +52,7 @@ const InfoOrder = () => {
     <Layout>
       <Breadcrumb tracks={breadcrumbsTracks} current={t("info")} />
       <PaperContainer>
-        <Typography variant="h5" sx={{ marginBottom: "15px" }}>
+        <Typography variant="h6" sx={{ marginBottom: "15px" }}>
           {t("info")} ( {t("order_no")} {data?.data?.content?.id} )
         </Typography>
         {isLoading ? (

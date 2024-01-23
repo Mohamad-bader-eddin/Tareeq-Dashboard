@@ -17,7 +17,7 @@ const InfoPolygonContainer = () => {
     <Layout>
       <Breadcrumb tracks={breadcrumbsTracks} current={t("info")} />
       <PaperContainer>
-        <Typography variant="h5" sx={{ mb: "20px" }}>
+        <Typography variant="h6" sx={{ mb: "20px" }}>
           {t("info")}
         </Typography>
         <AddPolygonsForm

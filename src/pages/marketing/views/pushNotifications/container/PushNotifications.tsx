@@ -12,7 +12,7 @@ const PushNotifications = () => {
   return (
     <Layout>
       <PaperContainer>
-        <Typography variant="h5" sx={{ mb: "20px" }}>
+        <Typography variant="h6" sx={{ mb: "20px" }}>
           {t("push_notifications")}
         </Typography>
         <PushNotificationsForm

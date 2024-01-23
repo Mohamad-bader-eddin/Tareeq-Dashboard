@@ -33,7 +33,7 @@ const AddAppVarialbesPeriods = () => {
         current={t("add_app_variables_periods")}
       />
       <PaperContainer>
-        <Typography variant="h5" sx={{ mb: "20px" }}>
+        <Typography variant="h6" sx={{ mb: "20px" }}>
           {t("add_app_variables_periods")}
         </Typography>
         <AddAppVarialbesPeriodsForm

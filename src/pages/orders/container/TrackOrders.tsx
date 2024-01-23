@@ -33,7 +33,7 @@ const TrackOrders = () => {
     <Layout>
       <Breadcrumb tracks={breadcrumbsTracks} current={t("track_order")} />
       <PaperContainer>
-        <Typography variant="h5" sx={{ marginBottom: "15px" }}>
+        <Typography variant="h6" sx={{ marginBottom: "15px" }}>
           {t("track_order")}
         </Typography>
         <GenericMap />

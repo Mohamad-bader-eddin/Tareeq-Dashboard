@@ -12,7 +12,7 @@ const OperationTimeContainer = () => {
   return (
     <Layout>
       <PaperContainer>
-        <Typography variant="h5" sx={{ marginBottom: "15px" }}>
+        <Typography variant="h6" sx={{ marginBottom: "15px" }}>
           {t("operation_time")}
         </Typography>
         <OperationTimeForm

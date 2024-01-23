@@ -12,7 +12,7 @@ const AppPhoneNumberContainer = () => {
   return (
     <Layout>
       <PaperContainer>
-        <Typography variant="h5" sx={{ mb: "15px" }}>
+        <Typography variant="h6" sx={{ mb: "15px" }}>
           {t("app_phone_number")}
         </Typography>
         <AppPhoneNumberForm

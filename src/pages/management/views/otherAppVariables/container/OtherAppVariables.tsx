@@ -12,10 +12,10 @@ const OtherAppVariables = () => {
   return (
     <Layout>
       <PaperContainer>
-        <Typography variant="h5" sx={{ mb: "20px" }}>
+        <Typography variant="h6" sx={{ mb: "20px" }}>
           {t("app_variables")}
         </Typography>
-        <Typography variant="h5" sx={{ mb: "20px", color: "#43abc9" }}>
+        <Typography variant="h6" sx={{ mb: "20px", color: "#43abc9" }}>
           {t("other_Management_variables")}
         </Typography>
         <OtherAppVariablesForm
