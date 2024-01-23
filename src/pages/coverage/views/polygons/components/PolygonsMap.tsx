@@ -1,4 +1,4 @@
-import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
+import { GoogleMap, LoadScript, Marker, Polygon } from "@react-google-maps/api";
 import { useState } from "react";
 import { Markers } from "../views/types/AddPolygonsFormType";
 import { FormikProps } from "formik";
@@ -46,6 +46,16 @@ const PolygonsMap = <T extends Record<string, unknown>>({
         {selectedMarkers.map((marker) => (
           <Marker key={marker.id} position={marker.position}></Marker>
         ))}
+        <Polygon
+          paths={selectedMarkers.map((path) => path.position)}
+          options={{
+            strokeColor: "#FF0000",
+            strokeOpacity: 0.8,
+            strokeWeight: 2,
+            fillColor: "#FF0000",
+            fillOpacity: 0.35,
+          }}
+        />
       </GoogleMap>
     </LoadScript>
   );
