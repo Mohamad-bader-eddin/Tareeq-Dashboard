@@ -24,7 +24,7 @@ const useAssignOrderToColumn = ({
     },
     {
       field: "action",
-      headerName: t("action"),
+      headerName: t("assign_to"),
       width: 250,
       align: "center",
       headerAlign: "center",
