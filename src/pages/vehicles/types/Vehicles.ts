@@ -3,8 +3,8 @@ export type Vehicle = {
     name: string;
     image?: File | undefined | string;
     description: string;
-    price_by_time: string;
-    price_by_km: string;
+    price_by_time?: string;
+    price_by_km?: string;
     created_at?: Date;
 }
 

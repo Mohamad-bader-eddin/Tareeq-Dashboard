@@ -17,16 +17,16 @@ const useAddVehicleFormValidation = ({ data }: { data?: Vehicle }) => {
   const { mutate: updateMutate } = useUpdateVehicleQuery();
   const initialValues = {
     name: data?.name || "",
-    priceByTime: Number(data?.price_by_time) || 0,
-    priceByKm: Number(data?.price_by_km) || 0,
+    // priceByTime: Number(data?.price_by_time) || 0,
+    // priceByKm: Number(data?.price_by_km) || 0,
     description: data?.description || "",
     image: data?.image || undefined,
   };
 
   const validationSchema = Yup.object().shape({
     name: Yup.string().required(t("required")),
-    priceByTime: Yup.number().required(t("required")),
-    priceByKm: Yup.number().required(t("required")),
+    // priceByTime: Yup.number().required(t("required")),
+    // priceByKm: Yup.number().required(t("required")),
     description: Yup.string().required(t("required")),
     image: Yup.mixed()
       .test("fileSize", t("file_size_is_too_large"), (value) => {
@@ -57,8 +57,8 @@ const useAddVehicleFormValidation = ({ data }: { data?: Vehicle }) => {
           vehicleId: data.id as string,
           vehicle: {
             name: values.name,
-            price_by_time: values.priceByTime.toString(),
-            price_by_km: values.priceByKm.toString(),
+            // price_by_time: values.priceByTime.toString(),
+            // price_by_km: values.priceByKm.toString(),
             description: values.description,
             image: values.image as File,
           },
@@ -82,8 +82,8 @@ const useAddVehicleFormValidation = ({ data }: { data?: Vehicle }) => {
       mutate(
         {
           name: values.name,
-          price_by_time: values.priceByTime.toString(),
-          price_by_km: values.priceByKm.toString(),
+          // price_by_time: values.priceByTime.toString(),
+          // price_by_km: values.priceByKm.toString(),
           description: values.description,
           image: values.image as File,
         },

@@ -22,7 +22,7 @@ const AddVehicleForm = ({
         <Form>
           <UploadImage formik={formik} name="image" title={t("image")} />
           <Input formik={formik} label={t("name")} name="name" />
-          <Input
+          {/* <Input
             formik={formik}
             label={t("price_by_time")}
             name="priceByTime"
@@ -33,7 +33,7 @@ const AddVehicleForm = ({
             label={t("price_by_km")}
             name="priceByKm"
             type="number"
-          />
+          /> */}
           <Input
             formik={formik}
             label={t("description")}

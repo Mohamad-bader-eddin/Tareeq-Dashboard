@@ -5,20 +5,20 @@ export type initialValuesType = {
     name: string;
     image: File | undefined | string;
     description: string;
-    priceByTime: number;
-    priceByKm: number;
+    // priceByTime: number;
+    // priceByKm: number;
 }
 
 export type validationSchemaType = Yup.ObjectSchema<{
     name: string;
     description: string;
-    priceByTime: number;
-    priceByKm: number;
+    // priceByTime: number;
+    // priceByKm: number;
 }, Yup.AnyObject, {
     name: undefined;
     description: undefined;
-    priceByTime: undefined;
-    priceByKm: undefined;
+    // priceByTime: undefined;
+    // priceByKm: undefined;
 }, "">
 
 // eslint-disable-next-line no-unused-vars
