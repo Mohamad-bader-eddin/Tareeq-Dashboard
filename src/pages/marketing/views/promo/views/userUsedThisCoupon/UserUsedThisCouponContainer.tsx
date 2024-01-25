@@ -10,7 +10,9 @@ const UserUsedThisCouponContainer = () => {
   const { t } = useTranslation();
   const { columns } = useUserUsedThisCouponColumns();
   const { initialRows } = useUserUsedThisCouponRows();
-  const breadcrumbsTracks = [{ path: "/marketing/promo", name: t("promo") }];
+  const breadcrumbsTracks = [
+    { path: "/dashboard/marketing/promo", name: t("promo") },
+  ];
   return (
     <Layout>
       <Breadcrumb

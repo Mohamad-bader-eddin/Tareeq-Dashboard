@@ -21,7 +21,7 @@ const AddPolygonsContainer = () => {
     setOpenSucsses,
   } = useAddPolygonValidation();
   const breadcrumbsTracks = [
-    { path: "/coverage/polygons", name: t("polygons") },
+    { path: "/dashboard/coverage/polygons", name: t("polygons") },
   ];
   return (
     <Layout>

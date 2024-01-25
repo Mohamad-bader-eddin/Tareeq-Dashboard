@@ -22,7 +22,12 @@ const useCanceledOrdersColumns = () => {
         headerAlign: "center",
         width: 150,
         renderCell: (params) => {
-          return <AppLink path="/users/clients/info" name={params.value} />;
+          return (
+            <AppLink
+              path={`/dashboard/users/clients/${params.row.customerId}`}
+              name={params.value}
+            />
+          );
         },
       },
       {
@@ -63,7 +68,12 @@ const useCanceledOrdersColumns = () => {
         align: "center",
         headerAlign: "center",
         renderCell: (params) => {
-          return <AppLink path="/users/clients/info" name={params.value} />;
+          return (
+            <AppLink
+              path={`/dashboard/users/shoppers/${params.row.shopperId}`}
+              name={params.value}
+            />
+          );
         },
       },
       {

@@ -23,23 +23,23 @@ export const SidebarData = [
     subNav: [
       {
         title: "pending_orders",
-        path: "/orders/pending-orders",
+        path: "/dashboard/orders/pending-orders",
       },
       {
         title: "active_orders",
-        path: "/orders/active-orders",
+        path: "/dashboard/orders/active-orders",
       },
       {
         title: "arrived_orders",
-        path: "/orders/arrived-orders",
+        path: "/dashboard/orders/arrived-orders",
       },
       {
         title: "canceled_orders",
-        path: "/orders/canceled-orders",
+        path: "/dashboard/orders/canceled-orders",
       },
       {
         title: "scheduled_orders",
-        path: "/orders/scheduled-orders",
+        path: "/dashboard/orders/scheduled-orders",
       },
     ],
   },
@@ -50,17 +50,17 @@ export const SidebarData = [
   //   subNav: [
   //     {
   //       title: "courier_on_demand",
-  //       path: "/create-new-order/courier-on-demand",
+  //       path: "/dashboard/create-new-order/courier-on-demand",
   //     },
   //     {
   //       title: "P2P",
-  //       path: "/create-new-order/p2p",
+  //       path: "/dashboard/create-new-order/p2p",
   //     },
   //   ],
   // },
   {
     title: "vehicle_type",
-    path: "/vehicles",
+    path: "/dashboard/vehicles",
     icon: <DirectionsCarIcon />,
   },
   {
@@ -70,31 +70,31 @@ export const SidebarData = [
     subNav: [
       {
         title: "drivers",
-        path: "/users/shoppers",
+        path: "/dashboard/users/shoppers",
       },
       {
         title: "clients",
-        path: "/users/clients",
+        path: "/dashboard/users/clients",
       },
       {
         title: "black_list",
-        path: "/users/black-list",
+        path: "/dashboard/users/black-list",
       },
     ],
   },
   // {
   //   title: "bird_eye",
-  //   path: "/bird-eye",
+  //   path: "/dashboard/bird-eye",
   //   icon: <LocationOnIcon />,
   // },
   // {
   //   title: "stats",
-  //   path: "/stats",
+  //   path: "/dashboard/stats",
   //   icon: <BarChartIcon />,
   // },
   {
     title: "slider",
-    path: "/slider",
+    path: "/dashboard/slider",
     icon: <ImageIcon />,
   },
   {
@@ -104,15 +104,15 @@ export const SidebarData = [
     subNav: [
       {
         title: "zones",
-        path: "/coverage/zones",
+        path: "/dashboard/coverage/zones",
       },
       {
         title: "polygons",
-        path: "/coverage/polygons",
+        path: "/dashboard/coverage/polygons",
       },
       // {
       //   title: "location_votes",
-      //   path: "/coverage/location-votes",
+      //   path: "/dashboard/coverage/location-votes",
       // },
     ],
   },
@@ -123,7 +123,7 @@ export const SidebarData = [
     subNav: [
       {
         title: "promo",
-        path: "/marketing/promo",
+        path: "/dashboard/marketing/promo",
       },
       // {
       //   title: "push_notifications",
@@ -146,7 +146,7 @@ export const SidebarData = [
       // },
       {
         title: "app_variables_periods",
-        path: "/management/app-varialbes-periods",
+        path: "/dashboard/management/app-varialbes-periods",
       },
       // {
       //   title: "other_app_variables",

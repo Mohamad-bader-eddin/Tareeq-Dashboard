@@ -24,7 +24,7 @@ const ShoppersContainer = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const handleInfo = (id: GridRowId) => {
-    navigate(`/users/shoppers/${id}`);
+    navigate(`/dashboard/users/shoppers/${id}`);
   };
   const handleOpenDialog = (id: GridRowId) => {
     setOpenDeleteDialog(true);
@@ -32,7 +32,7 @@ const ShoppersContainer = () => {
   };
   const { columns } = useShoppersColumns({ handleOpenDialog, handleInfo });
   const handleAddShopper = () => {
-    navigate("/users/shoppers/add-shopper");
+    navigate("/dashboard/users/shoppers/add-shopper");
   };
   const { mutate } = useDriverDeleteQuery();
   const { data, isLoading, refetch } = useDeiversQuery();

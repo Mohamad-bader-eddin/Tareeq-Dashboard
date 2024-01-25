@@ -30,10 +30,10 @@ const PolygonsContainer = () => {
   const { mutate } = useDeletePolygonQuery();
   const navigate = useNavigate();
   const handleAddPolygon = () => {
-    navigate("/coverage/add-polygons");
+    navigate("/dashboard/coverage/add-polygons");
   };
   const handleInfoPolygon = (id: GridRowId) => {
-    navigate(`/coverage/polygons/${id}`);
+    navigate(`/dashboard/coverage/polygons/${id}`);
   };
   const { columns } = usePolygonsColumns({
     handleInfoPolygon,

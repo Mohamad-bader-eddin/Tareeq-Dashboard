@@ -13,7 +13,9 @@ const LocationVotesContainer = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const handleVoteInfo = (clientName: string) => {
-    navigate("/coverage/location-vote-info", { state: { clientName } });
+    navigate("/dashboard/coverage/location-vote-info", {
+      state: { clientName },
+    });
   };
   const { columns } = useLocationVotesColumns({
     handleVoteInfo,

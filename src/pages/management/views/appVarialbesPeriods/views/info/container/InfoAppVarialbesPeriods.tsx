@@ -27,7 +27,7 @@ const InfoAppVarialbesPeriods = () => {
   } = useAddAppVarialbesPeriodsFormValidation({ data: data?.data.content });
   const breadcrumbsTracks = [
     {
-      path: "/management/app-varialbes-periods",
+      path: "/dashboard/management/app-varialbes-periods",
       name: t("app_variables_periods"),
     },
   ];

@@ -30,13 +30,13 @@ const PromoContainer = () => {
     setSelectedId(id);
   };
   const handleAddPromoCode = () => {
-    navigate("/marketing/add-promo-code");
+    navigate("/dashboard/marketing/add-promo-code");
   };
   const handleInfo = (id: GridRowId) => {
-    navigate(`/marketing/promos/${id}`);
+    navigate(`/dashboard/marketing/promos/${id}`);
   };
   const handleUserUsedThisCoupon = () => {
-    navigate("/marketing/promo-used-copoun");
+    navigate("/dashboard/marketing/promo-used-copoun");
   };
   const { columns } = usePromoColumns({
     handleUserUsedThisCoupon,

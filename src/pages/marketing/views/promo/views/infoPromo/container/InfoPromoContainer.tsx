@@ -25,7 +25,9 @@ const InfoPromoContainer = () => {
     openSucsses,
     setOpenSucsses,
   } = useInfoPromoValidation({ data: data?.data.content });
-  const breadcrumbsTracks = [{ path: "/marketing/promo", name: t("promo") }];
+  const breadcrumbsTracks = [
+    { path: "/dashboard/marketing/promo", name: t("promo") },
+  ];
 
   return (
     <Layout>

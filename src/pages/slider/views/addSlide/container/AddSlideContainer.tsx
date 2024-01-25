@@ -20,7 +20,7 @@ const AddSlideContainer = () => {
     openSucsses,
     setOpenSucsses,
   } = useAddSlideFormValidation();
-  const breadcrumbsTracks = [{ path: "/slider", name: t("slider") }];
+  const breadcrumbsTracks = [{ path: "/dashboard/slider", name: t("slider") }];
   return (
     <Layout>
       <Breadcrumb tracks={breadcrumbsTracks} current={t("add_slide")} />

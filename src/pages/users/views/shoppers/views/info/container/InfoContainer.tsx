@@ -53,7 +53,9 @@ const InfoContainer = () => {
     useShopperInfoFormValidation({
       data: data?.data.content,
     });
-  const breadcrumbsTracks = [{ path: "/users/shoppers", name: t("drivers") }];
+  const breadcrumbsTracks = [
+    { path: "/dashboard/users/shoppers", name: t("drivers") },
+  ];
   return (
     <Layout>
       <Breadcrumb tracks={breadcrumbsTracks} current={t("info")} />

@@ -12,20 +12,35 @@ const TrackOrders = () => {
   const track = () => {
     switch (type) {
       case "active":
-        return { path: "/orders/active-orders", name: t("active_orders") };
+        return {
+          path: "/dashboard/orders/active-orders",
+          name: t("active_orders"),
+        };
       case "pending":
-        return { path: "/orders/pending-orders", name: t("pending_orders") };
+        return {
+          path: "/dashboard/orders/pending-orders",
+          name: t("pending_orders"),
+        };
       case "arrived":
-        return { path: "/orders/arrived-orders", name: t("arrived_orders") };
+        return {
+          path: "/dashboard/orders/arrived-orders",
+          name: t("arrived_orders"),
+        };
       case "canceled":
-        return { path: "/orders/canceled-orders", name: t("canceled_orders") };
+        return {
+          path: "/dashboard/orders/canceled-orders",
+          name: t("canceled_orders"),
+        };
       case "schedule":
         return {
-          path: "/orders/scheduled-orders",
+          path: "/dashboard/orders/scheduled-orders",
           name: t("scheduled_orders"),
         };
       default:
-        return { path: "/orders/pending-orders", name: t("pending_orders") };
+        return {
+          path: "/dashboard/orders/pending-orders",
+          name: t("pending_orders"),
+        };
     }
   };
   const breadcrumbsTracks = [track()];

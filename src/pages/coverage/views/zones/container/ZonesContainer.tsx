@@ -30,10 +30,10 @@ const ZonesContainer = () => {
   const { data, isLoading, refetch } = useZoneQuery();
   const { mutate } = useDeleteZoneQuery();
   const handleAddZone = () => {
-    navigate("/coverage/add-zones");
+    navigate("/dashboard/coverage/add-zones");
   };
   const handleInfoZone = (id: GridRowId) => {
-    navigate(`/coverage/zones/${id}`);
+    navigate(`/dashboard/coverage/zones/${id}`);
   };
   const { columns } = useZoneColumn({ handleInfoZone, handleOpenDialog });
   const { rows } = useZoneRows({ data: data?.data.content });

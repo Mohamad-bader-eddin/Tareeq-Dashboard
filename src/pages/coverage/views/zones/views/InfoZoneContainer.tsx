@@ -25,7 +25,9 @@ const InfoZoneContainer = () => {
     openSucsses,
     setOpenSucsses,
   } = useAddZoneValidation({ data: data?.data.content });
-  const breadcrumbsTracks = [{ path: "/coverage/zones", name: t("zones") }];
+  const breadcrumbsTracks = [
+    { path: "/dashboard/coverage/zones", name: t("zones") },
+  ];
   return (
     <Layout>
       <Breadcrumb tracks={breadcrumbsTracks} current={t("info")} />

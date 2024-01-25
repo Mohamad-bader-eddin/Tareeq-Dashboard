@@ -27,7 +27,7 @@ const CreateNewShopperForm = ({
   });
   const navigate = useNavigate();
   const handleVehicle = () => {
-    navigate("/vehicles/add-vehicle");
+    navigate("/dashboard/vehicles/add-vehicle");
   };
   return (
     <Formik

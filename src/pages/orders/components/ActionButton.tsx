@@ -49,11 +49,11 @@ const ActionButton = ({ type, id }: ActionButtonProps) => {
   };
 
   const handleTrack = () => {
-    navigate(`/orders/track-order/${type}`);
+    navigate(`/dashboard/orders/track-order/${type}`);
     setAnchorEl(null);
   };
   const handleInfo = () => {
-    navigate(`/orders/info-orders/${type}/${id}`);
+    navigate(`/dashboard/orders/info-orders/${type}/${id}`);
     setAnchorEl(null);
   };
   // const handleAssignTo = () => {

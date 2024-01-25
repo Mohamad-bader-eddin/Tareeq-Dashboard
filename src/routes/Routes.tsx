@@ -56,49 +56,72 @@ const Routes = () => {
     <AppRotes>
       <Route
         path="/"
-        element={<Navigate to="/orders/pending-orders" replace={true} />}
+        element={
+          <Navigate to="/dashboard/orders/pending-orders" replace={true} />
+        }
       />
       <Route
-        path="/orders/pending-orders"
+        path="/dashboard/orders/pending-orders"
         element={
           <RequireAuth allowedRoles={["admin"]}>
             <PendingOrdersContainer />
           </RequireAuth>
         }
       />
-      <Route path="/orders/track-order/:type" element={<TrackOrders />} />
       <Route
-        path="/orders/info-orders/:type/:id"
+        path="/dashboard/orders/track-order/:type"
+        element={<TrackOrders />}
+      />
+      <Route
+        path="/dashboard/orders/info-orders/:type/:id"
         element={
           <RequireAuth allowedRoles={["admin"]}>
             <InfoOrder />
           </RequireAuth>
         }
       />
-      <Route path="/orders/active-orders" element={<ActiveOrdersContainer />} />
       <Route
-        path="/orders/arrived-orders"
-        element={<ArrivedOrdersContainer />}
+        path="/dashboard/orders/active-orders"
+        element={
+          <RequireAuth allowedRoles={["admin"]}>
+            <ActiveOrdersContainer />
+          </RequireAuth>
+        }
       />
       <Route
-        path="/orders/canceled-orders"
-        element={<CanceledOrdersContainer />}
+        path="/dashboard/orders/arrived-orders"
+        element={
+          <RequireAuth allowedRoles={["admin"]}>
+            <ArrivedOrdersContainer />
+          </RequireAuth>
+        }
       />
       <Route
-        path="/orders/scheduled-orders"
-        element={<ScheduleOrdersContainer />}
+        path="/dashboard/orders/canceled-orders"
+        element={
+          <RequireAuth allowedRoles={["admin"]}>
+            <CanceledOrdersContainer />
+          </RequireAuth>
+        }
       />
       <Route
-        path="/orders/scheduled-orders"
-        element={<ScheduleOrdersContainer />}
+        path="/dashboard/orders/scheduled-orders"
+        element={
+          <RequireAuth allowedRoles={["admin"]}>
+            <ScheduleOrdersContainer />
+          </RequireAuth>
+        }
       />
       <Route
-        path="/create-new-order/courier-on-demand"
+        path="/dashboard/create-new-order/courier-on-demand"
         element={<CourierOnDemandContainer />}
       />
-      <Route path="/create-new-order/p2p" element={<P2pContainer />} />
       <Route
-        path="/vehicles"
+        path="/dashboard/create-new-order/p2p"
+        element={<P2pContainer />}
+      />
+      <Route
+        path="/dashboard/vehicles"
         element={
           <RequireAuth allowedRoles={["admin"]}>
             <VehiclesContainer />
@@ -106,7 +129,7 @@ const Routes = () => {
         }
       />
       <Route
-        path="/vehicles/:id"
+        path="/dashboard/vehicles/:id"
         element={
           <RequireAuth allowedRoles={["admin"]}>
             <VehicleInfoContainer />
@@ -114,7 +137,7 @@ const Routes = () => {
         }
       />
       <Route
-        path="/vehicles/add-vehicle"
+        path="/dashboard/vehicles/add-vehicle"
         element={
           <RequireAuth allowedRoles={["admin"]}>
             <AddVehicleContainer />
@@ -122,7 +145,7 @@ const Routes = () => {
         }
       />
       <Route
-        path="/users/shoppers"
+        path="/dashboard/users/shoppers"
         element={
           <RequireAuth allowedRoles={["admin"]}>
             <ShoppersContainer />
@@ -130,11 +153,11 @@ const Routes = () => {
         }
       />
       <Route
-        path="/users/shoppers/add-shopper"
+        path="/dashboard/users/shoppers/add-shopper"
         element={<CreateShopperContainer />}
       />
       <Route
-        path="/users/shoppers/:id"
+        path="/dashboard/users/shoppers/:id"
         element={
           <RequireAuth allowedRoles={["admin"]}>
             <InfoContainer />
@@ -142,7 +165,7 @@ const Routes = () => {
         }
       />
       <Route
-        path="/users/clients"
+        path="/dashboard/users/clients"
         element={
           <RequireAuth allowedRoles={["admin"]}>
             <ClientsContainer />
@@ -150,17 +173,20 @@ const Routes = () => {
         }
       />
       <Route
-        path="/users/clients/:id"
+        path="/dashboard/users/clients/:id"
         element={
           <RequireAuth allowedRoles={["admin"]}>
             <Clietntinfo />
           </RequireAuth>
         }
       />
-      <Route path="/users/black-list" element={<BlackListContainer />} />
-      <Route path="/bird-eye" element={<BirdEye />} />
       <Route
-        path="/slider"
+        path="/dashboard/users/black-list"
+        element={<BlackListContainer />}
+      />
+      <Route path="/dashboard/bird-eye" element={<BirdEye />} />
+      <Route
+        path="/dashboard/slider"
         element={
           <RequireAuth allowedRoles={["admin"]}>
             <SliderContainer />
@@ -168,7 +194,7 @@ const Routes = () => {
         }
       />
       <Route
-        path="/slider/add-slide"
+        path="/dashboard/slider/add-slide"
         element={
           <RequireAuth allowedRoles={["admin"]}>
             <AddSlideContainer />
@@ -176,16 +202,16 @@ const Routes = () => {
         }
       />
       <Route
-        path="/slider/:id"
+        path="/dashboard/slider/:id"
         element={
           <RequireAuth allowedRoles={["admin"]}>
             <InfoSlideContainer />
           </RequireAuth>
         }
       />
-      <Route path="/stats" element={<StatsContainer />} />
+      <Route path="/dashboard/stats" element={<StatsContainer />} />
       <Route
-        path="/coverage/zones"
+        path="/dashboard/coverage/zones"
         element={
           <RequireAuth allowedRoles={["admin"]}>
             <ZonesContainer />
@@ -193,7 +219,7 @@ const Routes = () => {
         }
       />
       <Route
-        path="/coverage/add-zones"
+        path="/dashboard/coverage/add-zones"
         element={
           <RequireAuth allowedRoles={["admin"]}>
             <AddZoneContainer />
@@ -201,7 +227,7 @@ const Routes = () => {
         }
       />
       <Route
-        path="/coverage/zones/:id"
+        path="/dashboard/coverage/zones/:id"
         element={
           <RequireAuth allowedRoles={["admin"]}>
             <InfoZoneContainer />
@@ -209,7 +235,7 @@ const Routes = () => {
         }
       />
       <Route
-        path="/coverage/polygons"
+        path="/dashboard/coverage/polygons"
         element={
           <RequireAuth allowedRoles={["admin"]}>
             <PolygonsContainer />
@@ -217,7 +243,7 @@ const Routes = () => {
         }
       />
       <Route
-        path="/coverage/add-polygons"
+        path="/dashboard/coverage/add-polygons"
         element={
           <RequireAuth allowedRoles={["admin"]}>
             <AddPolygonsContainer />
@@ -225,7 +251,7 @@ const Routes = () => {
         }
       />
       <Route
-        path="/coverage/polygons/:id"
+        path="/dashboard/coverage/polygons/:id"
         element={
           <RequireAuth allowedRoles={["admin"]}>
             <InfoPolygonContainer />
@@ -233,15 +259,15 @@ const Routes = () => {
         }
       />
       <Route
-        path="/coverage/location-votes"
+        path="/dashboard/coverage/location-votes"
         element={<LocationVotesContainer />}
       />
       <Route
-        path="/coverage/location-vote-info"
+        path="/dashboard/coverage/location-vote-info"
         element={<ViewLocationVote />}
       />
       <Route
-        path="/marketing/promo"
+        path="/dashboard/marketing/promo"
         element={
           <RequireAuth allowedRoles={["admin"]}>
             <PromoContainer />
@@ -249,7 +275,7 @@ const Routes = () => {
         }
       />
       <Route
-        path="/marketing/add-promo-code"
+        path="/dashboard/marketing/add-promo-code"
         element={
           <RequireAuth allowedRoles={["admin"]}>
             <AddPromoCodeContainer />
@@ -257,7 +283,7 @@ const Routes = () => {
         }
       />
       <Route
-        path="/marketing/promos/:id"
+        path="/dashboard/marketing/promos/:id"
         element={
           <RequireAuth allowedRoles={["admin"]}>
             <InfoPromoContainer />
@@ -265,7 +291,7 @@ const Routes = () => {
         }
       />
       <Route
-        path="/marketing/promo-used-copoun"
+        path="/dashboard/marketing/promo-used-copoun"
         element={
           <RequireAuth allowedRoles={["admin"]}>
             <UserUsedThisCouponContainer />
@@ -285,7 +311,7 @@ const Routes = () => {
         element={<OperationTimeContainer />}
       />
       <Route
-        path="/management/app-varialbes-periods"
+        path="/dashboard/management/app-varialbes-periods"
         element={
           <RequireAuth allowedRoles={["admin"]}>
             <AppVarialbesPeriods />
@@ -293,7 +319,7 @@ const Routes = () => {
         }
       />
       <Route
-        path="/management/add-app-varialbes-periods"
+        path="/dashboard/management/add-app-varialbes-periods"
         element={
           <RequireAuth allowedRoles={["admin"]}>
             <AddAppVarialbesPeriods />
@@ -301,7 +327,7 @@ const Routes = () => {
         }
       />
       <Route
-        path="/management/app-varialbes-periods/:id"
+        path="/dashboard/management/app-varialbes-periods/:id"
         element={
           <RequireAuth allowedRoles={["admin"]}>
             <InfoAppVarialbesPeriods />

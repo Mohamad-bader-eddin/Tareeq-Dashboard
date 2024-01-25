@@ -20,7 +20,9 @@ const AddPromoCodeContainer = () => {
     openSucsses,
     setOpenSucsses,
   } = useAddPromoCodeValidation();
-  const breadcrumbsTracks = [{ path: "/marketing/promo", name: t("promo") }];
+  const breadcrumbsTracks = [
+    { path: "/dashboard/marketing/promo", name: t("promo") },
+  ];
 
   return (
     <Layout>

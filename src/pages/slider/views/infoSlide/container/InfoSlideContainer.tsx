@@ -25,7 +25,7 @@ const InfoSlideContainer = () => {
     openSucsses,
     setOpenSucsses,
   } = useUpdateSlideFormValidation({ data: data?.data.content });
-  const breadcrumbsTracks = [{ path: "/slider", name: t("slider") }];
+  const breadcrumbsTracks = [{ path: "/dashboard/slider", name: t("slider") }];
   return (
     <Layout>
       <Breadcrumb tracks={breadcrumbsTracks} current={t("info")} />

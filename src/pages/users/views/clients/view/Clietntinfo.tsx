@@ -42,7 +42,9 @@ const Clietntinfo = () => {
   } = useAddFundsFormValidation(id as string);
   const { columns } = useClientsWaletColumn();
   const { rows } = useClientsWaletRows({ data: data?.data?.content });
-  const breadcrumbsTracks = [{ path: "/users/clients", name: t("clients") }];
+  const breadcrumbsTracks = [
+    { path: "/dashboard/users/clients", name: t("clients") },
+  ];
 
   return (
     <Layout>

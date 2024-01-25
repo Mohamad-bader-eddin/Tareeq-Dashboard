@@ -21,7 +21,9 @@ const useUserUsedThisCouponColumns = () => {
         headerAlign: "center",
         width: 250,
         renderCell: (params) => {
-          return <AppLink path="/users/clients/info" name={params.value} />;
+          return (
+            <AppLink path="/dashboard/users/clients/info" name={params.value} />
+          );
         },
       },
       {
