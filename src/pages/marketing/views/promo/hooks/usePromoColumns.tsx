@@ -17,7 +17,7 @@ const usePromoColumns = ({
       {
         field: "id",
         headerName: t("id"),
-        width: 200,
+        width: 150,
         align: "center",
         headerAlign: "center",
       },
@@ -26,21 +26,21 @@ const usePromoColumns = ({
         headerName: t("code"),
         align: "center",
         headerAlign: "center",
-        width: 250,
+        width: 150,
       },
       {
         field: "amount",
         headerName: t("amount"),
         align: "center",
         headerAlign: "center",
-        width: 250,
+        width: 150,
       },
       {
         field: "isActive",
         headerName: t("is_active"),
         align: "center",
         headerAlign: "center",
-        width: 250,
+        width: 150,
         renderCell: (params) => {
           if (params.value) {
             return (
@@ -61,7 +61,7 @@ const usePromoColumns = ({
         headerName: t("created_at"),
         align: "center",
         headerAlign: "center",
-        width: 250,
+        width: 150,
       },
       {
         field: "action",

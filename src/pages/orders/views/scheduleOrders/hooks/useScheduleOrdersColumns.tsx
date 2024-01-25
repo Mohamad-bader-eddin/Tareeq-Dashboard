@@ -24,7 +24,7 @@ const useScheduleOrdersColumns = ({
         headerName: t("customer"),
         align: "center",
         headerAlign: "center",
-        width: 200,
+        width: 150,
         renderCell: (params) => {
           return (
             <AppLink
@@ -47,21 +47,21 @@ const useScheduleOrdersColumns = ({
       {
         field: "totalExpected",
         headerName: t("total_expected"),
-        width: 200,
+        width: 150,
         align: "center",
         headerAlign: "center",
       },
       {
         field: "placedon",
         headerName: t("placed_on"),
-        width: 225,
+        width: 150,
         align: "center",
         headerAlign: "center",
       },
       {
         field: "scheduledAt",
         headerName: t("scheduled_at"),
-        width: 225,
+        width: 150,
         align: "center",
         headerAlign: "center",
       },

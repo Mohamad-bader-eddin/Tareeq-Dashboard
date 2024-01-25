@@ -11,7 +11,7 @@ export type Vehicle = {
 export type VehicleRows = {
     id: string;
     name: string;
-    priceByTime: number;
-    priceByKm: number;
+    priceByTime?: number;
+    priceByKm?: number;
     createdAt: string;
 }

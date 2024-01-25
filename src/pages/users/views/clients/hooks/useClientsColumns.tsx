@@ -25,7 +25,7 @@ const useShoppersColumns = ({
         headerName: t("name"),
         align: "center",
         headerAlign: "center",
-        width: 250,
+        width: 150,
       },
       {
         field: "phone",
@@ -44,14 +44,14 @@ const useShoppersColumns = ({
       {
         field: "joinDate",
         headerName: t("join_date"),
-        width: 200,
+        width: 150,
         align: "center",
         headerAlign: "center",
       },
       {
         field: "firstOrderDate",
         headerName: t("first_order_date"),
-        width: 200,
+        width: 150,
         align: "center",
         headerAlign: "center",
       },
