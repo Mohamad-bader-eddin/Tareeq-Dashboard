@@ -52,7 +52,7 @@ const InfoOrder = () => {
     <Layout>
       <Breadcrumb tracks={breadcrumbsTracks} current={t("info")} />
       <PaperContainer>
-        <Typography variant="h6" sx={{ marginBottom: "15px" }}>
+        <Typography variant="h6" sx={{ marginBottom: "10px" }}>
           {t("info")} ( {t("order_no")} {data?.data?.content?.id} )
         </Typography>
         {isLoading ? (
@@ -66,78 +66,78 @@ const InfoOrder = () => {
           <StyledInfo $darkMode={darkMode}>
             <div className="row">
               <div className="col-6">
-                <h4 className="atr">
+                <h5 className="atr">
                   <span>
-                    <TripOriginOutlinedIcon sx={{ fontSize: "15px" }} />
+                    <TripOriginOutlinedIcon sx={{ fontSize: "10px" }} />
                   </span>
                   {t("expected_distance")} :
-                </h4>
-                <h4 className="val">
+                </h5>
+                <h5 className="val">
                   {data?.data?.content?.distance_expected} KM
-                </h4>
+                </h5>
               </div>
               <div className="col-6">
-                <h4 className="atr">
+                <h5 className="atr">
                   <span>
-                    <TripOriginOutlinedIcon sx={{ fontSize: "15px" }} />
+                    <TripOriginOutlinedIcon sx={{ fontSize: "10px" }} />
                   </span>
                   {t("real_distance")} :
-                </h4>
-                <h4 className="val">
+                </h5>
+                <h5 className="val">
                   {" "}
                   {data?.data?.content?.total_expected} KM
-                </h4>
+                </h5>
               </div>
             </div>
             <div className="row">
               <div className="col-6">
-                <h4 className="atr">
+                <h5 className="atr">
                   <span>
-                    <TripOriginOutlinedIcon sx={{ fontSize: "15px" }} />
+                    <TripOriginOutlinedIcon sx={{ fontSize: "10px" }} />
                   </span>
                   {t("placed_on")} :
-                </h4>
-                <h4 className="val">{data?.data?.content?.created_at}</h4>
+                </h5>
+                <h5 className="val">{data?.data?.content?.created_at}</h5>
               </div>
               <div className="col-6">
-                <h4 className="atr">
+                <h5 className="atr">
                   <span>
-                    <TripOriginOutlinedIcon sx={{ fontSize: "15px" }} />
+                    <TripOriginOutlinedIcon sx={{ fontSize: "10px" }} />
                   </span>
                   {t("assigned_at")} :
-                </h4>
-                <h4 className="val">2023-09-30 15:35:53</h4>
+                </h5>
+                <h5 className="val">2023-09-30 15:35:53</h5>
               </div>
             </div>
             <div className="row">
               <div className="col-6">
-                <h4 className="atr">
+                <h5 className="atr">
                   <span>
-                    <TripOriginOutlinedIcon sx={{ fontSize: "15px" }} />
+                    <TripOriginOutlinedIcon sx={{ fontSize: "10px" }} />
                   </span>
                   {t("accepted_at")} :
-                </h4>
-                <h4 className="val">{data?.data?.content?.accepted_at}</h4>
+                </h5>
+                <h5 className="val">{data?.data?.content?.accepted_at}</h5>
               </div>
               <div className="col-6">
-                <h4 className="atr">
+                <h5 className="atr">
                   <span>
-                    <TripOriginOutlinedIcon sx={{ fontSize: "15px" }} />
+                    <TripOriginOutlinedIcon sx={{ fontSize: "10px" }} />
                   </span>
                   {t("arrive_to_customer_location")} :
-                </h4>
-                <h4 className="val"> {data?.data?.content?.completed_at}</h4>
+                </h5>
+                <h5 className="val"> {data?.data?.content?.completed_at}</h5>
               </div>
             </div>
             <div className="row">
               <div className="col-6">
-                <h4 className="atr">
+                <h5 className="atr">
                   <span>
-                    <TripOriginOutlinedIcon sx={{ fontSize: "15px" }} />
+                    <TripOriginOutlinedIcon sx={{ fontSize: "10px" }} />
                   </span>
                   {t("arrived_at")} :
-                </h4>
-                <h4 className="val">2023-09-30 15:35:53</h4>
+                </h5>
+                <h5 className="val">2023-09-30 15:35:53</h5>
               </div>
             </div>
           </StyledInfo>

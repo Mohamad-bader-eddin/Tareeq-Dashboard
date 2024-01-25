@@ -10,7 +10,6 @@ const useShopperWaletRows = ({ data }: { data: Drivers }) => {
       amount: el?.amount,
       reason: el?.transaction_type?.description as string,
       createdAt: format(new Date(el.created_at as Date), "dd/MM/yyyy"),
-      status: el.status,
       transactionId: el.id,
     })
   );

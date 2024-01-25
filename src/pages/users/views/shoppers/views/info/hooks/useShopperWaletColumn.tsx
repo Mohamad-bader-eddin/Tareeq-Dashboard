@@ -21,13 +21,6 @@ const useShopperWaletColumn = () => {
         width: 200,
       },
       {
-        field: "status",
-        headerName: t("status"),
-        align: "center",
-        headerAlign: "center",
-        width: 250,
-      },
-      {
         field: "reason",
         headerName: t("reason"),
         width: 250,

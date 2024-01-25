@@ -9,7 +9,6 @@ const useClientsWaletRows = ({ data }: { data: Client }) => {
       id: el?.id,
       amount: el?.amount,
       reason: el?.transaction_type?.description as string,
-      status: el?.status,
       createdAt: format(new Date(el?.created_at as Date), "dd/MM/yyyy"),
       transactionId: el?.id,
     })

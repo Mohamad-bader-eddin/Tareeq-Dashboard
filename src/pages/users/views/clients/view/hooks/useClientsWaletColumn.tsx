@@ -14,13 +14,6 @@ const useClientsWaletColumn = () => {
         width: 200,
       },
       {
-        field: "status",
-        headerName: t("status"),
-        width: 250,
-        align: "center",
-        headerAlign: "center",
-      },
-      {
         field: "reason",
         headerName: t("reason"),
         width: 250,

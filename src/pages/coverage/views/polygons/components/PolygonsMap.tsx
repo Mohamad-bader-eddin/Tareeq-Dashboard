@@ -35,6 +35,12 @@ const PolygonsMap = <T extends Record<string, unknown>>({
     formik.setFieldValue("locations", locations);
   };
 
+  const handleMarkerClick = (position: google.maps.LatLngLiteral) => {
+    const point = selectedMarkers.findIndex((el) => el.position === position);
+    selectedMarkers.splice(point, 1);
+    setSelectedMarkers([...selectedMarkers]);
+  };
+
   return (
     <LoadScript googleMapsApiKey="AIzaSyCiyuZuf6jsA7mtfN_Q25tGuPEJyh4zTZA">
       <GoogleMap
@@ -44,7 +50,11 @@ const PolygonsMap = <T extends Record<string, unknown>>({
         onClick={handleMapClick}
       >
         {selectedMarkers.map((marker) => (
-          <Marker key={marker.id} position={marker.position}></Marker>
+          <Marker
+            key={marker.id}
+            position={marker.position}
+            onClick={() => handleMarkerClick(marker.position)}
+          ></Marker>
         ))}
         <Polygon
           paths={selectedMarkers.map((path) => path.position)}

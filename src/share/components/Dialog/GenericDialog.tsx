@@ -31,6 +31,7 @@ const GenericDialog = ({
   elementContent,
   fullScreen,
   deleteType,
+  assignTo,
   handleAgree,
 }: GenericDialogProps) => {
   const { darkMode } = useDarkMode();
@@ -54,10 +55,10 @@ const GenericDialog = ({
         fullScreen={fullScreen}
         sx={{
           ".css-1t1j96h-MuiPaper-root-MuiDialog-paper": {
-            minWidth: laptop ? "300px" : "800px",
+            minWidth: laptop ? "fit-content" : assignTo ? "970px" : "800px",
           },
           ".css-1qxadfk-MuiPaper-root-MuiDialog-paper": {
-            minWidth: laptop ? "300px" : "800px",
+            minWidth: laptop ? "fit-content" : assignTo ? "970px" : "800px",
           },
         }}
       >
@@ -106,6 +107,7 @@ type GenericDialogProps = {
   elementContent: JSX.Element | string;
   fullScreen?: boolean;
   deleteType?: boolean;
+  assignTo?: boolean;
 };
 
 export default GenericDialog;

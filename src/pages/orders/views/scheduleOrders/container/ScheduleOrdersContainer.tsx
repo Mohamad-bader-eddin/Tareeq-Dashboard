@@ -74,6 +74,7 @@ const ScheduleOrdersContainer = () => {
           open={openAssignDialog}
           setOpen={setOPenAssignDialog}
           fullScreen={true}
+          assignTo={true}
           handleAgree={() => {}}
           elementContent={
             <Table
