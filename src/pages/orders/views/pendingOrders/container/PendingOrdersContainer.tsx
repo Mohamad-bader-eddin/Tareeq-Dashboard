@@ -14,6 +14,7 @@ import useAssignOrderQuery from "../../../hooks/useAssignOrderQuery";
 import GenericAlert from "../../../../../share/components/alert/GenericAlert";
 import useDeiversQuery from "../../../../users/views/shoppers/hooks/useDeiversQuery";
 import usePendingOrdersQuery from "../hooks/usePendingOrdersQuery";
+import { Box, Typography } from "@mui/material";
 
 const PendingOrdersContainer = () => {
   const [openAssignDialog, setOPenAssignDialog] = useState(false);
@@ -72,12 +73,18 @@ const PendingOrdersContainer = () => {
           open={openAssignDialog}
           setOpen={setOPenAssignDialog}
           assignTo={true}
+          hideAgreeBtn={true}
           elementContent={
-            <Table
-              columns={AssignCol}
-              rows={AssignRow}
-              loading={driverLoading}
-            />
+            <Box>
+              <Typography variant="body1">
+                Assign Order ({idOrder}) To
+              </Typography>
+              <Table
+                columns={AssignCol}
+                rows={AssignRow}
+                loading={driverLoading}
+              />
+            </Box>
           }
           handleAgree={() => setOPenAssignDialog(false)}
         />

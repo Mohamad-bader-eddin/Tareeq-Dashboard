@@ -1,7 +1,6 @@
 import { GridColDef, GridRowId } from "@mui/x-data-grid";
 import { useTranslation } from "react-i18next";
-import CheckIcon from "@mui/icons-material/Check";
-import { Box, IconButton } from "@mui/material";
+import { Box, Button } from "@mui/material";
 
 const useAssignOrderToColumn = ({
   handleAssignOrder,
@@ -31,9 +30,9 @@ const useAssignOrderToColumn = ({
       renderCell: (params) => {
         return (
           <Box>
-            <IconButton onClick={() => handleAssignOrder(params.id)}>
-              <CheckIcon />
-            </IconButton>
+            <Button variant="text" onClick={() => handleAssignOrder(params.id)}>
+              choose
+            </Button>
           </Box>
         );
       },

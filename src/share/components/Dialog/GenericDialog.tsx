@@ -32,6 +32,7 @@ const GenericDialog = ({
   fullScreen,
   deleteType,
   assignTo,
+  hideAgreeBtn,
   handleAgree,
 }: GenericDialogProps) => {
   const { darkMode } = useDarkMode();
@@ -86,13 +87,15 @@ const GenericDialog = ({
           >
             {t("disagree")}
           </Button>
-          <Button
-            onClick={handleAgree}
-            variant="contained"
-            color={deleteType ? "error" : "info"}
-          >
-            {t("agree")}
-          </Button>
+          {hideAgreeBtn ? null : (
+            <Button
+              onClick={handleAgree}
+              variant="contained"
+              color={deleteType ? "error" : "info"}
+            >
+              {t("agree")}
+            </Button>
+          )}
         </DialogActions>
       </Dialog>
     </ThemeProvider>
@@ -108,6 +111,7 @@ type GenericDialogProps = {
   fullScreen?: boolean;
   deleteType?: boolean;
   assignTo?: boolean;
+  hideAgreeBtn?: boolean;
 };
 
 export default GenericDialog;
