@@ -39,10 +39,13 @@ const useAddVehicleFormValidation = ({ data }: { data?: Vehicle }) => {
         if (typeof value === "string") return true;
         const file = value as File;
         return (
-          ["image/jpeg", "image/jpg", "image/png"].includes(file.type) ||
+          ["image/jpeg", "image/jpg", "image/png", "image/svg+xml"].includes(
+            file.type
+          ) ||
           file.name.endsWith(".jpeg") ||
           file.name.endsWith(".jpg") ||
-          file.name.endsWith(".png")
+          file.name.endsWith(".png") ||
+          file.name.endsWith(".svg")
         );
       }),
   });

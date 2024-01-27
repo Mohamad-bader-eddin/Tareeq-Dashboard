@@ -62,7 +62,7 @@ const UploadImage = <T extends Record<string, unknown>>({
               }
               // setClick((prev) => !prev);
             }}
-            accept=".jpeg, .jpg, .png"
+            accept=".jpeg, .jpg, .png, .svg"
           />
         </Button>
       </Stack>
