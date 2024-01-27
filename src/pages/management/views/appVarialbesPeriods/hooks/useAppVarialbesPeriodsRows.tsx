@@ -10,6 +10,7 @@ const useAppVarialbesPeriodsRows = ({ data }: { data: VarialbesPeriods[] }) => {
       id: el.id as string,
       periodTimeFrom: el.from,
       periodTimeTo: el.to,
+      vehicleType: el?.vehicle_type?.name as string,
     })
   );
   return { rows };

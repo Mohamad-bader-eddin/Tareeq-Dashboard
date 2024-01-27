@@ -33,6 +33,13 @@ const useAppVarialbesPeriodsColumns = ({
         width: 250,
       },
       {
+        field: "vehicleType",
+        headerName: t("vehicle_type"),
+        align: "center",
+        headerAlign: "center",
+        width: 250,
+      },
+      {
         field: "action",
         headerName: t("action"),
         width: 150,

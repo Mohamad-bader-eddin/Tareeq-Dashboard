@@ -18,4 +18,5 @@ export type VarialbesPeriodsRow = {
     id: string;
     periodTimeFrom: string;
     periodTimeTo: string;
+    vehicleType: string;
 }
