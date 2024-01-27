@@ -231,5 +231,7 @@
   "price_by_minute": "Price by minute",
   "minimum_value": "Minimum value",
   "extra_value": "Extra value",
-  "initial_value": "Initial value"
+  "initial_value": "Initial value",
+  "daily_total_earn": "Daily Total Earn",
+  "total_earn": "Total Earn"
 }

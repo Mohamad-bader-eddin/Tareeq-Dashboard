@@ -231,5 +231,7 @@
   "price_by_minute": "سعر بالدقيقة",
   "minimum_value": "قيمة الصغرى",
   "extra_value": "قيمة الإضافية",
-  "initial_value": "قيمة الابتدائية"
+  "initial_value": "قيمة الابتدائية",
+  "daily_total_earn": "مجموع الربح اليومي",
+  "total_earn": "مجموع الربح"
 }

@@ -3,7 +3,7 @@ import Layout from "../../../../../../../share/components/layout/Layout";
 import { useTranslation } from "react-i18next";
 import useShopperInfoFormValidation from "../hooks/useShopperInfoFormValidation";
 import Breadcrumb from "../../../../../../../share/components/breadcrumbs/Breadcrumb";
-import { Backdrop, Typography } from "@mui/material";
+import { Backdrop, Box, Stack, Typography } from "@mui/material";
 import ShopperInfoForm from "../components/ShopperInfoForm";
 import ChangePasswordForm from "../../../../../components/ChangePasswordForm";
 import useChangePasswordValidation from "../hooks/useChangePasswordValidation";
@@ -20,6 +20,7 @@ import useZoneMaper from "../../../../../../../share/hooks/useZoneMaper";
 import useVehiclesQuery from "../../../../../../vehicles/hooks/useVehiclesQuery";
 import useVehiclesMapper from "../../createShopper/hooks/useVehiclesMapper";
 import GenericAlert from "../../../../../../../share/components/alert/GenericAlert";
+import TripOriginOutlinedIcon from "@mui/icons-material/TripOriginOutlined";
 
 const InfoContainer = () => {
   const { t } = useTranslation();
@@ -132,6 +133,45 @@ const InfoContainer = () => {
           msg={errorMsg}
         />
       </PaperContainer>
+      {isLoading ? (
+        <Backdrop
+          sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+          open={isLoading}
+        >
+          <Spinner />
+        </Backdrop>
+      ) : (
+        <PaperContainer>
+          <Box>
+            <Stack
+              direction={"row"}
+              alignItems={"center"}
+              sx={{ marginBottom: "20px" }}
+            >
+              <Typography variant="h6" sx={{ fontWeight: "bold" }}>
+                <Typography component={"span"} sx={{ marginInlineEnd: "6px" }}>
+                  <TripOriginOutlinedIcon sx={{ fontSize: "10px" }} />
+                </Typography>
+                {t("total_earn")} :
+              </Typography>
+              <Typography variant="h6">
+                {data?.data?.content?.total_earn}
+              </Typography>
+            </Stack>
+            <Stack direction={"row"} alignItems={"center"}>
+              <Typography variant="h6" sx={{ fontWeight: "bold" }}>
+                <Typography component={"span"} sx={{ marginInlineEnd: "6px" }}>
+                  <TripOriginOutlinedIcon sx={{ fontSize: "10px" }} />
+                </Typography>
+                {t("daily_total_earn")} :
+              </Typography>
+              <Typography variant="h6">
+                {data?.data?.content?.daily_total_earn}
+              </Typography>
+            </Stack>
+          </Box>
+        </PaperContainer>
+      )}
       <PaperContainer>
         <Table
           columns={columns}
