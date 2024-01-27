@@ -5,8 +5,8 @@ import useShopperInfoFormValidation from "../hooks/useShopperInfoFormValidation"
 import Breadcrumb from "../../../../../../../share/components/breadcrumbs/Breadcrumb";
 import { Backdrop, Typography } from "@mui/material";
 import ShopperInfoForm from "../components/ShopperInfoForm";
-// import ChangePasswordForm from "../../../../../components/ChangePasswordForm";
-// import useChangePasswordValidation from "../../../../../hooks/useChangePasswordValidation";
+import ChangePasswordForm from "../../../../../components/ChangePasswordForm";
+import useChangePasswordValidation from "../hooks/useChangePasswordValidation";
 import useAddFundsFormValidation from "../../../../../hooks/useAddFundsFormValidation";
 import AddFundsForm from "../../../../../components/AddFundsForm";
 import useShopperWaletColumn from "../hooks/useShopperWaletColumn";
@@ -25,11 +25,17 @@ const InfoContainer = () => {
   const { t } = useTranslation();
   const { id } = useParams();
   const { data, isLoading } = useInfoDriverQuery(id as string);
-  // const {
-  //   initialValues: changePasswordValues,
-  //   onSubmit: changePasswordOnSubmit,
-  //   validationSchema: changePassworValidationSchema,
-  // } = useChangePasswordValidation();
+  const {
+    initialValues: changePasswordValues,
+    onSubmit: changePasswordOnSubmit,
+    validationSchema: changePassworValidationSchema,
+    msg: msgPassword,
+    openSucsses: openSucssesPassword,
+    setOpenSucsses: setOpenSucssesPassword,
+    openError: openErrorPassword,
+    errorMsg: errorMsgPassword,
+    setOpenError: setOpenErrorPassword,
+  } = useChangePasswordValidation(id as string);
   const {
     initialValues: addFundsValues,
     onSubmit: addFundsOnSubmit,
@@ -82,7 +88,7 @@ const InfoContainer = () => {
           />
         </PaperContainer>
       )}
-      {/* <PaperContainer>
+      <PaperContainer>
         <Typography variant="h6" sx={{ marginBottom: "15px" }}>
           {t("change_password")}
         </Typography>
@@ -91,7 +97,19 @@ const InfoContainer = () => {
           onSubmit={changePasswordOnSubmit}
           validationSchema={changePassworValidationSchema}
         />
-      </PaperContainer> */}
+        <GenericAlert
+          open={openSucssesPassword}
+          setOpen={setOpenSucssesPassword}
+          type="success"
+          msg={msgPassword}
+        />
+        <GenericAlert
+          open={openErrorPassword}
+          setOpen={setOpenErrorPassword}
+          type="error"
+          msg={errorMsgPassword}
+        />
+      </PaperContainer>
       <PaperContainer>
         <Typography variant="h6" sx={{ marginBottom: "15px" }}>
           {t("add_funds_to_the_wallet")}

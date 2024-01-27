@@ -1,7 +1,7 @@
 import axios, { AxiosInstance } from "axios";
 import jsCookie from "js-cookie";
 
-const baseURL = "https://palderma.com/tareeq";
+const baseURL = "https://tareeq.sy/dashboard";
 
 const axiosMultipart: AxiosInstance = axios.create({
   baseURL,
