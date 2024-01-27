@@ -1,73 +1,16 @@
-import { GridRowsProp } from "@mui/x-data-grid";
-import {
-  randomCreatedDate,
-  randomId,
-  randomPhoneNumber,
-} from "@mui/x-data-grid-generator";
-import { useMemo } from "react";
+import { format } from "date-fns";
+import { BlackList, BlackListRow } from "../types/BlackList";
 
-const useBlackListRows = () => {
-  const initialRows = useMemo(() => {
-    const tableRows: GridRowsProp = [
-      {
-        id: randomId(),
-        phone: randomPhoneNumber(),
-        createdAt: randomCreatedDate().toLocaleString("en-uk", {
-          day: "numeric",
-          month: "short",
-          year: "numeric",
-          hour: "numeric",
-          minute: "numeric",
-        }),
-      },
-      {
-        id: randomId(),
-        phone: randomPhoneNumber(),
-        createdAt: randomCreatedDate().toLocaleString("en-uk", {
-          day: "numeric",
-          month: "short",
-          year: "numeric",
-          hour: "numeric",
-          minute: "numeric",
-        }),
-      },
-      {
-        id: randomId(),
-        phone: randomPhoneNumber(),
-        createdAt: randomCreatedDate().toLocaleString("en-uk", {
-          day: "numeric",
-          month: "short",
-          year: "numeric",
-          hour: "numeric",
-          minute: "numeric",
-        }),
-      },
-      {
-        id: randomId(),
-        phone: randomPhoneNumber(),
-        createdAt: randomCreatedDate().toLocaleString("en-uk", {
-          day: "numeric",
-          month: "short",
-          year: "numeric",
-          hour: "numeric",
-          minute: "numeric",
-        }),
-      },
-      {
-        id: randomId(),
-        phone: randomPhoneNumber(),
-        createdAt: randomCreatedDate().toLocaleString("en-uk", {
-          day: "numeric",
-          month: "short",
-          year: "numeric",
-          hour: "numeric",
-          minute: "numeric",
-        }),
-      },
-    ];
-    return tableRows;
-  }, []);
-  return { initialRows };
+const useBlackListRows = ({ data }: { data: BlackList[] }) => {
+  const rows: BlackListRow[] = [];
+  data?.forEach((el) =>
+    rows.push({
+      id: el?.id,
+      phone: el?.bannedable?.phone,
+      createdAt: format(new Date(el.created_at as Date), "dd/MM/yyyy"),
+    })
+  );
+  return { rows };
 };
 
 export default useBlackListRows;

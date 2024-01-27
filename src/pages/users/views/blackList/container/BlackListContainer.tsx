@@ -8,14 +8,26 @@ import useAddtoBlackListValidation from "../hooks/useAddtoBlackListValidation";
 import useBlackListColumns from "../hooks/useBlackListColumns";
 import useBlackListRows from "../hooks/useBlackListRows";
 import { useTranslation } from "react-i18next";
+import useBlackListQuery from "../hooks/useBlackListQuery";
+import GenericAlert from "../../../../../share/components/alert/GenericAlert";
 
 const BlackListContainer = () => {
   const [openDeleteDialog, setOpenDeleteDialog] = useState(false);
   const { t } = useTranslation();
-  const { initialValues, onSubmit, validationSchema } =
-    useAddtoBlackListValidation();
+  const { data, isLoading } = useBlackListQuery();
+  const {
+    initialValues,
+    onSubmit,
+    validationSchema,
+    msg,
+    openSucsses,
+    setOpenSucsses,
+    openError,
+    errorMsg,
+    setOpenError,
+  } = useAddtoBlackListValidation();
   const { columns } = useBlackListColumns({ setOpenDeleteDialog });
-  const { initialRows } = useBlackListRows();
+  const { rows } = useBlackListRows({ data: data?.data.content });
   return (
     <Layout>
       <PaperContainer>
@@ -28,16 +40,28 @@ const BlackListContainer = () => {
       <PaperContainer>
         <Table
           columns={columns}
-          rows={initialRows}
+          rows={rows}
           title={t("black_list")}
-          totalCount={120}
-          loading={false}
+          totalCount={data?.data.content.length}
+          loading={isLoading}
         />
         <GenericDialog
           open={openDeleteDialog}
           setOpen={setOpenDeleteDialog}
           elementContent={t("delete_message")}
           handleAgree={() => {}}
+        />
+        <GenericAlert
+          open={openSucsses}
+          setOpen={setOpenSucsses}
+          type="success"
+          msg={msg}
+        />
+        <GenericAlert
+          open={openError}
+          setOpen={setOpenError}
+          type="error"
+          msg={errorMsg}
         />
       </PaperContainer>
     </Layout>

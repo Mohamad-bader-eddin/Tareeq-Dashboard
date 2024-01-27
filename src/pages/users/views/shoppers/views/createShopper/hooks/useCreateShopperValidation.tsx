@@ -129,8 +129,6 @@ const useCreateShopperValidation = () => {
           formikHelpers.resetForm();
         },
         onError: (error) => {
-          console.log(error);
-
           const err = error as Error;
           setOpenError(true);
           setErrorMsg(err.message);
@@ -138,7 +136,7 @@ const useCreateShopperValidation = () => {
         },
       }
     );
-    console.log("Form Data :", values);
+    // console.log("Form Data :", values);
   };
   return {
     initialValues,

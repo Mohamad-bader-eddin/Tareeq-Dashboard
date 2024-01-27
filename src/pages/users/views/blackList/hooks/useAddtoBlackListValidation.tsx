@@ -2,9 +2,18 @@ import { FormikHelpers } from "formik";
 import * as Yup from "yup";
 import { useTranslation } from "react-i18next";
 import { initialValuesType } from "../types/AddtoBlackListType";
+import useAddBlackListQuery from "./useAddBlackListQuery";
+import { useState } from "react";
+import useBlackListQuery from "./useBlackListQuery";
 
 const useAddtoBlackListValidation = () => {
   const { t } = useTranslation();
+  const [openError, setOpenError] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
+  const [openSucsses, setOpenSucsses] = useState(false);
+  const [msg, setMsg] = useState("");
+  const { mutate } = useAddBlackListQuery();
+  const { refetch } = useBlackListQuery();
   const initialValues = {
     phone: "",
   };
@@ -16,10 +25,38 @@ const useAddtoBlackListValidation = () => {
     values: initialValuesType,
     formikHelpers: FormikHelpers<initialValuesType>
   ) => {
-    console.log("Form Data :", values);
-    formikHelpers.resetForm();
+    mutate(
+      { phone: values.phone },
+      {
+        onSuccess: (response) => {
+          setOpenSucsses(true);
+          setMsg(response.data.message);
+          formikHelpers.setSubmitting(false);
+          formikHelpers.resetForm();
+          refetch();
+        },
+        onError: (error) => {
+          const err = error as Error;
+          setOpenError(true);
+          setErrorMsg(err.message);
+          formikHelpers.setSubmitting(false);
+        },
+      }
+    );
+    // console.log("Form Data :", values);
+    // formikHelpers.resetForm();
   };
-  return { initialValues, validationSchema, onSubmit };
+  return {
+    initialValues,
+    onSubmit,
+    validationSchema,
+    msg,
+    openSucsses,
+    setOpenSucsses,
+    openError,
+    errorMsg,
+    setOpenError,
+  };
 };
 
 export default useAddtoBlackListValidation;

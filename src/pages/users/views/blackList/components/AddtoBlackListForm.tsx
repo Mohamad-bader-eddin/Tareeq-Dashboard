@@ -26,7 +26,10 @@ const AddtoBlackListForm = ({
               name="phone"
             />
             <Box sx={{ width: "200px" }}>
-              <SubmitButton name={t("add")} disabled={!formik.isValid} />
+              <SubmitButton
+                name={t("add")}
+                disabled={!formik.isValid || formik.isSubmitting}
+              />
             </Box>
           </Form>
         );
