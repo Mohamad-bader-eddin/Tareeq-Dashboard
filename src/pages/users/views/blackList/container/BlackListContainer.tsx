@@ -10,11 +10,19 @@ import useBlackListRows from "../hooks/useBlackListRows";
 import { useTranslation } from "react-i18next";
 import useBlackListQuery from "../hooks/useBlackListQuery";
 import GenericAlert from "../../../../../share/components/alert/GenericAlert";
+import useBlackListDeleteQuery from "../hooks/useBlackListDeleteQuery";
+import { GridRowId } from "@mui/x-data-grid";
 
 const BlackListContainer = () => {
   const [openDeleteDialog, setOpenDeleteDialog] = useState(false);
+  const [selectedId, setSelectedId] = useState<GridRowId | null>(null);
+  const [openErrorDelete, setOpenErrorDelete] = useState(false);
+  const [errorMsgDelete, setErrorMsgDelete] = useState("");
+  const [openSucssesDelete, setOpenSucssesDelete] = useState(false);
+  const [msgDelete, setMsgDelete] = useState("");
   const { t } = useTranslation();
-  const { data, isLoading } = useBlackListQuery();
+  const { data, isLoading, refetch } = useBlackListQuery();
+  const { mutate } = useBlackListDeleteQuery();
   const {
     initialValues,
     onSubmit,
@@ -26,8 +34,28 @@ const BlackListContainer = () => {
     errorMsg,
     setOpenError,
   } = useAddtoBlackListValidation();
-  const { columns } = useBlackListColumns({ setOpenDeleteDialog });
+  const handleOpenDialog = (id: GridRowId) => {
+    setOpenDeleteDialog(true);
+    setSelectedId(id);
+  };
+  const { columns } = useBlackListColumns({ handleOpenDialog });
   const { rows } = useBlackListRows({ data: data?.data.content });
+  const handleAgree = () => {
+    mutate(selectedId as GridRowId, {
+      onSuccess: (response) => {
+        setOpenSucssesDelete(true);
+        setMsgDelete(response.data.message);
+        setOpenDeleteDialog(false);
+        refetch();
+      },
+      onError: (error) => {
+        const err = error as Error;
+        setOpenErrorDelete(true);
+        setErrorMsgDelete(err.message);
+        setOpenDeleteDialog(false);
+      },
+    });
+  };
   return (
     <Layout>
       <PaperContainer>
@@ -49,7 +77,8 @@ const BlackListContainer = () => {
           open={openDeleteDialog}
           setOpen={setOpenDeleteDialog}
           elementContent={t("delete_message")}
-          handleAgree={() => {}}
+          deleteType={true}
+          handleAgree={handleAgree}
         />
         <GenericAlert
           open={openSucsses}
@@ -62,6 +91,18 @@ const BlackListContainer = () => {
           setOpen={setOpenError}
           type="error"
           msg={errorMsg}
+        />
+        <GenericAlert
+          open={openSucssesDelete}
+          setOpen={setOpenSucssesDelete}
+          type="success"
+          msg={msgDelete}
+        />
+        <GenericAlert
+          open={openErrorDelete}
+          setOpen={setOpenErrorDelete}
+          type="error"
+          msg={errorMsgDelete}
         />
       </PaperContainer>
     </Layout>

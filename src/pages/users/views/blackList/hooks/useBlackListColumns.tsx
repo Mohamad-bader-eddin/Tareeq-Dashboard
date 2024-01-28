@@ -1,11 +1,9 @@
-import { GridActionsCellItem, GridColDef } from "@mui/x-data-grid";
-import { Dispatch, SetStateAction, useMemo } from "react";
+import { GridActionsCellItem, GridColDef, GridRowId } from "@mui/x-data-grid";
+import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import DeleteIcon from "@mui/icons-material/DeleteOutlined";
 
-const useBlackListColumns = ({
-  setOpenDeleteDialog,
-}: useShoppersColumnsProps) => {
+const useBlackListColumns = ({ handleOpenDialog }: useShoppersColumnsProps) => {
   const { t } = useTranslation();
   const columns = useMemo(() => {
     const tableCol: GridColDef[] = [
@@ -36,13 +34,13 @@ const useBlackListColumns = ({
         width: 150,
         align: "center",
         headerAlign: "center",
-        renderCell: () => {
+        renderCell: (params) => {
           return (
             <GridActionsCellItem
               icon={<DeleteIcon />}
               label="Delete"
               color="error"
-              onClick={() => setOpenDeleteDialog(true)}
+              onClick={() => handleOpenDialog(params.id)}
             />
           );
         },
@@ -55,6 +53,7 @@ const useBlackListColumns = ({
 };
 
 type useShoppersColumnsProps = {
-  setOpenDeleteDialog: Dispatch<SetStateAction<boolean>>;
+  // eslint-disable-next-line no-unused-vars
+  handleOpenDialog: (id: GridRowId) => void;
 };
 export default useBlackListColumns;
