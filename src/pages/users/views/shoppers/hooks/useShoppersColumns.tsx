@@ -16,7 +16,7 @@ const useShoppersColumns = ({
       {
         field: "id",
         headerName: t("id"),
-        width: 100,
+        flex: 1,
         align: "center",
         headerAlign: "center",
       },
@@ -25,33 +25,33 @@ const useShoppersColumns = ({
         headerName: t("name"),
         align: "center",
         headerAlign: "center",
-        width: 150,
+        flex: 1,
       },
       {
         field: "phone",
         headerName: t("phone"),
-        width: 150,
+        flex: 1,
         align: "center",
         headerAlign: "center",
       },
       {
         field: "zone",
         headerName: t("zone"),
-        width: 150,
+        flex: 1,
         align: "center",
         headerAlign: "center",
       },
       {
         field: "registerDate",
         headerName: t("register_date"),
-        width: 150,
+        flex: 1,
         align: "center",
         headerAlign: "center",
       },
       {
         field: "lastOnline",
         headerName: t("last_online"),
-        width: 150,
+        flex: 1,
         align: "center",
         headerAlign: "center",
         renderCell: (params) => {
@@ -79,7 +79,7 @@ const useShoppersColumns = ({
       {
         field: "shopperEarning",
         headerName: t("shopper_earning"),
-        width: 100,
+        flex: 1,
         align: "center",
         headerAlign: "center",
       },
@@ -96,7 +96,7 @@ const useShoppersColumns = ({
       {
         field: "action",
         headerName: t("action"),
-        width: 150,
+        flex: 1,
         align: "center",
         headerAlign: "center",
         renderCell: (params) => {

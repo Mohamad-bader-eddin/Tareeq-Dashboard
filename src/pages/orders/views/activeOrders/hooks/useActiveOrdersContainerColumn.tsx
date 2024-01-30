@@ -11,7 +11,7 @@ const useActiveOrdersContainerColumn = () => {
       {
         field: "id",
         headerName: t("id"),
-        width: 100,
+        flex: 1,
         align: "center",
         headerAlign: "center",
       },
@@ -20,7 +20,7 @@ const useActiveOrdersContainerColumn = () => {
         headerName: t("customer"),
         align: "center",
         headerAlign: "center",
-        width: 200,
+        flex: 1,
         renderCell: (params) => {
           return (
             <AppLink
@@ -33,28 +33,28 @@ const useActiveOrdersContainerColumn = () => {
       {
         field: "status",
         headerName: t("status"),
-        width: 100,
+        flex: 1,
         align: "center",
         headerAlign: "center",
       },
       {
         field: "totalExpected",
         headerName: t("total_expected"),
-        width: 200,
+        flex: 1,
         align: "center",
         headerAlign: "center",
       },
       {
         field: "placedon",
         headerName: t("placed_on"),
-        width: 225,
+        flex: 1,
         align: "center",
         headerAlign: "center",
       },
       {
         field: "shopper",
         headerName: t("shopper"),
-        width: 150,
+        flex: 1,
         align: "center",
         headerAlign: "center",
         renderCell: (params) => {
@@ -69,7 +69,7 @@ const useActiveOrdersContainerColumn = () => {
       {
         field: "action",
         headerName: t("action"),
-        width: 150,
+        flex: 1,
         align: "center",
         headerAlign: "center",
         renderCell: (params) => {

@@ -14,7 +14,7 @@ const useVehiclesColumns = ({
       {
         field: "id",
         headerName: t("id"),
-        width: 150,
+        flex: 1,
         align: "center",
         headerAlign: "center",
       },
@@ -23,7 +23,7 @@ const useVehiclesColumns = ({
         headerName: t("name"),
         align: "center",
         headerAlign: "center",
-        width: 250,
+        flex: 1,
       },
       // {
       //   field: "priceByTime",
@@ -42,14 +42,14 @@ const useVehiclesColumns = ({
       {
         field: "createdAt",
         headerName: t("created_at"),
-        width: 300,
+        flex: 1,
         align: "center",
         headerAlign: "center",
       },
       {
         field: "action",
         headerName: t("action"),
-        width: 150,
+        flex: 1,
         align: "center",
         headerAlign: "center",
         renderCell: (params) => {

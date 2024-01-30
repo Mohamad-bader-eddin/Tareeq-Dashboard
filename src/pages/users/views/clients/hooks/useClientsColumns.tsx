@@ -16,7 +16,7 @@ const useShoppersColumns = ({
       {
         field: "id",
         headerName: t("id"),
-        width: 150,
+        flex: 1,
         align: "center",
         headerAlign: "center",
       },
@@ -25,12 +25,12 @@ const useShoppersColumns = ({
         headerName: t("name"),
         align: "center",
         headerAlign: "center",
-        width: 150,
+        flex: 1,
       },
       {
         field: "phone",
         headerName: t("phone"),
-        width: 150,
+        flex: 1,
         align: "center",
         headerAlign: "center",
       },
@@ -44,21 +44,21 @@ const useShoppersColumns = ({
       {
         field: "joinDate",
         headerName: t("join_date"),
-        width: 150,
+        flex: 1,
         align: "center",
         headerAlign: "center",
       },
       {
         field: "firstOrderDate",
         headerName: t("first_order_date"),
-        width: 150,
+        flex: 1,
         align: "center",
         headerAlign: "center",
       },
       {
         field: "completedOrders",
         headerName: t("completed_orders"),
-        width: 150,
+        flex: 1,
         align: "center",
         headerAlign: "center",
       },
@@ -79,7 +79,7 @@ const useShoppersColumns = ({
       {
         field: "action",
         headerName: t("action"),
-        width: 150,
+        flex: 1,
         align: "center",
         headerAlign: "center",
         renderCell: (params) => {

@@ -15,7 +15,7 @@ const useScheduleOrdersColumns = ({
       {
         field: "id",
         headerName: t("id"),
-        width: 100,
+        flex: 1,
         align: "center",
         headerAlign: "center",
       },
@@ -24,7 +24,7 @@ const useScheduleOrdersColumns = ({
         headerName: t("customer"),
         align: "center",
         headerAlign: "center",
-        width: 150,
+        flex: 1,
         renderCell: (params) => {
           return (
             <AppLink
@@ -37,7 +37,7 @@ const useScheduleOrdersColumns = ({
       {
         field: "status",
         headerName: t("status"),
-        width: 100,
+        flex: 1,
         // editable: true,
         // type: "singleSelect",
         // valueOptions: ["Pending", "En Route", "Canceled", "Scheduled"],
@@ -47,28 +47,28 @@ const useScheduleOrdersColumns = ({
       {
         field: "totalExpected",
         headerName: t("total_expected"),
-        width: 150,
+        flex: 1,
         align: "center",
         headerAlign: "center",
       },
       {
         field: "placedon",
         headerName: t("placed_on"),
-        width: 150,
+        flex: 1,
         align: "center",
         headerAlign: "center",
       },
       {
         field: "scheduledAt",
         headerName: t("scheduled_at"),
-        width: 150,
+        flex: 1,
         align: "center",
         headerAlign: "center",
       },
       {
         field: "shopper",
         headerName: t("shopper"),
-        width: 150,
+        flex: 1,
         align: "center",
         headerAlign: "center",
         renderCell: (params) => {
@@ -91,7 +91,7 @@ const useScheduleOrdersColumns = ({
       {
         field: "action",
         headerName: t("action"),
-        width: 150,
+        flex: 1,
         align: "center",
         headerAlign: "center",
         renderCell: (params) => {

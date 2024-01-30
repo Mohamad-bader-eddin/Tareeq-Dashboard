@@ -14,7 +14,7 @@ const useZoneColumn = ({
       {
         field: "id",
         headerName: t("id"),
-        width: 200,
+        flex: 1,
         align: "center",
         headerAlign: "center",
       },
@@ -23,12 +23,12 @@ const useZoneColumn = ({
         headerName: t("name"),
         align: "center",
         headerAlign: "center",
-        width: 250,
+        flex: 1,
       },
       {
         field: "action",
         headerName: t("action"),
-        width: 150,
+        flex: 1,
         align: "center",
         headerAlign: "center",
         renderCell: (params) => {

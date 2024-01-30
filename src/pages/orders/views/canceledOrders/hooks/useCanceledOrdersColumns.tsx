@@ -11,7 +11,7 @@ const useCanceledOrdersColumns = () => {
       {
         field: "id",
         headerName: t("id"),
-        width: 100,
+        flex: 1,
         align: "center",
         headerAlign: "center",
       },
@@ -20,7 +20,7 @@ const useCanceledOrdersColumns = () => {
         headerName: t("customer"),
         align: "center",
         headerAlign: "center",
-        width: 150,
+        flex: 1,
         renderCell: (params) => {
           return (
             <AppLink
@@ -33,7 +33,7 @@ const useCanceledOrdersColumns = () => {
       {
         field: "status",
         headerName: t("status"),
-        width: 100,
+        flex: 1,
         // editable: true,
         // type: "singleSelect",
         // valueOptions: ["Pending", "En Route", "Canceled", "Scheduled"],
@@ -43,14 +43,14 @@ const useCanceledOrdersColumns = () => {
       {
         field: "totalExpected",
         headerName: t("total_expected"),
-        width: 150,
+        flex: 1,
         align: "center",
         headerAlign: "center",
       },
       {
         field: "placedon",
         headerName: t("placed_on"),
-        width: 175,
+        flex: 1,
         align: "center",
         headerAlign: "center",
       },
@@ -64,7 +64,7 @@ const useCanceledOrdersColumns = () => {
       {
         field: "shopper",
         headerName: t("shopper"),
-        width: 150,
+        flex: 1,
         align: "center",
         headerAlign: "center",
         renderCell: (params) => {
@@ -79,7 +79,7 @@ const useCanceledOrdersColumns = () => {
       {
         field: "reason",
         headerName: t("reason"),
-        width: 100,
+        flex: 1,
         align: "center",
         headerAlign: "center",
         type: "singleSelect",
@@ -88,7 +88,7 @@ const useCanceledOrdersColumns = () => {
       {
         field: "action",
         headerName: t("action"),
-        width: 150,
+        flex: 1,
         align: "center",
         headerAlign: "center",
         renderCell: (params) => {

@@ -17,7 +17,7 @@ const usePromoColumns = ({
       {
         field: "id",
         headerName: t("id"),
-        width: 150,
+        flex: 1,
         align: "center",
         headerAlign: "center",
       },
@@ -26,21 +26,21 @@ const usePromoColumns = ({
         headerName: t("code"),
         align: "center",
         headerAlign: "center",
-        width: 150,
+        flex: 1,
       },
       {
         field: "amount",
         headerName: t("amount"),
         align: "center",
         headerAlign: "center",
-        width: 150,
+        flex: 1,
       },
       {
         field: "isActive",
         headerName: t("is_active"),
         align: "center",
         headerAlign: "center",
-        width: 150,
+        flex: 1,
         renderCell: (params) => {
           if (params.value) {
             return (
@@ -61,12 +61,12 @@ const usePromoColumns = ({
         headerName: t("created_at"),
         align: "center",
         headerAlign: "center",
-        width: 150,
+        flex: 1,
       },
       {
         field: "action",
         headerName: t("action"),
-        width: 150,
+        flex: 1,
         align: "center",
         headerAlign: "center",
         renderCell: (params) => {
@@ -89,7 +89,7 @@ const usePromoColumns = ({
       {
         field: "userUsedThisCoupon",
         headerName: t("user_used_this_coupon"),
-        width: 200,
+        flex: 1,
         align: "center",
         headerAlign: "center",
         renderCell: () => {

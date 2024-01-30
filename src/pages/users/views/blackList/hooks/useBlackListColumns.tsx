@@ -10,28 +10,28 @@ const useBlackListColumns = ({ handleOpenDialog }: useShoppersColumnsProps) => {
       {
         field: "id",
         headerName: t("id"),
-        width: 250,
+        flex: 1,
         align: "center",
         headerAlign: "center",
       },
       {
         field: "phone",
         headerName: t("phone"),
-        width: 250,
+        flex: 1,
         align: "center",
         headerAlign: "center",
       },
       {
         field: "createdAt",
         headerName: t("created_at"),
-        width: 275,
+        flex: 1,
         align: "center",
         headerAlign: "center",
       },
       {
         field: "action",
         headerName: t("action"),
-        width: 150,
+        flex: 1,
         align: "center",
         headerAlign: "center",
         renderCell: (params) => {

@@ -12,19 +12,19 @@ const useAssignOrderToColumn = ({
       headerName: t("shopper"),
       align: "center",
       headerAlign: "center",
-      width: 250,
+      flex: 1,
     },
     {
       field: "completedTripsToday",
       headerName: t("completed_trips_today"),
-      width: 250,
+      flex: 1,
       align: "center",
       headerAlign: "center",
     },
     {
       field: "action",
       headerName: t("assign_to"),
-      width: 250,
+      flex: 1,
       align: "center",
       headerAlign: "center",
       renderCell: (params) => {
