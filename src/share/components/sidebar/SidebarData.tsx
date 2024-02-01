@@ -9,6 +9,7 @@ import LocalActivityIcon from "@mui/icons-material/LocalActivity";
 import SettingsSuggestIcon from "@mui/icons-material/SettingsSuggest";
 import DirectionsCarIcon from "@mui/icons-material/DirectionsCar";
 import ImageIcon from "@mui/icons-material/Image";
+import ReceiptIcon from "@mui/icons-material/Receipt";
 
 export const SidebarData = [
   // {
@@ -62,6 +63,11 @@ export const SidebarData = [
     title: "vehicle_type",
     path: "/dashboard/vehicles",
     icon: <DirectionsCarIcon />,
+  },
+  {
+    title: "transaction_type",
+    path: "/dashboard/transaction-type",
+    icon: <ReceiptIcon />,
   },
   {
     title: "users",

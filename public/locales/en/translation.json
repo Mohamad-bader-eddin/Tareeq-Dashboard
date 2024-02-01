@@ -233,5 +233,7 @@
   "extra_value": "Extra value",
   "initial_value": "Initial value",
   "daily_total_earn": "Daily Total Earn",
-  "total_earn": "Total Earn"
+  "total_earn": "Total Earn",
+  "transaction_type": "Transaction Type",
+  "add_transaction_type": "Add Transaction Type"
 }

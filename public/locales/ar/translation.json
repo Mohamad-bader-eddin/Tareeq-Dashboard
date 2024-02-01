@@ -233,5 +233,7 @@
   "extra_value": "قيمة الإضافية",
   "initial_value": "قيمة الابتدائية",
   "daily_total_earn": "مجموع الربح اليومي",
-  "total_earn": "مجموع الربح"
+  "total_earn": "مجموع الربح",
+  "transaction_type": "نوع المعاملة",
+  "add_transaction_type": "إضافة نوع المعاملة"
 }

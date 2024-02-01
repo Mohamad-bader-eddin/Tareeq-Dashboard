@@ -50,6 +50,9 @@ import AddSlideContainer from "../pages/slider/views/addSlide/container/AddSlide
 import InfoSlideContainer from "../pages/slider/views/infoSlide/container/InfoSlideContainer";
 import InfoPolygonContainer from "../pages/coverage/views/polygons/views/InfoPolygonContainer";
 import InfoAppVarialbesPeriods from "../pages/management/views/appVarialbesPeriods/views/info/container/InfoAppVarialbesPeriods";
+import TransactionTypeContainer from "../pages/transactionType/container/TransactionTypeContainer";
+import AddTransactionTypeContainer from "../pages/transactionType/views/addTransactionType/container/AddTransactionTypeContainer";
+import InfoTransactionTypeContainer from "../pages/transactionType/views/infoTransactionType/container/InfoTransactionTypeContainer";
 
 const Routes = () => {
   return (
@@ -141,6 +144,30 @@ const Routes = () => {
         element={
           <RequireAuth allowedRoles={["admin"]}>
             <AddVehicleContainer />
+          </RequireAuth>
+        }
+      />
+      <Route
+        path="/dashboard/transaction-type"
+        element={
+          <RequireAuth allowedRoles={["admin"]}>
+            <TransactionTypeContainer />
+          </RequireAuth>
+        }
+      />
+      <Route
+        path="/dashboard/transaction-type/add"
+        element={
+          <RequireAuth allowedRoles={["admin"]}>
+            <AddTransactionTypeContainer />
+          </RequireAuth>
+        }
+      />
+      <Route
+        path="/dashboard/transaction-type/:id"
+        element={
+          <RequireAuth allowedRoles={["admin"]}>
+            <InfoTransactionTypeContainer />
           </RequireAuth>
         }
       />
