@@ -86,6 +86,12 @@ const AddAppVarialbesPeriodsForm = ({
               name="initial_value"
               type="number"
             />
+            <Input
+              formik={formik}
+              label={t("waiting_value")}
+              name="waiting_value"
+              type="number"
+            />
             <AutocompleteInput
               formik={formik}
               label={t("vehicle_type")}

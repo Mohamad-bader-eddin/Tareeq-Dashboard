@@ -10,6 +10,7 @@ export type initialValuesType = {
   minimum_value: number;
   extra_value: number;
   initial_value: number;
+  waiting_value: number;
   vehicleType: Option | null;
   // Power1: number;
   // Power2: number;
@@ -29,6 +30,7 @@ export type validationSchemaType = Yup.ObjectSchema<
     minimum_value: number;
     extra_value: number;
     initial_value: number;
+    waiting_value: number;
     vehicleType: {
       name: string;
       id: string;
@@ -50,6 +52,7 @@ export type validationSchemaType = Yup.ObjectSchema<
     minimum_value: undefined;
     extra_value: undefined;
     initial_value: undefined;
+    waiting_value: undefined;
     vehicleType: {
       id: undefined;
       name: undefined;

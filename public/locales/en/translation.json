@@ -235,5 +235,6 @@
   "daily_total_earn": "Daily Total Earn",
   "total_earn": "Total Earn",
   "transaction_type": "Transaction Type",
-  "add_transaction_type": "Add Transaction Type"
+  "add_transaction_type": "Add Transaction Type",
+  "waiting_value": "Waiting Value"
 }

@@ -20,6 +20,7 @@ const useAddAppVarialbesPeriodsFormValidation = () => {
     minimum_value: 0,
     extra_value: 0,
     initial_value: 0,
+    waiting_value: 0,
     vehicleType: null,
   };
 
@@ -31,6 +32,7 @@ const useAddAppVarialbesPeriodsFormValidation = () => {
     minimum_value: Yup.number().required(t("required")),
     extra_value: Yup.number().required(t("required")),
     initial_value: Yup.number().required(t("required")),
+    waiting_value: Yup.number().required(t("required")),
     vehicleType: Yup.object()
       .shape({
         id: Yup.string().required(t("required")),
@@ -62,6 +64,7 @@ const useAddAppVarialbesPeriodsFormValidation = () => {
         minimum_value: values.minimum_value,
         price_by_km: values.price_by_km,
         price_by_minute: values.price_by_minute,
+        waiting_value: values.waiting_value,
         vehicle_type_id: values.vehicleType?.id as string,
       },
       {

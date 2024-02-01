@@ -9,6 +9,7 @@ export type VarialbesPeriods = {
     minimum_value: number;
     extra_value: number;
     initial_value: number;
+    waiting_value: number;
     vehicle_type?: Vehicle;
     vehicle_type_id: string;
     created_at?: Date;
