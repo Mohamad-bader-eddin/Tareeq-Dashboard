@@ -60,37 +60,31 @@ const AddAppVarialbesPeriodsForm = ({
               formik={formik}
               label={t("price_by_minute")}
               name="price_by_minute"
-              type="number"
             />
             <Input
               formik={formik}
               label={t("price_by_km")}
               name="price_by_km"
-              type="number"
             />
             <Input
               formik={formik}
               label={t("minimum_value")}
               name="minimum_value"
-              type="number"
             />
             <Input
               formik={formik}
               label={t("extra_value")}
               name="extra_value"
-              type="number"
             />
             <Input
               formik={formik}
               label={t("initial_value")}
               name="initial_value"
-              type="number"
             />
             <Input
               formik={formik}
               label={t("waiting_value")}
               name="waiting_value"
-              type="number"
             />
             <AutocompleteInput
               formik={formik}
