@@ -8,6 +8,7 @@ import { Box, Typography } from "@mui/material";
 // import GenericAlert from "../../../../../share/components/alert/GenericAlert";
 import { useEffect, useRef } from "react";
 import { useDarkMode } from "../../../../../context/DarkMode";
+import jsCookie from "js-cookie";
 
 const AddPolygonsContainer = () => {
   const { t } = useTranslation();
@@ -27,11 +28,15 @@ const AddPolygonsContainer = () => {
     { path: "/dashboard/coverage/polygons", name: t("polygons") },
   ];
   const iframeRef = useRef<HTMLIFrameElement>(null);
+  const token = jsCookie.get("accessToken");
   useEffect(() => {
     if (iframeRef.current) {
-      iframeRef.current.contentWindow?.postMessage({ darkMode }, "*");
+      iframeRef.current.contentWindow?.postMessage({ darkMode, token }, "*");
+      iframeRef.current.onload = () => {
+        iframeRef.current?.contentWindow?.postMessage({ darkMode, token }, "*");
+      };
     }
-  }, [darkMode]);
+  }, [darkMode, token]);
 
   return (
     <Layout>

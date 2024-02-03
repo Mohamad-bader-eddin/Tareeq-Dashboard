@@ -10,9 +10,9 @@ import GenericDialog from "../../../../../share/components/Dialog/GenericDialog"
 import usePolygonsColumns from "../hooks/usePolygonsColumns";
 import usePolygonsRows from "../hooks/usePolygonsRows";
 import { GridRowId } from "@mui/x-data-grid";
-import useDeletePolygonQuery from "../hooks/useDeletePolygonQuery";
 import GenericAlert from "../../../../../share/components/alert/GenericAlert";
 import useZoneQuery from "../../zones/hooks/useZoneQuery";
+import useDeleteZoneQuery from "../../zones/hooks/useDeleteZoneQuery";
 
 const PolygonsContainer = () => {
   const [openDeleteDialog, setOpenDeleteDialog] = useState(false);
@@ -27,7 +27,7 @@ const PolygonsContainer = () => {
   };
   const { t } = useTranslation();
   const { data, isLoading, refetch } = useZoneQuery();
-  const { mutate } = useDeletePolygonQuery();
+  const { mutate } = useDeleteZoneQuery();
   const navigate = useNavigate();
   const handleAddPolygon = () => {
     navigate("/dashboard/coverage/add-polygons");
