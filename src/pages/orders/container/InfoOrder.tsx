@@ -95,10 +95,7 @@ const InfoOrder = () => {
                   </span>
                   {t("real_distance")} :
                 </h5>
-                <h5 className="val">
-                  {" "}
-                  {data?.data?.content?.total_expected} KM
-                </h5>
+                <h5 className="val"> - KM</h5>
               </div>
             </div>
             <div className="row">
