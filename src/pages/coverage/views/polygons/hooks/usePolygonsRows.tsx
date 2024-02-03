@@ -1,11 +1,12 @@
-import { Polygons, PolygonsRow } from "../types/polygonsType";
+import { Zone } from "../../../../../share/types";
+import { PolygonsRow } from "../types/polygonsType";
 
-const usePolygonsRows = ({ data }: { data: Polygons[] }) => {
+const usePolygonsRows = ({ data }: { data: Zone[] }) => {
   const rows: PolygonsRow[] = [];
   data?.forEach((el) =>
     rows.push({
       id: el.id as string,
-      zoneName: el.zone?.name as string,
+      zoneName: el?.name as string,
     })
   );
   return { rows };

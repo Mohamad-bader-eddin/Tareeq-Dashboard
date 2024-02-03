@@ -10,9 +10,9 @@ import GenericDialog from "../../../../../share/components/Dialog/GenericDialog"
 import usePolygonsColumns from "../hooks/usePolygonsColumns";
 import usePolygonsRows from "../hooks/usePolygonsRows";
 import { GridRowId } from "@mui/x-data-grid";
-import usePolygonsQuery from "../hooks/usePolygonsQuery";
 import useDeletePolygonQuery from "../hooks/useDeletePolygonQuery";
 import GenericAlert from "../../../../../share/components/alert/GenericAlert";
+import useZoneQuery from "../../zones/hooks/useZoneQuery";
 
 const PolygonsContainer = () => {
   const [openDeleteDialog, setOpenDeleteDialog] = useState(false);
@@ -26,7 +26,7 @@ const PolygonsContainer = () => {
     setSelectedId(id);
   };
   const { t } = useTranslation();
-  const { data, isLoading, refetch } = usePolygonsQuery();
+  const { data, isLoading, refetch } = useZoneQuery();
   const { mutate } = useDeletePolygonQuery();
   const navigate = useNavigate();
   const handleAddPolygon = () => {
