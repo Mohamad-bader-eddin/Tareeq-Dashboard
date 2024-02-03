@@ -26,10 +26,10 @@ const AppVarialbesPeriods = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const handleAddAppVarialbesPeriod = () => {
-    navigate("/dashboard/management/add-app-varialbes-periods");
+    navigate("/admin/management/add-app-varialbes-periods");
   };
   const handleInfo = (id: GridRowId) => {
-    navigate(`/dashboard/management/app-varialbes-periods/${id}`);
+    navigate(`/admin/management/app-varialbes-periods/${id}`);
   };
   const handleOpenDialog = (id: GridRowId) => {
     setOpenDeleteDialog(true);

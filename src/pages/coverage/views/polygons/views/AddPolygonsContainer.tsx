@@ -25,7 +25,7 @@ const AddPolygonsContainer = () => {
   //   setOpenSucsses,
   // } = useAddPolygonValidation();
   const breadcrumbsTracks = [
-    { path: "/dashboard/coverage/polygons", name: t("polygons") },
+    { path: "/admin/coverage/polygons", name: t("polygons") },
   ];
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const token = jsCookie.get("accessToken");

@@ -21,7 +21,7 @@ const ClientsContainer = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const handleInfo = (id: GridRowId) => {
-    navigate(`/dashboard/users/clients/${id}`);
+    navigate(`/admin/users/clients/${id}`);
   };
   const handleOpenDialog = (id: GridRowId) => {
     setOpenDeleteDialog(true);

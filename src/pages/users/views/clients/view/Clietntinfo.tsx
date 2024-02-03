@@ -43,7 +43,7 @@ const Clietntinfo = () => {
   const { columns } = useClientsWaletColumn();
   const { rows } = useClientsWaletRows({ data: data?.data?.content });
   const breadcrumbsTracks = [
-    { path: "/dashboard/users/clients", name: t("clients") },
+    { path: "/admin/users/clients", name: t("clients") },
   ];
 
   return (

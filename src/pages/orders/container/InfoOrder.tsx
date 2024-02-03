@@ -29,32 +29,32 @@ const InfoOrder = () => {
     switch (type) {
       case "active":
         return {
-          path: "/dashboard/orders/active-orders",
+          path: "/admin/orders/active-orders",
           name: t("active_orders"),
         };
       case "pending":
         return {
-          path: "/dashboard/orders/pending-orders",
+          path: "/admin/orders/pending-orders",
           name: t("pending_orders"),
         };
       case "arrived":
         return {
-          path: "/dashboard/orders/arrived-orders",
+          path: "/admin/orders/arrived-orders",
           name: t("arrived_orders"),
         };
       case "canceled":
         return {
-          path: "/dashboard/orders/canceled-orders",
+          path: "/admin/orders/canceled-orders",
           name: t("canceled_orders"),
         };
       case "schedule":
         return {
-          path: "/dashboard/orders/scheduled-orders",
+          path: "/admin/orders/scheduled-orders",
           name: t("scheduled_orders"),
         };
       default:
         return {
-          path: "/dashboard/orders/pending-orders",
+          path: "/admin/orders/pending-orders",
           name: t("pending_orders"),
         };
     }

@@ -61,7 +61,7 @@ const InfoContainer = () => {
       data: data?.data.content,
     });
   const breadcrumbsTracks = [
-    { path: "/dashboard/users/shoppers", name: t("drivers") },
+    { path: "/admin/users/shoppers", name: t("drivers") },
   ];
   return (
     <Layout>

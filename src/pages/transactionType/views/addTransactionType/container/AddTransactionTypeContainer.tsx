@@ -21,7 +21,7 @@ const AddTransactionTypeContainer = () => {
     setOpenSucsses,
   } = useAddTransactionTypeFormValidation({});
   const breadcrumbsTracks = [
-    { path: "/dashboard/transaction-type", name: t("transaction_type") },
+    { path: "/admin/transaction-type", name: t("transaction_type") },
   ];
   return (
     <Layout>

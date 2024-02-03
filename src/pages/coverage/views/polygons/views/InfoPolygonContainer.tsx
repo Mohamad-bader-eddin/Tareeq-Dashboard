@@ -11,7 +11,7 @@ const InfoPolygonContainer = () => {
   const { initialValues, onSubmit, validationSchema } =
     useAddPolygonValidation();
   const breadcrumbsTracks = [
-    { path: "/dashboard/coverage/polygons", name: t("polygons") },
+    { path: "/admin/coverage/polygons", name: t("polygons") },
   ];
   return (
     <Layout>

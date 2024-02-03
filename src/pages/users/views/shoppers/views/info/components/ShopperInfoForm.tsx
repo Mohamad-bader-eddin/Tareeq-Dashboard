@@ -22,7 +22,7 @@ const ShopperInfoForm = ({
   const { t } = useTranslation();
   const navigate = useNavigate();
   const handleVehicle = () => {
-    navigate("/dashboard/vehicles/add-vehicle");
+    navigate("/admin/vehicles/add-vehicle");
   };
   return (
     <Formik

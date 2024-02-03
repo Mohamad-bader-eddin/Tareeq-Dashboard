@@ -26,9 +26,7 @@ const VehicleInfoContainer = () => {
     openSucsses,
     setOpenSucsses,
   } = useAddVehicleFormValidation({ data: data?.data.content });
-  const breadcrumbsTracks = [
-    { path: "/dashboard/vehicles", name: t("vehicles") },
-  ];
+  const breadcrumbsTracks = [{ path: "/admin/vehicles", name: t("vehicles") }];
   return (
     <Layout>
       <Breadcrumb tracks={breadcrumbsTracks} current={t("info")} />

@@ -25,7 +25,7 @@ const TransactionTypeContainer = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const handleInfo = (id: GridRowId) => {
-    navigate(`/dashboard/transaction-type/${id}`);
+    navigate(`/admin/transaction-type/${id}`);
   };
   const handleOpenDialog = (id: GridRowId) => {
     setOpenDeleteDialog(true);
@@ -38,7 +38,7 @@ const TransactionTypeContainer = () => {
   const { rows } = useTransactionTypeRows({ data: data?.data.content });
   const { mutate } = useTransactionsTypeDeleteQuery();
   const handleAddTransactionType = () => {
-    navigate("/dashboard/transaction-type/add");
+    navigate("/admin/transaction-type/add");
   };
   const handleAgree = () => {
     mutate(selectedId as GridRowId, {

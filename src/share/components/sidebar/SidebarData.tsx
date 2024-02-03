@@ -13,7 +13,7 @@ import ReceiptIcon from "@mui/icons-material/Receipt";
 
 export const SidebarData = [
   // {
-  //   title: "dashboard",
+  //   title: "admin",
   //   path: "/",
   //   icon: <HouseIcon />,
   // },
@@ -24,23 +24,23 @@ export const SidebarData = [
     subNav: [
       {
         title: "pending_orders",
-        path: "/dashboard/orders/pending-orders",
+        path: "/admin/orders/pending-orders",
       },
       {
         title: "active_orders",
-        path: "/dashboard/orders/active-orders",
+        path: "/admin/orders/active-orders",
       },
       {
         title: "arrived_orders",
-        path: "/dashboard/orders/arrived-orders",
+        path: "/admin/orders/arrived-orders",
       },
       {
         title: "canceled_orders",
-        path: "/dashboard/orders/canceled-orders",
+        path: "/admin/orders/canceled-orders",
       },
       {
         title: "scheduled_orders",
-        path: "/dashboard/orders/scheduled-orders",
+        path: "/admin/orders/scheduled-orders",
       },
     ],
   },
@@ -51,22 +51,22 @@ export const SidebarData = [
   //   subNav: [
   //     {
   //       title: "courier_on_demand",
-  //       path: "/dashboard/create-new-order/courier-on-demand",
+  //       path: "/admin/create-new-order/courier-on-demand",
   //     },
   //     {
   //       title: "P2P",
-  //       path: "/dashboard/create-new-order/p2p",
+  //       path: "/admin/create-new-order/p2p",
   //     },
   //   ],
   // },
   {
     title: "vehicle_type",
-    path: "/dashboard/vehicles",
+    path: "/admin/vehicles",
     icon: <DirectionsCarIcon />,
   },
   {
     title: "transaction_type",
-    path: "/dashboard/transaction-type",
+    path: "/admin/transaction-type",
     icon: <ReceiptIcon />,
   },
   {
@@ -76,31 +76,31 @@ export const SidebarData = [
     subNav: [
       {
         title: "drivers",
-        path: "/dashboard/users/shoppers",
+        path: "/admin/users/shoppers",
       },
       {
         title: "clients",
-        path: "/dashboard/users/clients",
+        path: "/admin/users/clients",
       },
       {
         title: "black_list",
-        path: "/dashboard/users/black-list",
+        path: "/admin/users/black-list",
       },
     ],
   },
   // {
   //   title: "bird_eye",
-  //   path: "/dashboard/bird-eye",
+  //   path: "/admin/bird-eye",
   //   icon: <LocationOnIcon />,
   // },
   // {
   //   title: "stats",
-  //   path: "/dashboard/stats",
+  //   path: "/admin/stats",
   //   icon: <BarChartIcon />,
   // },
   {
     title: "slider",
-    path: "/dashboard/slider",
+    path: "/admin/slider",
     icon: <ImageIcon />,
   },
   {
@@ -110,15 +110,15 @@ export const SidebarData = [
     subNav: [
       {
         title: "zones",
-        path: "/dashboard/coverage/zones",
+        path: "/admin/coverage/zones",
       },
       {
         title: "polygons",
-        path: "/dashboard/coverage/polygons",
+        path: "/admin/coverage/polygons",
       },
       // {
       //   title: "location_votes",
-      //   path: "/dashboard/coverage/location-votes",
+      //   path: "/admin/coverage/location-votes",
       // },
     ],
   },
@@ -129,7 +129,7 @@ export const SidebarData = [
     subNav: [
       {
         title: "promo",
-        path: "/dashboard/marketing/promo",
+        path: "/admin/marketing/promo",
       },
       // {
       //   title: "push_notifications",
@@ -152,7 +152,7 @@ export const SidebarData = [
       // },
       {
         title: "app_variables_periods",
-        path: "/dashboard/management/app-varialbes-periods",
+        path: "/admin/management/app-varialbes-periods",
       },
       // {
       //   title: "other_app_variables",

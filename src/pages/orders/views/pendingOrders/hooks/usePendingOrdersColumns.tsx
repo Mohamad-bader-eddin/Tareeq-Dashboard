@@ -28,7 +28,7 @@ const usePendingOrdersColumns = ({
         renderCell: (params) => {
           return (
             <AppLink
-              path={`/dashboard/users/clients/${params.row.customerId}`}
+              path={`/admin/users/clients/${params.row.customerId}`}
               name={params.value}
             />
           );

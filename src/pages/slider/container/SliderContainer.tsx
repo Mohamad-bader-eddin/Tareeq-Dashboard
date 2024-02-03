@@ -26,7 +26,7 @@ const SliderContainer = () => {
   const { mutate } = useSliderDeleteQuery();
   const navigate = useNavigate();
   const handleInfo = (id: GridRowId) => {
-    navigate(`/dashboard/slider/${id}`);
+    navigate(`/admin/slider/${id}`);
   };
   const handleOpenDialog = (id: GridRowId) => {
     setOpenDeleteDialog(true);
@@ -36,7 +36,7 @@ const SliderContainer = () => {
   const { rows } = useSliderRows({ data: data?.data.content });
 
   const handleAddSlide = () => {
-    navigate("/dashboard/slider/add-slide");
+    navigate("/admin/slider/add-slide");
   };
   const handleAgree = () => {
     mutate(selectedId as GridRowId, {

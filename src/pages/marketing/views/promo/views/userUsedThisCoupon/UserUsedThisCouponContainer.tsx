@@ -11,7 +11,7 @@ const UserUsedThisCouponContainer = () => {
   const { columns } = useUserUsedThisCouponColumns();
   const { initialRows } = useUserUsedThisCouponRows();
   const breadcrumbsTracks = [
-    { path: "/dashboard/marketing/promo", name: t("promo") },
+    { path: "/admin/marketing/promo", name: t("promo") },
   ];
   return (
     <Layout>

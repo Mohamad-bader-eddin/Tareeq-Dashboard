@@ -21,7 +21,7 @@ const AddZoneContainer = () => {
     setOpenSucsses,
   } = useAddZoneValidation({});
   const breadcrumbsTracks = [
-    { path: "/dashboard/coverage/zones", name: t("zones") },
+    { path: "/admin/coverage/zones", name: t("zones") },
   ];
   return (
     <Layout>

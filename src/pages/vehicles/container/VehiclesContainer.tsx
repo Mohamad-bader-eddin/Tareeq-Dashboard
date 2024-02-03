@@ -25,7 +25,7 @@ const VehiclesContainer = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const handleInfo = (id: GridRowId) => {
-    navigate(`/dashboard/vehicles/${id}`);
+    navigate(`/admin/vehicles/${id}`);
   };
   const handleOpenDialog = (id: GridRowId) => {
     setOpenDeleteDialog(true);
@@ -35,7 +35,7 @@ const VehiclesContainer = () => {
   const { rows } = useVehiclesRows({ data: data?.data.content });
   const { mutate } = useVehiclesDeleteQuery();
   const handleAddVehicle = () => {
-    navigate("/dashboard/vehicles/add-vehicle");
+    navigate("/admin/vehicles/add-vehicle");
   };
   const handleAgree = () => {
     mutate(selectedId as GridRowId, {

@@ -22,7 +22,7 @@ const useUserUsedThisCouponColumns = () => {
         width: 250,
         renderCell: (params) => {
           return (
-            <AppLink path="/dashboard/users/clients/info" name={params.value} />
+            <AppLink path="/admin/users/clients/info" name={params.value} />
           );
         },
       },

@@ -30,10 +30,10 @@ const PolygonsContainer = () => {
   const { mutate } = useDeleteZoneQuery();
   const navigate = useNavigate();
   const handleAddPolygon = () => {
-    navigate("/dashboard/coverage/add-polygons");
+    navigate("/admin/coverage/add-polygons");
   };
   const handleInfoPolygon = (id: GridRowId) => {
-    navigate(`/dashboard/coverage/polygons/${id}`);
+    navigate(`/admin/coverage/polygons/${id}`);
   };
   const { columns } = usePolygonsColumns({
     handleInfoPolygon,
