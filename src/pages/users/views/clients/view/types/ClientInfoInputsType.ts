@@ -10,12 +10,12 @@ export type initialValuesType = {
 }
 
 export type validationSchemaType = Yup.ObjectSchema<{
-    joinDate: Date | null;
+    // joinDate: Date | null;
     name: string;
     phone: string;
     // birthDate: Date | null;
 }, Yup.AnyObject, {
-    joinDate: undefined;
+    // joinDate: undefined;
     name: undefined;
     phone: undefined;
     // birthDate: undefined;

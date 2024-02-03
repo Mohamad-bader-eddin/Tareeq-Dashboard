@@ -22,8 +22,17 @@ const Clietntinfo = () => {
   const { t } = useTranslation();
   const { id } = useParams();
   const { data, isLoading } = useClientInfoQuery(id as string);
-  const { initialValues, onSubmit, validationSchema } =
-    useClientsInfoValidation({ data: data?.data.content });
+  const {
+    initialValues,
+    onSubmit,
+    validationSchema,
+    msg: msgInfo,
+    openSucsses: openSucssesInfo,
+    setOpenSucsses: setOpenSucssesInfo,
+    openError: openErrorInfo,
+    errorMsg: errorMsgInfo,
+    setOpenError: setOpenErrorInfo,
+  } = useClientsInfoValidation({ data: data?.data.content });
   // const {
   //   initialValues: changePasswordValues,
   //   onSubmit: changePasswordOnSubmit,
@@ -63,6 +72,18 @@ const Clietntinfo = () => {
               initialValues={initialValues}
               validationSchema={validationSchema}
               onSubmit={onSubmit}
+            />
+            <GenericAlert
+              open={openSucssesInfo}
+              setOpen={setOpenSucssesInfo}
+              type="success"
+              msg={msgInfo}
+            />
+            <GenericAlert
+              open={openErrorInfo}
+              setOpen={setOpenErrorInfo}
+              type="error"
+              msg={errorMsgInfo}
             />
           </PaperContainer>
           <PaperContainer>
