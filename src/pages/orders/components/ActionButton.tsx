@@ -49,7 +49,7 @@ const ActionButton = ({ type, id }: ActionButtonProps) => {
   };
 
   const handleTrack = () => {
-    navigate(`/dashboard/orders/track-order/${type}`);
+    navigate(`/dashboard/orders/track-order/${type}/${id}`);
     setAnchorEl(null);
   };
   const handleInfo = () => {

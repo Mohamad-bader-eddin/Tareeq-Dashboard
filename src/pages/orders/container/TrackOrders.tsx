@@ -1,13 +1,15 @@
-import { Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import PaperContainer from "../../../share/components/Paper/PaperContainer";
 import Layout from "../../../share/components/layout/Layout";
 import Breadcrumb from "../../../share/components/breadcrumbs/Breadcrumb";
 import { useTranslation } from "react-i18next";
-import GenericMap from "../../../share/components/map/GenericMap";
+// import GenericMap from "../../../share/components/map/GenericMap";
 import { useParams } from "react-router-dom";
+// import TrackMap from "../components/TrackMap";
 
 const TrackOrders = () => {
   const { t } = useTranslation();
+  const { id } = useParams();
   const { type } = useParams();
   const track = () => {
     switch (type) {
@@ -44,6 +46,7 @@ const TrackOrders = () => {
     }
   };
   const breadcrumbsTracks = [track()];
+
   return (
     <Layout>
       <Breadcrumb tracks={breadcrumbsTracks} current={t("track_order")} />
@@ -51,7 +54,15 @@ const TrackOrders = () => {
         <Typography variant="h6" sx={{ marginBottom: "15px" }}>
           {t("track_order")}
         </Typography>
-        <GenericMap />
+        <Box height={"400px"}>
+          <iframe
+            src={`http://localhost:5174/admin/track-order/${id}`}
+            title="Iframe Title"
+            width={"100%"}
+            height={"400px"}
+            style={{ border: "0", background: "transparent" }}
+          />
+        </Box>
       </PaperContainer>
     </Layout>
   );

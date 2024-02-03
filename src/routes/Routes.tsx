@@ -72,7 +72,7 @@ const Routes = () => {
         }
       />
       <Route
-        path="/dashboard/orders/track-order/:type"
+        path="/dashboard/orders/track-order/:type/:id"
         element={<TrackOrders />}
       />
       <Route
