@@ -45,13 +45,13 @@ const AddPolygonsContainer = () => {
         <Typography variant="h6" sx={{ mb: "20px" }}>
           {t("add_polygon")}
         </Typography>
-        <Box height={"580px"}>
+        <Box height={"600px"}>
           <iframe
             ref={iframeRef}
             src="https://tareeq-map.netlify.app/"
             title="Iframe Title"
             width={"100%"}
-            height={"557.6px"}
+            height={"597.6px"}
             style={{ border: "0", background: "transparent" }}
           />
         </Box>
