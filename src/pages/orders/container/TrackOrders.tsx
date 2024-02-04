@@ -56,7 +56,7 @@ const TrackOrders = () => {
         </Typography>
         <Box height={"400px"}>
           <iframe
-            src={`http://localhost:5174/admin/track-order/${id}`}
+            src={`https://track-order-map.netlify.app/?id=${id}`}
             title="Iframe Title"
             width={"100%"}
             height={"400px"}

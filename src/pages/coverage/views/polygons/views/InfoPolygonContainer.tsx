@@ -30,7 +30,7 @@ const InfoPolygonContainer = () => {
         <Box height={"600px"}>
           <iframe
             ref={iframeRef}
-            src={`http://localhost:5174/admin/coverage/polygons/${id}`}
+            src={`https://edit-polygons.netlify.app/?id=${id}`}
             title="Iframe Title"
             width={"100%"}
             height={"597.6px"}
