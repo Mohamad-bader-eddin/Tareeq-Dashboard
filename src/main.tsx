@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
-import { BrowserRouter } from "react-router-dom";
+import { HashRouter } from "react-router-dom";
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
@@ -35,10 +35,10 @@ i18n
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <Suspense fallback={<Spinner />}>
-    <BrowserRouter>
+    <HashRouter>
       <AuthProvider>
         <App />
       </AuthProvider>
-    </BrowserRouter>
+    </HashRouter>
   </Suspense>
 );
