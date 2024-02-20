@@ -1,6 +1,6 @@
 // import HouseIcon from "@mui/icons-material/House";
 import StyleIcon from "@mui/icons-material/Style";
-// import AddCircleIcon from "@mui/icons-material/AddCircle";
+import AddCircleIcon from "@mui/icons-material/AddCircle";
 import GroupIcon from "@mui/icons-material/Group";
 // import LocationOnIcon from "@mui/icons-material/LocationOn";
 // import BarChartIcon from "@mui/icons-material/BarChart";
@@ -44,21 +44,21 @@ export const SidebarData = [
       },
     ],
   },
-  // {
-  //   title: "create_new_order",
-  //   path: "/create-new-order",
-  //   icon: <AddCircleIcon />,
-  //   subNav: [
-  //     {
-  //       title: "courier_on_demand",
-  //       path: "/admin/create-new-order/courier-on-demand",
-  //     },
-  //     {
-  //       title: "P2P",
-  //       path: "/admin/create-new-order/p2p",
-  //     },
-  //   ],
-  // },
+  {
+    title: "create_new_order",
+    path: "/admin/create-new-order",
+    icon: <AddCircleIcon />,
+    // subNav: [
+    //   {
+    //     title: "courier_on_demand",
+    //     path: "/admin/create-new-order/courier-on-demand",
+    //   },
+    //   {
+    //     title: "P2P",
+    //     path: "/admin/create-new-order/p2p",
+    //   },
+    // ],
+  },
   {
     title: "vehicle_type",
     path: "/admin/vehicles",
@@ -116,10 +116,10 @@ export const SidebarData = [
         title: "polygons",
         path: "/admin/coverage/polygons",
       },
-      // {
-      //   title: "location_votes",
-      //   path: "/admin/coverage/location-votes",
-      // },
+      {
+        title: "location_votes",
+        path: "/admin/coverage/location-votes",
+      },
     ],
   },
   {
@@ -131,14 +131,14 @@ export const SidebarData = [
         title: "promo",
         path: "/admin/marketing/promo",
       },
-      // {
-      //   title: "push_notifications",
-      //   path: "/marketing/push-notifications",
-      // },
-      // {
-      //   title: "sent_notifications",
-      //   path: "/marketing/sent-notifications",
-      // },
+      {
+        title: "push_notifications",
+        path: "/admin/marketing/push-notifications",
+      },
+      {
+        title: "sent_notifications",
+        path: "/admin/marketing/sent-notifications",
+      },
     ],
   },
   {
@@ -146,29 +146,29 @@ export const SidebarData = [
     path: "/management",
     icon: <SettingsSuggestIcon />,
     subNav: [
-      // {
-      //   title: "operation_time",
-      //   path: "/management/operation-time",
-      // },
+      {
+        title: "operation_time",
+        path: "/admin/management/operation-time",
+      },
       {
         title: "app_variables_periods",
         path: "/admin/management/app-varialbes-periods",
       },
       // {
       //   title: "other_app_variables",
-      //   path: "/management/other-app-variables",
+      //   path: "/admin/management/other-app-variables",
       // },
-      // {
-      //   title: "shopper_limit",
-      //   path: "/management/shopper-limit",
-      // },
-      // {
-      //   title: "app_phone_number",
-      //   path: "/management/app-phone-number",
-      // },
+      {
+        title: "shopper_limit",
+        path: "/admin/management/shopper-limit",
+      },
+      {
+        title: "app_phone_number",
+        path: "/admin/management/app-phone-number",
+      },
       // {
       //   title: "notifications",
-      //   path: "/management/notifications",
+      //   path: "/admin/management/notifications",
       // },
       // {
       //   title: "messsages",

@@ -32,9 +32,9 @@ const CourierOnDemandForm = ({
       {(formik) => {
         return (
           <Form>
-            <Input formik={formik} label={t("id")} name="id" />
+            {/* <Input formik={formik} label={t("id")} name="id" />
             <Input formik={formik} label={t("full_name")} name="fullName" />
-            <Input formik={formik} label={t("phone")} name="phone" />
+            <Input formik={formik} label={t("phone")} name="phone" /> */}
             <Input
               formik={formik}
               label={t("source_location")}

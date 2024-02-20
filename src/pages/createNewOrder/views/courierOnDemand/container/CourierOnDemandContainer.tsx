@@ -20,7 +20,7 @@ const CourierOnDemandContainer = () => {
     <Layout>
       <PaperContainer>
         <Typography variant="h6" sx={{ mb: "15px" }}>
-          {t("courier_on_demand")}
+          {t("create_new_order")}
         </Typography>
         {phone ? (
           <CourierOnDemandForm

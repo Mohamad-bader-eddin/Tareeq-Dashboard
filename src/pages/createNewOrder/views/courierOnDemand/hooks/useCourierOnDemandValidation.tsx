@@ -6,18 +6,18 @@ import { useTranslation } from "react-i18next";
 const useCourierOnDemandValidation = () => {
   const { t } = useTranslation();
   const initialValues = {
-    id: "",
-    fullName: "",
-    phone: "",
+    // id: "",
+    // fullName: "",
+    // phone: "",
     sourceLocation: "",
     destinationLocation: "",
     sendToActiveOrders: false,
   };
 
   const validationSchema = Yup.object({
-    id: Yup.string().required(t("required")),
-    fullName: Yup.string().required(t("required")),
-    phone: Yup.string().required(t("required")),
+    // id: Yup.string().required(t("required")),
+    // fullName: Yup.string().required(t("required")),
+    // phone: Yup.string().required(t("required")),
     sourceLocation: Yup.string().required(t("required")),
     destinationLocation: Yup.string().required(t("required")),
   });

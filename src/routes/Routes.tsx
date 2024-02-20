@@ -114,10 +114,21 @@ const Routes = () => {
         }
       />
       <Route
-        path="/admin/create-new-order/courier-on-demand"
-        element={<CourierOnDemandContainer />}
+        path="/admin/create-new-order"
+        element={
+          <RequireAuth allowedRoles={["admin"]}>
+            <CourierOnDemandContainer />
+          </RequireAuth>
+        }
       />
-      <Route path="/admin/create-new-order/p2p" element={<P2pContainer />} />
+      <Route
+        path="/admin/create-new-order/p2p"
+        element={
+          <RequireAuth allowedRoles={["admin"]}>
+            <P2pContainer />
+          </RequireAuth>
+        }
+      />
       <Route
         path="/admin/vehicles"
         element={
@@ -279,11 +290,19 @@ const Routes = () => {
       />
       <Route
         path="/admin/coverage/location-votes"
-        element={<LocationVotesContainer />}
+        element={
+          <RequireAuth allowedRoles={["admin"]}>
+            <LocationVotesContainer />
+          </RequireAuth>
+        }
       />
       <Route
         path="/admin/coverage/location-vote-info"
-        element={<ViewLocationVote />}
+        element={
+          <RequireAuth allowedRoles={["admin"]}>
+            <ViewLocationVote />
+          </RequireAuth>
+        }
       />
       <Route
         path="/admin/marketing/promo"
@@ -318,16 +337,28 @@ const Routes = () => {
         }
       />
       <Route
-        path="/marketing/push-notifications"
-        element={<PushNotifications />}
+        path="/admin/marketing/push-notifications"
+        element={
+          <RequireAuth allowedRoles={["admin"]}>
+            <PushNotifications />
+          </RequireAuth>
+        }
       />
       <Route
-        path="/marketing/sent-notifications"
-        element={<SentNotification />}
+        path="/admin/marketing/sent-notifications"
+        element={
+          <RequireAuth allowedRoles={["admin"]}>
+            <SentNotification />
+          </RequireAuth>
+        }
       />
       <Route
-        path="/management/operation-time"
-        element={<OperationTimeContainer />}
+        path="/admin/management/operation-time"
+        element={
+          <RequireAuth allowedRoles={["admin"]}>
+            <OperationTimeContainer />
+          </RequireAuth>
+        }
       />
       <Route
         path="/admin/management/app-varialbes-periods"
@@ -354,20 +385,36 @@ const Routes = () => {
         }
       />
       <Route
-        path="/management/other-app-variables"
-        element={<OtherAppVariables />}
+        path="/admin/management/other-app-variables"
+        element={
+          <RequireAuth allowedRoles={["admin"]}>
+            <OtherAppVariables />
+          </RequireAuth>
+        }
       />
       <Route
-        path="/management/shopper-limit"
-        element={<ShopperLimitContainer />}
+        path="/admin/management/shopper-limit"
+        element={
+          <RequireAuth allowedRoles={["admin"]}>
+            <ShopperLimitContainer />
+          </RequireAuth>
+        }
       />
       <Route
-        path="/management/app-phone-number"
-        element={<AppPhoneNumberContainer />}
+        path="/admin/management/app-phone-number"
+        element={
+          <RequireAuth allowedRoles={["admin"]}>
+            <AppPhoneNumberContainer />
+          </RequireAuth>
+        }
       />
       <Route
-        path="/management/notifications"
-        element={<NotificationsContainer />}
+        path="/admin/management/notifications"
+        element={
+          <RequireAuth allowedRoles={["admin"]}>
+            <NotificationsContainer />
+          </RequireAuth>
+        }
       />
       <Route path="/management/messsages" element={<MessagesContainer />} />
       <Route
