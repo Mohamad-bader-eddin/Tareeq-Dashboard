@@ -4,7 +4,7 @@ import { useMutation } from "react-query";
 
 const useDriverDeleteQuery = () => {
   const deleteDriver = (driverId: GridRowId) => {
-    return axiosInstance.delete(`/api/admin//${driverId}`);
+    return axiosInstance.delete(`/api/admin/driver/${driverId}`);
   };
   return useMutation(deleteDriver);
 };

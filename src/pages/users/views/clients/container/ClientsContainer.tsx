@@ -17,6 +17,8 @@ const ClientsContainer = () => {
   const [selectedId, setSelectedId] = useState<GridRowId | null>(null);
   const [openError, setOpenError] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
+  const [openSucsses, setOpenSucsses] = useState(false);
+  const [msg, setMsg] = useState("");
   const { data, isLoading, refetch } = useClientsQuery();
   const { t } = useTranslation();
   const navigate = useNavigate();
@@ -32,7 +34,9 @@ const ClientsContainer = () => {
   const { mutate } = useClientDelete();
   const handleAgree = () => {
     mutate(selectedId as GridRowId, {
-      onSuccess: () => {
+      onSuccess: (response) => {
+        setOpenSucsses(true);
+        setMsg(response.data.message);
         setOpenDeleteDialog(false);
         refetch();
       },
@@ -67,6 +71,12 @@ const ClientsContainer = () => {
           setOpen={setOpenError}
           type="error"
           msg={errorMsg}
+        />
+        <GenericAlert
+          open={openSucsses}
+          setOpen={setOpenSucsses}
+          type="success"
+          msg={msg}
         />
       </PaperContainer>
     </Layout>
