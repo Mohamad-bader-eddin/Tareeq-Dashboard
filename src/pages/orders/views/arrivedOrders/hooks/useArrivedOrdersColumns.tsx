@@ -48,13 +48,13 @@ const useArrivedOrdersColumns = () => {
         align: "center",
         headerAlign: "center",
       },
-      // {
-      //   field: "totalPaid",
-      //   headerName: t("total_paid"),
-      //   width: 100,
-      //   align: "center",
-      //   headerAlign: "center",
-      // },
+      {
+        field: "totalPaid",
+        headerName: t("total_paid"),
+        width: 100,
+        align: "center",
+        headerAlign: "center",
+      },
       {
         field: "arrivedAt",
         headerName: t("arrived_at"),

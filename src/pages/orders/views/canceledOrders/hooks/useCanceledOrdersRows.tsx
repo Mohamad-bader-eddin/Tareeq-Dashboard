@@ -7,11 +7,11 @@ const useCanceledOrdersRows = ({ data }: { data: Order[] }) => {
   data?.forEach((el) =>
     rows.push({
       id: el.id,
-      customer: el.user.name,
-      customerId: el.user.id,
-      status: el.status,
-      totalExpected: el.total_expected,
-      placedon: format(new Date(el.created_at as Date), "dd/MM/yyyy"),
+      customer: el?.user?.name,
+      customerId: el?.user?.id,
+      status: el?.status,
+      totalExpected: el?.total_expected,
+      placedon: format(new Date(el?.created_at as Date), "dd/MM/yyyy"),
       shopper: el?.driver?.name,
       shopperId: el?.driver?.id,
     })

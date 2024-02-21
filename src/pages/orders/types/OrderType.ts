@@ -5,6 +5,7 @@ export type Order = {
     status: string;
     total_expected: number;
     distance_expected: number;
+    total_paid?: number;
     order_date: Date;
     is_schedule: boolean;
     cancel_reason_id: null;

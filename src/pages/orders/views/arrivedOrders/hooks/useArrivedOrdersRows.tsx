@@ -11,6 +11,7 @@ const useArrivedOrdersRows = ({ data }: { data: Order[] }) => {
       customerId: el.user.id,
       status: el.status,
       totalExpected: el.total_expected,
+      totalPaid: el.total_paid,
       arrivedAt: format(
         new Date(el.arrive_to_customer_at as Date),
         "dd/MM/yyyy"
