@@ -23,7 +23,7 @@ const PendingOrdersContainer = () => {
   const [errorMsg, setErrorMsg] = useState("");
   const [openSucsses, setOpenSucsses] = useState(false);
   const [msg, setMsg] = useState("");
-  const { data, isLoading } = usePendingOrdersQuery();
+  const { data, isLoading, isFetching } = usePendingOrdersQuery();
   const { columns } = usePendingOrdersColumns({
     setOpen: setOPenAssignDialog,
     setIdOrder,
@@ -67,7 +67,7 @@ const PendingOrdersContainer = () => {
           rows={rows}
           title={t("pending_orders")}
           totalCount={data?.data.content.length}
-          loading={isLoading}
+          loading={isLoading || isFetching}
         />
         <GenericDialog
           open={openAssignDialog}

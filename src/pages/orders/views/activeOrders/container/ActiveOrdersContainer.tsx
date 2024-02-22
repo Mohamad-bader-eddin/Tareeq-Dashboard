@@ -9,7 +9,7 @@ import useAvtiveOrdersQuery from "../hooks/useAvtiveOrdersQuery";
 
 const ActiveOrdersContainer = () => {
   const { t } = useTranslation();
-  const { data, isLoading } = useAvtiveOrdersQuery();
+  const { data, isLoading, isFetching } = useAvtiveOrdersQuery();
   const { columns } = useActiveOrdersContainerColumn();
   const { rows } = useActiveOrdersContainerRows({ data: data?.data.content });
 
@@ -22,7 +22,7 @@ const ActiveOrdersContainer = () => {
           rows={rows}
           title={t("active_orders")}
           totalCount={data?.data.content.length}
-          loading={isLoading}
+          loading={isLoading || isFetching}
         />
       </PaperContainer>
     </Layout>

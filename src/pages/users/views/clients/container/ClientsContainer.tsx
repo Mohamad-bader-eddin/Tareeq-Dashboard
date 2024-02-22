@@ -19,7 +19,7 @@ const ClientsContainer = () => {
   const [errorMsg, setErrorMsg] = useState("");
   const [openSucsses, setOpenSucsses] = useState(false);
   const [msg, setMsg] = useState("");
-  const { data, isLoading, refetch } = useClientsQuery();
+  const { data, isLoading, refetch, isFetching } = useClientsQuery();
   const { t } = useTranslation();
   const navigate = useNavigate();
   const handleInfo = (id: GridRowId) => {
@@ -55,7 +55,7 @@ const ClientsContainer = () => {
         <Table
           columns={columns}
           rows={rows}
-          loading={isLoading}
+          loading={isLoading || isFetching}
           title={t("clients")}
           totalCount={data?.data.content.length}
         />

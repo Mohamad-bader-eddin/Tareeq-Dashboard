@@ -22,7 +22,7 @@ const ScheduleOrdersContainer = () => {
   const [errorMsg, setErrorMsg] = useState("");
   const [openSucsses, setOpenSucsses] = useState(false);
   const [msg, setMsg] = useState("");
-  const { data, isLoading } = useScheduleOrdersQuery();
+  const { data, isLoading, isFetching } = useScheduleOrdersQuery();
   const { columns } = useScheduleOrdersColumns({
     setOpen: setOPenAssignDialog,
     setIdOrder,
@@ -68,7 +68,7 @@ const ScheduleOrdersContainer = () => {
           rows={rows}
           title={t("scheduled_orders")}
           totalCount={data?.data.content.length}
-          loading={isLoading}
+          loading={isLoading || isFetching}
         />
         <GenericDialog
           open={openAssignDialog}

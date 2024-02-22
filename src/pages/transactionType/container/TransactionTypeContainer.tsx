@@ -21,7 +21,7 @@ const TransactionTypeContainer = () => {
   const [errorMsg, setErrorMsg] = useState("");
   const [openSucsses, setOpenSucsses] = useState(false);
   const [msg, setMsg] = useState("");
-  const { data, isLoading, refetch } = useTransactionsTypeQuery();
+  const { data, isLoading, refetch, isFetching } = useTransactionsTypeQuery();
   const { t } = useTranslation();
   const navigate = useNavigate();
   const handleInfo = (id: GridRowId) => {
@@ -76,7 +76,7 @@ const TransactionTypeContainer = () => {
         <Table
           columns={columns}
           rows={rows}
-          loading={isLoading}
+          loading={isLoading || isFetching}
           title={t("transaction_type")}
           totalCount={data?.data.content.length}
         />

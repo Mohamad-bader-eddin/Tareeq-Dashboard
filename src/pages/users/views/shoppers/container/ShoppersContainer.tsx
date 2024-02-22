@@ -35,7 +35,7 @@ const ShoppersContainer = () => {
     navigate("/admin/users/shoppers/add-shopper");
   };
   const { mutate } = useDriverDeleteQuery();
-  const { data, isLoading, refetch } = useDeiversQuery();
+  const { data, isLoading, refetch, isFetching } = useDeiversQuery();
   const { rows } = useShoppersRows({ data: data?.data.content });
   const handleAgree = () => {
     mutate(selectedId as GridRowId, {
@@ -75,7 +75,7 @@ const ShoppersContainer = () => {
           rows={rows}
           title={t("drivers")}
           totalCount={data?.data.content.length}
-          loading={isLoading}
+          loading={isLoading || isFetching}
         />
         <GenericDialog
           open={openDeleteDialog}

@@ -21,7 +21,7 @@ const VehiclesContainer = () => {
   const [errorMsg, setErrorMsg] = useState("");
   const [openSucsses, setOpenSucsses] = useState(false);
   const [msg, setMsg] = useState("");
-  const { data, isLoading, refetch } = useVehiclesQuery();
+  const { data, isLoading, refetch, isFetching } = useVehiclesQuery();
   const { t } = useTranslation();
   const navigate = useNavigate();
   const handleInfo = (id: GridRowId) => {
@@ -73,7 +73,7 @@ const VehiclesContainer = () => {
         <Table
           columns={columns}
           rows={rows}
-          loading={isLoading}
+          loading={isLoading || isFetching}
           title={t("vehicles")}
           totalCount={data?.data.content.length}
         />

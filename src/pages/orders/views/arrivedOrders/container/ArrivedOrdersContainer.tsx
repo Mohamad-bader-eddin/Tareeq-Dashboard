@@ -8,7 +8,7 @@ import useArrivedOrdersRows from "../hooks/useArrivedOrdersRows";
 import useArrivedOrdersQuery from "../hooks/useArrivedOrdersQuery";
 
 const ArrivedOrdersContainer = () => {
-  const { data, isLoading } = useArrivedOrdersQuery();
+  const { data, isLoading, isFetching } = useArrivedOrdersQuery();
   const { columns } = useArrivedOrdersColumns();
   const { rows } = useArrivedOrdersRows({ data: data?.data.content });
   const { t } = useTranslation();
@@ -21,7 +21,7 @@ const ArrivedOrdersContainer = () => {
           rows={rows}
           title={t("arrived_orders")}
           totalCount={data?.data.content.length}
-          loading={isLoading}
+          loading={isLoading || isFetching}
         />
       </PaperContainer>
     </Layout>

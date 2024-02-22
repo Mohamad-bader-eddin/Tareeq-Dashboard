@@ -9,7 +9,7 @@ import useCanceledOrdersQuery from "../hooks/useCanceledOrdersQuery";
 
 const CanceledOrdersContainer = () => {
   const { t } = useTranslation();
-  const { data, isLoading } = useCanceledOrdersQuery();
+  const { data, isLoading, isFetching } = useCanceledOrdersQuery();
   const { columns } = useCanceledOrdersColumns();
   const { rows } = useCanceledOrdersRows({ data: data?.data.content });
   return (
@@ -21,7 +21,7 @@ const CanceledOrdersContainer = () => {
           rows={rows}
           title={t("canceled_orders")}
           totalCount={data?.data.content.length}
-          loading={isLoading}
+          loading={isLoading || isFetching}
         />
       </PaperContainer>
     </Layout>
