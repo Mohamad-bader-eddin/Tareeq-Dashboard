@@ -7,6 +7,7 @@ const useTransactionTypeRows = ({ data }: { data: TransactionType[] }) => {
     rows.push({
       id: el.id as string,
       type: el.type,
+      description: el.description,
       createdAt: format(new Date(el.created_at as Date), "dd/MM/yyyy"),
     })
   );

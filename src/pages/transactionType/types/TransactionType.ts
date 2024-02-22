@@ -8,5 +8,6 @@ export type TransactionType = {
 export type TransactionTypeRow = {
     id: string;
     type: string;
+    description: string;
     createdAt: string;
 }

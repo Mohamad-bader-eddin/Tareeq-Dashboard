@@ -26,6 +26,13 @@ const useTransactionTypeColumns = ({
         flex: 1,
       },
       {
+        field: "description",
+        headerName: t("description"),
+        align: "center",
+        headerAlign: "center",
+        flex: 1,
+      },
+      {
         field: "createdAt",
         headerName: t("created_at"),
         flex: 1,
