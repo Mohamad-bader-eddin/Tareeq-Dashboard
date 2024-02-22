@@ -236,5 +236,6 @@
   "total_earn": "مجموع الربح",
   "transaction_type": "نوع المعاملة",
   "add_transaction_type": "إضافة نوع المعاملة",
-  "waiting_value": "قيمة الانتظار"
+  "waiting_value": "قيمة الانتظار",
+  "next": "التالي"
 }

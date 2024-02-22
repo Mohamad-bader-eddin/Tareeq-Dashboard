@@ -22,7 +22,10 @@ const PhoneForm = ({
           <Form>
             <Input formik={formik} label={t("phone")} name="phone" />
             <Box sx={{ width: "200px" }}>
-              <SubmitButton name={t("save")} disabled={!formik.isValid} />
+              <SubmitButton
+                name={t("next")}
+                disabled={!formik.isValid || formik.isSubmitting}
+              />
             </Box>
           </Form>
         );
