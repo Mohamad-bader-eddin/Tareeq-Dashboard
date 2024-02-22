@@ -63,6 +63,7 @@
   "delete_addresses": "حذف العناوين",
   "block_order_message": "هل تريد إيقاف هذا الطلب ..؟ّّ!",
   "cancel_order_message": "هل تريد الغاء هذا الطلب ..؟ّّ!",
+  "reactivate_order_message": "هل تريد اعادة تفعيل هذا الطلب ..؟ّّ!",
   "break": "ايقاف",
   "total_paid": "مجمموع الدفع",
   "credits_used": "اعتمادات المستخدمة",
@@ -237,5 +238,6 @@
   "transaction_type": "نوع المعاملة",
   "add_transaction_type": "إضافة نوع المعاملة",
   "waiting_value": "قيمة الانتظار",
-  "next": "التالي"
+  "next": "التالي",
+  "re_active": "اعادة تفعيل"
 }

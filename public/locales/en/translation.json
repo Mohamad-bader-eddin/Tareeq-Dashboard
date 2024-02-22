@@ -63,6 +63,7 @@
   "delete_addresses": "Delete Addresses",
   "block_order_message": "Do you want to break this order ..?!",
   "cancel_order_message": "Do you want to cancel this order ..?!",
+  "reactivate_order_message": "Do you want to reactivate this order ..?!",
   "break": "Break",
   "total_paid": "Total Paid",
   "credits_used": "Credits Used",
@@ -237,5 +238,6 @@
   "transaction_type": "Transaction Type",
   "add_transaction_type": "Add Transaction Type",
   "waiting_value": "Waiting Value",
-  "next": "Next"
+  "next": "Next",
+  "re_active": "Reactivate"
 }

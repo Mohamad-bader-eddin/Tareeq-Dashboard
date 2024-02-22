@@ -20,7 +20,11 @@ import useCancelOrderQuery from "../hooks/useCancelOrderQuery";
 import useAvtiveOrdersQuery from "../views/activeOrders/hooks/useAvtiveOrdersQuery";
 import usePendingOrdersQuery from "../views/pendingOrders/hooks/usePendingOrdersQuery";
 import useScheduleOrdersQuery from "../views/scheduleOrders/hooks/useScheduleOrdersQuery";
+import AutorenewIcon from "@mui/icons-material/Autorenew";
 import useBreakOrderQuery from "../hooks/useBreakOrderQuery";
+import useReactivateOrderQuery from "../hooks/useReactivateOrderQuery";
+import { getErrorMessage } from "../../../share/utils/getErrorMessage";
+import useCanceledOrdersQuery from "../views/canceledOrders/hooks/useCanceledOrdersQuery";
 
 const ActionButton = ({ type, id }: ActionButtonProps) => {
   const navigate = useNavigate();
@@ -28,16 +32,22 @@ const ActionButton = ({ type, id }: ActionButtonProps) => {
   const { refetch: activeRefetch } = useAvtiveOrdersQuery();
   const { refetch: pendingRefetch } = usePendingOrdersQuery();
   const { refetch: scheduleRefetch } = useScheduleOrdersQuery();
+  const { refetch: canceledRefetch } = useCanceledOrdersQuery();
   const [openErrorCancel, setOpenErrorCancel] = useState(false);
   const [errorMsgCancel, setErrorMsgCancel] = useState("");
   const [openSucssesCancel, setOpenSucssesCancel] = useState(false);
   const [msgCancel, setMsgCancel] = useState("");
+  // const [msgReactivate, setMsgReactivate] = useState("");
+  const [openErrorReactivate, setOpenErrorReactivate] = useState(false);
+  const [errorMsgReactivate, setErrorMsgReactivate] = useState("");
+  // const [openSucssesReactivate, setOpenSucssesReactivate] = useState(false);
   const { mutate } = useCancelOrderQuery();
   const { mutate: breakMutate } = useBreakOrderQuery();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [openCancelDialog, setOPenCancelDialog] = useState(false);
-  // const [openAssignDialog, setOPenAssignDialog] = useState(false);
+  const [openReactivateDialog, setOPenReactivateDialog] = useState(false);
   const [openBreakDialog, setOpenBreakDialog] = useState(false);
+  const { mutate: reactivateMutate } = useReactivateOrderQuery();
   // const { columns } = useAssignOrderToColumn();
   // const { initialRows } = useAssignOrderToRows();
   const open = Boolean(anchorEl);
@@ -56,10 +66,10 @@ const ActionButton = ({ type, id }: ActionButtonProps) => {
     navigate(`/admin/orders/info-orders/${type}/${id}`);
     setAnchorEl(null);
   };
-  // const handleAssignTo = () => {
-  //   // setOPenAssignDialog(true);
-  //   setAnchorEl(null);
-  // };
+  const handleReactivate = () => {
+    setOPenReactivateDialog(true);
+    setAnchorEl(null);
+  };
   const handleCancel = () => {
     setOPenCancelDialog(true);
     setAnchorEl(null);
@@ -108,6 +118,19 @@ const ActionButton = ({ type, id }: ActionButtonProps) => {
       },
     });
   };
+  const handleAgreeReactivate = () => {
+    reactivateMutate(id as GridRowId, {
+      onSuccess: () => {
+        canceledRefetch();
+        setOPenReactivateDialog(false);
+      },
+      onError: (error) => {
+        setOpenErrorReactivate(true);
+        setErrorMsgReactivate(getErrorMessage(error));
+        setOPenReactivateDialog(false);
+      },
+    });
+  };
   return (
     <div>
       <Button
@@ -135,12 +158,12 @@ const ActionButton = ({ type, id }: ActionButtonProps) => {
           <HelpOutlineIcon sx={{ marginInlineEnd: "15px" }} />
           {t("info")}
         </MenuItem>
-        {/* {type === "pending" && (
-          <MenuItem onClick={handleAssignTo} disableRipple>
-            <AssignmentTurnedInIcon sx={{ marginInlineEnd: "15px" }} />
-            {t("assign_to")}
+        {type === "canceled" && (
+          <MenuItem onClick={handleReactivate} disableRipple>
+            <AutorenewIcon sx={{ marginInlineEnd: "15px" }} />
+            {t("re_active")}
           </MenuItem>
-        )} */}
+        )}
         {type === "active" && (
           <MenuItem onClick={handleBreak} disableRipple>
             <DoDisturbOnIcon sx={{ marginInlineEnd: "15px" }} />
@@ -154,15 +177,12 @@ const ActionButton = ({ type, id }: ActionButtonProps) => {
           </MenuItem>
         )}
       </Menu>
-      {/* <GenericDialog
-        open={openAssignDialog}
-        setOpen={setOPenAssignDialog}
-        fullScreen={true}
-        handleAgree={() => {}}
-        elementContent={
-          <Table columns={columns} rows={initialRows} loading={false} />
-        }
-      /> */}
+      <GenericDialog
+        open={openReactivateDialog}
+        setOpen={setOPenReactivateDialog}
+        handleAgree={handleAgreeReactivate}
+        elementContent={t("reactivate_order_message")}
+      />
       <GenericDialog
         open={openCancelDialog}
         setOpen={setOPenCancelDialog}
@@ -187,6 +207,18 @@ const ActionButton = ({ type, id }: ActionButtonProps) => {
         type="success"
         msg={msgCancel}
       />
+      <GenericAlert
+        open={openErrorReactivate}
+        setOpen={setOpenErrorReactivate}
+        type="error"
+        msg={errorMsgReactivate}
+      />
+      {/* <GenericAlert
+        open={openSucssesReactivate}
+        setOpen={setOpenSucssesReactivate}
+        type="success"
+        msg={msgReactivate}
+      /> */}
     </div>
   );
 };
