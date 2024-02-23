@@ -40,7 +40,10 @@ const OperationTimeForm = ({
               options={options}
             />
             <Box sx={{ width: "200px" }}>
-              <SubmitButton name={t("save")} disabled={!formik.isValid} />
+              <SubmitButton
+                name={t("save")}
+                disabled={!formik.isValid || formik.isSubmitting}
+              />
             </Box>
           </Form>
         );
