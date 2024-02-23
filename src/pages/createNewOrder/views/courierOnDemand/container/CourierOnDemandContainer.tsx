@@ -38,7 +38,7 @@ const CourierOnDemandContainer = () => {
           {t("create_new_order")}
         </Typography>
         {phone ? (
-          <Box height={"1329.6px"}>
+          <Box sx={{ height: "1329.6px", width: "100%" }}>
             <iframe
               ref={iframeRef}
               src={`https://tareeq-map.netlify.app/#/admin/create-order?id=${phone.id}`}
