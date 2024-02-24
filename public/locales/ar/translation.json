@@ -239,5 +239,6 @@
   "add_transaction_type": "إضافة نوع المعاملة",
   "waiting_value": "قيمة الانتظار",
   "next": "التالي",
-  "re_active": "اعادة تفعيل"
+  "re_active": "اعادة تفعيل",
+  "search_driver": "بحث عن سائق"
 }

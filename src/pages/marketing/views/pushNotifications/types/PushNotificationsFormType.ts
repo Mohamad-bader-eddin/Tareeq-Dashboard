@@ -1,22 +1,30 @@
 import { FormikHelpers } from "formik";
 import * as Yup from "yup";
+import { Option } from "../../../../../share/types";
 
 export type initialValuesType = {
-    userType: string;
+    userType: Option | null;
     title: string;
     message: string;
-    user: string;
+    user?: Option | null;
+    driver?: Option | null;
 };
 
 export type validationSchemaType = Yup.ObjectSchema<
     {
-        userType: string;
+        userType: {
+            name: string;
+            id: string;
+        };
         title: string;
         message: string;
     },
     Yup.AnyObject,
     {
-        userType: undefined;
+        userType: {
+            id: undefined;
+            name: undefined;
+        };
         title: undefined;
         message: undefined;
     },

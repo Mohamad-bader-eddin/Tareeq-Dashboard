@@ -239,5 +239,6 @@
   "add_transaction_type": "Add Transaction Type",
   "waiting_value": "Waiting Value",
   "next": "Next",
-  "re_active": "Reactivate"
+  "re_active": "Reactivate",
+  "search_driver": "Search Driver"
 }

@@ -1,12 +1,16 @@
 import { Form, Formik } from "formik";
 import { PushNotificationsFormType } from "../types/PushNotificationsFormType";
-import SelectInput from "../../../../../share/components/select/SelectInput";
 import { useTranslation } from "react-i18next";
 import Input from "../../../../../share/components/Input/Input";
 import { Box } from "@mui/material";
 import SubmitButton from "../../../../../share/components/submitButton/SubmitButton";
 import AutocompleteInput from "../../../../../share/components/autoComplete/AutocompleteInput";
-import { top100Films } from "./FakeData";
+import useUserTypeQuery from "../hooks/useUserTypeQuery";
+import useUserTypeMapper from "../hooks/useUserTypeMapper";
+import useClientsQuery from "../hooks/useClientsQuery";
+import useClientMapper from "../hooks/useClientMapper";
+import useDeiversQuery from "../hooks/useDeiversQuery";
+import useDriverMapper from "../hooks/useDriverMapper";
 
 const PushNotificationsForm = ({
   initialValues,
@@ -14,24 +18,15 @@ const PushNotificationsForm = ({
   validationSchema,
 }: PushNotificationsFormType) => {
   const { t } = useTranslation();
-  const options = [
-    {
-      value: "all",
-      key: t("all"),
-    },
-    {
-      value: "clients",
-      key: t("clients"),
-    },
-    {
-      value: "shoppers",
-      key: t("shoppers"),
-    },
-    {
-      value: "specifiedUser",
-      key: t("specified_user"),
-    },
-  ];
+  const { data, isLoading } = useUserTypeQuery();
+  const { options } = useUserTypeMapper({ data: data?.data.content });
+  const { data: clientsData, isLoading: clientsIsLoading } = useClientsQuery();
+  const { userOptions } = useClientMapper({ data: clientsData?.data.content });
+  const { data: driverData, isLoading: driverLoading } = useDeiversQuery();
+  const { driversOptions } = useDriverMapper({
+    data: driverData?.data.content,
+  });
+
   return (
     <Formik
       initialValues={initialValues}
@@ -41,19 +36,29 @@ const PushNotificationsForm = ({
       {(formik) => {
         return (
           <Form>
-            <SelectInput
+            <AutocompleteInput
               formik={formik}
               label={t("user_type")}
               name="userType"
               options={options}
+              loading={isLoading}
             />
-            {formik.values.userType === "specifiedUser" && (
+            {formik.values.userType?.name === "one-user" && (
               <AutocompleteInput
-                options={top100Films}
+                options={userOptions}
                 label={t("search_user")}
                 formik={formik}
                 name="user"
-                loading={false}
+                loading={clientsIsLoading}
+              />
+            )}
+            {formik.values.userType?.name === "one-driver" && (
+              <AutocompleteInput
+                options={driversOptions}
+                label={t("search_driver")}
+                formik={formik}
+                name="driver"
+                loading={driverLoading}
               />
             )}
             <Input formik={formik} label={t("title")} name="title" />
@@ -64,7 +69,10 @@ const PushNotificationsForm = ({
               textarea={true}
             />
             <Box sx={{ width: "200px" }}>
-              <SubmitButton name={t("send")} disabled={!formik.isValid} />
+              <SubmitButton
+                name={t("send")}
+                disabled={!formik.isValid || formik.isSubmitting}
+              />
             </Box>
           </Form>
         );
