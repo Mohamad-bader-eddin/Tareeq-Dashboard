@@ -5,7 +5,7 @@ import useAssignOrderToColumn from "../../../hooks/useAssignOrderToColumn";
 import useAssignOrderToRows from "../../../hooks/useAssignOrderToRows";
 import Layout from "../../../../../share/components/layout/Layout";
 import PaperContainer from "../../../../../share/components/Paper/PaperContainer";
-// import OrdersHead from "../../../components/OrdersHead";
+import OrdersHead from "../../../components/OrdersHead";
 import Table from "../../../../../share/components/table/Table";
 import GenericDialog from "../../../../../share/components/Dialog/GenericDialog";
 import { useTranslation } from "react-i18next";
@@ -62,7 +62,7 @@ const ScheduleOrdersContainer = () => {
   return (
     <Layout>
       <PaperContainer>
-        {/* <OrdersHead /> */}
+        <OrdersHead />
         <Table
           columns={columns}
           rows={rows}
