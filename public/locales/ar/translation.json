@@ -186,7 +186,7 @@
   "android_app_version": "نسخة تطبيق أندرويد",
   "iPhone_app_version": "نسخة تطبيق الآيفون",
   "the_radius": "نصف القطر بين العميل والسائقين (متر)",
-  "shopper_limit": "حد المتسوق",
+  "shopper_limit": "نصف القطر اللإسناد التلقائي",
   "app_phone_number": "رقم هاتف التطبيق",
   "notifications": "إشعارات",
   "messsages": "رسائل",

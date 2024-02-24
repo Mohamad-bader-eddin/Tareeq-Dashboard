@@ -158,10 +158,10 @@ export const SidebarData = [
       //   title: "other_app_variables",
       //   path: "/admin/management/other-app-variables",
       // },
-      // {
-      //   title: "shopper_limit",
-      //   path: "/admin/management/shopper-limit",
-      // },
+      {
+        title: "shopper_limit",
+        path: "/admin/management/shopper-limit",
+      },
       {
         title: "app_phone_number",
         path: "/admin/management/app-phone-number",

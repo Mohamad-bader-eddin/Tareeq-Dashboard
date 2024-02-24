@@ -186,7 +186,7 @@
   "android_app_version": "Android App Version",
   "iPhone_app_version": "IPhone App Version",
   "the_radius": "The radius between the customer and the drivers ( Meters )",
-  "shopper_limit": "Shopper Limit",
+  "shopper_limit": "Auto Assign Radius",
   "app_phone_number": "App Phone Number",
   "notifications": "Notifications",
   "messsages": "Messages",
