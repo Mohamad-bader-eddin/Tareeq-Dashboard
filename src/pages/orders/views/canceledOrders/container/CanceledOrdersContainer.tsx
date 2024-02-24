@@ -6,16 +6,29 @@ import PaperContainer from "../../../../../share/components/Paper/PaperContainer
 import OrdersHead from "../../../components/OrdersHead";
 import Table from "../../../../../share/components/table/Table";
 import useCanceledOrdersQuery from "../hooks/useCanceledOrdersQuery";
+import useManagementQuery from "../../../../management/hooks/useManagementQuery";
+import { Backdrop } from "@mui/material";
+import Spinner from "../../../../../share/components/Spinner";
 
 const CanceledOrdersContainer = () => {
   const { t } = useTranslation();
   const { data, isLoading, isFetching } = useCanceledOrdersQuery();
   const { columns } = useCanceledOrdersColumns();
   const { rows } = useCanceledOrdersRows({ data: data?.data.content });
+  const { data: managementData, isLoading: managementLoading } =
+    useManagementQuery();
   return (
     <Layout>
       <PaperContainer>
-        <OrdersHead />
+        {managementLoading ? (
+          <Backdrop
+            sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+            open={isLoading}
+          >
+            <Spinner />
+          </Backdrop>
+        ) : null}
+        <OrdersHead data={managementData?.data.content} />
         <Table
           columns={columns}
           rows={rows}

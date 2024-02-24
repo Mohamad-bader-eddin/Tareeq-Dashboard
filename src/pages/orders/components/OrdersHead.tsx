@@ -1,4 +1,4 @@
-import { Button } from "@mui/material";
+import { Backdrop, Box, Button } from "@mui/material";
 // import AdjustSharpIcon from "@mui/icons-material/AdjustSharp";
 import FiberManualRecordSharpIcon from "@mui/icons-material/FiberManualRecordSharp";
 // import MopedSharpIcon from "@mui/icons-material/MopedSharp";
@@ -6,30 +6,89 @@ import FiberManualRecordSharpIcon from "@mui/icons-material/FiberManualRecordSha
 // import DeleteIcon from "@mui/icons-material/Delete";
 // import { Icon } from "../style/OrdersHead.Style";
 // import { useDarkMode } from "../../../context/DarkMode";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 // import useMedeaQueries from "../../../share/utils/useMideaQuery";
 import { useTranslation } from "react-i18next";
+import { Management } from "../../management/types";
+import useUpdateManagementQuery from "../../management/hooks/useUpdateManagementQuery";
+import GenericAlert from "../../../share/components/alert/GenericAlert";
+import { getErrorMessage } from "../../../share/utils/getErrorMessage";
+import Spinner from "../../../share/components/Spinner";
 
-const OrdersHead = () => {
+const OrdersHead = ({ data }: { data: Management[] }) => {
   // const { darkMode } = useDarkMode();
   // const { laptop, laptopL } = useMedeaQueries();
+  const [openError, setOpenError] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
+  const [openSucsses, setOpenSucsses] = useState(false);
+  const [msg, setMsg] = useState("");
+  const { mutate, isLoading } = useUpdateManagementQuery();
   const [click, setClick] = useState(true);
   const { t } = useTranslation();
-  return (
-    <Button
-      variant="outlined"
-      color={click ? "success" : "error"}
-      endIcon={<FiberManualRecordSharpIcon />}
-      onClick={() => setClick((prev) => !prev)}
-      sx={{
-        mb: "20px",
-        ".css-9tj150-MuiButton-endIcon": {
-          marginInline: "8px -4px !important",
+  const autoAssign = data?.find((el) => el.key === "auto_assign_enabeled");
+  const handleClick = () => {
+    mutate(
+      {
+        key: "auto_assign_enabeled",
+        value: autoAssign?.value === "true" ? "false" : "true",
+      },
+      {
+        onSuccess: (response) => {
+          setOpenSucsses(true);
+          setClick((prev) => !prev);
+          setMsg(response.data.message);
         },
-      }}
-    >
-      {t("auto_assign_is")} {click ? t("on") : t("off")}
-    </Button>
+        onError: (error) => {
+          setOpenError(true);
+          setErrorMsg(getErrorMessage(error));
+        },
+      }
+    );
+  };
+  useEffect(() => {
+    if (autoAssign?.value === "true") {
+      setClick(true);
+    } else {
+      setClick(false);
+    }
+  }, [autoAssign?.value]);
+  return (
+    <Box>
+      {isLoading ? (
+        <Backdrop
+          sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+          open={isLoading}
+        >
+          <Spinner />
+        </Backdrop>
+      ) : null}
+      <Button
+        variant="outlined"
+        color={click ? "success" : "error"}
+        endIcon={<FiberManualRecordSharpIcon />}
+        onClick={handleClick}
+        sx={{
+          mb: "20px",
+          ".css-9tj150-MuiButton-endIcon": {
+            marginInline: "8px -4px !important",
+          },
+        }}
+      >
+        {t("auto_assign_is")} {click ? t("on") : t("off")}
+      </Button>
+      <GenericAlert
+        open={openSucsses}
+        setOpen={setOpenSucsses}
+        type="success"
+        msg={msg}
+      />
+      <GenericAlert
+        open={openError}
+        setOpen={setOpenError}
+        type="error"
+        msg={errorMsg}
+      />
+    </Box>
     // <Stack
     //   direction={laptop ? "column" : "row"}
     //   alignItems={laptop ? "flex-start" : "center"}

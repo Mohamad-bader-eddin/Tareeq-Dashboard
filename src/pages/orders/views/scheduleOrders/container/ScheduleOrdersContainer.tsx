@@ -14,6 +14,9 @@ import GenericAlert from "../../../../../share/components/alert/GenericAlert";
 import useDeiversQuery from "../../../../users/views/shoppers/hooks/useDeiversQuery";
 import useAssignOrderQuery from "../../../hooks/useAssignOrderQuery";
 import useScheduleOrdersQuery from "../hooks/useScheduleOrdersQuery";
+import useManagementQuery from "../../../../management/hooks/useManagementQuery";
+import { Backdrop } from "@mui/material";
+import Spinner from "../../../../../share/components/Spinner";
 
 const ScheduleOrdersContainer = () => {
   const [openAssignDialog, setOPenAssignDialog] = useState(false);
@@ -58,11 +61,21 @@ const ScheduleOrdersContainer = () => {
     data: driverData?.data.content,
   });
   const { t } = useTranslation();
+  const { data: managementData, isLoading: managementLoading } =
+    useManagementQuery();
 
   return (
     <Layout>
       <PaperContainer>
-        <OrdersHead />
+        {managementLoading ? (
+          <Backdrop
+            sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+            open={isLoading}
+          >
+            <Spinner />
+          </Backdrop>
+        ) : null}
+        <OrdersHead data={managementData?.data.content} />
         <Table
           columns={columns}
           rows={rows}
