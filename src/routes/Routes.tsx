@@ -10,7 +10,6 @@ import ArrivedOrdersContainer from "../pages/orders/views/arrivedOrders/containe
 import CanceledOrdersContainer from "../pages/orders/views/canceledOrders/container/CanceledOrdersContainer";
 import ScheduleOrdersContainer from "../pages/orders/views/scheduleOrders/container/ScheduleOrdersContainer";
 import CourierOnDemandContainer from "../pages/createNewOrder/views/courierOnDemand/container/CourierOnDemandContainer";
-import P2pContainer from "../pages/createNewOrder/views/p2p/container/P2pContainer";
 import ShoppersContainer from "../pages/users/views/shoppers/container/ShoppersContainer";
 import CreateShopperContainer from "../pages/users/views/shoppers/views/createShopper/container/CreateShopperContainer";
 import InfoContainer from "../pages/users/views/shoppers/views/info/container/InfoContainer";
@@ -122,14 +121,6 @@ const Routes = () => {
         element={
           <RequireAuth allowedRoles={["admin"]}>
             <CourierOnDemandContainer />
-          </RequireAuth>
-        }
-      />
-      <Route
-        path="/admin/create-new-order/p2p"
-        element={
-          <RequireAuth allowedRoles={["admin"]}>
-            <P2pContainer />
           </RequireAuth>
         }
       />
