@@ -1,12 +1,13 @@
-import { GridActionsCellItem, GridColDef } from "@mui/x-data-grid";
-import { Dispatch, SetStateAction, useMemo } from "react";
+import { GridActionsCellItem, GridColDef, GridRowId } from "@mui/x-data-grid";
+import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import GpsFixedIcon from "@mui/icons-material/GpsFixed";
 import DeleteIcon from "@mui/icons-material/DeleteOutlined";
+import AppLink from "../../../../../share/components/link/AppLink";
 
 const useLocationVotesColumns = ({
-  setOpenDeleteDialog,
-  handleVoteInfo,
+  handleInfoLocationVote,
+  handleOpenDialog,
 }: useLocationVotesColumnsProps) => {
   const { t } = useTranslation();
   const columns = useMemo(() => {
@@ -14,7 +15,7 @@ const useLocationVotesColumns = ({
       {
         field: "id",
         headerName: t("id"),
-        width: 200,
+        flex: 1,
         align: "center",
         headerAlign: "center",
       },
@@ -23,19 +24,27 @@ const useLocationVotesColumns = ({
         headerName: t("client"),
         align: "center",
         headerAlign: "center",
-        width: 250,
+        flex: 1,
+        renderCell: (params) => {
+          return (
+            <AppLink
+              path={`/admin/users/clients/${params.row.clientId}`}
+              name={params.value}
+            />
+          );
+        },
       },
       {
         field: "createdAt",
         headerName: t("created_at"),
         align: "center",
         headerAlign: "center",
-        width: 250,
+        flex: 1,
       },
       {
         field: "action",
         headerName: t("action"),
-        width: 150,
+        flex: 1,
         align: "center",
         headerAlign: "center",
         renderCell: (params) => {
@@ -44,17 +53,13 @@ const useLocationVotesColumns = ({
               icon={<GpsFixedIcon />}
               label="View"
               color="info"
-              onClick={() =>
-                handleVoteInfo(
-                  params.api.getCellParams(params.id, "client").value as string
-                )
-              }
+              onClick={() => handleInfoLocationVote(params.id)}
             />,
             <GridActionsCellItem
               icon={<DeleteIcon />}
               label="Delete"
               color="error"
-              onClick={() => setOpenDeleteDialog(true)}
+              onClick={() => handleOpenDialog(params.id)}
             />,
           ];
         },
@@ -67,8 +72,9 @@ const useLocationVotesColumns = ({
 };
 
 type useLocationVotesColumnsProps = {
-  setOpenDeleteDialog: Dispatch<SetStateAction<boolean>>;
   // eslint-disable-next-line no-unused-vars
-  handleVoteInfo: (clientName: string) => void;
+  handleOpenDialog: (id: GridRowId) => void;
+  // eslint-disable-next-line no-unused-vars
+  handleInfoLocationVote: (id: GridRowId) => void;
 };
 export default useLocationVotesColumns;

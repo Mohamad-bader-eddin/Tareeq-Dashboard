@@ -1,62 +1,17 @@
-import { GridRowsProp } from "@mui/x-data-grid";
-import {
-  randomCreatedDate,
-  randomId,
-  randomTraderName,
-} from "@mui/x-data-grid-generator";
-import { useMemo } from "react";
+import { format } from "date-fns";
+import { LocationVotes, LocationVotesRows } from "../types/LocationVotes";
 
-const useLocationVotesRows = () => {
-  const initialRows = useMemo(() => {
-    const tableRows: GridRowsProp = [
-      {
-        id: randomId(),
-        client: randomTraderName(),
-        createdAt: randomCreatedDate().toLocaleString("en-uk", {
-          day: "numeric",
-          month: "short",
-          year: "numeric",
-          hour: "numeric",
-          minute: "numeric",
-        }),
-      },
-      {
-        id: randomId(),
-        client: randomTraderName(),
-        createdAt: randomCreatedDate().toLocaleString("en-uk", {
-          day: "numeric",
-          month: "short",
-          year: "numeric",
-          hour: "numeric",
-          minute: "numeric",
-        }),
-      },
-      {
-        id: randomId(),
-        client: randomTraderName(),
-        createdAt: randomCreatedDate().toLocaleString("en-uk", {
-          day: "numeric",
-          month: "short",
-          year: "numeric",
-          hour: "numeric",
-          minute: "numeric",
-        }),
-      },
-      {
-        id: randomId(),
-        client: randomTraderName(),
-        createdAt: randomCreatedDate().toLocaleString("en-uk", {
-          day: "numeric",
-          month: "short",
-          year: "numeric",
-          hour: "numeric",
-          minute: "numeric",
-        }),
-      },
-    ];
-    return tableRows;
-  }, []);
-  return { initialRows };
+const useLocationVotesRows = ({ data }: { data: LocationVotes[] }) => {
+  const rows: LocationVotesRows[] = [];
+  data?.forEach((el) =>
+    rows.push({
+      id: el.id,
+      client: el.user.name,
+      clientId: el.user_id,
+      createdAt: format(new Date(el.created_at), "dd/MM/yyyy"),
+    })
+  );
+  return { rows };
 };
 
 export default useLocationVotesRows;

@@ -297,7 +297,7 @@ const Routes = () => {
         }
       />
       <Route
-        path="/admin/coverage/location-vote-info"
+        path="/admin/coverage/location-vote-info/:id"
         element={
           <RequireAuth allowedRoles={["admin"]}>
             <ViewLocationVote />
