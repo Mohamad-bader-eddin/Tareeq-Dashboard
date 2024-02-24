@@ -15,6 +15,7 @@ export type Order = {
     user: User;
     order_points: OrderPoint[];
     rate?: number;
+    canceled_at?: Date
 }
 
 export type Driver = {

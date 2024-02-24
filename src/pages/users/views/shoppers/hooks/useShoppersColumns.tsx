@@ -5,6 +5,7 @@ import { useTranslation } from "react-i18next";
 import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
 import PreviewIcon from "@mui/icons-material/Preview";
 import DeleteIcon from "@mui/icons-material/DeleteOutlined";
+// import PowerSettingsNewIcon from "@mui/icons-material/PowerSettingsNew";
 
 const useShoppersColumns = ({
   handleOpenDialog,
@@ -113,6 +114,12 @@ const useShoppersColumns = ({
               color="error"
               onClick={() => handleOpenDialog(params.id)}
             />,
+            // <GridActionsCellItem
+            //   icon={<PowerSettingsNewIcon />}
+            //   label="OnLine"
+            //   color="success"
+            //   onClick={() => {}}
+            // />,
           ];
         },
       },

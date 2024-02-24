@@ -20,4 +20,5 @@ export type OrderRow = {
     rating?: number;
     reason?: string;
     scheduledAt?: string;
+    canceledAt?: string;
 }
