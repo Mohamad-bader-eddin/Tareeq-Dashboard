@@ -1,4 +1,4 @@
-// import HouseIcon from "@mui/icons-material/House";
+import HouseIcon from "@mui/icons-material/House";
 import StyleIcon from "@mui/icons-material/Style";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import GroupIcon from "@mui/icons-material/Group";
@@ -12,11 +12,11 @@ import ImageIcon from "@mui/icons-material/Image";
 import ReceiptIcon from "@mui/icons-material/Receipt";
 
 export const SidebarData = [
-  // {
-  //   title: "admin",
-  //   path: "/",
-  //   icon: <HouseIcon />,
-  // },
+  {
+    title: "admin",
+    path: "/",
+    icon: <HouseIcon />,
+  },
   {
     title: "orders",
     path: "/orders",

@@ -1,5 +1,5 @@
-import { Route, Routes as AppRotes, Navigate } from "react-router-dom";
-// import HomeContainer from "../pages/home/container/HomeContainer";
+import { Route, Routes as AppRotes } from "react-router-dom";
+import HomeContainer from "../pages/home/container/HomeContainer";
 import RequireAuth from "../auth/RequireAuth";
 import PendingOrdersContainer from "../pages/orders/views/pendingOrders/container/PendingOrdersContainer";
 import TrackOrders from "../pages/orders/container/TrackOrders";
@@ -59,7 +59,11 @@ const Routes = () => {
     <AppRotes>
       <Route
         path="/"
-        element={<Navigate to="/admin/orders/pending-orders" replace={true} />}
+        element={
+          <RequireAuth allowedRoles={["admin"]}>
+            <HomeContainer />
+          </RequireAuth>
+        }
       />
       <Route
         path="/admin/orders/pending-orders"
