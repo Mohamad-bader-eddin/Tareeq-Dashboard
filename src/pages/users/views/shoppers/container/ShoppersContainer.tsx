@@ -30,7 +30,15 @@ const ShoppersContainer = () => {
     setOpenDeleteDialog(true);
     setSelectedId(id);
   };
-  const { columns } = useShoppersColumns({ handleOpenDialog, handleInfo });
+  const handleChangeStatus = (id: GridRowId, onLine: boolean) => {
+    console.log("id", id);
+    console.log("online", onLine);
+  };
+  const { columns } = useShoppersColumns({
+    handleOpenDialog,
+    handleInfo,
+    handleChangeStatus,
+  });
   const handleAddShopper = () => {
     navigate("/admin/users/shoppers/add-shopper");
   };

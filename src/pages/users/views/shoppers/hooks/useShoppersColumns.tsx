@@ -5,11 +5,12 @@ import { useTranslation } from "react-i18next";
 import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
 import PreviewIcon from "@mui/icons-material/Preview";
 import DeleteIcon from "@mui/icons-material/DeleteOutlined";
-// import PowerSettingsNewIcon from "@mui/icons-material/PowerSettingsNew";
+import PowerSettingsNewIcon from "@mui/icons-material/PowerSettingsNew";
 
 const useShoppersColumns = ({
   handleOpenDialog,
   handleInfo,
+  handleChangeStatus,
 }: useShoppersColumnsProps) => {
   const { t } = useTranslation();
   const columns = useMemo(() => {
@@ -49,27 +50,27 @@ const useShoppersColumns = ({
         align: "center",
         headerAlign: "center",
       },
-      {
-        field: "lastOnline",
-        headerName: t("last_online"),
-        flex: 1,
-        align: "center",
-        headerAlign: "center",
-        renderCell: (params) => {
-          if (params.value) {
-            return params.value;
-          }
-          return (
-            <Button
-              endIcon={<FiberManualRecordIcon />}
-              color="success"
-              sx={{ cursor: "default" }}
-            >
-              {t("online")}
-            </Button>
-          );
-        },
-      },
+      // {
+      //   field: "lastOnline",
+      //   headerName: t("last_online"),
+      //   flex: 1,
+      //   align: "center",
+      //   headerAlign: "center",
+      //   renderCell: (params) => {
+      //     if (params.value) {
+      //       return params.value;
+      //     }
+      //     return (
+      //       <Button
+      //         endIcon={<FiberManualRecordIcon />}
+      //         color="success"
+      //         sx={{ cursor: "default" }}
+      //       >
+      //         {t("online")}
+      //       </Button>
+      //     );
+      //   },
+      // },
       // {
       //   field: "completedOrdersToday",
       //   headerName: t("completed_orders_today"),
@@ -84,16 +85,35 @@ const useShoppersColumns = ({
         align: "center",
         headerAlign: "center",
       },
-      // {
-      //   field: "online",
-      //   headerName: t("online"),
-      //   width: 100,
-      //   align: "center",
-      //   headerAlign: "center",
-      //   renderCell: () => {
-      //     return <Checkbox />;
-      //   },
-      // },
+      {
+        field: "online",
+        headerName: t("online"),
+        flex: 1,
+        align: "center",
+        headerAlign: "center",
+        renderCell: (params) => {
+          if (params.value) {
+            return (
+              <Button
+                endIcon={<FiberManualRecordIcon />}
+                color="success"
+                sx={{ cursor: "default" }}
+              >
+                {t("online")}
+              </Button>
+            );
+          }
+          return (
+            <Button
+              endIcon={<FiberManualRecordIcon />}
+              color="error"
+              sx={{ cursor: "default" }}
+            >
+              {t("offline")}
+            </Button>
+          );
+        },
+      },
       {
         field: "action",
         headerName: t("action"),
@@ -114,12 +134,12 @@ const useShoppersColumns = ({
               color="error"
               onClick={() => handleOpenDialog(params.id)}
             />,
-            // <GridActionsCellItem
-            //   icon={<PowerSettingsNewIcon />}
-            //   label="OnLine"
-            //   color="success"
-            //   onClick={() => {}}
-            // />,
+            <GridActionsCellItem
+              icon={<PowerSettingsNewIcon />}
+              label="OnLine"
+              color="success"
+              onClick={() => handleChangeStatus(params.id, params.row.online)}
+            />,
           ];
         },
       },
@@ -135,5 +155,7 @@ type useShoppersColumnsProps = {
   handleOpenDialog: (id: GridRowId) => void;
   // eslint-disable-next-line no-unused-vars
   handleInfo: (id: GridRowId) => void;
+  // eslint-disable-next-line no-unused-vars
+  handleChangeStatus: (id: GridRowId, onLine: boolean) => void;
 };
 export default useShoppersColumns;

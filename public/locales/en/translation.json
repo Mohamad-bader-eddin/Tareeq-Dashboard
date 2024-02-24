@@ -240,5 +240,6 @@
   "waiting_value": "Waiting Value",
   "next": "Next",
   "re_active": "Reactivate",
-  "search_driver": "Search Driver"
+  "search_driver": "Search Driver",
+  "offline": "Offline"
 }

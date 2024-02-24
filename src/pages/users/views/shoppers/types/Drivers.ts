@@ -34,7 +34,8 @@ export type Drivers = {
     created_at?: Date;
     vehicle_image?: File | undefined | string;
     driver_image?: File | undefined | string;
-    transactions?: transactions[]
+    transactions?: transactions[];
+    availability?: boolean;
 }
 
 export type DriversRows = {

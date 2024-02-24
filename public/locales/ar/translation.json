@@ -240,5 +240,6 @@
   "waiting_value": "قيمة الانتظار",
   "next": "التالي",
   "re_active": "اعادة تفعيل",
-  "search_driver": "بحث عن سائق"
+  "search_driver": "بحث عن سائق",
+  "offline": "غير متصل"
 }

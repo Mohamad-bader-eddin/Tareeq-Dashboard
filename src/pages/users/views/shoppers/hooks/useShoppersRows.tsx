@@ -11,6 +11,7 @@ const useShoppersRows = ({ data }: { data: Drivers[] }) => {
       shopperEarning: el.driver_profit as string,
       registerDate: format(new Date(el.created_at as Date), "dd/MM/yyyy"),
       zone: el?.zone?.name,
+      online: el?.availability,
     })
   );
   return { rows };
