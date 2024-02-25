@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import { initialValuesType } from "../types/PushNotificationsFormType";
 import useAddPushNotificationQuery from "./useAddPushNotificationQuery";
 import { useState } from "react";
+import { getErrorMessage } from "../../../../../share/utils/getErrorMessage";
 
 const usePushNotificationsFormValidation = () => {
   const [openError, setOpenError] = useState(false);
@@ -53,9 +54,8 @@ const usePushNotificationsFormValidation = () => {
           formikHelpers.resetForm();
         },
         onError: (error) => {
-          const err = error as Error;
           setOpenError(true);
-          setErrorMsg(err.message);
+          setErrorMsg(getErrorMessage(error));
           formikHelpers.setSubmitting(false);
         },
       }

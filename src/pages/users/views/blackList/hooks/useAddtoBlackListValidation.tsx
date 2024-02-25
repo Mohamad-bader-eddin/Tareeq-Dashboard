@@ -5,6 +5,7 @@ import { initialValuesType } from "../types/AddtoBlackListType";
 import useAddBlackListQuery from "./useAddBlackListQuery";
 import { useState } from "react";
 import useBlackListQuery from "./useBlackListQuery";
+import { getErrorMessage } from "../../../../../share/utils/getErrorMessage";
 
 const useAddtoBlackListValidation = () => {
   const { t } = useTranslation();
@@ -36,9 +37,8 @@ const useAddtoBlackListValidation = () => {
           refetch();
         },
         onError: (error) => {
-          const err = error as Error;
           setOpenError(true);
-          setErrorMsg(err.message);
+          setErrorMsg(getErrorMessage(error));
           formikHelpers.setSubmitting(false);
         },
       }

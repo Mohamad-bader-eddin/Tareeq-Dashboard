@@ -6,6 +6,7 @@ import { initialValuesType } from "../../add/types/AddAppVarialbesPeriodsFormTyp
 import useUpdateVarialbesPeriodQuery from "./useUpdateVarialbesPeriodQuery";
 import { VarialbesPeriods } from "../../../types/AppVarialbesPeriodsType";
 import { convertToTime } from "../../../../../../../share/utils/convertToTime";
+import { getErrorMessage } from "../../../../../../../share/utils/getErrorMessage";
 
 const useAddAppVarialbesPeriodsFormValidation = ({
   data,
@@ -86,9 +87,8 @@ const useAddAppVarialbesPeriodsFormValidation = ({
           // formikHelpers.resetForm();
         },
         onError: (error) => {
-          const err = error as Error;
           setOpenError(true);
-          setErrorMsg(err.message);
+          setErrorMsg(getErrorMessage(error));
           formikHelpers.setSubmitting(false);
         },
       }

@@ -5,6 +5,7 @@ import { useState } from "react";
 import { initialValuesType } from "../../../../types/AddFundsFormType";
 import useAddFundsWalletQuery from "./useAddFundsWalletQuery";
 import useClientInfoQuery from "./useClientInfoQuery";
+import { getErrorMessage } from "../../../../../../share/utils/getErrorMessage";
 
 const useAddFundsFormValidation = (id: string) => {
   const { t } = useTranslation();
@@ -47,9 +48,8 @@ const useAddFundsFormValidation = (id: string) => {
           formikHelpers.resetForm();
         },
         onError: (error) => {
-          const err = error as Error;
           setOpenError(true);
-          setErrorMsg(err.message);
+          setErrorMsg(getErrorMessage(error));
           formikHelpers.setSubmitting(false);
         },
       }

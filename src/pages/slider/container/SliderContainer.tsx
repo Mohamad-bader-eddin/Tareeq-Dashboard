@@ -13,6 +13,7 @@ import GenericAlert from "../../../share/components/alert/GenericAlert";
 import GenericDialog from "../../../share/components/Dialog/GenericDialog";
 import Table from "../../../share/components/table/Table";
 import useSliderDeleteQuery from "../hooks/useSliderDeleteQuery";
+import { getErrorMessage } from "../../../share/utils/getErrorMessage";
 
 const SliderContainer = () => {
   const [openDeleteDialog, setOpenDeleteDialog] = useState(false);
@@ -47,9 +48,8 @@ const SliderContainer = () => {
         refetch();
       },
       onError: (error) => {
-        const err = error as Error;
         setOpenError(true);
-        setErrorMsg(err.message);
+        setErrorMsg(getErrorMessage(error));
         setOpenDeleteDialog(false);
       },
     });

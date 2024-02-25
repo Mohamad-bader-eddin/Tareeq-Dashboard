@@ -6,6 +6,7 @@ import { initialValuesType } from "../types/AddTransactionType";
 import { TransactionType } from "../../../types/TransactionType";
 import useAddTransactionTypeQuery from "./useAddTransactionTypeQuery";
 import useUpdateTransactionTypeQuery from "../../infoTransactionType/hooks/useUpdateTransactionTypeQuery";
+import { getErrorMessage } from "../../../../../share/utils/getErrorMessage";
 
 const useAddTransactionTypeFormValidation = ({
   data,
@@ -48,9 +49,8 @@ const useAddTransactionTypeFormValidation = ({
             // formikHelpers.resetForm();
           },
           onError: (error) => {
-            const err = error as Error;
             setOpenError(true);
-            setErrorMsg(err.message);
+            setErrorMsg(getErrorMessage(error));
             formikHelpers.setSubmitting(false);
           },
         }
@@ -69,9 +69,8 @@ const useAddTransactionTypeFormValidation = ({
             formikHelpers.resetForm();
           },
           onError: (error) => {
-            const err = error as Error;
             setOpenError(true);
-            setErrorMsg(err.message);
+            setErrorMsg(getErrorMessage(error));
             formikHelpers.setSubmitting(false);
           },
         }

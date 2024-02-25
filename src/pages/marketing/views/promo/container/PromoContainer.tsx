@@ -13,6 +13,7 @@ import usePromosQuery from "../hooks/usePromosQuery";
 import { GridRowId } from "@mui/x-data-grid";
 import GenericAlert from "../../../../../share/components/alert/GenericAlert";
 import useDeleteQuery from "../hooks/useDeleteQuery";
+import { getErrorMessage } from "../../../../../share/utils/getErrorMessage";
 
 const PromoContainer = () => {
   const [openDeleteDialog, setOpenDeleteDialog] = useState(false);
@@ -54,9 +55,8 @@ const PromoContainer = () => {
         refetch();
       },
       onError: (error) => {
-        const err = error as Error;
         setOpenError(true);
-        setErrorMsg(err.message);
+        setErrorMsg(getErrorMessage(error));
         setOpenDeleteDialog(false);
       },
     });

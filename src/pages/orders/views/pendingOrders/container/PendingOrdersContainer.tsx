@@ -17,6 +17,7 @@ import usePendingOrdersQuery from "../hooks/usePendingOrdersQuery";
 import { Backdrop, Box, Typography } from "@mui/material";
 import useManagementQuery from "../../../../management/hooks/useManagementQuery";
 import Spinner from "../../../../../share/components/Spinner";
+import { getErrorMessage } from "../../../../../share/utils/getErrorMessage";
 
 const PendingOrdersContainer = () => {
   const [openAssignDialog, setOPenAssignDialog] = useState(false);
@@ -45,9 +46,8 @@ const PendingOrdersContainer = () => {
           setOPenAssignDialog(false);
         },
         onError: (error) => {
-          const err = error as Error;
           setOpenError(true);
-          setErrorMsg(err.message);
+          setErrorMsg(getErrorMessage(error));
           setOPenAssignDialog(false);
         },
       }

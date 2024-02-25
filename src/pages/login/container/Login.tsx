@@ -11,6 +11,7 @@ import GenericAlert from "../../../share/components/alert/GenericAlert";
 import useLoginQuery from "../hooks/useLoginQuery";
 import { Backdrop } from "@mui/material";
 import Spinner from "../../../share/components/Spinner";
+import { getErrorMessage } from "../../../share/utils/getErrorMessage";
 
 const Login = () => {
   const { setUser } = useAuth();
@@ -53,9 +54,9 @@ const Login = () => {
           formikHelpers.resetForm();
           navigate(redirectPath, { replace: true });
         },
-        onError: () => {
+        onError: (error) => {
           setOpenError(true);
-          setErrorMsg("Invalid Email Or Password");
+          setErrorMsg(getErrorMessage(error));
         },
       }
     );

@@ -13,6 +13,7 @@ import useTransactionsTypeQuery from "../hooks/useTransactionsTypeQuery";
 import useTransactionTypeColumns from "../hooks/useTransactionTypeColumns";
 import useTransactionTypeRows from "../hooks/useTransactionTypeRows";
 import useTransactionsTypeDeleteQuery from "../hooks/useTransactionsTypeDeleteQuery";
+import { getErrorMessage } from "../../../share/utils/getErrorMessage";
 
 const TransactionTypeContainer = () => {
   const [openDeleteDialog, setOpenDeleteDialog] = useState(false);
@@ -49,9 +50,8 @@ const TransactionTypeContainer = () => {
         refetch();
       },
       onError: (error) => {
-        const err = error as Error;
         setOpenError(true);
-        setErrorMsg(err.message);
+        setErrorMsg(getErrorMessage(error));
         setOpenDeleteDialog(false);
       },
     });

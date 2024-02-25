@@ -11,6 +11,7 @@ import useLocationVotesQuery from "../hooks/useLocationVotesQuery";
 import { GridRowId } from "@mui/x-data-grid";
 import useDeleteLocationVotesQuery from "../hooks/useDeleteLocationVotesQuery";
 import GenericAlert from "../../../../../share/components/alert/GenericAlert";
+import { getErrorMessage } from "../../../../../share/utils/getErrorMessage";
 
 const LocationVotesContainer = () => {
   const [openDeleteDialog, setOpenDeleteDialog] = useState(false);
@@ -44,9 +45,8 @@ const LocationVotesContainer = () => {
         refetch();
       },
       onError: (error) => {
-        const err = error as Error;
         setOpenError(true);
-        setErrorMsg(err.message);
+        setErrorMsg(getErrorMessage(error));
         setOpenDeleteDialog(false);
       },
     });

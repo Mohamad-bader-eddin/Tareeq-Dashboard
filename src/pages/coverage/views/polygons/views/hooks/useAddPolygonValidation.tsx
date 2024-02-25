@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import { Location, initialValuesType } from "../types/AddPolygonsFormType";
 import { useState } from "react";
 import useAddPolugonQuery from "./useAddPolugonQuery";
+import { getErrorMessage } from "../../../../../../share/utils/getErrorMessage";
 
 const useAddPolygonValidation = () => {
   const { t } = useTranslation();
@@ -59,9 +60,8 @@ const useAddPolygonValidation = () => {
           formikHelpers.resetForm();
         },
         onError: (error) => {
-          const err = error as Error;
           setOpenError(true);
-          setErrorMsg(err.message);
+          setErrorMsg(getErrorMessage(error));
           formikHelpers.setSubmitting(false);
         },
       }

@@ -5,6 +5,7 @@ import { useState } from "react";
 import { initialValuesType } from "../../addSlide/types/AddSlideFormType";
 import useUpdateSlideQuery from "./useUpdateSlideQuery";
 import { Slider } from "../../../types/sliderType";
+import { getErrorMessage } from "../../../../../share/utils/getErrorMessage";
 
 const useUpdateSlideFormValidation = ({ data }: { data: Slider }) => {
   const [openError, setOpenError] = useState(false);
@@ -53,9 +54,8 @@ const useUpdateSlideFormValidation = ({ data }: { data: Slider }) => {
           //   formikHelpers.resetForm();
         },
         onError: (error) => {
-          const err = error as Error;
           setOpenError(true);
-          setErrorMsg(err.message);
+          setErrorMsg(getErrorMessage(error));
           formikHelpers.setSubmitting(false);
         },
       }

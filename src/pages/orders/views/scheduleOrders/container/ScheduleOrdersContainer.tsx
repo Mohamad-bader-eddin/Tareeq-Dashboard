@@ -17,6 +17,7 @@ import useScheduleOrdersQuery from "../hooks/useScheduleOrdersQuery";
 import useManagementQuery from "../../../../management/hooks/useManagementQuery";
 import { Backdrop } from "@mui/material";
 import Spinner from "../../../../../share/components/Spinner";
+import { getErrorMessage } from "../../../../../share/utils/getErrorMessage";
 
 const ScheduleOrdersContainer = () => {
   const [openAssignDialog, setOPenAssignDialog] = useState(false);
@@ -45,9 +46,8 @@ const ScheduleOrdersContainer = () => {
           setOPenAssignDialog(false);
         },
         onError: (error) => {
-          const err = error as Error;
           setOpenError(true);
-          setErrorMsg(err.message);
+          setErrorMsg(getErrorMessage(error));
           setOPenAssignDialog(false);
         },
       }

@@ -11,6 +11,7 @@ import useClientsQuery from "../hooks/useClientsQuery";
 import { GridRowId } from "@mui/x-data-grid";
 import useClientDelete from "../hooks/useClientDelete";
 import GenericAlert from "../../../../../share/components/alert/GenericAlert";
+import { getErrorMessage } from "../../../../../share/utils/getErrorMessage";
 
 const ClientsContainer = () => {
   const [openDeleteDialog, setOpenDeleteDialog] = useState(false);
@@ -41,9 +42,8 @@ const ClientsContainer = () => {
         refetch();
       },
       onError: (error) => {
-        const err = error as Error;
         setOpenError(true);
-        setErrorMsg(err.message);
+        setErrorMsg(getErrorMessage(error));
         setOpenDeleteDialog(false);
       },
     });

@@ -13,6 +13,7 @@ import useDeiversQuery from "../hooks/useDeiversQuery";
 import { GridRowId } from "@mui/x-data-grid";
 import useDriverDeleteQuery from "../hooks/useDriverDeleteQuery";
 import GenericAlert from "../../../../../share/components/alert/GenericAlert";
+import { getErrorMessage } from "../../../../../share/utils/getErrorMessage";
 
 const ShoppersContainer = () => {
   const [openDeleteDialog, setOpenDeleteDialog] = useState(false);
@@ -54,9 +55,8 @@ const ShoppersContainer = () => {
         refetch();
       },
       onError: (error) => {
-        const err = error as Error;
         setOpenError(true);
-        setErrorMsg(err.message);
+        setErrorMsg(getErrorMessage(error));
         setOpenDeleteDialog(false);
       },
     });

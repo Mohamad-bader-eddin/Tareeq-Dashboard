@@ -13,6 +13,7 @@ import { GridRowId } from "@mui/x-data-grid";
 import useAppVarialbesPeriodsQuery from "../hooks/useAppVarialbesPeriodsQuery";
 import GenericAlert from "../../../../../share/components/alert/GenericAlert";
 import useAppVarialbesPeriodsDeleteQuery from "../hooks/useAppVarialbesPeriodsDeleteQuery";
+import { getErrorMessage } from "../../../../../share/utils/getErrorMessage";
 
 const AppVarialbesPeriods = () => {
   const [openDeleteDialog, setOpenDeleteDialog] = useState(false);
@@ -50,9 +51,8 @@ const AppVarialbesPeriods = () => {
         refetch();
       },
       onError: (error) => {
-        const err = error as Error;
         setOpenError(true);
-        setErrorMsg(err.message);
+        setErrorMsg(getErrorMessage(error));
         setOpenDeleteDialog(false);
       },
     });

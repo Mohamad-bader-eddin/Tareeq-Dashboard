@@ -13,6 +13,7 @@ import GenericAlert from "../../../share/components/alert/GenericAlert";
 import useVehiclesDeleteQuery from "../hooks/useVehiclesDeleteQuery";
 import { Button } from "@mui/material";
 import DirectionsCarFilledIcon from "@mui/icons-material/DirectionsCarFilled";
+import { getErrorMessage } from "../../../share/utils/getErrorMessage";
 
 const VehiclesContainer = () => {
   const [openDeleteDialog, setOpenDeleteDialog] = useState(false);
@@ -46,9 +47,8 @@ const VehiclesContainer = () => {
         refetch();
       },
       onError: (error) => {
-        const err = error as Error;
         setOpenError(true);
-        setErrorMsg(err.message);
+        setErrorMsg(getErrorMessage(error));
         setOpenDeleteDialog(false);
       },
     });

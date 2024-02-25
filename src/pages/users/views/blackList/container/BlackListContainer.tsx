@@ -12,6 +12,7 @@ import useBlackListQuery from "../hooks/useBlackListQuery";
 import GenericAlert from "../../../../../share/components/alert/GenericAlert";
 import useBlackListDeleteQuery from "../hooks/useBlackListDeleteQuery";
 import { GridRowId } from "@mui/x-data-grid";
+import { getErrorMessage } from "../../../../../share/utils/getErrorMessage";
 
 const BlackListContainer = () => {
   const [openDeleteDialog, setOpenDeleteDialog] = useState(false);
@@ -49,9 +50,8 @@ const BlackListContainer = () => {
         refetch();
       },
       onError: (error) => {
-        const err = error as Error;
         setOpenErrorDelete(true);
-        setErrorMsgDelete(err.message);
+        setErrorMsgDelete(getErrorMessage(error));
         setOpenDeleteDialog(false);
       },
     });

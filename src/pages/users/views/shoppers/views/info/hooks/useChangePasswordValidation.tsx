@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import { initialValuesType } from "../../../../../types/ChangePasswordType";
 import useChangePasswordQuery from "./useChangePasswordQuery";
 import { useState } from "react";
+import { getErrorMessage } from "../../../../../../../share/utils/getErrorMessage";
 
 const useChangePasswordValidation = (id: string) => {
   const { t } = useTranslation();
@@ -43,9 +44,8 @@ const useChangePasswordValidation = (id: string) => {
           formikHelpers.resetForm();
         },
         onError: (error) => {
-          const err = error as Error;
           setOpenError(true);
-          setErrorMsg(err.message);
+          setErrorMsg(getErrorMessage(error));
           formikHelpers.setSubmitting(false);
         },
       }

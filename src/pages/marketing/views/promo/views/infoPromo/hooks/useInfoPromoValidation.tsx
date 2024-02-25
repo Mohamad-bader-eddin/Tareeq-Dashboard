@@ -5,6 +5,7 @@ import { useState } from "react";
 import { initialValuesType } from "../../addPromoCode/types/AddPromoCodeFormType";
 import useUpdatePromoQuery from "./useUpdatePromoQuery";
 import { Promo } from "../../../types/promoType";
+import { getErrorMessage } from "../../../../../../../share/utils/getErrorMessage";
 
 const useInfoPromoValidation = ({ data }: { data: Promo }) => {
   const [openError, setOpenError] = useState(false);
@@ -51,9 +52,8 @@ const useInfoPromoValidation = ({ data }: { data: Promo }) => {
           //   formikHelpers.resetForm();
         },
         onError: (error) => {
-          const err = error as Error;
           setOpenError(true);
-          setErrorMsg(err.message);
+          setErrorMsg(getErrorMessage(error));
           formikHelpers.setSubmitting(false);
         },
       }

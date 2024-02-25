@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import { initialValuesType } from "../types/CreateShopperFormType";
 import { useState } from "react";
 import useCreateDriverQuery from "./useCreateDriverQuery";
+import { getErrorMessage } from "../../../../../../../share/utils/getErrorMessage";
 
 const useCreateShopperValidation = () => {
   const [openError, setOpenError] = useState(false);
@@ -129,9 +130,8 @@ const useCreateShopperValidation = () => {
           formikHelpers.resetForm();
         },
         onError: (error) => {
-          const err = error as Error;
           setOpenError(true);
-          setErrorMsg(err.message);
+          setErrorMsg(getErrorMessage(error));
           formikHelpers.setSubmitting(false);
         },
       }

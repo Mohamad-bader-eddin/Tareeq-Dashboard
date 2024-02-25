@@ -13,6 +13,7 @@ import { GridRowId } from "@mui/x-data-grid";
 import GenericAlert from "../../../../../share/components/alert/GenericAlert";
 import useZoneQuery from "../../zones/hooks/useZoneQuery";
 import useDeleteZoneQuery from "../../zones/hooks/useDeleteZoneQuery";
+import { getErrorMessage } from "../../../../../share/utils/getErrorMessage";
 
 const PolygonsContainer = () => {
   const [openDeleteDialog, setOpenDeleteDialog] = useState(false);
@@ -49,9 +50,8 @@ const PolygonsContainer = () => {
         refetch();
       },
       onError: (error) => {
-        const err = error as Error;
         setOpenError(true);
-        setErrorMsg(err.message);
+        setErrorMsg(getErrorMessage(error));
         setOpenDeleteDialog(false);
       },
     });

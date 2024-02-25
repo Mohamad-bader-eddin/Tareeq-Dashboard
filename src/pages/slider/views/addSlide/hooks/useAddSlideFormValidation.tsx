@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import { useState } from "react";
 import { initialValuesType } from "../types/AddSlideFormType";
 import useAddSlideQuery from "./useAddSlideQuery";
+import { getErrorMessage } from "../../../../../share/utils/getErrorMessage";
 
 const useAddSlideFormValidation = () => {
   const [openError, setOpenError] = useState(false);
@@ -47,9 +48,8 @@ const useAddSlideFormValidation = () => {
         formikHelpers.resetForm();
       },
       onError: (error) => {
-        const err = error as Error;
         setOpenError(true);
-        setErrorMsg(err.message);
+        setErrorMsg(getErrorMessage(error));
         formikHelpers.setSubmitting(false);
       },
     });

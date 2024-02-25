@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import { initialValuesType } from "../types/AddPromoCodeFormType";
 import { useState } from "react";
 import useAddPromoQuery from "./useAddPromoQuery";
+import { getErrorMessage } from "../../../../../../../share/utils/getErrorMessage";
 
 const useAddPromoCodeValidation = () => {
   const [openError, setOpenError] = useState(false);
@@ -47,9 +48,8 @@ const useAddPromoCodeValidation = () => {
           formikHelpers.resetForm();
         },
         onError: (error) => {
-          const err = error as Error;
           setOpenError(true);
-          setErrorMsg(err.message);
+          setErrorMsg(getErrorMessage(error));
           formikHelpers.setSubmitting(false);
         },
       }

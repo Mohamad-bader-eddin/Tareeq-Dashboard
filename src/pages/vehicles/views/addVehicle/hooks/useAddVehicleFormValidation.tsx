@@ -6,6 +6,7 @@ import useAddVehicleQuery from "./useAddVehicleQuery";
 import { useState } from "react";
 import { Vehicle } from "../../../types/Vehicles";
 import useUpdateVehicleQuery from "../../info/hooks/useUpdateVehicleQuery";
+import { getErrorMessage } from "../../../../../share/utils/getErrorMessage";
 
 const useAddVehicleFormValidation = ({ data }: { data?: Vehicle }) => {
   const [openError, setOpenError] = useState(false);
@@ -74,9 +75,8 @@ const useAddVehicleFormValidation = ({ data }: { data?: Vehicle }) => {
             // formikHelpers.resetForm();
           },
           onError: (error) => {
-            const err = error as Error;
             setOpenError(true);
-            setErrorMsg(err.message);
+            setErrorMsg(getErrorMessage(error));
             formikHelpers.setSubmitting(false);
           },
         }
@@ -98,9 +98,8 @@ const useAddVehicleFormValidation = ({ data }: { data?: Vehicle }) => {
             formikHelpers.resetForm();
           },
           onError: (error) => {
-            const err = error as Error;
             setOpenError(true);
-            setErrorMsg(err.message);
+            setErrorMsg(getErrorMessage(error));
             formikHelpers.setSubmitting(false);
           },
         }

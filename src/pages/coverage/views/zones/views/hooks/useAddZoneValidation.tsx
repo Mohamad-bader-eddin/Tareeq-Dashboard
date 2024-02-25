@@ -6,6 +6,7 @@ import useAddZoneQuery from "./useAddZoneQuery";
 import { useState } from "react";
 import { Zone } from "../../types/ZoneType";
 import useUpdateZoneQuery from "./useUpdateZoneQuery";
+import { getErrorMessage } from "../../../../../../share/utils/getErrorMessage";
 
 const useAddZoneValidation = ({ data }: { data?: Zone }) => {
   const [openError, setOpenError] = useState(false);
@@ -43,9 +44,8 @@ const useAddZoneValidation = ({ data }: { data?: Zone }) => {
             // formikHelpers.resetForm();
           },
           onError: (error) => {
-            const err = error as Error;
             setOpenError(true);
-            setErrorMsg(err.message);
+            setErrorMsg(getErrorMessage(error));
             formikHelpers.setSubmitting(false);
           },
         }
@@ -63,9 +63,8 @@ const useAddZoneValidation = ({ data }: { data?: Zone }) => {
             formikHelpers.resetForm();
           },
           onError: (error) => {
-            const err = error as Error;
             setOpenError(true);
-            setErrorMsg(err.message);
+            setErrorMsg(getErrorMessage(error));
             formikHelpers.setSubmitting(false);
           },
         }

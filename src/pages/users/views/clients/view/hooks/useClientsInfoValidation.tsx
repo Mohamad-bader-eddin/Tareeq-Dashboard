@@ -5,6 +5,7 @@ import { useTranslation } from "react-i18next";
 import { Client } from "../../types/clients";
 import useClientUpdateQuery from "./useClientUpdateQuery";
 import { useState } from "react";
+import { getErrorMessage } from "../../../../../../share/utils/getErrorMessage";
 
 const useClientsInfoValidation = ({ data }: { data: Client }) => {
   const { t } = useTranslation();
@@ -48,9 +49,8 @@ const useClientsInfoValidation = ({ data }: { data: Client }) => {
           formikHelpers.resetForm();
         },
         onError: (error) => {
-          const err = error as Error;
           setOpenError(true);
-          setErrorMsg(err.message);
+          setErrorMsg(getErrorMessage(error));
           formikHelpers.setSubmitting(false);
         },
       }
