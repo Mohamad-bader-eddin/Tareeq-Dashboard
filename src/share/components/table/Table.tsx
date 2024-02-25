@@ -8,6 +8,7 @@ import {
   GridToolbarExport,
 } from "@mui/x-data-grid";
 import LoadingSkeleton from "./LoadingSkeleton";
+import { useState } from "react";
 
 function CustomToolbar() {
   return (
@@ -31,6 +32,10 @@ const Table = ({
       mode: darkMode ? "dark" : "light",
     },
   });
+  const [paginationModel, setPaginationModel] = useState({
+    page: 1,
+    pageSize: 5,
+  });
   return (
     <ThemeProvider theme={darkTheme}>
       <Typography variant="h6" sx={{ marginBottom: "15px" }}>
@@ -45,6 +50,12 @@ const Table = ({
           rows={rows}
           columns={columns}
           loading={loading}
+          initialState={{
+            pagination: { paginationModel: paginationModel },
+          }}
+          pageSizeOptions={[5, 10, 25]}
+          paginationModel={paginationModel}
+          onPaginationModelChange={setPaginationModel}
           slots={{
             toolbar: CustomToolbar,
             loadingOverlay: LoadingSkeleton,
