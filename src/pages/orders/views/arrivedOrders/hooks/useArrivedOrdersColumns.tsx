@@ -1,8 +1,8 @@
 import { GridColDef } from "@mui/x-data-grid";
-import ActionButton from "../../../components/ActionButton";
 import { useTranslation } from "react-i18next";
 import AppLink from "../../../../../share/components/link/AppLink";
 import { useMemo } from "react";
+import ActionButton from "../components/ActionButton";
 
 const useArrivedOrdersColumns = () => {
   const { t } = useTranslation();

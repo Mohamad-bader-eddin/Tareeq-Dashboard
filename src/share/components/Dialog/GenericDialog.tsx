@@ -34,6 +34,7 @@ const GenericDialog = ({
   assignTo,
   hideAgreeBtn,
   handleAgree,
+  agreeLoading,
 }: GenericDialogProps) => {
   const { darkMode } = useDarkMode();
   const { laptop } = useMedeaQueries();
@@ -89,6 +90,7 @@ const GenericDialog = ({
           </Button>
           {hideAgreeBtn ? null : (
             <Button
+              disabled={agreeLoading}
               onClick={handleAgree}
               variant="contained"
               color={deleteType ? "error" : "info"}
@@ -112,6 +114,7 @@ type GenericDialogProps = {
   deleteType?: boolean;
   assignTo?: boolean;
   hideAgreeBtn?: boolean;
+  agreeLoading?: boolean;
 };
 
 export default GenericDialog;

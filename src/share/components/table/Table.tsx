@@ -33,7 +33,7 @@ const Table = ({
     },
   });
   const [paginationModel, setPaginationModel] = useState({
-    page: 1,
+    page: 0,
     pageSize: 5,
   });
   return (
