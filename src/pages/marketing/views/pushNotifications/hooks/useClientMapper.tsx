@@ -14,7 +14,7 @@ const useClientMapper = ({ data }: { data: Client[] }) => {
   data?.forEach((el) =>
     userOptions.push({
       id: el.id,
-      name: el.name,
+      name: el.name + " - " + el.phone,
     })
   );
   return { userOptions };

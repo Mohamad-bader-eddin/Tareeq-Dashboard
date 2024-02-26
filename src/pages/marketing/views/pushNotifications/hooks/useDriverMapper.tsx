@@ -38,7 +38,7 @@ const useDriverMapper = ({ data }: { data: Drivers[] }) => {
   data?.forEach((el) =>
     driversOptions.push({
       id: el.id,
-      name: el.name,
+      name: el.name + " - " + el.phone,
     })
   );
   return { driversOptions };
