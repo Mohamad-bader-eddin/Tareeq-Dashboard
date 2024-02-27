@@ -13,21 +13,21 @@ const HomeContainer = () => {
   return (
     <Layout>
       <Stack direction={"row"} flexWrap={"wrap"}>
-        <Box sx={{ flex: 1 }}>
+        <Box sx={{ flex: 1, minWidth: "300px" }}>
           <Wedgit
             icon={<AccessibilityIcon fontSize="large" />}
             title="Available Drivers"
             value={12}
           />
         </Box>
-        <Box sx={{ flex: 1 }}>
+        <Box sx={{ flex: 1, minWidth: "300px" }}>
           <Wedgit
             icon={<MinorCrashOutlinedIcon fontSize="large" />}
             title="Drivers who have orders"
             value={10}
           />
         </Box>
-        <Box sx={{ flex: 1 }}>
+        <Box sx={{ flex: 1, minWidth: "300px" }}>
           <Wedgit
             icon={<PeopleIcon fontSize="large" />}
             title="All Driver"
@@ -36,28 +36,28 @@ const HomeContainer = () => {
         </Box>
       </Stack>
       <Stack direction={"row"} flexWrap={"wrap"}>
-        <Box sx={{ flex: 1 }}>
+        <Box sx={{ flex: 1, minWidth: "230px" }}>
           <Wedgit
             icon={<HourglassBottomIcon fontSize="large" />}
             title="Pending Orders"
             value={20}
           />
         </Box>
-        <Box sx={{ flex: 1 }}>
+        <Box sx={{ flex: 1, minWidth: "230px" }}>
           <Wedgit
             icon={<OnlinePredictionIcon fontSize="large" />}
             title="Active Orders"
             value={50}
           />
         </Box>
-        <Box sx={{ flex: 1 }}>
+        <Box sx={{ flex: 1, minWidth: "230px" }}>
           <Wedgit
             icon={<DoDisturbIcon fontSize="large" />}
             title="Canceled Orders"
             value={8}
           />
         </Box>
-        <Box sx={{ flex: 1 }}>
+        <Box sx={{ flex: 1, minWidth: "230px" }}>
           <Wedgit
             icon={<AccessAlarmIcon fontSize="large" />}
             title="Scheduled Orders"
