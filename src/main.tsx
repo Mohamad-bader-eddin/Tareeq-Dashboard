@@ -9,6 +9,7 @@ import HttpApi from "i18next-http-backend";
 import "./index.css";
 import Spinner from "./share/components/Spinner.tsx";
 import { AuthProvider } from "./context/Auth.tsx";
+import { NotificationsProvider } from "./context/Notifications.tsx";
 
 i18n
   .use(initReactI18next)
@@ -37,7 +38,9 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
   <Suspense fallback={<Spinner />}>
     <HashRouter>
       <AuthProvider>
-        <App />
+        <NotificationsProvider>
+          <App />
+        </NotificationsProvider>
       </AuthProvider>
     </HashRouter>
   </Suspense>

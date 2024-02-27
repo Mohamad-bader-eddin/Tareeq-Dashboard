@@ -21,6 +21,9 @@ import MainLayout from "./share/components/mainLayout/MainLayout";
 import { useAuth } from "./context/Auth";
 import { QueryClientProvider, QueryClient } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
+import { getToken, onMessage } from "firebase/messaging";
+import { messaging } from "./firebase/config";
+import { useNotifications } from "./context/Notifications";
 
 const queryClient = new QueryClient();
 
@@ -32,6 +35,7 @@ function App() {
   const location = useLocation();
   const { setUser } = useAuth();
   const navigate = useNavigate();
+  const { setNotification } = useNotifications();
 
   useEffect(() => {
     document.body.dir = currentLanguage?.dir || "ltr";
@@ -47,6 +51,48 @@ function App() {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const VITE_APP_VAPID_KEY =
+    "BM7GjPAvV3JVz7lO6kGOW4mv7epH_xpzGb5AgGyK2yW35QmMAZom4Hpkbi3istdegfyaxrrpNgbdtAryaK9Wh8k";
+
+  async function requestPermission() {
+    //requesting permission using Notification API
+    const permission = await Notification.requestPermission();
+
+    if (permission === "granted") {
+      const token = await getToken(messaging, {
+        vapidKey: VITE_APP_VAPID_KEY,
+      });
+
+      //We can send token to server
+      console.log("Token generated : ", token);
+    } else if (permission === "denied") {
+      //notifications are blocked
+      alert("You denied for the notification");
+    }
+  }
+
+  useEffect(() => {
+    requestPermission();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  onMessage(messaging, (payload) => {
+    if (payload.notification?.title === "scheduled") {
+      const sound2 = new Audio("/audio/audio2.wav");
+      sound2.play();
+    } else {
+      const sound1 = new Audio("/audio/audio1.wav");
+      sound1.play();
+    }
+    setNotification((prev) => [
+      ...prev,
+      {
+        body: payload.notification?.body as string,
+        title: payload.notification?.title as string,
+      },
+    ]);
+  });
 
   return (
     <QueryClientProvider client={queryClient}>

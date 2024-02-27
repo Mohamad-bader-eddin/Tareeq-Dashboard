@@ -1,5 +1,5 @@
 import {
-  Avatar,
+  // Avatar,
   Badge,
   Divider,
   MenuItem,
@@ -8,21 +8,23 @@ import {
 } from "@mui/material";
 import { useDarkMode } from "../../../context/DarkMode";
 import DropdownNavbar from "../dropdownNavbar/DropdownNavbar";
-import PersonIcon from "@mui/icons-material/Person";
+// import PersonIcon from "@mui/icons-material/Person";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import { theme } from "../../utils/theme";
 import { useTranslation } from "react-i18next";
+import { useNotifications } from "../../../context/Notifications";
 
 const NotificationMenu = () => {
   const { darkMode } = useDarkMode();
   const { t } = useTranslation();
+  const { notification } = useNotifications();
 
   return (
     <>
       <DropdownNavbar
         avatar={
           <Badge
-            badgeContent={4}
+            badgeContent={notification.length}
             color="error"
             sx={
               darkMode
@@ -33,96 +35,45 @@ const NotificationMenu = () => {
             <NotificationsIcon />
           </Badge>
         }
+        isNotification={true}
       >
         <MenuItem>
-          {t("you_have")} 3 {t("new_notifications")}
+          {t("you_have")} {notification.length} {t("new_notifications")}
         </MenuItem>
         <Divider />
-        <MenuItem
-          sx={{
-            "&:hover": {
-              backgroundColor: darkMode ? theme.dark.hover : theme.light.hover,
-            },
-          }}
-        >
-          <Stack direction="row" alignItems="center">
-            <Avatar>
-              <PersonIcon />
-            </Avatar>
-            <Stack>
-              <Typography variant="h6" sx={{ m: "0 10px" }}>
-                {" "}
-                Lorem_ipsum_dolor
-              </Typography>
-              <Typography
-                variant="body1"
-                sx={{
-                  color: darkMode ? theme.dark.text : theme.light.text,
-                  m: "0 10px",
-                }}
-              >
-                1 hour ago
-              </Typography>
+        {notification?.map((element, index) => (
+          <MenuItem
+            key={index}
+            sx={{
+              "&:hover": {
+                backgroundColor: darkMode
+                  ? theme.dark.hover
+                  : theme.light.hover,
+              },
+            }}
+          >
+            <Stack direction="row" alignItems="center">
+              {/* <Avatar>
+                <PersonIcon />
+              </Avatar> */}
+              <Stack>
+                <Typography variant="h6" sx={{ m: "0 10px" }}>
+                  {" "}
+                  {element.body}
+                </Typography>
+                <Typography
+                  variant="body1"
+                  sx={{
+                    color: darkMode ? theme.dark.text : theme.light.text,
+                    m: "0 10px",
+                  }}
+                >
+                  {element.title}
+                </Typography>
+              </Stack>
             </Stack>
-          </Stack>
-        </MenuItem>
-        <MenuItem
-          sx={{
-            "&:hover": {
-              backgroundColor: darkMode ? theme.dark.hover : theme.light.hover,
-            },
-          }}
-        >
-          <Stack direction="row" alignItems="center">
-            <Avatar>
-              <PersonIcon />
-            </Avatar>
-            <Stack>
-              <Typography variant="h6" sx={{ m: "0 10px" }}>
-                {" "}
-                Lorem_ipsum_dolor
-              </Typography>
-              <Typography
-                variant="body1"
-                sx={{
-                  color: darkMode ? theme.dark.text : theme.light.text,
-                  m: "0 10px",
-                }}
-              >
-                2 hours ago
-              </Typography>
-            </Stack>
-          </Stack>
-        </MenuItem>
-        <MenuItem
-          sx={{
-            "&:hover": {
-              backgroundColor: darkMode ? theme.dark.hover : theme.light.hover,
-            },
-          }}
-        >
-          <Stack direction="row" alignItems="center">
-            <Avatar>
-              <PersonIcon />
-            </Avatar>
-            <Stack>
-              <Typography variant="h6" sx={{ m: "0 10px" }}>
-                {" "}
-                Lorem_ipsum_dolor
-              </Typography>
-              <Typography
-                variant="body1"
-                color="GrayText"
-                sx={{
-                  color: darkMode ? theme.dark.text : theme.light.text,
-                  m: "0 10px",
-                }}
-              >
-                3 hours ago
-              </Typography>
-            </Stack>
-          </Stack>
-        </MenuItem>
+          </MenuItem>
+        ))}
       </DropdownNavbar>
     </>
   );

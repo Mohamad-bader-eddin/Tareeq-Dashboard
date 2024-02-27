@@ -3,10 +3,16 @@ import React, { MouseEvent, useState } from "react";
 import jsCookie from "js-cookie";
 import { theme } from "../../utils/theme";
 import { useDarkMode } from "../../../context/DarkMode";
+import { useNotifications } from "../../../context/Notifications";
 
-const DropdownNavbar = ({ avatar, children }: DropdownNavbarProps) => {
+const DropdownNavbar = ({
+  avatar,
+  children,
+  isNotification,
+}: DropdownNavbarProps) => {
   const languageCode = jsCookie.get("i18next");
   const { darkMode } = useDarkMode();
+  const { setNotification } = useNotifications();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const handleClick = (event: MouseEvent<HTMLElement>) => {
@@ -14,6 +20,9 @@ const DropdownNavbar = ({ avatar, children }: DropdownNavbarProps) => {
   };
   const handleClose = () => {
     setAnchorEl(null);
+    if (isNotification) {
+      setNotification([]);
+    }
   };
   return (
     <>
@@ -91,6 +100,7 @@ const DropdownNavbar = ({ avatar, children }: DropdownNavbarProps) => {
 type DropdownNavbarProps = {
   avatar: React.ReactNode;
   children: React.ReactNode;
+  isNotification?: boolean;
 };
 
 export default DropdownNavbar;
