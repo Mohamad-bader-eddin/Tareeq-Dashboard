@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Routes from "./routes/Routes";
 import { ThemeProvider } from "styled-components";
-import { CssBaseline, Stack } from "@mui/material";
+import { Alert, CssBaseline, Stack } from "@mui/material";
 import { languages } from "./languages/languages";
 import jsCookie from "js-cookie";
 import { useTranslation } from "react-i18next";
@@ -21,6 +21,8 @@ import MainLayout from "./share/components/mainLayout/MainLayout";
 import { useAuth } from "./context/Auth";
 import { QueryClientProvider, QueryClient } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
+import { getToken, onMessage } from "firebase/messaging";
+import { messaging } from "./firebase/config";
 
 const queryClient = new QueryClient();
 
@@ -47,6 +49,34 @@ function App() {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+  const VITE_APP_VAPID_KEY =
+    "BM7GjPAvV3JVz7lO6kGOW4mv7epH_xpzGb5AgGyK2yW35QmMAZom4Hpkbi3istdegfyaxrrpNgbdtAryaK9Wh8k";
+
+  async function requestPermission() {
+    //requesting permission using Notification API
+    const permission = await Notification.requestPermission();
+
+    if (permission === "granted") {
+      const token = await getToken(messaging, {
+        vapidKey: VITE_APP_VAPID_KEY,
+      });
+
+      //We can send token to server
+      console.log("Token generated : ", token);
+    } else if (permission === "denied") {
+      //notifications are blocked
+      alert("You denied for the notification");
+    }
+  }
+
+  useEffect(() => {
+    requestPermission();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  onMessage(messaging, (payload) => {
+    return <Alert severity="success">{payload?.notification as string}</Alert>;
+  });
 
   return (
     <QueryClientProvider client={queryClient}>
