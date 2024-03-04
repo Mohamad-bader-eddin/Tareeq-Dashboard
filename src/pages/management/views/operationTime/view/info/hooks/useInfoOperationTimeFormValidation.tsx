@@ -1,29 +1,30 @@
 import * as Yup from "yup";
 import { FormikHelpers } from "formik";
 import { useTranslation } from "react-i18next";
-import { initialValuesType } from "../types/OperationTimeFormType";
-import { Management } from "../../../types";
-import { convertToTime } from "../../../../../share/utils/convertToTime";
-import useAddOperationTimeQuery from "./useAddOperationTimeQuery";
+import { convertToTime } from "../../../../../../../share/utils/convertToTime";
 import { useState } from "react";
 import { format } from "date-fns";
-import { getErrorMessage } from "../../../../../share/utils/getErrorMessage";
+import { getErrorMessage } from "../../../../../../../share/utils/getErrorMessage";
+import { initialValuesType } from "../../add/types/OperationTimeFormType";
+import { OperationTime } from "../../../types/OperationTime";
+import useUpdateOperationTime from "./useUpdateOperationTime";
 
-const useOperationTimeFormValidation = ({ data }: { data: Management[] }) => {
+const useInfoOperationTimeFormValidation = ({
+  data,
+}: {
+  data: OperationTime;
+}) => {
   const { t } = useTranslation();
   const [openError, setOpenError] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
   const [openSucsses, setOpenSucsses] = useState(false);
   const [msg, setMsg] = useState("");
-  const { mutate } = useAddOperationTimeQuery();
-  const from = data?.find((el) => el.key === "from");
-  const to = data?.find((el) => el.key === "to_time");
-  const alwaysRun = data?.find((el) => el.key === "always_run");
+  const { mutate } = useUpdateOperationTime();
+  // const alwaysRun = data?.find((el) => el.key === "always_run");
 
   const initialValues = {
-    fromTime: convertToTime(from?.value as string) || null,
-    toTime: convertToTime(to?.value as string) || null,
-    isAlwaysRun: alwaysRun?.value === "true" ? true : false || false,
+    fromTime: convertToTime(data?.from) || null,
+    toTime: convertToTime(data?.to) || null,
   };
 
   const validationSchema = Yup.object({
@@ -36,20 +37,11 @@ const useOperationTimeFormValidation = ({ data }: { data: Management[] }) => {
     formikHelpers: FormikHelpers<initialValuesType>
   ) => {
     mutate(
-      [
-        {
-          key: "from",
-          value: format(values.fromTime as Date, "HH:mm:ss"),
-        },
-        {
-          key: "to_time",
-          value: format(values.toTime as Date, "HH:mm:ss"),
-        },
-        {
-          key: "always_run",
-          value: values.isAlwaysRun ? "true" : "false",
-        },
-      ],
+      {
+        id: data.id,
+        from: format(values.fromTime as Date, "HH:mm:ss"),
+        to: format(values.toTime as Date, "HH:mm:ss"),
+      },
       {
         onSuccess: (response) => {
           setOpenSucsses(true);
@@ -80,4 +72,4 @@ const useOperationTimeFormValidation = ({ data }: { data: Management[] }) => {
   };
 };
 
-export default useOperationTimeFormValidation;
+export default useInfoOperationTimeFormValidation;

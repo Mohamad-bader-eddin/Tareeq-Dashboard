@@ -1,10 +1,9 @@
 import { Form, Formik } from "formik";
-import { OperationTimeFormType } from "../types/OperationTimeFormType";
-import TimeInput from "../../../../../share/components/time/TimeInput";
 import { useTranslation } from "react-i18next";
 import { Box } from "@mui/material";
-import SubmitButton from "../../../../../share/components/submitButton/SubmitButton";
-import SelectInput from "../../../../../share/components/select/SelectInput";
+import { OperationTimeFormType } from "../types/OperationTimeFormType";
+import SubmitButton from "../../../../../../../share/components/submitButton/SubmitButton";
+import TimeInput from "../../../../../../../share/components/time/TimeInput";
 
 const OperationTimeForm = ({
   initialValues,
@@ -12,16 +11,6 @@ const OperationTimeForm = ({
   validationSchema,
 }: OperationTimeFormType) => {
   const { t } = useTranslation();
-  const options = [
-    {
-      value: "true",
-      key: t("true"),
-    },
-    {
-      value: "false",
-      key: t("false"),
-    },
-  ];
   return (
     <Formik
       initialValues={initialValues}
@@ -33,12 +22,12 @@ const OperationTimeForm = ({
           <Form>
             <TimeInput formik={formik} label={t("from_time")} name="fromTime" />
             <TimeInput formik={formik} label={t("to_time")} name="toTime" />
-            <SelectInput
+            {/* <SelectInput
               formik={formik}
               label={t("is_always_run")}
               name="isAlwaysRun"
               options={options}
-            />
+            /> */}
             <Box sx={{ width: "200px" }}>
               <SubmitButton
                 name={t("save")}

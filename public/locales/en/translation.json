@@ -170,6 +170,7 @@
   "search_user": "Search User",
   "management": "Management",
   "operation_time": "Operation Time",
+  "add_operation_time": "Add Operation Time",
   "from_time": "From Time",
   "to_time": "To Time",
   "is_always_run": "Is Always Run",

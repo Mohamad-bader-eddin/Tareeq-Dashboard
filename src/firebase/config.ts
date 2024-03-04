@@ -6,12 +6,13 @@ import { getMessaging } from "firebase/messaging";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyBP75hHBUiomD4WWhuEdyJiLmU3nbPS2c4",
-  authDomain: "tareeq-31dae.firebaseapp.com",
-  projectId: "tareeq-31dae",
-  storageBucket: "tareeq-31dae.appspot.com",
-  messagingSenderId: "98722968957",
-  appId: "1:98722968957:web:e613c372727e0dd715c814",
+  apiKey: "AIzaSyAmmnKf8lomncj7Sz0sNCDwwQJThA_wZs8",
+  authDomain: "tareeq-df80b.firebaseapp.com",
+  projectId: "tareeq-df80b",
+  storageBucket: "tareeq-df80b.appspot.com",
+  messagingSenderId: "609507972793",
+  appId: "1:609507972793:web:b771f8e17189b07e9ced68",
+  measurementId: "G-79Z9G3J397"
 };
 
 // Initialize Firebase

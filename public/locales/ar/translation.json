@@ -170,6 +170,7 @@
   "search_user": "البحث عن المستخدم",
   "management": "إدارة",
   "operation_time": "عمليات وقت",
+  "add_operation_time": "إضافة عمليات وقت",
   "from_time": "من وقت",
   "to_time": "إلى وقت",
   "is_always_run": "هل يعمل دائما",

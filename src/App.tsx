@@ -53,7 +53,7 @@ function App() {
   }, []);
 
   const VITE_APP_VAPID_KEY =
-    "BM7GjPAvV3JVz7lO6kGOW4mv7epH_xpzGb5AgGyK2yW35QmMAZom4Hpkbi3istdegfyaxrrpNgbdtAryaK9Wh8k";
+    "BDCJ6vx2pRNdMcf2mhjecpY0stmOluPrfdlUFjCp_Bf3BugM-3fGpxB0d1aIorSKry_OFSs0bsUznEI-tH2Igdc";
 
   async function requestPermission() {
     //requesting permission using Notification API

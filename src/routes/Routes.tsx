@@ -52,6 +52,8 @@ import InfoAppVarialbesPeriods from "../pages/management/views/appVarialbesPerio
 import TransactionTypeContainer from "../pages/transactionType/container/TransactionTypeContainer";
 import AddTransactionTypeContainer from "../pages/transactionType/views/addTransactionType/container/AddTransactionTypeContainer";
 import InfoTransactionTypeContainer from "../pages/transactionType/views/infoTransactionType/container/InfoTransactionTypeContainer";
+import AddOperationTimeContainer from "../pages/management/views/operationTime/view/add/container/AddOperationTimeContainer";
+import InfoOperationTimeContainer from "../pages/management/views/operationTime/view/info/container/InfoOperationTimeContainer";
 
 const Routes = () => {
   return (
@@ -352,6 +354,22 @@ const Routes = () => {
         element={
           <RequireAuth allowedRoles={["admin"]}>
             <OperationTimeContainer />
+          </RequireAuth>
+        }
+      />
+      <Route
+        path="/admin/management/add-operation-time"
+        element={
+          <RequireAuth allowedRoles={["admin"]}>
+            <AddOperationTimeContainer />
+          </RequireAuth>
+        }
+      />
+      <Route
+        path="/admin/management/operation-time/:id"
+        element={
+          <RequireAuth allowedRoles={["admin"]}>
+            <InfoOperationTimeContainer />
           </RequireAuth>
         }
       />

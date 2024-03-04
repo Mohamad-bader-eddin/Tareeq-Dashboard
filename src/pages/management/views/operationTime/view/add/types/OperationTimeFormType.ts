@@ -4,7 +4,6 @@ import * as Yup from "yup";
 export type initialValuesType = {
     fromTime: Date | null;
     toTime: Date | null;
-    isAlwaysRun: boolean;
 
 };
 

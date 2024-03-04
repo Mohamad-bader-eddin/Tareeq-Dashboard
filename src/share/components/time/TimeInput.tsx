@@ -1,11 +1,9 @@
 import { Box, ThemeProvider, createTheme } from "@mui/material";
 import { FormikProps } from "formik";
-import useMedeaQueries from "../../utils/useMideaQuery";
 import { useDarkMode } from "../../../context/DarkMode";
 import {
   LocalizationProvider,
   MobileTimePicker,
-  TimePicker,
   TimeValidationError,
 } from "@mui/x-date-pickers";
 import { useMemo, useState } from "react";
@@ -20,7 +18,6 @@ const TimeInput = <T extends Record<string, unknown>>({
 }: TimeInputType<T>) => {
   const [error, setError] = useState<TimeValidationError | null>(null);
   const { darkMode } = useDarkMode();
-  const { tablet } = useMedeaQueries();
 
   const darkTheme = createTheme({
     palette: {
@@ -64,52 +61,27 @@ const TimeInput = <T extends Record<string, unknown>>({
         }}
       >
         <LocalizationProvider dateAdapter={AdapterDateFns}>
-          {tablet ? (
-            <DemoContainer components={["MobileDatePicker"]}>
-              <MobileTimePicker
-                onChange={(value) => handleSetValue(value as Date)}
-                value={formik.values[name]}
-                label={label}
-                onError={(newError) => setError(newError)}
-                slotProps={{
-                  textField: {
-                    error:
-                      Boolean(formik.touched[name] && formik.errors[name]) ||
-                      Boolean(errorMessage),
-                    helperText:
-                      formik.touched[name] && formik.errors[name] ? (
-                        <>{formik.errors[name]}</>
-                      ) : (
-                        errorMessage
-                      ),
-                  },
-                }}
-              />
-            </DemoContainer>
-          ) : (
-            <DemoContainer components={["DesktopDatePicker"]}>
-              <TimePicker
-                onChange={(value) => handleSetValue(value as Date)}
-                value={formik.values[name]}
-                label={label}
-                onError={(newError) => setError(newError)}
-                slotProps={{
-                  textField: {
-                    error:
-                      Boolean(formik.touched[name] && formik.errors[name]) ||
-                      Boolean(errorMessage),
-                    helperText:
-                      formik.touched[name] && formik.errors[name] ? (
-                        <>{formik.errors[name]}</>
-                      ) : (
-                        errorMessage
-                      ),
-                    sx: { direction: "ltr" },
-                  },
-                }}
-              />
-            </DemoContainer>
-          )}
+          <DemoContainer components={["MobileDatePicker"]}>
+            <MobileTimePicker
+              onChange={(value) => handleSetValue(value as Date)}
+              value={formik.values[name]}
+              label={label}
+              onError={(newError) => setError(newError)}
+              slotProps={{
+                textField: {
+                  error:
+                    Boolean(formik.touched[name] && formik.errors[name]) ||
+                    Boolean(errorMessage),
+                  helperText:
+                    formik.touched[name] && formik.errors[name] ? (
+                      <>{formik.errors[name]}</>
+                    ) : (
+                      errorMessage
+                    ),
+                },
+              }}
+            />
+          </DemoContainer>
         </LocalizationProvider>
       </Box>
     </ThemeProvider>
