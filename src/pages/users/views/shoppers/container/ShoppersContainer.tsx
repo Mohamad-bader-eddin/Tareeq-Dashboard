@@ -1,4 +1,4 @@
-import { Button } from "@mui/material";
+import { Backdrop, Button } from "@mui/material";
 import PaperContainer from "../../../../../share/components/Paper/PaperContainer";
 import Layout from "../../../../../share/components/layout/Layout";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
@@ -14,6 +14,8 @@ import { GridRowId } from "@mui/x-data-grid";
 import useDriverDeleteQuery from "../hooks/useDriverDeleteQuery";
 import GenericAlert from "../../../../../share/components/alert/GenericAlert";
 import { getErrorMessage } from "../../../../../share/utils/getErrorMessage";
+import useChangeAvailabilityQuery from "../hooks/useChangeAvailabilityQuery";
+import Spinner from "../../../../../share/components/Spinner";
 
 const ShoppersContainer = () => {
   const [openDeleteDialog, setOpenDeleteDialog] = useState(false);
@@ -24,6 +26,8 @@ const ShoppersContainer = () => {
   const [msg, setMsg] = useState("");
   const { t } = useTranslation();
   const navigate = useNavigate();
+  const { mutate: availabilityMutate, isLoading: availabilityLoading } =
+    useChangeAvailabilityQuery();
   const handleInfo = (id: GridRowId) => {
     navigate(`/admin/users/shoppers/${id}`);
   };
@@ -32,8 +36,25 @@ const ShoppersContainer = () => {
     setSelectedId(id);
   };
   const handleChangeStatus = (id: GridRowId, onLine: boolean) => {
-    console.log("id", id);
-    console.log("online", onLine);
+    availabilityMutate(
+      {
+        availability: onLine ? 0 : 1,
+        driver_id: id,
+      },
+      {
+        onSuccess: (response) => {
+          setOpenSucsses(true);
+          setMsg(response.data.message);
+          setOpenDeleteDialog(false);
+          refetch();
+        },
+        onError: (error) => {
+          setOpenError(true);
+          setErrorMsg(getErrorMessage(error));
+          setOpenDeleteDialog(false);
+        },
+      }
+    );
   };
   const { columns } = useShoppersColumns({
     handleOpenDialog,
@@ -85,6 +106,14 @@ const ShoppersContainer = () => {
           totalCount={data?.data.content.length}
           loading={isLoading || isFetching}
         />
+        {availabilityLoading ? (
+          <Backdrop
+            sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+            open={availabilityLoading}
+          >
+            <Spinner />
+          </Backdrop>
+        ) : null}
         <GenericDialog
           open={openDeleteDialog}
           setOpen={setOpenDeleteDialog}

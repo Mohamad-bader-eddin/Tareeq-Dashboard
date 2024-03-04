@@ -138,7 +138,7 @@ const OperationTimeContainer = () => {
         {managementLoading || updateManagementLoading ? (
           <Backdrop
             sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
-            open={isLoading}
+            open={managementLoading || updateManagementLoading}
           >
             <Spinner />
           </Backdrop>
