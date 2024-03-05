@@ -38,8 +38,6 @@ const Login = () => {
     values: initialValuesType,
     formikHelpers: FormikHelpers<initialValuesType>
   ) => {
-    console.log(fcmToken);
-
     mutate(
       {
         email: values.email,
