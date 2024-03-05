@@ -17,6 +17,7 @@ import { useParams } from "react-router-dom";
 import Spinner from "../../../../../share/components/Spinner";
 import GenericAlert from "../../../../../share/components/alert/GenericAlert";
 import useAddFundsFormValidation from "./hooks/useAddFundsFormValidation";
+import GenericEmbededMap from "../../../../../share/components/map/GenericEmbededMap";
 
 const Clietntinfo = () => {
   const { t } = useTranslation();
@@ -94,6 +95,9 @@ const Clietntinfo = () => {
           </PaperContainer>
         </>
       )}
+      <PaperContainer>
+        <GenericEmbededMap lat={33.513674} long={36.276526} />
+      </PaperContainer>
       {/* <PaperContainer>
         <Typography variant="h6" sx={{ marginBottom: "15px" }}>
           {t("change_password")}

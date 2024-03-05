@@ -21,6 +21,7 @@ import useVehiclesQuery from "../../../../../../vehicles/hooks/useVehiclesQuery"
 import useVehiclesMapper from "../../createShopper/hooks/useVehiclesMapper";
 import GenericAlert from "../../../../../../../share/components/alert/GenericAlert";
 import TripOriginOutlinedIcon from "@mui/icons-material/TripOriginOutlined";
+import GenericEmbededMap from "../../../../../../../share/components/map/GenericEmbededMap";
 
 const InfoContainer = () => {
   const { t } = useTranslation();
@@ -89,6 +90,9 @@ const InfoContainer = () => {
           />
         </PaperContainer>
       )}
+      <PaperContainer>
+        <GenericEmbededMap lat={33.513674} long={36.276526} />
+      </PaperContainer>
       <PaperContainer>
         <Typography variant="h6" sx={{ marginBottom: "15px" }}>
           {t("change_password")}
