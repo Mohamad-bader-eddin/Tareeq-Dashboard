@@ -5,25 +5,29 @@ import { Backdrop, Typography } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import { StyledInfo } from "../style/InfoOrder.style";
 import TripOriginOutlinedIcon from "@mui/icons-material/TripOriginOutlined";
-// import Table from "../../../share/components/table/Table";
+import Table from "../../../share/components/table/Table";
 // import useInfoOrderShoppersColumn from "../hooks/useInfoOrderShoppersColumn";
 // import useInfoOrderShoppersRows from "../hooks/useInfoOrderShoppersRows";
-// import useInfoOrderLogColumn from "../hooks/useInfoOrderLogColumn";
-// import useInfoOrderLogRows from "../hooks/useInfoOrderLogRows";
+import useInfoOrderLogColumn from "../hooks/useInfoOrderLogColumn";
+import useInfoOrderLogRows from "../hooks/useInfoOrderLogRows";
 import { useDarkMode } from "../../../context/DarkMode";
 import { useParams } from "react-router-dom";
 import useOrderQuery from "../hooks/useOrderQuery";
 import Spinner from "../../../share/components/Spinner";
+import useAdminNoteFormValidation from "../hooks/useAdminNoteFormValidation";
+import AdminNoteForm from "../components/AdminNoteForm";
 
 const InfoOrder = () => {
   const { t } = useTranslation();
   const { darkMode } = useDarkMode();
   // const { columns: shoppersCol } = useInfoOrderShoppersColumn();
   // const { initialRows: shopperRow } = useInfoOrderShoppersRows();
-  // const { columns: logCol } = useInfoOrderLogColumn();
-  // const { initialRows: logRow } = useInfoOrderLogRows();
+  const { columns: logCol } = useInfoOrderLogColumn();
+  const { initialRows: logRow } = useInfoOrderLogRows();
   const { type, id } = useParams();
   const { data, isLoading } = useOrderQuery(id as string);
+  const { initialValues, onSubmit, validationSchema } =
+    useAdminNoteFormValidation();
 
   const track = () => {
     switch (type) {
@@ -160,7 +164,7 @@ const InfoOrder = () => {
           totalCount={5}
           loading={false}
         />
-      </PaperContainer>
+      </PaperContainer> */}
       <PaperContainer>
         <Table
           columns={logCol}
@@ -169,7 +173,19 @@ const InfoOrder = () => {
           totalCount={5}
           loading={false}
         />
-      </PaperContainer> */}
+      </PaperContainer>
+      {type === "arrived" ? (
+        <PaperContainer>
+          <Typography variant="h6" sx={{ marginBottom: "10px" }}>
+            {t("admin_note")}
+          </Typography>
+          <AdminNoteForm
+            initialValues={initialValues}
+            onSubmit={onSubmit}
+            validationSchema={validationSchema}
+          />
+        </PaperContainer>
+      ) : null}
     </Layout>
   );
 };

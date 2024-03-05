@@ -242,5 +242,7 @@
   "next": "Next",
   "re_active": "Reactivate",
   "search_driver": "Search Driver",
-  "offline": "Offline"
+  "offline": "Offline",
+  "admin_note": "Admin Note",
+  "note": "Note"
 }
