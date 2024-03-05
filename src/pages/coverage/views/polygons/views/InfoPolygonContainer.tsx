@@ -6,6 +6,7 @@ import { Box, Typography } from "@mui/material";
 import { useParams } from "react-router-dom";
 import { useEffect, useRef } from "react";
 import { useDarkMode } from "../../../../../context/DarkMode";
+import jsCookie from "js-cookie";
 
 const InfoPolygonContainer = () => {
   const { t } = useTranslation();
@@ -15,6 +16,7 @@ const InfoPolygonContainer = () => {
     { path: "/admin/coverage/polygons", name: t("polygons") },
   ];
   const iframeRef = useRef<HTMLIFrameElement>(null);
+  const token = jsCookie.get("accessToken");
   useEffect(() => {
     if (iframeRef.current) {
       iframeRef.current.contentWindow?.postMessage({ darkMode }, "*");
@@ -30,7 +32,7 @@ const InfoPolygonContainer = () => {
         <Box height={"600px"}>
           <iframe
             ref={iframeRef}
-            src={`https://edit-polygons.netlify.app/?id=${id}`}
+            src={`https://tareeq-map.netlify.app/#/admin/coverage/polygons?id=${id}&token=${token}`}
             title="Iframe Title"
             width={"100%"}
             height={"597.6px"}

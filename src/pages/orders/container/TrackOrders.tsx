@@ -5,6 +5,7 @@ import Breadcrumb from "../../../share/components/breadcrumbs/Breadcrumb";
 import { useTranslation } from "react-i18next";
 // import GenericMap from "../../../share/components/map/GenericMap";
 import { useParams } from "react-router-dom";
+import jsCookie from "js-cookie";
 // import TrackMap from "../components/TrackMap";
 
 const TrackOrders = () => {
@@ -46,6 +47,7 @@ const TrackOrders = () => {
     }
   };
   const breadcrumbsTracks = [track()];
+  const token = jsCookie.get("accessToken");
 
   return (
     <Layout>
@@ -56,7 +58,7 @@ const TrackOrders = () => {
         </Typography>
         <Box height={"400px"}>
           <iframe
-            src={`https://track-order-map.netlify.app/?id=${id}`}
+            src={`https://tareeq-map.netlify.app/#/admin/track-order?id=${id}&token=${token}`}
             title="Iframe Title"
             width={"100%"}
             height={"400px"}

@@ -31,10 +31,7 @@ const AddPolygonsContainer = () => {
   const token = jsCookie.get("accessToken");
   useEffect(() => {
     if (iframeRef.current) {
-      iframeRef.current.contentWindow?.postMessage({ darkMode, token }, "*");
-      iframeRef.current.onload = () => {
-        iframeRef.current?.contentWindow?.postMessage({ darkMode, token }, "*");
-      };
+      iframeRef.current.contentWindow?.postMessage({ darkMode }, "*");
     }
   }, [darkMode, token]);
 
@@ -48,7 +45,7 @@ const AddPolygonsContainer = () => {
         <Box height={"600px"}>
           <iframe
             ref={iframeRef}
-            src="https://tareeq-map.netlify.app/"
+            src={`https://tareeq-map.netlify.app/#/admin/coverage/add-polygons-map?token=${token}`}
             title="Iframe Title"
             width={"100%"}
             height={"597.6px"}

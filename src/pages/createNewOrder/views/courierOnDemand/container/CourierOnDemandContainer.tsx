@@ -8,6 +8,7 @@ import usePhoneValidation from "../../../hooks/usePhoneValidation";
 import GenericAlert from "../../../../../share/components/alert/GenericAlert";
 import { Client } from "../../../../users/views/clients/types/clients";
 import { useDarkMode } from "../../../../../context/DarkMode";
+import jsCookie from "js-cookie";
 
 const CourierOnDemandContainer = () => {
   const { t } = useTranslation();
@@ -22,12 +23,10 @@ const CourierOnDemandContainer = () => {
     setOpenError,
   } = usePhoneValidation({ setPhone });
   const iframeRef = useRef<HTMLIFrameElement>(null);
+  const token = jsCookie.get("accessToken");
   useEffect(() => {
     if (iframeRef.current) {
       iframeRef.current.contentWindow?.postMessage({ darkMode }, "*");
-      iframeRef.current.onload = () => {
-        iframeRef.current?.contentWindow?.postMessage({ darkMode }, "*");
-      };
     }
   }, [darkMode]);
 
@@ -41,7 +40,7 @@ const CourierOnDemandContainer = () => {
           <Box sx={{ height: "1329.6px", width: "100%" }}>
             <iframe
               ref={iframeRef}
-              src={`https://tareeq-map.netlify.app/#/admin/create-order?id=${phone.id}`}
+              src={`https://tareeq-map.netlify.app/#/admin/create-order?id=${phone.id}&token=${token}`}
               title="Iframe Title"
               width={"100%"}
               height={"1329.6px"}
