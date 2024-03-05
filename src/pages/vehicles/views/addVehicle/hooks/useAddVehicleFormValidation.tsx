@@ -31,12 +31,12 @@ const useAddVehicleFormValidation = ({ data }: { data?: Vehicle }) => {
     description: Yup.string().required(t("required")),
     image: Yup.mixed()
       .test("fileSize", t("file_size_is_too_large"), (value) => {
-        if (!value) return false;
+        if (!value) return true;
         if (typeof value === "string") return true;
         return (value as File).size <= 5242880; // 5MB
       })
       .test("fileType", t("invalid_file_type"), (value) => {
-        if (!value) return false;
+        if (!value) return true;
         if (typeof value === "string") return true;
         const file = value as File;
         return (

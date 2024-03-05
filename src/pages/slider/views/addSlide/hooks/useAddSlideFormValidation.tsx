@@ -21,11 +21,11 @@ const useAddSlideFormValidation = () => {
     image: Yup.mixed()
       .required(t("image_is_required"))
       .test("fileSize", t("file_size_is_too_large"), (value) => {
-        if (!value) return false;
+        if (!value) return true;
         return (value as File).size <= 5242880; // 5MB
       })
       .test("fileType", t("invalid_file_type"), (value) => {
-        if (!value) return false;
+        if (!value) return true;
         const file = value as File;
         return (
           ["image/jpeg", "image/jpg", "image/png"].includes(file.type) ||
