@@ -12,9 +12,11 @@ import useLoginQuery from "../hooks/useLoginQuery";
 import { Backdrop } from "@mui/material";
 import Spinner from "../../../share/components/Spinner";
 import { getErrorMessage } from "../../../share/utils/getErrorMessage";
+import { useFcmToken } from "../../../context/FcmToken";
 
 const Login = () => {
   const { setUser } = useAuth();
+  const { fcmToken } = useFcmToken();
   const navigate = useNavigate();
   const location = useLocation();
   const { t } = useTranslation();
@@ -36,10 +38,13 @@ const Login = () => {
     values: initialValuesType,
     formikHelpers: FormikHelpers<initialValuesType>
   ) => {
+    console.log(fcmToken);
+
     mutate(
       {
         email: values.email,
         password: values.password,
+        fcm_token: fcmToken,
       },
       {
         onSuccess: (response) => {

@@ -51,7 +51,8 @@ const DropdownNavbar = ({
         PaperProps={{
           elevation: 0,
           sx: {
-            overflow: "visible",
+            maxHeight: "300px",
+            overflow: "auto",
             filter: `drop-shadow(0px 2px 8px ${
               darkMode ? theme.dark.shadow : theme.light.shadow
             })`,

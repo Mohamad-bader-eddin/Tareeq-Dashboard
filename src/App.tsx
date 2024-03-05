@@ -24,6 +24,7 @@ import { ReactQueryDevtools } from "react-query/devtools";
 import { getToken, onMessage } from "firebase/messaging";
 import { messaging } from "./firebase/config";
 import { useNotifications } from "./context/Notifications";
+import { useFcmToken } from "./context/FcmToken";
 
 const queryClient = new QueryClient();
 
@@ -36,6 +37,7 @@ function App() {
   const { setUser } = useAuth();
   const navigate = useNavigate();
   const { setNotification } = useNotifications();
+  const { setFcmToken } = useFcmToken();
 
   useEffect(() => {
     document.body.dir = currentLanguage?.dir || "ltr";
@@ -65,7 +67,8 @@ function App() {
       });
 
       //We can send token to server
-      console.log("Token generated : ", token);
+      // console.log("Token generated : ", token);
+      setFcmToken(token);
     } else if (permission === "denied") {
       //notifications are blocked
       alert("You denied for the notification");
