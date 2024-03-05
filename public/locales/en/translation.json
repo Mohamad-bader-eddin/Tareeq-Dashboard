@@ -244,5 +244,6 @@
   "search_driver": "Search Driver",
   "offline": "Offline",
   "admin_note": "Admin Note",
-  "note": "Note"
+  "note": "Note",
+  "needs_notes": "Needs Notes"
 }

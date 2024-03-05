@@ -3,7 +3,7 @@ import { AddVehicleFormType } from "../types/AddVehicleFormType";
 import { Form, Formik } from "formik";
 import UploadImage from "../../../../../share/components/uploadImage/UploadImage";
 import Input from "../../../../../share/components/Input/Input";
-import { Box } from "@mui/material";
+import { Box, Checkbox, FormControlLabel } from "@mui/material";
 import SubmitButton from "../../../../../share/components/submitButton/SubmitButton";
 
 const AddVehicleForm = ({
@@ -40,11 +40,26 @@ const AddVehicleForm = ({
             name="description"
             textarea={true}
           />
+          <FormControlLabel
+            onChange={formik.handleChange}
+            // value={formik.values["isOnline"]}
+            name="isOnline"
+            control={
+              <Checkbox
+                sx={{
+                  "label &": {
+                    color: "inherit",
+                  },
+                }}
+              />
+            }
+            label={t("needs_notes")}
+            labelPlacement="end"
+          />
           <Box sx={{ width: "200px" }}>
             <SubmitButton
               name={t("save")}
               disabled={!formik.isValid || formik.isSubmitting}
-              // isSubmitting={isSubmitting}
             />
           </Box>
         </Form>
