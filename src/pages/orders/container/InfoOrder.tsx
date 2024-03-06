@@ -16,6 +16,7 @@ import useOrderQuery from "../hooks/useOrderQuery";
 import Spinner from "../../../share/components/Spinner";
 import useAdminNoteFormValidation from "../hooks/useAdminNoteFormValidation";
 import AdminNoteForm from "../components/AdminNoteForm";
+import GenericAlert from "../../../share/components/alert/GenericAlert";
 
 const InfoOrder = () => {
   const { t } = useTranslation();
@@ -26,8 +27,20 @@ const InfoOrder = () => {
   const { initialRows: logRow } = useInfoOrderLogRows();
   const { type, id } = useParams();
   const { data, isLoading } = useOrderQuery(id as string);
-  const { initialValues, onSubmit, validationSchema } =
-    useAdminNoteFormValidation();
+  const {
+    initialValues,
+    onSubmit,
+    validationSchema,
+    errorMsg,
+    msg,
+    openError,
+    openSucsses,
+    setOpenError,
+    setOpenSucsses,
+  } = useAdminNoteFormValidation({
+    id: id as string,
+    adminNote: data?.data.content.admin_note,
+  });
 
   const track = () => {
     switch (type) {
@@ -175,17 +188,38 @@ const InfoOrder = () => {
         />
       </PaperContainer>
       {type === "arrived" ? (
-        <PaperContainer>
-          <Typography variant="h6" sx={{ marginBottom: "10px" }}>
-            {t("admin_note")}
-          </Typography>
-          <AdminNoteForm
-            initialValues={initialValues}
-            onSubmit={onSubmit}
-            validationSchema={validationSchema}
-          />
-        </PaperContainer>
+        isLoading ? (
+          <Backdrop
+            sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+            open={isLoading}
+          >
+            <Spinner />
+          </Backdrop>
+        ) : (
+          <PaperContainer>
+            <Typography variant="h6" sx={{ marginBottom: "10px" }}>
+              {t("admin_note")}
+            </Typography>
+            <AdminNoteForm
+              initialValues={initialValues}
+              onSubmit={onSubmit}
+              validationSchema={validationSchema}
+            />
+          </PaperContainer>
+        )
       ) : null}
+      <GenericAlert
+        open={openSucsses}
+        setOpen={setOpenSucsses}
+        type="success"
+        msg={msg}
+      />
+      <GenericAlert
+        open={openError}
+        setOpen={setOpenError}
+        type="error"
+        msg={errorMsg}
+      />
     </Layout>
   );
 };

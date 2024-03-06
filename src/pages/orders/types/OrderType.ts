@@ -15,6 +15,7 @@ export type Order = {
     user: User;
     order_points: OrderPoint[];
     rate?: number;
+    admin_note?: string;
     canceled_at?: Date
 }
 
