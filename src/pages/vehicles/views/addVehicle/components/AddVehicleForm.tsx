@@ -42,10 +42,11 @@ const AddVehicleForm = ({
           />
           <FormControlLabel
             onChange={formik.handleChange}
-            // value={formik.values["isOnline"]}
-            name="isOnline"
+            value={formik.values["needNote"]}
+            name="needNote"
             control={
               <Checkbox
+                checked={formik.values["needNote"]}
                 sx={{
                   "label &": {
                     color: "inherit",

@@ -5,6 +5,7 @@ export type initialValuesType = {
     name: string;
     image: File | undefined | string;
     description: string;
+    needNote: boolean;
     // priceByTime: number;
     // priceByKm: number;
 }

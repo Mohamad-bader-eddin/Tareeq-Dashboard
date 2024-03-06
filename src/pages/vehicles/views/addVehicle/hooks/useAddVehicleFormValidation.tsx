@@ -22,6 +22,7 @@ const useAddVehicleFormValidation = ({ data }: { data?: Vehicle }) => {
     // priceByKm: Number(data?.price_by_km) || 0,
     description: data?.description || "",
     image: data?.image || undefined,
+    needNote: data?.need_note || false,
   };
 
   const validationSchema = Yup.object().shape({
@@ -65,6 +66,7 @@ const useAddVehicleFormValidation = ({ data }: { data?: Vehicle }) => {
             // price_by_km: values.priceByKm.toString(),
             description: values.description,
             image: values.image as File,
+            need_note: values.needNote ? "1" : "0",
           },
         },
         {
@@ -89,6 +91,7 @@ const useAddVehicleFormValidation = ({ data }: { data?: Vehicle }) => {
           // price_by_km: values.priceByKm.toString(),
           description: values.description,
           image: values.image as File,
+          need_note: values.needNote ? "1" : "0",
         },
         {
           onSuccess: (response) => {
