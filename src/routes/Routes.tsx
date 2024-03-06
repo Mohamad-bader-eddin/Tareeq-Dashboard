@@ -76,7 +76,11 @@ const Routes = () => {
       />
       <Route
         path="/admin/orders/track-order/:type/:id"
-        element={<TrackOrders />}
+        element={
+          <RequireAuth allowedRoles={["admin"]}>
+            <TrackOrders />
+          </RequireAuth>
+        }
       />
       <Route
         path="/admin/orders/info-orders/:type/:id"
@@ -184,7 +188,11 @@ const Routes = () => {
       />
       <Route
         path="/admin/users/shoppers/add-shopper"
-        element={<CreateShopperContainer />}
+        element={
+          <RequireAuth allowedRoles={["admin"]}>
+            <CreateShopperContainer />
+          </RequireAuth>
+        }
       />
       <Route
         path="/admin/users/shoppers/:id"
@@ -210,7 +218,14 @@ const Routes = () => {
           </RequireAuth>
         }
       />
-      <Route path="/admin/users/black-list" element={<BlackListContainer />} />
+      <Route
+        path="/admin/users/black-list"
+        element={
+          <RequireAuth allowedRoles={["admin"]}>
+            <BlackListContainer />
+          </RequireAuth>
+        }
+      />
       <Route path="/admin/bird-eye" element={<BirdEye />} />
       <Route
         path="/admin/slider"
