@@ -14,12 +14,15 @@ import useAssignOrderQuery from "../../../hooks/useAssignOrderQuery";
 import GenericAlert from "../../../../../share/components/alert/GenericAlert";
 import useDeiversQuery from "../../../../users/views/shoppers/hooks/useDeiversQuery";
 import usePendingOrdersQuery from "../hooks/usePendingOrdersQuery";
-import { Backdrop, Box, Typography } from "@mui/material";
+import { Backdrop, Box, Stack, Typography } from "@mui/material";
 import useManagementQuery from "../../../../management/hooks/useManagementQuery";
 import Spinner from "../../../../../share/components/Spinner";
 import { getErrorMessage } from "../../../../../share/utils/getErrorMessage";
+import useMedeaQueries from "../../../../../share/utils/useMideaQuery";
+import ExportButton from "../../../../../share/components/exportButton/ExportButton";
 
 const PendingOrdersContainer = () => {
+  const { mobileL } = useMedeaQueries();
   const [openAssignDialog, setOPenAssignDialog] = useState(false);
   const [idOrder, setIdOrder] = useState<GridRowId | null>(null);
   const [openError, setOpenError] = useState(false);
@@ -73,7 +76,15 @@ const PendingOrdersContainer = () => {
             <Spinner />
           </Backdrop>
         ) : null}
-        <OrdersHead data={managementData?.data.content} />
+        <Stack
+          direction={mobileL ? "column" : "row"}
+          alignItems={mobileL ? "start" : "center"}
+        >
+          <OrdersHead data={managementData?.data.content} />
+          <Box sx={{ marginInlineStart: mobileL ? "0" : "20px" }}>
+            <ExportButton handleClick={() => {}} />
+          </Box>
+        </Stack>
         <Table
           columns={columns}
           rows={rows}

@@ -245,5 +245,6 @@
   "offline": "Offline",
   "admin_note": "Admin Note",
   "note": "Note",
-  "needs_notes": "Needs Notes"
+  "needs_notes": "Needs Notes",
+  "export": "Export"
 }

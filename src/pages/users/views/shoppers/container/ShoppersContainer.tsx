@@ -1,4 +1,4 @@
-import { Backdrop, Button } from "@mui/material";
+import { Backdrop, Box, Button, Stack } from "@mui/material";
 import PaperContainer from "../../../../../share/components/Paper/PaperContainer";
 import Layout from "../../../../../share/components/layout/Layout";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
@@ -16,8 +16,11 @@ import GenericAlert from "../../../../../share/components/alert/GenericAlert";
 import { getErrorMessage } from "../../../../../share/utils/getErrorMessage";
 import useChangeAvailabilityQuery from "../hooks/useChangeAvailabilityQuery";
 import Spinner from "../../../../../share/components/Spinner";
+import ExportButton from "../../../../../share/components/exportButton/ExportButton";
+import useMedeaQueries from "../../../../../share/utils/useMideaQuery";
 
 const ShoppersContainer = () => {
+  const { mobileL } = useMedeaQueries();
   const [openDeleteDialog, setOpenDeleteDialog] = useState(false);
   const [selectedId, setSelectedId] = useState<GridRowId | null>(null);
   const [openError, setOpenError] = useState(false);
@@ -85,20 +88,28 @@ const ShoppersContainer = () => {
   return (
     <Layout>
       <PaperContainer>
-        <Button
-          variant="outlined"
-          endIcon={<PersonAddIcon />}
-          onClick={handleAddShopper}
-          size="small"
-          sx={{
-            ".css-9tj150-MuiButton-endIcon": {
-              marginInline: "8px -4px !important",
-            },
-            mb: "20px",
-          }}
+        <Stack
+          direction={mobileL ? "column" : "row"}
+          alignItems={mobileL ? "start" : "center"}
         >
-          {t("add_shopper")}
-        </Button>
+          <Button
+            variant="outlined"
+            endIcon={<PersonAddIcon />}
+            onClick={handleAddShopper}
+            size="small"
+            sx={{
+              ".css-9tj150-MuiButton-endIcon": {
+                marginInline: "8px -4px !important",
+              },
+              mb: "20px",
+            }}
+          >
+            {t("add_shopper")}
+          </Button>
+          <Box sx={{ marginInlineStart: mobileL ? "0" : "20px" }}>
+            <ExportButton handleClick={() => {}} />
+          </Box>
+        </Stack>
         <Table
           columns={columns}
           rows={rows}

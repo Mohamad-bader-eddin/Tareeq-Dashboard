@@ -15,11 +15,14 @@ import useDeiversQuery from "../../../../users/views/shoppers/hooks/useDeiversQu
 import useAssignOrderQuery from "../../../hooks/useAssignOrderQuery";
 import useScheduleOrdersQuery from "../hooks/useScheduleOrdersQuery";
 import useManagementQuery from "../../../../management/hooks/useManagementQuery";
-import { Backdrop } from "@mui/material";
+import { Backdrop, Box, Stack, Typography } from "@mui/material";
 import Spinner from "../../../../../share/components/Spinner";
 import { getErrorMessage } from "../../../../../share/utils/getErrorMessage";
+import ExportButton from "../../../../../share/components/exportButton/ExportButton";
+import useMedeaQueries from "../../../../../share/utils/useMideaQuery";
 
 const ScheduleOrdersContainer = () => {
+  const { mobileL } = useMedeaQueries();
   const [openAssignDialog, setOPenAssignDialog] = useState(false);
   const [idOrder, setIdOrder] = useState<GridRowId | null>(null);
   const [openError, setOpenError] = useState(false);
@@ -75,7 +78,15 @@ const ScheduleOrdersContainer = () => {
             <Spinner />
           </Backdrop>
         ) : null}
-        <OrdersHead data={managementData?.data.content} />
+        <Stack
+          direction={mobileL ? "column" : "row"}
+          alignItems={mobileL ? "start" : "center"}
+        >
+          <OrdersHead data={managementData?.data.content} />
+          <Box sx={{ marginInlineStart: mobileL ? "0" : "20px" }}>
+            <ExportButton handleClick={() => {}} />
+          </Box>
+        </Stack>
         <Table
           columns={columns}
           rows={rows}
@@ -90,11 +101,16 @@ const ScheduleOrdersContainer = () => {
           assignTo={true}
           handleAgree={() => {}}
           elementContent={
-            <Table
-              columns={AssignCol}
-              rows={AssignRow}
-              loading={driverLoading}
-            />
+            <Box>
+              <Typography variant="body1">
+                Assign Order ({idOrder}) To
+              </Typography>
+              <Table
+                columns={AssignCol}
+                rows={AssignRow}
+                loading={driverLoading}
+              />
+            </Box>
           }
         />
         <GenericAlert

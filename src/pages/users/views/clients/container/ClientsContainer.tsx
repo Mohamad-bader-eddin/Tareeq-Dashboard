@@ -12,6 +12,7 @@ import { GridRowId } from "@mui/x-data-grid";
 import useClientDelete from "../hooks/useClientDelete";
 import GenericAlert from "../../../../../share/components/alert/GenericAlert";
 import { getErrorMessage } from "../../../../../share/utils/getErrorMessage";
+import ExportButton from "../../../../../share/components/exportButton/ExportButton";
 
 const ClientsContainer = () => {
   const [openDeleteDialog, setOpenDeleteDialog] = useState(false);
@@ -52,6 +53,7 @@ const ClientsContainer = () => {
   return (
     <Layout>
       <PaperContainer>
+        <ExportButton handleClick={() => {}} />
         <Table
           columns={columns}
           rows={rows}

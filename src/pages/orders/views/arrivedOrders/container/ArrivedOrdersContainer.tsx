@@ -7,8 +7,10 @@ import useArrivedOrdersColumns from "../hooks/useArrivedOrdersColumns";
 import useArrivedOrdersRows from "../hooks/useArrivedOrdersRows";
 import useArrivedOrdersQuery from "../hooks/useArrivedOrdersQuery";
 import useManagementQuery from "../../../../management/hooks/useManagementQuery";
-import { Backdrop } from "@mui/material";
+import { Backdrop, Box, Stack } from "@mui/material";
 import Spinner from "../../../../../share/components/Spinner";
+import ExportButton from "../../../../../share/components/exportButton/ExportButton";
+import useMedeaQueries from "../../../../../share/utils/useMideaQuery";
 
 const ArrivedOrdersContainer = () => {
   const { data, isLoading, isFetching } = useArrivedOrdersQuery();
@@ -17,6 +19,7 @@ const ArrivedOrdersContainer = () => {
   const { t } = useTranslation();
   const { data: managementData, isLoading: managementLoading } =
     useManagementQuery();
+  const { mobileL } = useMedeaQueries();
   return (
     <Layout>
       <PaperContainer>
@@ -28,7 +31,15 @@ const ArrivedOrdersContainer = () => {
             <Spinner />
           </Backdrop>
         ) : null}
-        <OrdersHead data={managementData?.data.content} />
+        <Stack
+          direction={mobileL ? "column" : "row"}
+          alignItems={mobileL ? "start" : "center"}
+        >
+          <OrdersHead data={managementData?.data.content} />
+          <Box sx={{ marginInlineStart: mobileL ? "0" : "20px" }}>
+            <ExportButton handleClick={() => {}} />
+          </Box>
+        </Stack>
         <Table
           columns={columns}
           rows={rows}

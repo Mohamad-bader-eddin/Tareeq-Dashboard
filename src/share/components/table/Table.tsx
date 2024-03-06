@@ -4,19 +4,19 @@ import {
   DataGrid,
   GridColDef,
   GridRowsProp,
-  GridToolbarContainer,
-  GridToolbarExport,
+  // GridToolbarContainer,
+  // GridToolbarExport,
 } from "@mui/x-data-grid";
 import LoadingSkeleton from "./LoadingSkeleton";
 import { useState } from "react";
 
-function CustomToolbar() {
-  return (
-    <GridToolbarContainer>
-      <GridToolbarExport />
-    </GridToolbarContainer>
-  );
-}
+// function CustomToolbar() {
+//   return (
+//     <GridToolbarContainer>
+//       <GridToolbarExport />
+//     </GridToolbarContainer>
+//   );
+// }
 
 const Table = ({
   rows,
@@ -57,7 +57,7 @@ const Table = ({
           paginationModel={paginationModel}
           onPaginationModelChange={setPaginationModel}
           slots={{
-            toolbar: CustomToolbar,
+            // toolbar: CustomToolbar,
             loadingOverlay: LoadingSkeleton,
           }}
           sx={{

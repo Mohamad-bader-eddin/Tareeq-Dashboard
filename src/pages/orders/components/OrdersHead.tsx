@@ -67,6 +67,7 @@ const OrdersHead = ({ data }: { data: Management[] }) => {
         color={click ? "success" : "error"}
         endIcon={<FiberManualRecordSharpIcon />}
         onClick={handleClick}
+        size="small"
         sx={{
           mb: "20px",
           ".css-9tj150-MuiButton-endIcon": {
