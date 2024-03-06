@@ -5,7 +5,7 @@ export type Vehicle = {
     description: string;
     price_by_time?: string;
     price_by_km?: string;
-    need_note: string;
+    need_note: boolean;
     created_at?: Date;
 }
 
