@@ -11,6 +11,7 @@ import { Backdrop, Box, Stack } from "@mui/material";
 import Spinner from "../../../../../share/components/Spinner";
 import ExportButton from "../../../../../share/components/exportButton/ExportButton";
 import useMedeaQueries from "../../../../../share/utils/useMideaQuery";
+import useExportCanceledOrdersQuery from "../hooks/useExportCanceledOrdersQuery";
 
 const CanceledOrdersContainer = () => {
   const { mobileL } = useMedeaQueries();
@@ -20,6 +21,10 @@ const CanceledOrdersContainer = () => {
   const { rows } = useCanceledOrdersRows({ data: data?.data.content });
   const { data: managementData, isLoading: managementLoading } =
     useManagementQuery();
+  const { refetch } = useExportCanceledOrdersQuery();
+  const handleExportClick = () => {
+    refetch();
+  };
   return (
     <Layout>
       <PaperContainer>
@@ -37,7 +42,7 @@ const CanceledOrdersContainer = () => {
         >
           <OrdersHead data={managementData?.data.content} />
           <Box sx={{ marginInlineStart: mobileL ? "0" : "20px" }}>
-            <ExportButton handleClick={() => {}} />
+            <ExportButton handleClick={handleExportClick} />
           </Box>
         </Stack>
         <Table

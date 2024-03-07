@@ -11,6 +11,7 @@ import { Backdrop, Box, Stack } from "@mui/material";
 import Spinner from "../../../../../share/components/Spinner";
 import ExportButton from "../../../../../share/components/exportButton/ExportButton";
 import useMedeaQueries from "../../../../../share/utils/useMideaQuery";
+import useExportArrivedOrdersQuery from "../hooks/useExportArrivedOrdersQuery";
 
 const ArrivedOrdersContainer = () => {
   const { data, isLoading, isFetching } = useArrivedOrdersQuery();
@@ -20,6 +21,10 @@ const ArrivedOrdersContainer = () => {
   const { data: managementData, isLoading: managementLoading } =
     useManagementQuery();
   const { mobileL } = useMedeaQueries();
+  const { refetch } = useExportArrivedOrdersQuery();
+  const handleExportClick = () => {
+    refetch();
+  };
   return (
     <Layout>
       <PaperContainer>
@@ -37,7 +42,7 @@ const ArrivedOrdersContainer = () => {
         >
           <OrdersHead data={managementData?.data.content} />
           <Box sx={{ marginInlineStart: mobileL ? "0" : "20px" }}>
-            <ExportButton handleClick={() => {}} />
+            <ExportButton handleClick={handleExportClick} />
           </Box>
         </Stack>
         <Table

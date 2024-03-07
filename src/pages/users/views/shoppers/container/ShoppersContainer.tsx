@@ -18,6 +18,7 @@ import useChangeAvailabilityQuery from "../hooks/useChangeAvailabilityQuery";
 import Spinner from "../../../../../share/components/Spinner";
 import ExportButton from "../../../../../share/components/exportButton/ExportButton";
 import useMedeaQueries from "../../../../../share/utils/useMideaQuery";
+import useExportDriversQuery from "../hooks/useExportDriversQuery";
 
 const ShoppersContainer = () => {
   const { mobileL } = useMedeaQueries();
@@ -85,6 +86,10 @@ const ShoppersContainer = () => {
       },
     });
   };
+  const { refetch: downloadDrivers } = useExportDriversQuery();
+  const handleExportClick = () => {
+    downloadDrivers();
+  };
   return (
     <Layout>
       <PaperContainer>
@@ -107,7 +112,7 @@ const ShoppersContainer = () => {
             {t("add_shopper")}
           </Button>
           <Box sx={{ marginInlineStart: mobileL ? "0" : "20px" }}>
-            <ExportButton handleClick={() => {}} />
+            <ExportButton handleClick={handleExportClick} />
           </Box>
         </Stack>
         <Table

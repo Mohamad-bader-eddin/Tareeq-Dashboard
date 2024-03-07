@@ -20,6 +20,7 @@ import Spinner from "../../../../../share/components/Spinner";
 import { getErrorMessage } from "../../../../../share/utils/getErrorMessage";
 import useMedeaQueries from "../../../../../share/utils/useMideaQuery";
 import ExportButton from "../../../../../share/components/exportButton/ExportButton";
+import useExportPendingOrdersQuery from "../hooks/useExportPendingOrdersQuery";
 
 const PendingOrdersContainer = () => {
   const { mobileL } = useMedeaQueries();
@@ -64,6 +65,10 @@ const PendingOrdersContainer = () => {
   const { t } = useTranslation();
   const { data: managementData, isLoading: managementLoading } =
     useManagementQuery();
+  const { refetch } = useExportPendingOrdersQuery();
+  const handleExportClick = () => {
+    refetch();
+  };
 
   return (
     <Layout>
@@ -82,7 +87,7 @@ const PendingOrdersContainer = () => {
         >
           <OrdersHead data={managementData?.data.content} />
           <Box sx={{ marginInlineStart: mobileL ? "0" : "20px" }}>
-            <ExportButton handleClick={() => {}} />
+            <ExportButton handleClick={handleExportClick} />
           </Box>
         </Stack>
         <Table

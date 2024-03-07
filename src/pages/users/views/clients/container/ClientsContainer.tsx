@@ -13,6 +13,7 @@ import useClientDelete from "../hooks/useClientDelete";
 import GenericAlert from "../../../../../share/components/alert/GenericAlert";
 import { getErrorMessage } from "../../../../../share/utils/getErrorMessage";
 import ExportButton from "../../../../../share/components/exportButton/ExportButton";
+import useExportClientsQuery from "../hooks/useExportClientsQuery";
 
 const ClientsContainer = () => {
   const [openDeleteDialog, setOpenDeleteDialog] = useState(false);
@@ -49,11 +50,15 @@ const ClientsContainer = () => {
       },
     });
   };
+  const { refetch: downloadClients } = useExportClientsQuery();
+  const handleExportClick = () => {
+    downloadClients();
+  };
 
   return (
     <Layout>
       <PaperContainer>
-        <ExportButton handleClick={() => {}} />
+        <ExportButton handleClick={handleExportClick} />
         <Table
           columns={columns}
           rows={rows}

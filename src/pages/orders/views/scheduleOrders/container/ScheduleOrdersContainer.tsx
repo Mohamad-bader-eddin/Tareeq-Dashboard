@@ -20,6 +20,7 @@ import Spinner from "../../../../../share/components/Spinner";
 import { getErrorMessage } from "../../../../../share/utils/getErrorMessage";
 import ExportButton from "../../../../../share/components/exportButton/ExportButton";
 import useMedeaQueries from "../../../../../share/utils/useMideaQuery";
+import useExportScheduleOrdersQuery from "../hooks/useExportScheduleOrdersQuery";
 
 const ScheduleOrdersContainer = () => {
   const { mobileL } = useMedeaQueries();
@@ -66,6 +67,10 @@ const ScheduleOrdersContainer = () => {
   const { t } = useTranslation();
   const { data: managementData, isLoading: managementLoading } =
     useManagementQuery();
+  const { refetch } = useExportScheduleOrdersQuery();
+  const handleExportClick = () => {
+    refetch();
+  };
 
   return (
     <Layout>
@@ -84,7 +89,7 @@ const ScheduleOrdersContainer = () => {
         >
           <OrdersHead data={managementData?.data.content} />
           <Box sx={{ marginInlineStart: mobileL ? "0" : "20px" }}>
-            <ExportButton handleClick={() => {}} />
+            <ExportButton handleClick={handleExportClick} />
           </Box>
         </Stack>
         <Table
