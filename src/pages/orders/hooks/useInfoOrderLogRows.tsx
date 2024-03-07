@@ -1,92 +1,17 @@
-import { GridRowsProp } from "@mui/x-data-grid";
-import {
-  randomCreatedDate,
-  randomTraderName,
-  randomArrayItem,
-  randomId,
-} from "@mui/x-data-grid-generator";
+import { format } from "date-fns";
+import { Order, OrderLogType } from "../types/OrderType";
 
-const status = ["Pending", "En Route", "Canceled", "Scheduled"];
-const randomStatus = () => {
-  return randomArrayItem(status);
-};
-
-const useInfoOrderLogRows = () => {
-  const initialRows: GridRowsProp = [
-    {
-      id: randomId(),
-      user: randomTraderName(),
-      log: randomStatus(),
-      created_at: randomCreatedDate().toLocaleString("en-uk", {
-        day: "numeric",
-        month: "short",
-        year: "numeric",
-        hour: "numeric",
-        minute: "numeric",
-      }),
-    },
-    {
-      id: randomId(),
-      user: randomTraderName(),
-      log: randomStatus(),
-      created_at: randomCreatedDate().toLocaleString("en-uk", {
-        day: "numeric",
-        month: "short",
-        year: "numeric",
-        hour: "numeric",
-        minute: "numeric",
-      }),
-    },
-    {
-      id: randomId(),
-      user: randomTraderName(),
-      log: randomStatus(),
-      created_at: randomCreatedDate().toLocaleString("en-uk", {
-        day: "numeric",
-        month: "short",
-        year: "numeric",
-        hour: "numeric",
-        minute: "numeric",
-      }),
-    },
-    {
-      id: randomId(),
-      user: randomTraderName(),
-      log: randomStatus(),
-      created_at: randomCreatedDate().toLocaleString("en-uk", {
-        day: "numeric",
-        month: "short",
-        year: "numeric",
-        hour: "numeric",
-        minute: "numeric",
-      }),
-    },
-    {
-      id: randomId(),
-      user: randomTraderName(),
-      log: randomStatus(),
-      created_at: randomCreatedDate().toLocaleString("en-uk", {
-        day: "numeric",
-        month: "short",
-        year: "numeric",
-        hour: "numeric",
-        minute: "numeric",
-      }),
-    },
-    {
-      id: randomId(),
-      user: randomTraderName(),
-      log: randomStatus(),
-      created_at: randomCreatedDate().toLocaleString("en-uk", {
-        day: "numeric",
-        month: "short",
-        year: "numeric",
-        hour: "numeric",
-        minute: "numeric",
-      }),
-    },
-  ];
-  return { initialRows };
+const useInfoOrderLogRows = ({ data }: { data: Order }) => {
+  const orderLogsRows: OrderLogType[] = [];
+  data?.activityLogs?.forEach((el) =>
+    orderLogsRows.push({
+      id: el.id,
+      log: el.description,
+      user: el.causer,
+      created_at: format(new Date(el.created_at), "dd/MM/yyyy"),
+    })
+  );
+  return { orderLogsRows };
 };
 
 export default useInfoOrderLogRows;

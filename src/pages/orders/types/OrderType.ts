@@ -18,6 +18,14 @@ export type Order = {
     admin_note?: string;
     canceled_at?: Date;
     credits_used?: number;
+    activityLogs?: ActivityLogs[]
+}
+
+export type ActivityLogs = {
+    id: string;
+    description: string;
+    causer: string;
+    created_at: Date
 }
 
 export type Rate = {
@@ -59,4 +67,11 @@ export type User = {
     platform: null;
     image: null;
     created_at: Date;
+}
+
+export type OrderLogType = {
+    id: string;
+    user: string;
+    log: string;
+    created_at: string;
 }

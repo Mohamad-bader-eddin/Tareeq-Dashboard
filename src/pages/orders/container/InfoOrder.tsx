@@ -23,8 +23,6 @@ const InfoOrder = () => {
   const { darkMode } = useDarkMode();
   // const { columns: shoppersCol } = useInfoOrderShoppersColumn();
   // const { initialRows: shopperRow } = useInfoOrderShoppersRows();
-  const { columns: logCol } = useInfoOrderLogColumn();
-  const { initialRows: logRow } = useInfoOrderLogRows();
   const { type, id } = useParams();
   const { data, isLoading } = useOrderQuery(id as string);
   const {
@@ -41,6 +39,8 @@ const InfoOrder = () => {
     id: id as string,
     adminNote: data?.data.content.admin_note,
   });
+  const { columns: logCol } = useInfoOrderLogColumn();
+  const { orderLogsRows } = useInfoOrderLogRows({ data: data?.data.content });
 
   const track = () => {
     switch (type) {
@@ -80,95 +80,106 @@ const InfoOrder = () => {
   return (
     <Layout>
       <Breadcrumb tracks={breadcrumbsTracks} current={t("info")} />
-      <PaperContainer>
-        <Typography variant="h6" sx={{ marginBottom: "10px" }}>
-          {t("info")} ( {t("order_no")} {data?.data?.content?.id} )
-        </Typography>
-        {isLoading ? (
-          <Backdrop
-            sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
-            open={isLoading}
-          >
-            <Spinner />
-          </Backdrop>
-        ) : (
-          <StyledInfo $darkMode={darkMode}>
-            <div className="row">
-              <div className="col-6">
-                <h5 className="atr">
-                  <span>
-                    <TripOriginOutlinedIcon sx={{ fontSize: "10px" }} />
-                  </span>
-                  {t("expected_distance")} :
-                </h5>
-                <h5 className="val">
-                  {data?.data?.content?.distance_expected} KM
-                </h5>
+      {isLoading ? (
+        <Backdrop
+          sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+          open={isLoading}
+        >
+          <Spinner />
+        </Backdrop>
+      ) : (
+        <>
+          <PaperContainer>
+            <Typography variant="h6" sx={{ marginBottom: "10px" }}>
+              {t("info")} ( {t("order_no")} {data?.data?.content?.id} )
+            </Typography>
+            <StyledInfo $darkMode={darkMode}>
+              <div className="row">
+                <div className="col-6">
+                  <h5 className="atr">
+                    <span>
+                      <TripOriginOutlinedIcon sx={{ fontSize: "10px" }} />
+                    </span>
+                    {t("expected_distance")} :
+                  </h5>
+                  <h5 className="val">
+                    {data?.data?.content?.distance_expected} KM
+                  </h5>
+                </div>
+                <div className="col-6">
+                  <h5 className="atr">
+                    <span>
+                      <TripOriginOutlinedIcon sx={{ fontSize: "10px" }} />
+                    </span>
+                    {t("real_distance")} :
+                  </h5>
+                  <h5 className="val"> - KM</h5>
+                </div>
               </div>
-              <div className="col-6">
-                <h5 className="atr">
-                  <span>
-                    <TripOriginOutlinedIcon sx={{ fontSize: "10px" }} />
-                  </span>
-                  {t("real_distance")} :
-                </h5>
-                <h5 className="val"> - KM</h5>
+              <div className="row">
+                <div className="col-6">
+                  <h5 className="atr">
+                    <span>
+                      <TripOriginOutlinedIcon sx={{ fontSize: "10px" }} />
+                    </span>
+                    {t("placed_on")} :
+                  </h5>
+                  <h5 className="val">{data?.data?.content?.created_at}</h5>
+                </div>
+                <div className="col-6">
+                  <h5 className="atr">
+                    <span>
+                      <TripOriginOutlinedIcon sx={{ fontSize: "10px" }} />
+                    </span>
+                    {t("assigned_at")} :
+                  </h5>
+                  <h5 className="val">2023-09-30 15:35:53</h5>
+                </div>
               </div>
-            </div>
-            <div className="row">
-              <div className="col-6">
-                <h5 className="atr">
-                  <span>
-                    <TripOriginOutlinedIcon sx={{ fontSize: "10px" }} />
-                  </span>
-                  {t("placed_on")} :
-                </h5>
-                <h5 className="val">{data?.data?.content?.created_at}</h5>
+              <div className="row">
+                <div className="col-6">
+                  <h5 className="atr">
+                    <span>
+                      <TripOriginOutlinedIcon sx={{ fontSize: "10px" }} />
+                    </span>
+                    {t("accepted_at")} :
+                  </h5>
+                  <h5 className="val">{data?.data?.content?.accepted_at}</h5>
+                </div>
+                <div className="col-6">
+                  <h5 className="atr">
+                    <span>
+                      <TripOriginOutlinedIcon sx={{ fontSize: "10px" }} />
+                    </span>
+                    {t("arrive_to_customer_location")} :
+                  </h5>
+                  <h5 className="val"> {data?.data?.content?.completed_at}</h5>
+                </div>
               </div>
-              <div className="col-6">
-                <h5 className="atr">
-                  <span>
-                    <TripOriginOutlinedIcon sx={{ fontSize: "10px" }} />
-                  </span>
-                  {t("assigned_at")} :
-                </h5>
-                <h5 className="val">2023-09-30 15:35:53</h5>
+              <div className="row">
+                <div className="col-6">
+                  <h5 className="atr">
+                    <span>
+                      <TripOriginOutlinedIcon sx={{ fontSize: "10px" }} />
+                    </span>
+                    {t("arrived_at")} :
+                  </h5>
+                  <h5 className="val">2023-09-30 15:35:53</h5>
+                </div>
               </div>
-            </div>
-            <div className="row">
-              <div className="col-6">
-                <h5 className="atr">
-                  <span>
-                    <TripOriginOutlinedIcon sx={{ fontSize: "10px" }} />
-                  </span>
-                  {t("accepted_at")} :
-                </h5>
-                <h5 className="val">{data?.data?.content?.accepted_at}</h5>
-              </div>
-              <div className="col-6">
-                <h5 className="atr">
-                  <span>
-                    <TripOriginOutlinedIcon sx={{ fontSize: "10px" }} />
-                  </span>
-                  {t("arrive_to_customer_location")} :
-                </h5>
-                <h5 className="val"> {data?.data?.content?.completed_at}</h5>
-              </div>
-            </div>
-            <div className="row">
-              <div className="col-6">
-                <h5 className="atr">
-                  <span>
-                    <TripOriginOutlinedIcon sx={{ fontSize: "10px" }} />
-                  </span>
-                  {t("arrived_at")} :
-                </h5>
-                <h5 className="val">2023-09-30 15:35:53</h5>
-              </div>
-            </div>
-          </StyledInfo>
-        )}
-      </PaperContainer>
+            </StyledInfo>
+          </PaperContainer>
+          <PaperContainer>
+            <Table
+              columns={logCol}
+              rows={orderLogsRows}
+              title={t("order_log")}
+              totalCount={data?.data?.content.activityLogs.length}
+              loading={isLoading}
+            />
+          </PaperContainer>
+        </>
+      )}
       {/* <PaperContainer>
         <Table
           columns={shoppersCol}
@@ -178,15 +189,6 @@ const InfoOrder = () => {
           loading={false}
         />
       </PaperContainer> */}
-      <PaperContainer>
-        <Table
-          columns={logCol}
-          rows={logRow}
-          title={t("order_log")}
-          totalCount={5}
-          loading={false}
-        />
-      </PaperContainer>
       {type === "arrived" ? (
         isLoading ? (
           <Backdrop
