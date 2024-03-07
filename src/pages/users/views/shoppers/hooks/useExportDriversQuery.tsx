@@ -3,11 +3,12 @@ import axiosInstance from "../../../../../auth/axiosUtils";
 
 const useExportDriversQuery = () => {
   const exportDriverOrders = () => {
-    return axiosInstance.get("/api/admin/driver?download=true");
+    const response = axiosInstance.get("/api/admin/driver?download=true", {
+      responseType: "blob",
+    });
+    return response;
   };
-  return useQuery("export-driver-order", exportDriverOrders, {
-    enabled: false,
-  });
+  return useQuery("export-driver-order", exportDriverOrders);
 };
 
 export default useExportDriversQuery;

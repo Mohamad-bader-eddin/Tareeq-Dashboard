@@ -67,9 +67,19 @@ const ScheduleOrdersContainer = () => {
   const { t } = useTranslation();
   const { data: managementData, isLoading: managementLoading } =
     useManagementQuery();
-  const { refetch } = useExportScheduleOrdersQuery();
+  const { data: download } = useExportScheduleOrdersQuery();
   const handleExportClick = () => {
-    refetch();
+    const contentType = download?.headers["content-type"];
+    const url = window.URL.createObjectURL(new Blob([download?.data]));
+    const link = document.createElement("a");
+    link.href = url;
+    link.setAttribute(
+      "download",
+      `schedule orders.${contentType.split("/")[1]}`
+    ); // Set the filename
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   return (

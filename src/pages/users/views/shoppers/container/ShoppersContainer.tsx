@@ -86,9 +86,16 @@ const ShoppersContainer = () => {
       },
     });
   };
-  const { refetch: downloadDrivers } = useExportDriversQuery();
+  const { data: downloadDrivers } = useExportDriversQuery();
   const handleExportClick = () => {
-    downloadDrivers();
+    const contentType = downloadDrivers?.headers["content-type"];
+    const url = window.URL.createObjectURL(new Blob([downloadDrivers?.data]));
+    const link = document.createElement("a");
+    link.href = url;
+    link.setAttribute("download", `drivers.${contentType.split("/")[1]}`); // Set the filename
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
   return (
     <Layout>
