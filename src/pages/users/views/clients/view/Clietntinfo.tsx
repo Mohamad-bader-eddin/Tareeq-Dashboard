@@ -93,11 +93,14 @@ const Clietntinfo = () => {
               isLoading={isLoading}
             />
           </PaperContainer>
+          <PaperContainer>
+            <GenericEmbededMap
+              lat={data?.data?.content?.latest_address?.lat || 33.513674}
+              long={data?.data?.content?.latest_address?.long || 36.276526}
+            />
+          </PaperContainer>
         </>
       )}
-      <PaperContainer>
-        <GenericEmbededMap lat={33.513674} long={36.276526} />
-      </PaperContainer>
       {/* <PaperContainer>
         <Typography variant="h6" sx={{ marginBottom: "15px" }}>
           {t("change_password")}

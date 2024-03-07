@@ -75,24 +75,29 @@ const InfoContainer = () => {
           <Spinner />
         </Backdrop>
       ) : (
-        <PaperContainer>
-          <Typography variant="h6" sx={{ mb: "20px" }}>
-            {t("info")}
-          </Typography>
-          <ShopperInfoForm
-            initialValues={initialValues}
-            onSubmit={onSubmit}
-            validationSchema={validationSchema}
-            zoneOptions={options}
-            zoneLoading={zoneLoading}
-            vehicleOptions={vehiclesOptions}
-            vehicleLoading={vehiclesLoading}
-          />
-        </PaperContainer>
+        <>
+          <PaperContainer>
+            <Typography variant="h6" sx={{ mb: "20px" }}>
+              {t("info")}
+            </Typography>
+            <ShopperInfoForm
+              initialValues={initialValues}
+              onSubmit={onSubmit}
+              validationSchema={validationSchema}
+              zoneOptions={options}
+              zoneLoading={zoneLoading}
+              vehicleOptions={vehiclesOptions}
+              vehicleLoading={vehiclesLoading}
+            />
+          </PaperContainer>
+          <PaperContainer>
+            <GenericEmbededMap
+              lat={data?.data?.content?.current_lat || 33.513674}
+              long={data?.data?.content?.current_long || 36.276526}
+            />
+          </PaperContainer>
+        </>
       )}
-      <PaperContainer>
-        <GenericEmbededMap lat={33.513674} long={36.276526} />
-      </PaperContainer>
       <PaperContainer>
         <Typography variant="h6" sx={{ marginBottom: "15px" }}>
           {t("change_password")}

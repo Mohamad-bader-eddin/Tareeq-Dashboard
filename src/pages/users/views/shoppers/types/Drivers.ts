@@ -10,6 +10,8 @@ export type Drivers = {
     driver_profit?: string;
     zone_id: string;
     image?: string;
+    current_lat?: number;
+    current_long?: number;
     zone?: Zone;
     vehicle?: {
         id: string;
