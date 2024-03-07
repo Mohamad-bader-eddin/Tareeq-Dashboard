@@ -14,9 +14,17 @@ export type Order = {
     driver: Driver;
     user: User;
     order_points: OrderPoint[];
-    rate?: number;
+    rate?: Rate;
     admin_note?: string;
-    canceled_at?: Date
+    canceled_at?: Date;
+    credits_used?: number;
+}
+
+export type Rate = {
+    id: string;
+    order_id: string;
+    rate: number;
+    created_at: Date
 }
 
 export type Driver = {

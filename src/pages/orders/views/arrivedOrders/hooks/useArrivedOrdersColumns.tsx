@@ -78,13 +78,13 @@ const useArrivedOrdersColumns = () => {
           );
         },
       },
-      // {
-      //   field: "creditsUsed",
-      //   headerName: t("credits_used"),
-      //   width: 100,
-      //   align: "center",
-      //   headerAlign: "center",
-      // },
+      {
+        field: "creditsUsed",
+        headerName: t("credits_used"),
+        width: 100,
+        align: "center",
+        headerAlign: "center",
+      },
       {
         field: "rating",
         headerName: t("rating"),
