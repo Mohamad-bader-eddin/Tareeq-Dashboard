@@ -113,7 +113,10 @@ const InfoOrder = () => {
                     </span>
                     {t("real_distance")} :
                   </h5>
-                  <h5 className="val"> - KM</h5>
+                  <h5 className="val">
+                    {" "}
+                    {data?.data?.content?.distance_expected} - KM
+                  </h5>
                 </div>
               </div>
               <div className="row">
@@ -133,7 +136,7 @@ const InfoOrder = () => {
                     </span>
                     {t("assigned_at")} :
                   </h5>
-                  <h5 className="val">2023-09-30 15:35:53</h5>
+                  <h5 className="val">{data?.data?.content?.started_at}</h5>
                 </div>
               </div>
               <div className="row">
@@ -153,7 +156,10 @@ const InfoOrder = () => {
                     </span>
                     {t("arrive_to_customer_location")} :
                   </h5>
-                  <h5 className="val"> {data?.data?.content?.completed_at}</h5>
+                  <h5 className="val">
+                    {" "}
+                    {data?.data?.content?.arrive_to_customer_at}
+                  </h5>
                 </div>
               </div>
               <div className="row">
@@ -164,7 +170,27 @@ const InfoOrder = () => {
                     </span>
                     {t("arrived_at")} :
                   </h5>
-                  <h5 className="val">2023-09-30 15:35:53</h5>
+                  <h5 className="val">{data?.data?.content?.completed_at}</h5>
+                </div>
+                <div className="col-6">
+                  <h5 className="atr">
+                    <span>
+                      <TripOriginOutlinedIcon sx={{ fontSize: "10px" }} />
+                    </span>
+                    {t("total_expected")} :
+                  </h5>
+                  <h5 className="val">{data?.data?.content?.total_expected}</h5>
+                </div>
+              </div>
+              <div className="row">
+                <div className="col-6">
+                  <h5 className="atr">
+                    <span>
+                      <TripOriginOutlinedIcon sx={{ fontSize: "10px" }} />
+                    </span>
+                    {t("total_paid")} :
+                  </h5>
+                  <h5 className="val">{data?.data?.content?.total_paid}</h5>
                 </div>
               </div>
             </StyledInfo>

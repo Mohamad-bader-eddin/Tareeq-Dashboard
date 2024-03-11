@@ -67,14 +67,10 @@ const PendingOrdersContainer = () => {
     useManagementQuery();
   const { data: download } = useExportPendingOrdersQuery();
   const handleExportClick = () => {
-    const contentType = download?.headers["content-type"];
     const url = window.URL.createObjectURL(new Blob([download?.data]));
     const link = document.createElement("a");
     link.href = url;
-    link.setAttribute(
-      "download",
-      `pending orders.${contentType.split("/")[1]}`
-    ); // Set the filename
+    link.setAttribute("download", `pending orders.xlsx`); // Set the filename
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
