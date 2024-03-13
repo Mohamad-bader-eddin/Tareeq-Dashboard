@@ -246,5 +246,6 @@
   "admin_note": "ملاحظة الادمن",
   "note": "ملاحظة",
   "needs_notes": "بحاجة ملاحظات",
-  "export": "تصدير"
+  "export": "تصدير",
+  "add_notification": "إضافة إشعار"
 }

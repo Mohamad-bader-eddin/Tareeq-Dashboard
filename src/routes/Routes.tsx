@@ -34,7 +34,6 @@ import AddAppVarialbesPeriods from "../pages/management/views/appVarialbesPeriod
 import OtherAppVariables from "../pages/management/views/otherAppVariables/container/OtherAppVariables";
 import ShopperLimitContainer from "../pages/management/views/shopperLimit/container/ShopperLimitContainer";
 import AppPhoneNumberContainer from "../pages/management/views/appPhoneNumber/container/AppPhoneNumberContainer";
-import NotificationsContainer from "../pages/management/views/notifications/container/NotificationsContainer";
 import MessagesContainer from "../pages/management/views/messages/container/MessagesContainer";
 import ViewMessageContainer from "../pages/management/views/messages/views/ViewMessageContainer";
 import FAQsContainer from "../pages/management/views/FAQs/container/FAQsContainer";
@@ -54,6 +53,10 @@ import AddTransactionTypeContainer from "../pages/transactionType/views/addTrans
 import InfoTransactionTypeContainer from "../pages/transactionType/views/infoTransactionType/container/InfoTransactionTypeContainer";
 import AddOperationTimeContainer from "../pages/management/views/operationTime/view/add/container/AddOperationTimeContainer";
 import InfoOperationTimeContainer from "../pages/management/views/operationTime/view/info/container/InfoOperationTimeContainer";
+import NotificationContainer from "../pages/management/views/notifications/container/NotificationContainer";
+import NotificationsContainer from "../pages/marketing/views/notifications/container/NotificationsContainer";
+import AddNotificationsContainer from "../pages/marketing/views/notifications/views/add/container/AddNotificationsContainer";
+import InfoNotificationsContainer from "../pages/marketing/views/notifications/views/info/container/InfoNotificationsContainer";
 
 const Routes = () => {
   return (
@@ -365,6 +368,30 @@ const Routes = () => {
         }
       />
       <Route
+        path="/admin/marketing/notifications"
+        element={
+          <RequireAuth allowedRoles={["admin"]}>
+            <NotificationsContainer />
+          </RequireAuth>
+        }
+      />
+      <Route
+        path="/admin/marketing/add-notification"
+        element={
+          <RequireAuth allowedRoles={["admin"]}>
+            <AddNotificationsContainer />
+          </RequireAuth>
+        }
+      />
+      <Route
+        path="/admin/marketing/notifications/:id"
+        element={
+          <RequireAuth allowedRoles={["admin"]}>
+            <InfoNotificationsContainer />
+          </RequireAuth>
+        }
+      />
+      <Route
         path="/admin/management/operation-time"
         element={
           <RequireAuth allowedRoles={["admin"]}>
@@ -440,7 +467,7 @@ const Routes = () => {
         path="/admin/management/notifications"
         element={
           <RequireAuth allowedRoles={["admin"]}>
-            <NotificationsContainer />
+            <NotificationContainer />
           </RequireAuth>
         }
       />

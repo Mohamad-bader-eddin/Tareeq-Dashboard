@@ -132,6 +132,10 @@ export const SidebarData = [
         path: "/admin/marketing/promo",
       },
       {
+        title: "notifications",
+        path: "/admin/marketing/notifications",
+      },
+      {
         title: "push_notifications",
         path: "/admin/marketing/push-notifications",
       },

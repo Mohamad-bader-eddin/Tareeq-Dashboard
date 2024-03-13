@@ -5,7 +5,7 @@ import NotificationsForm from "../components/NotificationsForm";
 import useNotificationsFormValidation from "../hooks/useNotificationsFormValidation";
 import { useTranslation } from "react-i18next";
 
-const NotificationsContainer = () => {
+const NotificationContainer = () => {
   const { t } = useTranslation();
   const { initialValues, onSubmit } = useNotificationsFormValidation();
   return (
@@ -20,4 +20,4 @@ const NotificationsContainer = () => {
   );
 };
 
-export default NotificationsContainer;
+export default NotificationContainer;

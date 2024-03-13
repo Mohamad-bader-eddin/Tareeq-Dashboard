@@ -246,5 +246,6 @@
   "admin_note": "Admin Note",
   "note": "Note",
   "needs_notes": "Needs Notes",
-  "export": "Export"
+  "export": "Export",
+  "add_notification": "Add Notification"
 }
