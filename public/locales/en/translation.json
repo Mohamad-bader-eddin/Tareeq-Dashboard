@@ -247,5 +247,6 @@
   "note": "Note",
   "needs_notes": "Needs Notes",
   "export": "Export",
-  "add_notification": "Add Notification"
+  "add_notification": "Add Notification",
+  "notes": "Notes"
 }

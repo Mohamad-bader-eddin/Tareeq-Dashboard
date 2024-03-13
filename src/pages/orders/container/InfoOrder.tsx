@@ -17,6 +17,8 @@ import Spinner from "../../../share/components/Spinner";
 import useAdminNoteFormValidation from "../hooks/useAdminNoteFormValidation";
 import AdminNoteForm from "../components/AdminNoteForm";
 import GenericAlert from "../../../share/components/alert/GenericAlert";
+import useAdminNotesColumns from "../hooks/useAdminNotesColumns";
+import useAdminNotesRows from "../hooks/useAdminNotesRows";
 
 const InfoOrder = () => {
   const { t } = useTranslation();
@@ -41,6 +43,8 @@ const InfoOrder = () => {
   });
   const { columns: logCol } = useInfoOrderLogColumn();
   const { orderLogsRows } = useInfoOrderLogRows({ data: data?.data.content });
+  const { columns: notesColumns } = useAdminNotesColumns();
+  const { initialRows } = useAdminNotesRows();
 
   const track = () => {
     switch (type) {
@@ -224,16 +228,27 @@ const InfoOrder = () => {
             <Spinner />
           </Backdrop>
         ) : (
-          <PaperContainer>
-            <Typography variant="h6" sx={{ marginBottom: "10px" }}>
-              {t("admin_note")}
-            </Typography>
-            <AdminNoteForm
-              initialValues={initialValues}
-              onSubmit={onSubmit}
-              validationSchema={validationSchema}
-            />
-          </PaperContainer>
+          <>
+            <PaperContainer>
+              <Typography variant="h6" sx={{ marginBottom: "10px" }}>
+                {t("admin_note")}
+              </Typography>
+              <AdminNoteForm
+                initialValues={initialValues}
+                onSubmit={onSubmit}
+                validationSchema={validationSchema}
+              />
+            </PaperContainer>
+            <PaperContainer>
+              <Table
+                columns={notesColumns}
+                rows={initialRows}
+                loading={false}
+                title={t("notes")}
+                totalCount={3}
+              />
+            </PaperContainer>
+          </>
         )
       ) : null}
       <GenericAlert
