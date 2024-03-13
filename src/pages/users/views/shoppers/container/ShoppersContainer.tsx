@@ -16,9 +16,9 @@ import GenericAlert from "../../../../../share/components/alert/GenericAlert";
 import { getErrorMessage } from "../../../../../share/utils/getErrorMessage";
 import useChangeAvailabilityQuery from "../hooks/useChangeAvailabilityQuery";
 import Spinner from "../../../../../share/components/Spinner";
-import ExportButton from "../../../../../share/components/exportButton/ExportButton";
 import useMedeaQueries from "../../../../../share/utils/useMideaQuery";
 import useExportDriversQuery from "../hooks/useExportDriversQuery";
+import ExportButton from "../components/ExportButton";
 
 const ShoppersContainer = () => {
   const { mobileL } = useMedeaQueries();
@@ -88,11 +88,10 @@ const ShoppersContainer = () => {
   };
   const { data: downloadDrivers } = useExportDriversQuery();
   const handleExportClick = () => {
-    const contentType = downloadDrivers?.headers["content-type"];
     const url = window.URL.createObjectURL(new Blob([downloadDrivers?.data]));
     const link = document.createElement("a");
     link.href = url;
-    link.setAttribute("download", `drivers.${contentType.split("/")[1]}`); // Set the filename
+    link.setAttribute("download", `drivers.xlsx`); // Set the filename
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);

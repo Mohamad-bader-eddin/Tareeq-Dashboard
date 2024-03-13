@@ -1,15 +1,21 @@
-import { useQuery } from "react-query";
+import { useMutation } from "react-query";
 import axiosInstance from "../../../../../auth/axiosUtils";
 
 const useExportPendingOrdersQuery = () => {
-  const exportPendingOrders = async () => {
+  const exportPendingOrders = async ({
+    from,
+    to,
+  }: {
+    from: string;
+    to: string;
+  }) => {
     const response = await axiosInstance.get(
-      "/api/admin/order/getBystatus/pending?download=true",
+      `/api/admin/order/getBystatus/pending?download=true&from=${from}&to=${to}`,
       { responseType: "blob" }
     );
     return response;
   };
-  return useQuery("export-pending-order", exportPendingOrders);
+  return useMutation(exportPendingOrders);
 };
 
 export default useExportPendingOrdersQuery;

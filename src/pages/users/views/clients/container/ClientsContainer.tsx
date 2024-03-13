@@ -12,8 +12,8 @@ import { GridRowId } from "@mui/x-data-grid";
 import useClientDelete from "../hooks/useClientDelete";
 import GenericAlert from "../../../../../share/components/alert/GenericAlert";
 import { getErrorMessage } from "../../../../../share/utils/getErrorMessage";
-import ExportButton from "../../../../../share/components/exportButton/ExportButton";
 import useExportClientsQuery from "../hooks/useExportClientsQuery";
+import ExportButton from "../components/ExportButton";
 
 const ClientsContainer = () => {
   const [openDeleteDialog, setOpenDeleteDialog] = useState(false);
@@ -52,11 +52,10 @@ const ClientsContainer = () => {
   };
   const { data: downloadClients } = useExportClientsQuery();
   const handleExportClick = () => {
-    const contentType = downloadClients?.headers["content-type"];
     const url = window.URL.createObjectURL(new Blob([downloadClients?.data]));
     const link = document.createElement("a");
     link.href = url;
-    link.setAttribute("download", `clients.${contentType.split("/")[1]}`); // Set the filename
+    link.setAttribute("download", `clients.xlsx`); // Set the filename
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);

@@ -12,6 +12,8 @@ import Spinner from "../../../../../share/components/Spinner";
 import ExportButton from "../../../../../share/components/exportButton/ExportButton";
 import useMedeaQueries from "../../../../../share/utils/useMideaQuery";
 import useExportArrivedOrdersQuery from "../hooks/useExportArrivedOrdersQuery";
+import { useState } from "react";
+import { format } from "date-fns";
 
 const ArrivedOrdersContainer = () => {
   const { data, isLoading, isFetching } = useArrivedOrdersQuery();
@@ -21,19 +23,34 @@ const ArrivedOrdersContainer = () => {
   const { data: managementData, isLoading: managementLoading } =
     useManagementQuery();
   const { mobileL } = useMedeaQueries();
-  const { data: download } = useExportArrivedOrdersQuery();
+  const { mutate, isLoading: exportLoading } = useExportArrivedOrdersQuery();
+  const [openDialog, setOpenDialog] = useState(false);
+  const [from, setFrom] = useState<Date | null>(null);
+  const [to, setTo] = useState<Date | null>(null);
   const handleExportClick = () => {
-    const contentType = download?.headers["content-type"];
-    const url = window.URL.createObjectURL(new Blob([download?.data]));
-    const link = document.createElement("a");
-    link.href = url;
-    link.setAttribute(
-      "download",
-      `arrived orders.${contentType.split("/")[1]}`
-    ); // Set the filename
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    setOpenDialog((prev) => !prev);
+  };
+  const handleAgree = () => {
+    mutate(
+      {
+        from: from ? format(from, "yyyy-MM-dd") : "",
+        to: to ? format(to, "yyyy-MM-dd") : "",
+      },
+      {
+        onSuccess: (response) => {
+          const url = window.URL.createObjectURL(new Blob([response?.data]));
+          const link = document.createElement("a");
+          link.href = url;
+          link.setAttribute("download", `arrived orders.xlsx`); // Set the filename
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+          setFrom(null);
+          setTo(null);
+          setOpenDialog(false);
+        },
+      }
+    );
   };
   return (
     <Layout>
@@ -52,7 +69,17 @@ const ArrivedOrdersContainer = () => {
         >
           <OrdersHead data={managementData?.data.content} />
           <Box sx={{ marginInlineStart: mobileL ? "0" : "20px" }}>
-            <ExportButton handleClick={handleExportClick} />
+            <ExportButton
+              handleClick={handleExportClick}
+              openDialog={openDialog}
+              setOpenDialog={setOpenDialog}
+              from={from}
+              setFrom={setFrom}
+              to={to}
+              setTo={setTo}
+              handleAgree={handleAgree}
+              agreeLoading={exportLoading}
+            />
           </Box>
         </Stack>
         <Table

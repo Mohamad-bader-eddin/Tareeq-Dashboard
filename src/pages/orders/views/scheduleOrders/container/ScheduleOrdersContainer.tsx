@@ -21,6 +21,7 @@ import { getErrorMessage } from "../../../../../share/utils/getErrorMessage";
 import ExportButton from "../../../../../share/components/exportButton/ExportButton";
 import useMedeaQueries from "../../../../../share/utils/useMideaQuery";
 import useExportScheduleOrdersQuery from "../hooks/useExportScheduleOrdersQuery";
+import { format } from "date-fns";
 
 const ScheduleOrdersContainer = () => {
   const { mobileL } = useMedeaQueries();
@@ -67,19 +68,35 @@ const ScheduleOrdersContainer = () => {
   const { t } = useTranslation();
   const { data: managementData, isLoading: managementLoading } =
     useManagementQuery();
-  const { data: download } = useExportScheduleOrdersQuery();
+  const { mutate: exportMutate, isLoading: exportLoading } =
+    useExportScheduleOrdersQuery();
+  const [openDialog, setOpenDialog] = useState(false);
+  const [from, setFrom] = useState<Date | null>(null);
+  const [to, setTo] = useState<Date | null>(null);
   const handleExportClick = () => {
-    const contentType = download?.headers["content-type"];
-    const url = window.URL.createObjectURL(new Blob([download?.data]));
-    const link = document.createElement("a");
-    link.href = url;
-    link.setAttribute(
-      "download",
-      `schedule orders.${contentType.split("/")[1]}`
-    ); // Set the filename
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    setOpenDialog((prev) => !prev);
+  };
+  const handleAgree = () => {
+    exportMutate(
+      {
+        from: from ? format(from, "yyyy-MM-dd") : "",
+        to: to ? format(to, "yyyy-MM-dd") : "",
+      },
+      {
+        onSuccess: (response) => {
+          const url = window.URL.createObjectURL(new Blob([response?.data]));
+          const link = document.createElement("a");
+          link.href = url;
+          link.setAttribute("download", `schedule orders.xlsx`); // Set the filename
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+          setFrom(null);
+          setTo(null);
+          setOpenDialog(false);
+        },
+      }
+    );
   };
 
   return (
@@ -99,7 +116,17 @@ const ScheduleOrdersContainer = () => {
         >
           <OrdersHead data={managementData?.data.content} />
           <Box sx={{ marginInlineStart: mobileL ? "0" : "20px" }}>
-            <ExportButton handleClick={handleExportClick} />
+            <ExportButton
+              handleClick={handleExportClick}
+              openDialog={openDialog}
+              setOpenDialog={setOpenDialog}
+              from={from}
+              setFrom={setFrom}
+              to={to}
+              setTo={setTo}
+              handleAgree={handleAgree}
+              agreeLoading={exportLoading}
+            />
           </Box>
         </Stack>
         <Table
