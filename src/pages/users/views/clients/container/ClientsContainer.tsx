@@ -1,6 +1,5 @@
 import PaperContainer from "../../../../../share/components/Paper/PaperContainer";
 import Layout from "../../../../../share/components/layout/Layout";
-import Table from "../../../../../share/components/table/Table";
 import { useTranslation } from "react-i18next";
 import useClientsRows from "../hooks/useClientsRows";
 import useClientsColumns from "../hooks/useClientsColumns";
@@ -14,6 +13,7 @@ import GenericAlert from "../../../../../share/components/alert/GenericAlert";
 import { getErrorMessage } from "../../../../../share/utils/getErrorMessage";
 import useExportClientsQuery from "../hooks/useExportClientsQuery";
 import ExportButton from "../components/ExportButton";
+import ServerTable from "../../../../../share/components/table/ServerTable";
 
 const ClientsContainer = () => {
   const [openDeleteDialog, setOpenDeleteDialog] = useState(false);
@@ -22,7 +22,14 @@ const ClientsContainer = () => {
   const [errorMsg, setErrorMsg] = useState("");
   const [openSucsses, setOpenSucsses] = useState(false);
   const [msg, setMsg] = useState("");
-  const { data, isLoading, refetch, isFetching } = useClientsQuery();
+  const [paginationModel, setPaginationModel] = useState({
+    page: 0,
+    pageSize: 10,
+  });
+  const { data, isLoading, refetch } = useClientsQuery(
+    paginationModel.page,
+    paginationModel.pageSize
+  );
   const { t } = useTranslation();
   const navigate = useNavigate();
   const handleInfo = (id: GridRowId) => {
@@ -65,12 +72,15 @@ const ClientsContainer = () => {
     <Layout>
       <PaperContainer>
         <ExportButton handleClick={handleExportClick} />
-        <Table
+        <ServerTable
           columns={columns}
           rows={rows}
-          loading={isLoading || isFetching}
           title={t("clients")}
-          totalCount={data?.data.content.length}
+          totalCount={data?.data.total}
+          loading={isLoading}
+          paginationModel={paginationModel}
+          setPaginationModel={setPaginationModel}
+          rowCount={data?.data.total}
         />
         <GenericDialog
           open={openDeleteDialog}
