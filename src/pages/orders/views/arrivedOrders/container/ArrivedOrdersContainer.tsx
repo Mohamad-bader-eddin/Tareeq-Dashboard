@@ -1,7 +1,6 @@
 import { useTranslation } from "react-i18next";
 import PaperContainer from "../../../../../share/components/Paper/PaperContainer";
 import Layout from "../../../../../share/components/layout/Layout";
-import Table from "../../../../../share/components/table/Table";
 import OrdersHead from "../../../components/OrdersHead";
 import useArrivedOrdersColumns from "../hooks/useArrivedOrdersColumns";
 import useArrivedOrdersRows from "../hooks/useArrivedOrdersRows";
@@ -14,9 +13,17 @@ import useMedeaQueries from "../../../../../share/utils/useMideaQuery";
 import useExportArrivedOrdersQuery from "../hooks/useExportArrivedOrdersQuery";
 import { useState } from "react";
 import { format } from "date-fns";
+import ServerTable from "../../../../../share/components/table/ServerTable";
 
 const ArrivedOrdersContainer = () => {
-  const { data, isLoading, isFetching } = useArrivedOrdersQuery();
+  const [paginationModel, setPaginationModel] = useState({
+    page: 0,
+    pageSize: 10,
+  });
+  const { data, isLoading } = useArrivedOrdersQuery(
+    paginationModel.page,
+    paginationModel.pageSize
+  );
   const { columns } = useArrivedOrdersColumns();
   const { rows } = useArrivedOrdersRows({ data: data?.data.content });
   const { t } = useTranslation();
@@ -82,12 +89,15 @@ const ArrivedOrdersContainer = () => {
             />
           </Box>
         </Stack>
-        <Table
+        <ServerTable
           columns={columns}
           rows={rows}
           title={t("arrived_orders")}
-          totalCount={data?.data.content.length}
-          loading={isLoading || isFetching}
+          totalCount={data?.data.total}
+          loading={isLoading}
+          paginationModel={paginationModel}
+          setPaginationModel={setPaginationModel}
+          rowCount={data?.data.total}
         />
       </PaperContainer>
     </Layout>
