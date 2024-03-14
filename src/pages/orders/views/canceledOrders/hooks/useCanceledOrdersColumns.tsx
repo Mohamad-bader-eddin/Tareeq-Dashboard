@@ -3,8 +3,9 @@ import { useTranslation } from "react-i18next";
 import AppLink from "../../../../../share/components/link/AppLink";
 import { useMemo } from "react";
 import ActionButton from "../components/ActionButton";
+import { PaginationModel } from "../../../../../share/types";
 
-const useCanceledOrdersColumns = () => {
+const useCanceledOrdersColumns = (paginationModel: PaginationModel) => {
   const { t } = useTranslation();
   const columns = useMemo(() => {
     const tableCol: GridColDef[] = [
@@ -92,12 +93,18 @@ const useCanceledOrdersColumns = () => {
         align: "center",
         headerAlign: "center",
         renderCell: (params) => {
-          return <ActionButton type="canceled" id={params.id} />;
+          return (
+            <ActionButton
+              type="canceled"
+              id={params.id}
+              page={paginationModel}
+            />
+          );
         },
       },
     ];
     return tableCol;
-  }, [t]);
+  }, [paginationModel, t]);
   return { columns };
 };
 

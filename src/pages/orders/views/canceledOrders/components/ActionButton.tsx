@@ -13,11 +13,15 @@ import useReactivateOrderQuery from "../../../hooks/useReactivateOrderQuery";
 import GenericDialog from "../../../../../share/components/Dialog/GenericDialog";
 import GenericAlert from "../../../../../share/components/alert/GenericAlert";
 import { getErrorMessage } from "../../../../../share/utils/getErrorMessage";
+import { PaginationModel } from "../../../../../share/types";
 
-const ActionButton = ({ type, id }: ActionButtonProps) => {
+const ActionButton = ({ type, id, page }: ActionButtonProps) => {
   const navigate = useNavigate();
   const { t } = useTranslation();
-  const { refetch: canceledRefetch } = useCanceledOrdersQuery(0, 10);
+  const { refetch: canceledRefetch } = useCanceledOrdersQuery(
+    page.page,
+    page.pageSize
+  );
   const [openErrorReactivate, setOpenErrorReactivate] = useState(false);
   const [errorMsgReactivate, setErrorMsgReactivate] = useState("");
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -105,6 +109,7 @@ const ActionButton = ({ type, id }: ActionButtonProps) => {
 type ActionButtonProps = {
   type: "active" | "pending" | "arrived" | "canceled" | "schedule";
   id?: GridRowId;
+  page: PaginationModel;
 };
 
 export default ActionButton;

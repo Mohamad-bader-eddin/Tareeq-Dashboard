@@ -8,3 +8,8 @@ export type Zone = {
     name: string;
     created_at: Date;
 }
+
+export type PaginationModel = {
+    page: number;
+    pageSize: number;
+}
