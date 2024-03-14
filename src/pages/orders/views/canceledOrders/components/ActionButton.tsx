@@ -17,7 +17,7 @@ import { getErrorMessage } from "../../../../../share/utils/getErrorMessage";
 const ActionButton = ({ type, id }: ActionButtonProps) => {
   const navigate = useNavigate();
   const { t } = useTranslation();
-  const { refetch: canceledRefetch } = useCanceledOrdersQuery();
+  const { refetch: canceledRefetch } = useCanceledOrdersQuery(0, 10);
   const [openErrorReactivate, setOpenErrorReactivate] = useState(false);
   const [errorMsgReactivate, setErrorMsgReactivate] = useState("");
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);

@@ -4,7 +4,6 @@ import useCanceledOrdersRows from "../hooks/useCanceledOrdersRows";
 import Layout from "../../../../../share/components/layout/Layout";
 import PaperContainer from "../../../../../share/components/Paper/PaperContainer";
 import OrdersHead from "../../../components/OrdersHead";
-import Table from "../../../../../share/components/table/Table";
 import useCanceledOrdersQuery from "../hooks/useCanceledOrdersQuery";
 import useManagementQuery from "../../../../management/hooks/useManagementQuery";
 import { Backdrop, Box, Stack } from "@mui/material";
@@ -14,11 +13,19 @@ import useMedeaQueries from "../../../../../share/utils/useMideaQuery";
 import useExportCanceledOrdersQuery from "../hooks/useExportCanceledOrdersQuery";
 import { format } from "date-fns";
 import { useState } from "react";
+import ServerTable from "../../../../../share/components/table/ServerTable";
 
 const CanceledOrdersContainer = () => {
   const { mobileL } = useMedeaQueries();
   const { t } = useTranslation();
-  const { data, isLoading, isFetching } = useCanceledOrdersQuery();
+  const [paginationModel, setPaginationModel] = useState({
+    page: 0,
+    pageSize: 10,
+  });
+  const { data, isLoading } = useCanceledOrdersQuery(
+    paginationModel.page,
+    paginationModel.pageSize
+  );
   const { columns } = useCanceledOrdersColumns();
   const { rows } = useCanceledOrdersRows({ data: data?.data.content });
   const { data: managementData, isLoading: managementLoading } =
@@ -58,7 +65,7 @@ const CanceledOrdersContainer = () => {
         {managementLoading ? (
           <Backdrop
             sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
-            open={isLoading}
+            open={managementLoading}
           >
             <Spinner />
           </Backdrop>
@@ -82,12 +89,15 @@ const CanceledOrdersContainer = () => {
             />
           </Box>
         </Stack>
-        <Table
+        <ServerTable
           columns={columns}
           rows={rows}
           title={t("canceled_orders")}
-          totalCount={data?.data.content.length}
-          loading={isLoading || isFetching}
+          totalCount={data?.data.total}
+          loading={isLoading}
+          paginationModel={paginationModel}
+          setPaginationModel={setPaginationModel}
+          rowCount={data?.data.total}
         />
       </PaperContainer>
     </Layout>
