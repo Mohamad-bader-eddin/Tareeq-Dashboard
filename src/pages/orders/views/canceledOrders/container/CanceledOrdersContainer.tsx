@@ -20,7 +20,7 @@ const CanceledOrdersContainer = () => {
   const { t } = useTranslation();
   const [paginationModel, setPaginationModel] = useState({
     page: 0,
-    pageSize: 1,
+    pageSize: 10,
   });
   const { data, isLoading } = useCanceledOrdersQuery(
     paginationModel.page,
