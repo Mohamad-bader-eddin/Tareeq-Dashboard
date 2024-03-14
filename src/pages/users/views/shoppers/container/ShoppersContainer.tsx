@@ -4,7 +4,6 @@ import Layout from "../../../../../share/components/layout/Layout";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
-import Table from "../../../../../share/components/table/Table";
 import useShoppersColumns from "../hooks/useShoppersColumns";
 import useShoppersRows from "../hooks/useShoppersRows";
 import { useState } from "react";
@@ -19,6 +18,7 @@ import Spinner from "../../../../../share/components/Spinner";
 import useMedeaQueries from "../../../../../share/utils/useMideaQuery";
 import useExportDriversQuery from "../hooks/useExportDriversQuery";
 import ExportButton from "../components/ExportButton";
+import ServerTable from "../../../../../share/components/table/ServerTable";
 
 const ShoppersContainer = () => {
   const { mobileL } = useMedeaQueries();
@@ -69,7 +69,14 @@ const ShoppersContainer = () => {
     navigate("/admin/users/shoppers/add-shopper");
   };
   const { mutate } = useDriverDeleteQuery();
-  const { data, isLoading, refetch, isFetching } = useDeiversQuery();
+  const [paginationModel, setPaginationModel] = useState({
+    page: 0,
+    pageSize: 10,
+  });
+  const { data, isLoading, refetch } = useDeiversQuery(
+    paginationModel.page,
+    paginationModel.pageSize
+  );
   const { rows } = useShoppersRows({ data: data?.data.content });
   const handleAgree = () => {
     mutate(selectedId as GridRowId, {
@@ -121,12 +128,15 @@ const ShoppersContainer = () => {
             <ExportButton handleClick={handleExportClick} />
           </Box>
         </Stack>
-        <Table
+        <ServerTable
           columns={columns}
           rows={rows}
           title={t("drivers")}
-          totalCount={data?.data.content.length}
-          loading={isLoading || isFetching}
+          totalCount={data?.data.total}
+          loading={isLoading}
+          paginationModel={paginationModel}
+          setPaginationModel={setPaginationModel}
+          rowCount={data?.data.total}
         />
         {availabilityLoading ? (
           <Backdrop
