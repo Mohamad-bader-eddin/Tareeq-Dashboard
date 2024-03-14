@@ -22,6 +22,7 @@ import useMedeaQueries from "../../../../../share/utils/useMideaQuery";
 import ExportButton from "../../../../../share/components/exportButton/ExportButton";
 import useExportPendingOrdersQuery from "../hooks/useExportPendingOrdersQuery";
 import { format } from "date-fns";
+import ServerTable from "../../../../../share/components/table/ServerTable";
 
 const PendingOrdersContainer = () => {
   const { mobileL } = useMedeaQueries();
@@ -58,7 +59,14 @@ const PendingOrdersContainer = () => {
       }
     );
   };
-  const { data: driverData, isLoading: driverLoading } = useDeiversQuery();
+  const [driverPaginationModel, setDriverPaginationModel] = useState({
+    page: 0,
+    pageSize: 10,
+  });
+  const { data: driverData, isLoading: driverLoading } = useDeiversQuery(
+    driverPaginationModel.page,
+    driverPaginationModel.pageSize
+  );
   const { columns: AssignCol } = useAssignOrderToColumn({ handleAssignOrder });
   const { rows: AssignRow } = useAssignOrderToRows({
     data: driverData?.data.content,
@@ -144,10 +152,13 @@ const PendingOrdersContainer = () => {
               <Typography variant="body1">
                 Assign Order ({idOrder}) To
               </Typography>
-              <Table
+              <ServerTable
                 columns={AssignCol}
                 rows={AssignRow}
                 loading={driverLoading}
+                paginationModel={driverPaginationModel}
+                setPaginationModel={setDriverPaginationModel}
+                rowCount={driverData?.data.total}
               />
             </Box>
           }

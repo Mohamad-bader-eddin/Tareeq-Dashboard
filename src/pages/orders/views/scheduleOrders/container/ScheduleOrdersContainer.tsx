@@ -22,6 +22,7 @@ import ExportButton from "../../../../../share/components/exportButton/ExportBut
 import useMedeaQueries from "../../../../../share/utils/useMideaQuery";
 import useExportScheduleOrdersQuery from "../hooks/useExportScheduleOrdersQuery";
 import { format } from "date-fns";
+import ServerTable from "../../../../../share/components/table/ServerTable";
 
 const ScheduleOrdersContainer = () => {
   const { mobileL } = useMedeaQueries();
@@ -58,7 +59,14 @@ const ScheduleOrdersContainer = () => {
       }
     );
   };
-  const { data: driverData, isLoading: driverLoading } = useDeiversQuery();
+  const [driverPaginationModel, setDriverPaginationModel] = useState({
+    page: 0,
+    pageSize: 10,
+  });
+  const { data: driverData, isLoading: driverLoading } = useDeiversQuery(
+    driverPaginationModel.page,
+    driverPaginationModel.pageSize
+  );
   const { columns: AssignCol } = useAssignOrderToColumn({
     handleAssignOrder,
   });
@@ -139,18 +147,21 @@ const ScheduleOrdersContainer = () => {
         <GenericDialog
           open={openAssignDialog}
           setOpen={setOPenAssignDialog}
-          fullScreen={true}
           assignTo={true}
-          handleAgree={() => {}}
+          hideAgreeBtn={true}
+          handleAgree={() => setOPenAssignDialog(false)}
           elementContent={
             <Box>
               <Typography variant="body1">
                 Assign Order ({idOrder}) To
               </Typography>
-              <Table
+              <ServerTable
                 columns={AssignCol}
                 rows={AssignRow}
                 loading={driverLoading}
+                paginationModel={driverPaginationModel}
+                setPaginationModel={setDriverPaginationModel}
+                rowCount={driverData?.data.total}
               />
             </Box>
           }
