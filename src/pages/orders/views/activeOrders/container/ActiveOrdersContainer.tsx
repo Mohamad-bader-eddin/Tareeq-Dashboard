@@ -1,7 +1,6 @@
 import { useTranslation } from "react-i18next";
 import PaperContainer from "../../../../../share/components/Paper/PaperContainer";
 import Layout from "../../../../../share/components/layout/Layout";
-import Table from "../../../../../share/components/table/Table";
 import OrdersHead from "../../../components/OrdersHead";
 import useActiveOrdersContainerColumn from "../hooks/useActiveOrdersContainerColumn";
 import useActiveOrdersContainerRows from "../hooks/useActiveOrdersContainerRows";
@@ -14,12 +13,20 @@ import useMedeaQueries from "../../../../../share/utils/useMideaQuery";
 import useExportActiveOrdersQuery from "../hooks/useExportActiveOrdersQuery";
 import { format } from "date-fns";
 import { useState } from "react";
+import ServerTable from "../../../../../share/components/table/ServerTable";
 
 const ActiveOrdersContainer = () => {
   const { mobileL } = useMedeaQueries();
   const { t } = useTranslation();
-  const { data, isLoading, isFetching } = useAvtiveOrdersQuery();
-  const { columns } = useActiveOrdersContainerColumn();
+  const [paginationModel, setPaginationModel] = useState({
+    page: 0,
+    pageSize: 10,
+  });
+  const { data, isLoading } = useAvtiveOrdersQuery(
+    paginationModel.page,
+    paginationModel.pageSize
+  );
+  const { columns } = useActiveOrdersContainerColumn(paginationModel);
   const { rows } = useActiveOrdersContainerRows({ data: data?.data.content });
   const { data: managementData, isLoading: managementLoading } =
     useManagementQuery();
@@ -83,12 +90,15 @@ const ActiveOrdersContainer = () => {
             />
           </Box>
         </Stack>
-        <Table
+        <ServerTable
           columns={columns}
           rows={rows}
           title={t("active_orders")}
-          totalCount={data?.data.content.length}
-          loading={isLoading || isFetching}
+          totalCount={data?.data.total}
+          loading={isLoading}
+          paginationModel={paginationModel}
+          setPaginationModel={setPaginationModel}
+          rowCount={data?.data.total}
         />
       </PaperContainer>
     </Layout>

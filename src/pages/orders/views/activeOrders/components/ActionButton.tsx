@@ -16,11 +16,15 @@ import useCancelOrderQuery from "../../../hooks/useCancelOrderQuery";
 import useBreakOrderQuery from "../../../hooks/useBreakOrderQuery";
 import { getErrorMessage } from "../../../../../share/utils/getErrorMessage";
 import GenericAlert from "../../../../../share/components/alert/GenericAlert";
+import { PaginationModel } from "../../../../../share/types";
 
-const ActionButton = ({ type, id }: ActionButtonProps) => {
+const ActionButton = ({ type, id, page }: ActionButtonProps) => {
   const navigate = useNavigate();
   const { t } = useTranslation();
-  const { refetch: activeRefetch } = useAvtiveOrdersQuery();
+  const { refetch: activeRefetch } = useAvtiveOrdersQuery(
+    page.page,
+    page.pageSize
+  );
   const [openErrorCancel, setOpenErrorCancel] = useState(false);
   const [errorMsgCancel, setErrorMsgCancel] = useState("");
   const [openSucssesCancel, setOpenSucssesCancel] = useState(false);
@@ -152,6 +156,7 @@ const ActionButton = ({ type, id }: ActionButtonProps) => {
 type ActionButtonProps = {
   type: "active" | "pending" | "arrived" | "canceled" | "schedule";
   id?: GridRowId;
+  page: PaginationModel;
 };
 
 export default ActionButton;
