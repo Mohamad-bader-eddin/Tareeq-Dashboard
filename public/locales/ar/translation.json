@@ -249,5 +249,6 @@
   "export": "تصدير",
   "add_notification": "إضافة إشعار",
   "notes": "ملاحظات",
-  "search_notification": "بحث عن إشعار"
+  "search_notification": "بحث عن إشعار",
+  "admin": "مدير"
 }

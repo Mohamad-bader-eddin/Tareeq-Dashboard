@@ -19,8 +19,20 @@ import AdminNoteForm from "../components/AdminNoteForm";
 import GenericAlert from "../../../share/components/alert/GenericAlert";
 import useAdminNotesColumns from "../hooks/useAdminNotesColumns";
 import useAdminNotesRows from "../hooks/useAdminNotesRows";
+import useAdminNotesQuery from "../hooks/useAdminNotesQuery";
+import { useState } from "react";
+import { GridRowId } from "@mui/x-data-grid";
+import GenericDialog from "../../../share/components/Dialog/GenericDialog";
+import { getErrorMessage } from "../../../share/utils/getErrorMessage";
+import useDeleteAdminNote from "../hooks/useDeleteAdminNote";
 
 const InfoOrder = () => {
+  const [openDeleteDialog, setOpenDeleteDialog] = useState(false);
+  const [selectedId, setSelectedId] = useState<GridRowId | null>(null);
+  const [openDeleteError, setOpenDeleteError] = useState(false);
+  const [errorDeleteMsg, setErrorDeleteMsg] = useState("");
+  const [openDeleteSucsses, setOpenDeleteSucsses] = useState(false);
+  const [deleteMsg, setDeleteMsg] = useState("");
   const { t } = useTranslation();
   const { darkMode } = useDarkMode();
   // const { columns: shoppersCol } = useInfoOrderShoppersColumn();
@@ -39,12 +51,36 @@ const InfoOrder = () => {
     setOpenSucsses,
   } = useAdminNoteFormValidation({
     id: id as string,
-    adminNote: data?.data.content.admin_note,
   });
   const { columns: logCol } = useInfoOrderLogColumn();
   const { orderLogsRows } = useInfoOrderLogRows({ data: data?.data.content });
-  const { columns: notesColumns } = useAdminNotesColumns();
-  const { initialRows } = useAdminNotesRows();
+  const handleOpenDialog = (id: GridRowId) => {
+    setOpenDeleteDialog(true);
+    setSelectedId(id);
+  };
+  const {
+    data: adminNotesData,
+    isLoading: adminNotesLoading,
+    refetch,
+  } = useAdminNotesQuery(id as string);
+  const { columns: notesColumns } = useAdminNotesColumns({ handleOpenDialog });
+  const { rows } = useAdminNotesRows({ data: adminNotesData?.data?.content });
+  const { mutate, isLoading: deleteLoading } = useDeleteAdminNote();
+  const handleAgree = () => {
+    mutate(selectedId as GridRowId, {
+      onSuccess: (response) => {
+        setOpenDeleteSucsses(true);
+        setDeleteMsg(response.data.message);
+        setOpenDeleteDialog(false);
+        refetch();
+      },
+      onError: (error) => {
+        setOpenDeleteError(true);
+        setErrorDeleteMsg(getErrorMessage(error));
+        setOpenDeleteDialog(false);
+      },
+    });
+  };
 
   const track = () => {
     switch (type) {
@@ -242,8 +278,8 @@ const InfoOrder = () => {
             <PaperContainer>
               <Table
                 columns={notesColumns}
-                rows={initialRows}
-                loading={false}
+                rows={rows}
+                loading={adminNotesLoading}
                 title={t("notes")}
                 totalCount={3}
               />
@@ -251,6 +287,14 @@ const InfoOrder = () => {
           </>
         )
       ) : null}
+      <GenericDialog
+        open={openDeleteDialog}
+        setOpen={setOpenDeleteDialog}
+        handleAgree={handleAgree}
+        deleteType={true}
+        agreeLoading={deleteLoading}
+        elementContent={t("delete_message")}
+      />
       <GenericAlert
         open={openSucsses}
         setOpen={setOpenSucsses}
@@ -262,6 +306,18 @@ const InfoOrder = () => {
         setOpen={setOpenError}
         type="error"
         msg={errorMsg}
+      />
+      <GenericAlert
+        open={openDeleteSucsses}
+        setOpen={setOpenDeleteSucsses}
+        type="success"
+        msg={deleteMsg}
+      />
+      <GenericAlert
+        open={openDeleteError}
+        setOpen={setOpenDeleteError}
+        type="error"
+        msg={errorDeleteMsg}
       />
     </Layout>
   );

@@ -249,5 +249,6 @@
   "export": "Export",
   "add_notification": "Add Notification",
   "notes": "Notes",
-  "search_notification": "Search Notification"
+  "search_notification": "Search Notification",
+  "admin": "Admin"
 }

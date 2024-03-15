@@ -6,19 +6,22 @@ import { initialValuesType } from "../types/AdminNoteFormType";
 import useUpdateAdminNoteQuery from "./useUpdateAdminNoteQuery";
 import { getErrorMessage } from "../../../share/utils/getErrorMessage";
 import { useState } from "react";
+import useAdminNotesQuery from "./useAdminNotesQuery";
+import { useAuth } from "../../../context/Auth";
 
 const useAdminNoteFormValidation = ({
   id,
-  adminNote,
 }: useAdminNoteFormValidationProps) => {
+  const { user } = useAuth();
   const { t } = useTranslation();
   const [openError, setOpenError] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
   const [openSucsses, setOpenSucsses] = useState(false);
   const [msg, setMsg] = useState("");
   const { mutate } = useUpdateAdminNoteQuery();
+  const { refetch } = useAdminNotesQuery(id);
   const initialValues = {
-    note: adminNote || "",
+    note: "",
   };
 
   const validationSchema = Yup.object({
@@ -31,15 +34,17 @@ const useAdminNoteFormValidation = ({
   ) => {
     mutate(
       {
-        admin_note: values.note,
-        id: id,
+        title: values.note,
+        order_id: id,
+        admin_id: user?.id as string,
       },
       {
         onSuccess: (response) => {
           setOpenSucsses(true);
           setMsg(response.data.message);
+          refetch();
           formikHelpers.setSubmitting(false);
-          // formikHelpers.resetForm();
+          formikHelpers.resetForm();
         },
         onError: (error) => {
           setOpenError(true);
@@ -66,7 +71,6 @@ const useAdminNoteFormValidation = ({
 
 type useAdminNoteFormValidationProps = {
   id: string;
-  adminNote?: string;
 };
 
 export default useAdminNoteFormValidation;

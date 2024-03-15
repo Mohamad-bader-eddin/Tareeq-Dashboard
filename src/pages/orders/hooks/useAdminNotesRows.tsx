@@ -1,51 +1,31 @@
-import { GridRowsProp } from "@mui/x-data-grid";
-import {
-  randomTraderName,
-  randomId,
-  randomAddress,
-  randomCreatedDate,
-} from "@mui/x-data-grid-generator";
+import { format } from "date-fns";
 
-const useAdminNotesRows = () => {
-  const initialRows: GridRowsProp = [
-    {
-      id: randomId(),
-      user: randomTraderName(),
-      note: randomAddress(),
-      createdAt: randomCreatedDate().toLocaleString("en-uk", {
-        day: "numeric",
-        month: "short",
-        year: "numeric",
-        hour: "numeric",
-        minute: "numeric",
-      }),
-    },
-    {
-      id: randomId(),
-      user: randomTraderName(),
-      note: randomAddress(),
-      createdAt: randomCreatedDate().toLocaleString("en-uk", {
-        day: "numeric",
-        month: "short",
-        year: "numeric",
-        hour: "numeric",
-        minute: "numeric",
-      }),
-    },
-    {
-      id: randomId(),
-      user: randomTraderName(),
-      note: randomAddress(),
-      createdAt: randomCreatedDate().toLocaleString("en-uk", {
-        day: "numeric",
-        month: "short",
-        year: "numeric",
-        hour: "numeric",
-        minute: "numeric",
-      }),
-    },
-  ];
-  return { initialRows };
+const useAdminNotesRows = ({ data }: { data: AdminNotes[] }) => {
+  const rows: AdminNotesRows[] = [];
+  data?.forEach((el) =>
+    rows.push({
+      id: el?.id,
+      note: el?.title,
+      createdAt: format(new Date(el?.created_at), "dd/MM/yyyy"),
+      admin: el.admin,
+    })
+  );
+  return { rows };
+};
+
+type AdminNotes = {
+  id: string;
+  title: string;
+  order_id: string;
+  created_at: Date;
+  admin: string;
+};
+
+type AdminNotesRows = {
+  id: string;
+  admin: string;
+  note: string;
+  createdAt: string;
 };
 
 export default useAdminNotesRows;

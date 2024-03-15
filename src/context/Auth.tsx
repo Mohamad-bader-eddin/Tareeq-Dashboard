@@ -17,6 +17,7 @@ export const useAuth = () => {
 };
 
 type AuthUser = {
+  id: string;
   email: string;
   roles: string[];
 };
