@@ -2,7 +2,7 @@ import { useQuery } from "react-query";
 import axiosInstance from "../../../../../auth/axiosUtils";
 
 const fetchClients = () => {
-  return axiosInstance.get("/api/admin/client");
+  return axiosInstance.get("/api/admin/client/all");
 };
 
 const useClientsQuery = () => {
