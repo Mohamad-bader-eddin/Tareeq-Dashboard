@@ -1,60 +1,17 @@
-import { GridRowsProp } from "@mui/x-data-grid";
-import {
-  randomId,
-  randomCreatedDate,
-  randomArrayItem,
-  randomTraderName,
-} from "@mui/x-data-grid-generator";
-import { useMemo } from "react";
+import { format } from "date-fns";
+import { Notifications, NotificationsRows } from "../types/NotificationsType";
 
-const userType = ["All", "Clients", "Shoppers", "Specified User"];
-const randomUserType = () => {
-  return randomArrayItem(userType);
-};
-
-const useNotificationRows = () => {
-  const initialRows = useMemo(() => {
-    const tableRows: GridRowsProp = [
-      {
-        id: randomId(),
-        title: randomTraderName(),
-        message: randomUserType(),
-        createdAt: randomCreatedDate().toLocaleString("en-uk", {
-          day: "numeric",
-          month: "short",
-          year: "numeric",
-          hour: "numeric",
-          minute: "numeric",
-        }),
-      },
-      {
-        id: randomId(),
-        title: randomTraderName(),
-        message: randomUserType(),
-        createdAt: randomCreatedDate().toLocaleString("en-uk", {
-          day: "numeric",
-          month: "short",
-          year: "numeric",
-          hour: "numeric",
-          minute: "numeric",
-        }),
-      },
-      {
-        id: randomId(),
-        title: randomTraderName(),
-        message: randomUserType(),
-        createdAt: randomCreatedDate().toLocaleString("en-uk", {
-          day: "numeric",
-          month: "short",
-          year: "numeric",
-          hour: "numeric",
-          minute: "numeric",
-        }),
-      },
-    ];
-    return tableRows;
-  }, []);
-  return { initialRows };
+const useNotificationRows = ({ data }: { data: Notifications[] }) => {
+  const rows: NotificationsRows[] = [];
+  data?.forEach((el) =>
+    rows.push({
+      id: el.id as string,
+      message: el.description,
+      title: el.title,
+      createdAt: format(new Date(el.created_at as Date), "dd/MM/yyyy"),
+    })
+  );
+  return { rows };
 };
 
 export default useNotificationRows;

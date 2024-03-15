@@ -10,7 +10,10 @@ import { GridRowId } from "@mui/x-data-grid";
 import useNotificationRows from "../hooks/useNotificationRows";
 import GenericDialog from "../../../../../share/components/Dialog/GenericDialog";
 import GenericAlert from "../../../../../share/components/alert/GenericAlert";
-// import NotificationAddIcon from "@mui/icons-material/NotificationAdd";
+import useNotificationsQuery from "../hooks/useNotificationsQuery";
+import useDeleteNotificationQuery from "../hooks/useDeleteNotificationQuery";
+import { getErrorMessage } from "../../../../../share/utils/getErrorMessage";
+import NotificationsIcon from "@mui/icons-material/Notifications";
 
 const NotificationsContainer = () => {
   const [openDeleteDialog, setOpenDeleteDialog] = useState(false);
@@ -21,6 +24,8 @@ const NotificationsContainer = () => {
   const [msg, setMsg] = useState("");
   const { t } = useTranslation();
   const navigate = useNavigate();
+  const { data, isLoading, refetch, isFetching } = useNotificationsQuery();
+  const { mutate, isLoading: deleteLoading } = useDeleteNotificationQuery();
   const handleAddNotification = () => {
     navigate("/admin/marketing/add-notification");
   };
@@ -32,15 +37,29 @@ const NotificationsContainer = () => {
     navigate(`/admin/marketing/notifications/${id}`);
   };
   const { columns } = useNotificationColumns({ handleInfo, handleOpenDialog });
-  const { initialRows } = useNotificationRows();
-  const handleAgree = () => {};
+  const { rows } = useNotificationRows({ data: data?.data?.content });
+  const handleAgree = () => {
+    mutate(selectedId as GridRowId, {
+      onSuccess: (response) => {
+        setOpenSucsses(true);
+        setMsg(response.data.message);
+        setOpenDeleteDialog(false);
+        refetch();
+      },
+      onError: (error) => {
+        setOpenError(true);
+        setErrorMsg(getErrorMessage(error));
+        setOpenDeleteDialog(false);
+      },
+    });
+  };
   return (
     <Layout>
       <PaperContainer>
         <Button
           variant="outlined"
           size="small"
-          // endIcon={<NotificationAddIcon />}
+          endIcon={<NotificationsIcon />}
           onClick={handleAddNotification}
           sx={{
             ".css-9tj150-MuiButton-endIcon": {
@@ -53,16 +72,17 @@ const NotificationsContainer = () => {
         </Button>
         <Table
           columns={columns}
-          rows={initialRows}
+          rows={rows}
           title={t("notifications")}
-          totalCount={10}
-          loading={false}
+          totalCount={data?.data?.content.length}
+          loading={isLoading || isFetching}
         />
         <GenericDialog
           open={openDeleteDialog}
           setOpen={setOpenDeleteDialog}
           elementContent={t("delete_message")}
           deleteType={true}
+          agreeLoading={deleteLoading}
           handleAgree={handleAgree}
         />
         <GenericAlert

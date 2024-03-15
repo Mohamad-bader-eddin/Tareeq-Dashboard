@@ -34,7 +34,7 @@ const Table = ({
   });
   const [paginationModel, setPaginationModel] = useState({
     page: 0,
-    pageSize: 5,
+    pageSize: 10,
   });
   return (
     <ThemeProvider theme={darkTheme}>
@@ -53,7 +53,7 @@ const Table = ({
           initialState={{
             pagination: { paginationModel: paginationModel },
           }}
-          pageSizeOptions={[5, 10, 25]}
+          pageSizeOptions={[10, 50, 100]}
           paginationModel={paginationModel}
           onPaginationModelChange={setPaginationModel}
           slots={{
