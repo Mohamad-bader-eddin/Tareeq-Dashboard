@@ -1,10 +1,10 @@
-import { GridActionsCellItem, GridColDef } from "@mui/x-data-grid";
-import { Dispatch, SetStateAction, useMemo } from "react";
+import { GridActionsCellItem, GridColDef, GridRowId } from "@mui/x-data-grid";
+import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import DeleteIcon from "@mui/icons-material/DeleteOutlined";
 
 const useSentNotificationColumns = ({
-  setOpenDeleteDialog,
+  handleOpenDialog,
 }: useSentNotificationColumnsProps) => {
   const { t } = useTranslation();
   const columns = useMemo(() => {
@@ -12,7 +12,7 @@ const useSentNotificationColumns = ({
       {
         field: "user",
         headerName: t("user"),
-        width: 200,
+        flex: 1,
         align: "center",
         headerAlign: "center",
       },
@@ -21,7 +21,7 @@ const useSentNotificationColumns = ({
         headerName: t("user_type"),
         align: "center",
         headerAlign: "center",
-        width: 250,
+        flex: 1,
         // editable: true,
         // type: "singleSelect",
         // valueOptions: [
@@ -36,35 +36,35 @@ const useSentNotificationColumns = ({
         headerName: t("title"),
         align: "center",
         headerAlign: "center",
-        width: 250,
+        flex: 1,
       },
       {
         field: "message",
         headerName: t("message"),
         align: "center",
         headerAlign: "center",
-        width: 250,
+        flex: 1,
       },
       {
         field: "createdAt",
         headerName: t("created_at"),
         align: "center",
         headerAlign: "center",
-        width: 250,
+        flex: 1,
       },
       {
         field: "action",
         headerName: t("action"),
-        width: 150,
+        flex: 1,
         align: "center",
         headerAlign: "center",
-        renderCell: () => {
+        renderCell: (params) => {
           return [
             <GridActionsCellItem
               icon={<DeleteIcon />}
               label="Delete"
               color="error"
-              onClick={() => setOpenDeleteDialog(true)}
+              onClick={() => handleOpenDialog(params.id)}
             />,
           ];
         },
@@ -77,6 +77,7 @@ const useSentNotificationColumns = ({
 };
 
 type useSentNotificationColumnsProps = {
-  setOpenDeleteDialog: Dispatch<SetStateAction<boolean>>;
+  // eslint-disable-next-line no-unused-vars
+  handleOpenDialog: (id: GridRowId) => void;
 };
 export default useSentNotificationColumns;
