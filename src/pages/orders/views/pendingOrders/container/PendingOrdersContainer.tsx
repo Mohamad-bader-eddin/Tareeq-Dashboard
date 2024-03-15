@@ -1,7 +1,6 @@
 import { useTranslation } from "react-i18next";
 import PaperContainer from "../../../../../share/components/Paper/PaperContainer";
 import Layout from "../../../../../share/components/layout/Layout";
-import Table from "../../../../../share/components/table/Table";
 import OrdersHead from "../../../components/OrdersHead";
 import usePendingOrdersColumns from "../hooks/usePendingOrdersColumns";
 import usePendingOrdersRows from "../hooks/usePendingOrdersRows";
@@ -32,7 +31,14 @@ const PendingOrdersContainer = () => {
   const [errorMsg, setErrorMsg] = useState("");
   const [openSucsses, setOpenSucsses] = useState(false);
   const [msg, setMsg] = useState("");
-  const { data, isLoading, isFetching } = usePendingOrdersQuery();
+  const [paginationModel, setPaginationModel] = useState({
+    page: 0,
+    pageSize: 10,
+  });
+  const { data, isLoading } = usePendingOrdersQuery(
+    paginationModel.page,
+    paginationModel.pageSize
+  );
   const { columns } = usePendingOrdersColumns({
     setOpen: setOPenAssignDialog,
     setIdOrder,
@@ -135,12 +141,15 @@ const PendingOrdersContainer = () => {
             />
           </Box>
         </Stack>
-        <Table
+        <ServerTable
           columns={columns}
           rows={rows}
           title={t("pending_orders")}
-          totalCount={data?.data.content.length}
-          loading={isLoading || isFetching}
+          totalCount={data?.data.total}
+          loading={isLoading}
+          paginationModel={paginationModel}
+          setPaginationModel={setPaginationModel}
+          rowCount={data?.data.total}
         />
         <GenericDialog
           open={openAssignDialog}
