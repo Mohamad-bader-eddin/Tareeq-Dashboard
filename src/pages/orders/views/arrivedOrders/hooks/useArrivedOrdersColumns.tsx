@@ -31,16 +31,16 @@ const useArrivedOrdersColumns = () => {
           );
         },
       },
-      {
-        field: "status",
-        headerName: t("status"),
-        flex: 1,
-        // editable: true,
-        // type: "singleSelect",
-        // valueOptions: ["Pending", "En Route", "Canceled", "Scheduled"],
-        align: "center",
-        headerAlign: "center",
-      },
+      // {
+      //   field: "status",
+      //   headerName: t("status"),
+      //   flex: 1,
+      //   // editable: true,
+      //   // type: "singleSelect",
+      //   // valueOptions: ["Pending", "En Route", "Canceled", "Scheduled"],
+      //   align: "center",
+      //   headerAlign: "center",
+      // },
       {
         field: "totalExpected",
         headerName: t("total_expected"),

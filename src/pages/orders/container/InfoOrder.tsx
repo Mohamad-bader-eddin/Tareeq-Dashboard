@@ -20,7 +20,7 @@ import GenericAlert from "../../../share/components/alert/GenericAlert";
 import useAdminNotesColumns from "../hooks/useAdminNotesColumns";
 import useAdminNotesRows from "../hooks/useAdminNotesRows";
 import useAdminNotesQuery from "../hooks/useAdminNotesQuery";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { GridRowId } from "@mui/x-data-grid";
 import GenericDialog from "../../../share/components/Dialog/GenericDialog";
 import { getErrorMessage } from "../../../share/utils/getErrorMessage";
@@ -81,6 +81,13 @@ const InfoOrder = () => {
       },
     });
   };
+
+  useEffect(() => {
+    if (type === "arrived") {
+      refetch();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [type]);
 
   const track = () => {
     switch (type) {

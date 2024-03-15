@@ -7,6 +7,6 @@ const fetchAdminNotes = ({ queryKey }: { queryKey: QueryKey }) => {
 };
 
 const useAdminNotesQuery = (id: string) => {
-  return useQuery(["admin-note", id], fetchAdminNotes);
+  return useQuery(["admin-note", id], fetchAdminNotes, { enabled: false });
 };
 export default useAdminNotesQuery;
