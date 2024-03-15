@@ -248,5 +248,6 @@
   "needs_notes": "بحاجة ملاحظات",
   "export": "تصدير",
   "add_notification": "إضافة إشعار",
-  "notes": "ملاحظات"
+  "notes": "ملاحظات",
+  "search_notification": "بحث عن إشعار"
 }

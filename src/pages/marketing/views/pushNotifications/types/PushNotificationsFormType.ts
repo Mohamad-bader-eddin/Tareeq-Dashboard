@@ -4,8 +4,7 @@ import { Option } from "../../../../../share/types";
 
 export type initialValuesType = {
     userType: Option | null;
-    title: string;
-    message: string;
+    notification: Option | null;
     user?: Option | null;
     driver?: Option | null;
 };
@@ -16,8 +15,10 @@ export type validationSchemaType = Yup.ObjectSchema<
             name: string;
             id: string;
         };
-        title: string;
-        message: string;
+        notification: {
+            name: string;
+            id: string;
+        };
     },
     Yup.AnyObject,
     {
@@ -25,8 +26,10 @@ export type validationSchemaType = Yup.ObjectSchema<
             id: undefined;
             name: undefined;
         };
-        title: undefined;
-        message: undefined;
+        notification: {
+            id: undefined;
+            name: undefined;
+        };
     },
     ""
 >;

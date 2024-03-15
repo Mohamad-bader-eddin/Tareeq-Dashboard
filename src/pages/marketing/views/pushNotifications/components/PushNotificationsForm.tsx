@@ -1,7 +1,6 @@
 import { Form, Formik } from "formik";
 import { PushNotificationsFormType } from "../types/PushNotificationsFormType";
 import { useTranslation } from "react-i18next";
-import Input from "../../../../../share/components/Input/Input";
 import { Box } from "@mui/material";
 import SubmitButton from "../../../../../share/components/submitButton/SubmitButton";
 import AutocompleteInput from "../../../../../share/components/autoComplete/AutocompleteInput";
@@ -11,6 +10,8 @@ import useClientsQuery from "../hooks/useClientsQuery";
 import useClientMapper from "../hooks/useClientMapper";
 import useDeiversQuery from "../hooks/useDeiversQuery";
 import useDriverMapper from "../hooks/useDriverMapper";
+import useNotificationsQuery from "../hooks/useNotificationsQuery";
+import useNotificationsMapper from "../hooks/useNotificationsMapper";
 
 const PushNotificationsForm = ({
   initialValues,
@@ -25,6 +26,11 @@ const PushNotificationsForm = ({
   const { data: driverData, isLoading: driverLoading } = useDeiversQuery();
   const { driversOptions } = useDriverMapper({
     data: driverData?.data.content,
+  });
+  const { data: notificationData, isLoading: notificationLoading } =
+    useNotificationsQuery();
+  const { notificationsOptions } = useNotificationsMapper({
+    data: notificationData?.data?.content,
   });
 
   return (
@@ -61,12 +67,12 @@ const PushNotificationsForm = ({
                 loading={driverLoading}
               />
             )}
-            <Input formik={formik} label={t("title")} name="title" />
-            <Input
+            <AutocompleteInput
+              options={notificationsOptions}
+              label={t("search_notification")}
               formik={formik}
-              label={t("message")}
-              name="message"
-              textarea={true}
+              name="notification"
+              loading={notificationLoading}
             />
             <Box sx={{ width: "200px" }}>
               <SubmitButton

@@ -15,8 +15,7 @@ const usePushNotificationsFormValidation = () => {
   const { mutate } = useAddPushNotificationQuery();
   const initialValues = {
     userType: null,
-    title: "",
-    message: "",
+    notification: null,
     user: null,
     driver: null,
   };
@@ -28,8 +27,12 @@ const usePushNotificationsFormValidation = () => {
         name: Yup.string().required(t("required")),
       })
       .required(t("required")),
-    title: Yup.string().required(t("required")),
-    message: Yup.string().required(t("required")),
+    notification: Yup.object()
+      .shape({
+        id: Yup.string().required(t("required")),
+        name: Yup.string().required(t("required")),
+      })
+      .required(t("required")),
   });
 
   const onSubmit = (
@@ -38,8 +41,7 @@ const usePushNotificationsFormValidation = () => {
   ) => {
     mutate(
       {
-        description: values.message,
-        title: values.title,
+        notification_template_id: values.notification?.id as string,
         type_id: values.userType?.id as string,
         id:
           values.userType?.name === "one-user"

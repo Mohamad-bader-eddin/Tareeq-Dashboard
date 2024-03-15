@@ -6,7 +6,6 @@ export type UserType = {
 
 export type PushNotification = {
     type_id: string;
-    title: string;
-    description: string;
+    notification_template_id: string;
     id?: string;
 }
