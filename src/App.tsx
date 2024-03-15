@@ -91,8 +91,9 @@ function App() {
     setNotification((prev) => [
       ...prev,
       {
-        body: payload.notification?.body as string,
-        title: payload.notification?.title as string,
+        body: payload.data?.body as string,
+        title: payload.data?.title as string,
+        content: payload.data?.content as string,
       },
     ]);
   });

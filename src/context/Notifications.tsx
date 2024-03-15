@@ -10,7 +10,7 @@ const NotificationsContext = createContext({} as createContextType);
 
 export const NotificationsProvider = ({ children }: DarkModeProviderProps) => {
   const [notification, setNotification] = useState<
-    { title: string; body: string }[]
+    { title: string; body: string; content: string }[]
   >([]);
 
   return (
@@ -29,12 +29,14 @@ type createContextType = {
   notification: {
     title: string;
     body: string;
+    content: string;
   }[];
   setNotification: Dispatch<
     SetStateAction<
       {
         title: string;
         body: string;
+        content: string;
       }[]
     >
   >;

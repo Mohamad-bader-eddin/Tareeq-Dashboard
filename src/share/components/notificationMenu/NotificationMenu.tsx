@@ -35,7 +35,6 @@ const NotificationMenu = () => {
             <NotificationsIcon />
           </Badge>
         }
-        isNotification={true}
       >
         <MenuItem>
           {t("you_have")} {notification.length} {t("new_notifications")}
@@ -57,12 +56,12 @@ const NotificationMenu = () => {
                 <PersonIcon />
               </Avatar> */}
               <Stack>
-                <Typography variant="h6" sx={{ m: "0 10px" }}>
+                <Typography variant="body1" sx={{ m: "0 10px" }}>
                   {" "}
-                  {element.body}
+                  {element.body} (No. {JSON.parse(element.content).id})
                 </Typography>
                 <Typography
-                  variant="body1"
+                  variant="body2"
                   sx={{
                     color: darkMode ? theme.dark.text : theme.light.text,
                     m: "0 10px",
