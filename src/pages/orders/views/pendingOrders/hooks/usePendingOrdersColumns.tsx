@@ -4,10 +4,12 @@ import { useTranslation } from "react-i18next";
 import AppLink from "../../../../../share/components/link/AppLink";
 import { Dispatch, SetStateAction, useMemo } from "react";
 import ActionButton from "../components/ActionButton";
+import { PaginationModel } from "../../../../../share/types";
 
 const usePendingOrdersColumns = ({
   setOpen,
   setIdOrder,
+  paginationModel,
 }: usePendingOrdersColumnsProps) => {
   const { t } = useTranslation();
   const columns = useMemo(() => {
@@ -88,7 +90,13 @@ const usePendingOrdersColumns = ({
         align: "center",
         headerAlign: "center",
         renderCell: (params) => {
-          return <ActionButton type="pending" id={params.id} />;
+          return (
+            <ActionButton
+              type="pending"
+              id={params.id}
+              page={paginationModel}
+            />
+          );
         },
       },
     ];
@@ -101,5 +109,6 @@ const usePendingOrdersColumns = ({
 type usePendingOrdersColumnsProps = {
   setOpen: Dispatch<SetStateAction<boolean>>;
   setIdOrder: Dispatch<SetStateAction<GridRowId | null>>;
+  paginationModel: PaginationModel;
 };
 export default usePendingOrdersColumns;

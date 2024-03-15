@@ -42,6 +42,7 @@ const PendingOrdersContainer = () => {
   const { columns } = usePendingOrdersColumns({
     setOpen: setOPenAssignDialog,
     setIdOrder,
+    paginationModel,
   });
   const { rows } = usePendingOrdersRows({ data: data?.data.content });
   const { mutate } = useAssignOrderQuery();

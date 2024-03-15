@@ -6,7 +6,6 @@ import useAssignOrderToRows from "../../../hooks/useAssignOrderToRows";
 import Layout from "../../../../../share/components/layout/Layout";
 import PaperContainer from "../../../../../share/components/Paper/PaperContainer";
 import OrdersHead from "../../../components/OrdersHead";
-import Table from "../../../../../share/components/table/Table";
 import GenericDialog from "../../../../../share/components/Dialog/GenericDialog";
 import { useTranslation } from "react-i18next";
 import { GridRowId } from "@mui/x-data-grid";
@@ -32,10 +31,18 @@ const ScheduleOrdersContainer = () => {
   const [errorMsg, setErrorMsg] = useState("");
   const [openSucsses, setOpenSucsses] = useState(false);
   const [msg, setMsg] = useState("");
-  const { data, isLoading, isFetching } = useScheduleOrdersQuery();
+  const [paginationModel, setPaginationModel] = useState({
+    page: 0,
+    pageSize: 10,
+  });
+  const { data, isLoading } = useScheduleOrdersQuery(
+    paginationModel.page,
+    paginationModel.pageSize
+  );
   const { columns } = useScheduleOrdersColumns({
     setOpen: setOPenAssignDialog,
     setIdOrder,
+    paginationModel,
   });
   const { rows } = useScheduleOrdersRows({ data: data?.data.content });
   const { mutate } = useAssignOrderQuery();
@@ -137,12 +144,15 @@ const ScheduleOrdersContainer = () => {
             />
           </Box>
         </Stack>
-        <Table
+        <ServerTable
           columns={columns}
           rows={rows}
           title={t("scheduled_orders")}
-          totalCount={data?.data.content.length}
-          loading={isLoading || isFetching}
+          totalCount={data?.data.total}
+          loading={isLoading}
+          paginationModel={paginationModel}
+          setPaginationModel={setPaginationModel}
+          rowCount={data?.data.total}
         />
         <GenericDialog
           open={openAssignDialog}

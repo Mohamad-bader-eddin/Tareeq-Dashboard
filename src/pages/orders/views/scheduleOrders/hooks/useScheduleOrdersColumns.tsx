@@ -4,10 +4,12 @@ import { useTranslation } from "react-i18next";
 import AppLink from "../../../../../share/components/link/AppLink";
 import { Dispatch, SetStateAction, useMemo } from "react";
 import ActionButton from "../components/ActionButton";
+import { PaginationModel } from "../../../../../share/types";
 
 const useScheduleOrdersColumns = ({
   setOpen,
   setIdOrder,
+  paginationModel,
 }: useScheduleOrdersColumnsProps) => {
   const { t } = useTranslation();
   const columns = useMemo(() => {
@@ -95,7 +97,13 @@ const useScheduleOrdersColumns = ({
         align: "center",
         headerAlign: "center",
         renderCell: (params) => {
-          return <ActionButton type="schedule" id={params.id} />;
+          return (
+            <ActionButton
+              type="schedule"
+              id={params.id}
+              page={paginationModel}
+            />
+          );
         },
       },
     ];
@@ -108,5 +116,6 @@ const useScheduleOrdersColumns = ({
 type useScheduleOrdersColumnsProps = {
   setOpen: Dispatch<SetStateAction<boolean>>;
   setIdOrder: Dispatch<SetStateAction<GridRowId | null>>;
+  paginationModel: PaginationModel;
 };
 export default useScheduleOrdersColumns;
