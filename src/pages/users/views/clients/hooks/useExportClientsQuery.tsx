@@ -1,17 +1,23 @@
-import { useQuery } from "react-query";
+import { useMutation } from "react-query";
 import axiosInstance from "../../../../../auth/axiosUtils";
 
 const useExportClientsQuery = () => {
-  const exportClientOrders = async () => {
+  const exportClientOrders = async ({
+    from,
+    to,
+  }: {
+    from: string;
+    to: string;
+  }) => {
     const response = await axiosInstance.get(
-      "/api/admin/client?download=true",
+      `/api/admin/client?download=true&from=${from}&to=${to}`,
       {
         responseType: "blob",
       }
     );
     return response;
   };
-  return useQuery("export-client-order", exportClientOrders);
+  return useMutation(exportClientOrders);
 };
 
 export default useExportClientsQuery;

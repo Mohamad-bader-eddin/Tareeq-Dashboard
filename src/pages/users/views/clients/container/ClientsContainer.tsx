@@ -12,8 +12,9 @@ import useClientDelete from "../hooks/useClientDelete";
 import GenericAlert from "../../../../../share/components/alert/GenericAlert";
 import { getErrorMessage } from "../../../../../share/utils/getErrorMessage";
 import useExportClientsQuery from "../hooks/useExportClientsQuery";
-import ExportButton from "../components/ExportButton";
 import ServerTable from "../../../../../share/components/table/ServerTable";
+import { format } from "date-fns";
+import ExportButton from "../../../../../share/components/exportButton/ExportButton";
 
 const ClientsContainer = () => {
   const [openDeleteDialog, setOpenDeleteDialog] = useState(false);
@@ -57,21 +58,51 @@ const ClientsContainer = () => {
       },
     });
   };
-  const { data: downloadClients } = useExportClientsQuery();
+  const { mutate: downloadClients, isLoading: exportLoading } =
+    useExportClientsQuery();
+  const [openDialog, setOpenDialog] = useState(false);
+  const [from, setFrom] = useState<Date | null>(null);
+  const [to, setTo] = useState<Date | null>(null);
   const handleExportClick = () => {
-    const url = window.URL.createObjectURL(new Blob([downloadClients?.data]));
-    const link = document.createElement("a");
-    link.href = url;
-    link.setAttribute("download", `clients.xlsx`); // Set the filename
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    setOpenDialog((prev) => !prev);
+  };
+  const handleAgreeDownload = () => {
+    downloadClients(
+      {
+        from: from ? format(from, "yyyy-MM-dd") : "",
+        to: to ? format(to, "yyyy-MM-dd") : "",
+      },
+      {
+        onSuccess: (response) => {
+          const url = window.URL.createObjectURL(new Blob([response?.data]));
+          const link = document.createElement("a");
+          link.href = url;
+          link.setAttribute("download", `clients.xlsx`); // Set the filename
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+          setFrom(null);
+          setTo(null);
+          setOpenDialog(false);
+        },
+      }
+    );
   };
 
   return (
     <Layout>
       <PaperContainer>
-        <ExportButton handleClick={handleExportClick} />
+        <ExportButton
+          handleClick={handleExportClick}
+          openDialog={openDialog}
+          setOpenDialog={setOpenDialog}
+          from={from}
+          setFrom={setFrom}
+          to={to}
+          setTo={setTo}
+          handleAgree={handleAgreeDownload}
+          agreeLoading={exportLoading}
+        />
         <ServerTable
           columns={columns}
           rows={rows}
