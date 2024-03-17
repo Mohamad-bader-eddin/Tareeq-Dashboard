@@ -288,7 +288,7 @@ const InfoOrder = () => {
                 rows={rows}
                 loading={adminNotesLoading}
                 title={t("notes")}
-                totalCount={3}
+                totalCount={adminNotesData?.data?.content.length}
               />
             </PaperContainer>
           </>
