@@ -17,8 +17,9 @@ import useChangeAvailabilityQuery from "../hooks/useChangeAvailabilityQuery";
 import Spinner from "../../../../../share/components/Spinner";
 import useMedeaQueries from "../../../../../share/utils/useMideaQuery";
 import useExportDriversQuery from "../hooks/useExportDriversQuery";
-import ExportButton from "../components/ExportButton";
 import ServerTable from "../../../../../share/components/table/ServerTable";
+import { format } from "date-fns";
+import ExportButton from "../../../../../share/components/exportButton/ExportButton";
 
 const ShoppersContainer = () => {
   const { mobileL } = useMedeaQueries();
@@ -93,15 +94,35 @@ const ShoppersContainer = () => {
       },
     });
   };
-  const { data: downloadDrivers } = useExportDriversQuery();
+  const { mutate: downloadDrivers, isLoading: exportLoading } =
+    useExportDriversQuery();
+  const [openDialog, setOpenDialog] = useState(false);
+  const [from, setFrom] = useState<Date | null>(null);
+  const [to, setTo] = useState<Date | null>(null);
   const handleExportClick = () => {
-    const url = window.URL.createObjectURL(new Blob([downloadDrivers?.data]));
-    const link = document.createElement("a");
-    link.href = url;
-    link.setAttribute("download", `drivers.xlsx`); // Set the filename
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    setOpenDialog((prev) => !prev);
+  };
+  const handleAgreeDownload = () => {
+    downloadDrivers(
+      {
+        from: from ? format(from, "yyyy-MM-dd") : "",
+        to: to ? format(to, "yyyy-MM-dd") : "",
+      },
+      {
+        onSuccess: (response) => {
+          const url = window.URL.createObjectURL(new Blob([response?.data]));
+          const link = document.createElement("a");
+          link.href = url;
+          link.setAttribute("download", `drivers.xlsx`); // Set the filename
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+          setFrom(null);
+          setTo(null);
+          setOpenDialog(false);
+        },
+      }
+    );
   };
   return (
     <Layout>
@@ -125,7 +146,17 @@ const ShoppersContainer = () => {
             {t("add_shopper")}
           </Button>
           <Box sx={{ marginInlineStart: mobileL ? "0" : "20px" }}>
-            <ExportButton handleClick={handleExportClick} />
+            <ExportButton
+              handleClick={handleExportClick}
+              openDialog={openDialog}
+              setOpenDialog={setOpenDialog}
+              from={from}
+              setFrom={setFrom}
+              to={to}
+              setTo={setTo}
+              handleAgree={handleAgreeDownload}
+              agreeLoading={exportLoading}
+            />
           </Box>
         </Stack>
         <ServerTable
