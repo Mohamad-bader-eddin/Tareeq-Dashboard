@@ -14,7 +14,7 @@ const useCanceledOrdersRows = ({ data }: { data: Order[] }) => {
       placedon: format(new Date(el?.created_at as Date), "dd/MM/yyyy"),
       shopper: el?.driver?.name,
       shopperId: el?.driver?.id,
-      canceledAt: el?.created_at
+      canceledAt: el?.cancel_reason
         ? format(new Date(el.cancel_reason?.created_at as Date), "dd/MM/yyyy")
         : "-",
       reason: el?.cancel_reason?.title,
