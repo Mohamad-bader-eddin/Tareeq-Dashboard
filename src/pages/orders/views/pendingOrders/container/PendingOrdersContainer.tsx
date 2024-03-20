@@ -6,7 +6,7 @@ import usePendingOrdersRows from "../hooks/usePendingOrdersRows";
 import GenericDialog from "../../../../../share/components/Dialog/GenericDialog";
 import useAssignOrderToColumn from "../../../hooks/useAssignOrderToColumn";
 import useAssignOrderToRows from "../../../hooks/useAssignOrderToRows";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { GridRowId } from "@mui/x-data-grid";
 import useAssignOrderQuery from "../../../hooks/useAssignOrderQuery";
 import GenericAlert from "../../../../../share/components/alert/GenericAlert";
@@ -19,6 +19,7 @@ import ExportButton from "../../../../../share/components/exportButton/ExportBut
 import useExportPendingOrdersQuery from "../hooks/useExportPendingOrdersQuery";
 import { format } from "date-fns";
 import ServerTable from "../../../../../share/components/table/ServerTable";
+import { useNotifications } from "../../../../../context/Notifications";
 
 const PendingOrdersContainer = () => {
   const { mobileL } = useMedeaQueries();
@@ -32,7 +33,7 @@ const PendingOrdersContainer = () => {
     page: 0,
     pageSize: 10,
   });
-  const { data, isLoading } = usePendingOrdersQuery(
+  const { data, isLoading, refetch } = usePendingOrdersQuery(
     paginationModel.page,
     paginationModel.pageSize
   );
@@ -106,6 +107,12 @@ const PendingOrdersContainer = () => {
       }
     );
   };
+  const { notification } = useNotifications();
+  useEffect(() => {
+    if (notification.length > 0) {
+      refetch();
+    }
+  }, [notification, refetch]);
 
   return (
     <Layout>

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import useScheduleOrdersColumns from "../hooks/useScheduleOrdersColumns";
 import useScheduleOrdersRows from "../hooks/useScheduleOrdersRows";
 import useAssignOrderToColumn from "../../../hooks/useAssignOrderToColumn";
@@ -19,6 +19,7 @@ import useMedeaQueries from "../../../../../share/utils/useMideaQuery";
 import useExportScheduleOrdersQuery from "../hooks/useExportScheduleOrdersQuery";
 import { format } from "date-fns";
 import ServerTable from "../../../../../share/components/table/ServerTable";
+import { useNotifications } from "../../../../../context/Notifications";
 
 const ScheduleOrdersContainer = () => {
   const { mobileL } = useMedeaQueries();
@@ -32,7 +33,7 @@ const ScheduleOrdersContainer = () => {
     page: 0,
     pageSize: 10,
   });
-  const { data, isLoading } = useScheduleOrdersQuery(
+  const { data, isLoading, refetch } = useScheduleOrdersQuery(
     paginationModel.page,
     paginationModel.pageSize
   );
@@ -108,6 +109,12 @@ const ScheduleOrdersContainer = () => {
       }
     );
   };
+  const { notification } = useNotifications();
+  useEffect(() => {
+    if (notification.length > 0) {
+      refetch();
+    }
+  }, [notification, refetch]);
 
   return (
     <Layout>

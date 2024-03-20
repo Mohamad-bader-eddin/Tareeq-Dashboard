@@ -81,13 +81,6 @@ function App() {
   }, []);
 
   onMessage(messaging, (payload) => {
-    if (payload.notification?.title === "scheduled") {
-      const sound2 = new Audio("/audio/audio2.wav");
-      sound2.play();
-    } else {
-      const sound1 = new Audio("/audio/audio1.wav");
-      sound1.play();
-    }
     setNotification((prev) => [
       ...prev,
       {
@@ -96,6 +89,13 @@ function App() {
         content: payload.data?.content as string,
       },
     ]);
+    if (payload.data?.title.includes("scheduled")) {
+      const sound2 = new Audio("/audio/audio2.wav");
+      sound2.play();
+    } else {
+      const sound1 = new Audio("/audio/audio1.wav");
+      sound1.play();
+    }
   });
 
   return (
