@@ -3,11 +3,8 @@ import useCanceledOrdersColumns from "../hooks/useCanceledOrdersColumns";
 import useCanceledOrdersRows from "../hooks/useCanceledOrdersRows";
 import Layout from "../../../../../share/components/layout/Layout";
 import PaperContainer from "../../../../../share/components/Paper/PaperContainer";
-import OrdersHead from "../../../components/OrdersHead";
 import useCanceledOrdersQuery from "../hooks/useCanceledOrdersQuery";
-import useManagementQuery from "../../../../management/hooks/useManagementQuery";
-import { Backdrop, Box, Stack } from "@mui/material";
-import Spinner from "../../../../../share/components/Spinner";
+import { Box, Stack } from "@mui/material";
 import ExportButton from "../../../../../share/components/exportButton/ExportButton";
 import useMedeaQueries from "../../../../../share/utils/useMideaQuery";
 import useExportCanceledOrdersQuery from "../hooks/useExportCanceledOrdersQuery";
@@ -28,8 +25,6 @@ const CanceledOrdersContainer = () => {
   );
   const { columns } = useCanceledOrdersColumns(paginationModel);
   const { rows } = useCanceledOrdersRows({ data: data?.data.content });
-  const { data: managementData, isLoading: managementLoading } =
-    useManagementQuery();
   const { mutate, isLoading: exportLoading } = useExportCanceledOrdersQuery();
   const [openDialog, setOpenDialog] = useState(false);
   const [from, setFrom] = useState<Date | null>(null);
@@ -62,20 +57,11 @@ const CanceledOrdersContainer = () => {
   return (
     <Layout>
       <PaperContainer>
-        {managementLoading ? (
-          <Backdrop
-            sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
-            open={managementLoading}
-          >
-            <Spinner />
-          </Backdrop>
-        ) : null}
         <Stack
           direction={mobileL ? "column" : "row"}
           alignItems={mobileL ? "start" : "center"}
         >
-          <OrdersHead data={managementData?.data.content} />
-          <Box sx={{ marginInlineStart: mobileL ? "0" : "20px" }}>
+          <Box>
             <ExportButton
               handleClick={handleExportClick}
               openDialog={openDialog}

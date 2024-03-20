@@ -13,14 +13,18 @@ import Spinner from "../../../share/components/Spinner";
 import PaperContainer from "../../../share/components/Paper/PaperContainer";
 import { useTranslation } from "react-i18next";
 import jsCookie from "js-cookie";
+import useManagementQuery from "../../management/hooks/useManagementQuery";
+import AutoAssignButton from "../components/AutoAssignButton";
 
 const HomeContainer = () => {
   const { data, isLoading } = useHomeQuery();
   const { t } = useTranslation();
   const token = jsCookie.get("accessToken");
+  const { data: managementData, isLoading: managementLoading } =
+    useManagementQuery();
   return (
     <Layout>
-      {isLoading ? (
+      {isLoading || managementLoading ? (
         <Backdrop
           sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
           open={isLoading}
@@ -29,6 +33,7 @@ const HomeContainer = () => {
         </Backdrop>
       ) : (
         <>
+          <AutoAssignButton data={managementData?.data.content} />
           <Stack direction={"row"} flexWrap={"wrap"}>
             <Box sx={{ flex: 1, minWidth: "300px" }}>
               <Wedgit

@@ -5,7 +5,6 @@ import useAssignOrderToColumn from "../../../hooks/useAssignOrderToColumn";
 import useAssignOrderToRows from "../../../hooks/useAssignOrderToRows";
 import Layout from "../../../../../share/components/layout/Layout";
 import PaperContainer from "../../../../../share/components/Paper/PaperContainer";
-import OrdersHead from "../../../components/OrdersHead";
 import GenericDialog from "../../../../../share/components/Dialog/GenericDialog";
 import { useTranslation } from "react-i18next";
 import { GridRowId } from "@mui/x-data-grid";
@@ -13,9 +12,7 @@ import GenericAlert from "../../../../../share/components/alert/GenericAlert";
 import useDeiversQuery from "../../../../users/views/shoppers/hooks/useDeiversQuery";
 import useAssignOrderQuery from "../../../hooks/useAssignOrderQuery";
 import useScheduleOrdersQuery from "../hooks/useScheduleOrdersQuery";
-import useManagementQuery from "../../../../management/hooks/useManagementQuery";
-import { Backdrop, Box, Stack, Typography } from "@mui/material";
-import Spinner from "../../../../../share/components/Spinner";
+import { Box, Stack, Typography } from "@mui/material";
 import { getErrorMessage } from "../../../../../share/utils/getErrorMessage";
 import ExportButton from "../../../../../share/components/exportButton/ExportButton";
 import useMedeaQueries from "../../../../../share/utils/useMideaQuery";
@@ -81,8 +78,6 @@ const ScheduleOrdersContainer = () => {
     data: driverData?.data.content,
   });
   const { t } = useTranslation();
-  const { data: managementData, isLoading: managementLoading } =
-    useManagementQuery();
   const { mutate: exportMutate, isLoading: exportLoading } =
     useExportScheduleOrdersQuery();
   const [openDialog, setOpenDialog] = useState(false);
@@ -117,20 +112,11 @@ const ScheduleOrdersContainer = () => {
   return (
     <Layout>
       <PaperContainer>
-        {managementLoading ? (
-          <Backdrop
-            sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
-            open={isLoading}
-          >
-            <Spinner />
-          </Backdrop>
-        ) : null}
         <Stack
           direction={mobileL ? "column" : "row"}
           alignItems={mobileL ? "start" : "center"}
         >
-          <OrdersHead data={managementData?.data.content} />
-          <Box sx={{ marginInlineStart: mobileL ? "0" : "20px" }}>
+          <Box>
             <ExportButton
               handleClick={handleExportClick}
               openDialog={openDialog}
