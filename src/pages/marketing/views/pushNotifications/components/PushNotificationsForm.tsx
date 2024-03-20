@@ -12,6 +12,8 @@ import useDeiversQuery from "../hooks/useDeiversQuery";
 import useDriverMapper from "../hooks/useDriverMapper";
 import useNotificationsQuery from "../hooks/useNotificationsQuery";
 import useNotificationsMapper from "../hooks/useNotificationsMapper";
+import AutocompleteNotifications from "./AutocompleteNotifications";
+import Input from "../../../../../share/components/Input/Input";
 
 const PushNotificationsForm = ({
   initialValues,
@@ -67,12 +69,19 @@ const PushNotificationsForm = ({
                 loading={driverLoading}
               />
             )}
-            <AutocompleteInput
+            <AutocompleteNotifications
               options={notificationsOptions}
               label={t("search_notification")}
               formik={formik}
               name="notification"
               loading={notificationLoading}
+            />
+            <Input formik={formik} label={t("title")} name="title" />
+            <Input
+              formik={formik}
+              label={t("message")}
+              name="message"
+              textarea={true}
             />
             <Box sx={{ width: "200px" }}>
               <SubmitButton

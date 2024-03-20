@@ -7,6 +7,8 @@ export type initialValuesType = {
     notification: Option | null;
     user?: Option | null;
     driver?: Option | null;
+    title: string;
+    message: string;
 };
 
 export type validationSchemaType = Yup.ObjectSchema<
@@ -16,9 +18,12 @@ export type validationSchemaType = Yup.ObjectSchema<
             id: string;
         };
         notification: {
-            name: string;
+            title: string;
+            message: string;
             id: string;
         };
+        title: string;
+        message: string;
     },
     Yup.AnyObject,
     {
@@ -28,8 +33,11 @@ export type validationSchemaType = Yup.ObjectSchema<
         };
         notification: {
             id: undefined;
-            name: undefined;
+            title: undefined;
+            message: undefined;
         };
+        title: undefined;
+        message: undefined;
     },
     ""
 >;

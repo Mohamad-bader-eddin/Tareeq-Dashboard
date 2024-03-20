@@ -18,6 +18,8 @@ const usePushNotificationsFormValidation = () => {
     notification: null,
     user: null,
     driver: null,
+    title: "",
+    message: "",
   };
 
   const validationSchema = Yup.object({
@@ -30,9 +32,12 @@ const usePushNotificationsFormValidation = () => {
     notification: Yup.object()
       .shape({
         id: Yup.string().required(t("required")),
-        name: Yup.string().required(t("required")),
+        title: Yup.string().required(t("required")),
+        message: Yup.string().required(t("required")),
       })
       .required(t("required")),
+    title: Yup.string().required(t("required")),
+    message: Yup.string().required(t("required")),
   });
 
   const onSubmit = (
@@ -47,6 +52,8 @@ const usePushNotificationsFormValidation = () => {
           values.userType?.name === "one-user"
             ? values.user?.id
             : values.driver?.id,
+        description: values.message,
+        title: values.title,
       },
       {
         onSuccess: (response) => {
