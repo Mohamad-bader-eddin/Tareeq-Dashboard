@@ -24,7 +24,7 @@ const NotificationsContainer = () => {
   const [msg, setMsg] = useState("");
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const { data, isLoading, refetch, isFetching } = useNotificationsQuery();
+  const { data, isLoading, refetch } = useNotificationsQuery();
   const { mutate, isLoading: deleteLoading } = useDeleteNotificationQuery();
   const handleAddNotification = () => {
     navigate("/admin/marketing/add-notification");
@@ -75,7 +75,7 @@ const NotificationsContainer = () => {
           rows={rows}
           title={t("notifications")}
           totalCount={data?.data?.content.length}
-          loading={isLoading || isFetching}
+          loading={isLoading}
         />
         <GenericDialog
           open={openDeleteDialog}

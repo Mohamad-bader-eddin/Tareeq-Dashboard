@@ -23,7 +23,7 @@ const SliderContainer = () => {
   const [openSucsses, setOpenSucsses] = useState(false);
   const [msg, setMsg] = useState("");
   const { t } = useTranslation();
-  const { data, isLoading, refetch, isFetching } = useSliderQuery();
+  const { data, isLoading, refetch } = useSliderQuery();
   const { mutate } = useSliderDeleteQuery();
   const navigate = useNavigate();
   const handleInfo = (id: GridRowId) => {
@@ -75,7 +75,7 @@ const SliderContainer = () => {
         <Table
           columns={columns}
           rows={rows}
-          loading={isLoading || isFetching}
+          loading={isLoading}
           title={t("slider")}
           totalCount={data?.data.content.length}
         />

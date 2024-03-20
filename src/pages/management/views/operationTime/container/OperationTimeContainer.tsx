@@ -29,7 +29,7 @@ const OperationTimeContainer = () => {
   const [errorMsg, setErrorMsg] = useState("");
   const [openSucsses, setOpenSucsses] = useState(false);
   const [msg, setMsg] = useState("");
-  const { data, isLoading, isFetching, refetch } = useOperationTimesQuery();
+  const { data, isLoading, refetch } = useOperationTimesQuery();
   const navigate = useNavigate();
   const { data: managementData, isLoading: managementLoading } =
     useManagementQuery();
@@ -148,7 +148,7 @@ const OperationTimeContainer = () => {
           rows={rows}
           title={t("operation_time")}
           totalCount={data?.data.content.length}
-          loading={isLoading || isFetching}
+          loading={isLoading}
         />
         <GenericDialog
           open={openDeleteDialog}

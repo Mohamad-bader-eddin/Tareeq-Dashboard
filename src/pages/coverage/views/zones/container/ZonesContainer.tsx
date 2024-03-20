@@ -28,7 +28,7 @@ const ZonesContainer = () => {
   };
   const navigate = useNavigate();
   const { t } = useTranslation();
-  const { data, isLoading, refetch, isFetching } = useZoneQuery();
+  const { data, isLoading, refetch } = useZoneQuery();
   const { mutate } = useDeleteZoneQuery();
   const handleAddZone = () => {
     navigate("/admin/coverage/add-zones");
@@ -75,7 +75,7 @@ const ZonesContainer = () => {
           rows={rows}
           title={t("zones")}
           totalCount={data?.data.content.length}
-          loading={isLoading || isFetching}
+          loading={isLoading}
         />
         <GenericDialog
           open={openDeleteDialog}

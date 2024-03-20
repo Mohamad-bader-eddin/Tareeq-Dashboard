@@ -24,7 +24,7 @@ const PromoContainer = () => {
   const [msg, setMsg] = useState("");
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const { data, isLoading, refetch, isFetching } = usePromosQuery();
+  const { data, isLoading, refetch } = usePromosQuery();
   const { mutate } = useDeleteQuery();
   const handleOpenDialog = (id: GridRowId) => {
     setOpenDeleteDialog(true);
@@ -83,7 +83,7 @@ const PromoContainer = () => {
           rows={rows}
           title={t("promo_code")}
           totalCount={data?.data.content.length}
-          loading={isLoading || isFetching}
+          loading={isLoading}
         />
         <GenericDialog
           open={openDeleteDialog}

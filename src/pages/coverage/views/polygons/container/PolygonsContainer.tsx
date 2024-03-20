@@ -27,7 +27,7 @@ const PolygonsContainer = () => {
     setSelectedId(id);
   };
   const { t } = useTranslation();
-  const { data, isLoading, refetch, isFetching } = useZoneQuery();
+  const { data, isLoading, refetch } = useZoneQuery();
   const { mutate } = useDeleteZoneQuery();
   const navigate = useNavigate();
   const handleAddPolygon = () => {
@@ -78,7 +78,7 @@ const PolygonsContainer = () => {
           rows={rows}
           title={t("polygons")}
           totalCount={data?.data.content.length}
-          loading={isLoading || isFetching}
+          loading={isLoading}
         />
         <GenericDialog
           open={openDeleteDialog}

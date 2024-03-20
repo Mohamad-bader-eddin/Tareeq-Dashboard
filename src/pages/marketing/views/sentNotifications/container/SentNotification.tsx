@@ -24,7 +24,7 @@ const SentNotification = () => {
     setOpenDeleteDialog(true);
     setSelectedId(id);
   };
-  const { data, isLoading, isFetching, refetch } = useSentNotificationQuery();
+  const { data, isLoading, refetch } = useSentNotificationQuery();
   const { columns } = useSentNotificationColumns({ handleOpenDialog });
   const { rows } = useSentNotificationRows({ data: data?.data.content });
   const { mutate, isLoading: deleteLoading } = useDeleteSentNotificationQuery();
@@ -51,7 +51,7 @@ const SentNotification = () => {
           rows={rows}
           title={t("sent_notifications")}
           totalCount={data?.data.content.length}
-          loading={isLoading || isFetching}
+          loading={isLoading}
         />
         <GenericDialog
           open={openDeleteDialog}

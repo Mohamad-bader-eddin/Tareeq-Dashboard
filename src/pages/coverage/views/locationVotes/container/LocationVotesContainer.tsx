@@ -25,7 +25,7 @@ const LocationVotesContainer = () => {
     setSelectedId(id);
   };
   const { t } = useTranslation();
-  const { data, isLoading, refetch, isFetching } = useLocationVotesQuery();
+  const { data, isLoading, refetch } = useLocationVotesQuery();
   const navigate = useNavigate();
   const handleInfoLocationVote = (id: GridRowId) => {
     navigate(`/admin/coverage/location-vote-info/${id}`);
@@ -59,7 +59,7 @@ const LocationVotesContainer = () => {
           rows={rows}
           title={t("votes")}
           totalCount={data?.data.content.length}
-          loading={isLoading || isFetching}
+          loading={isLoading}
         />
         <GenericDialog
           open={openDeleteDialog}

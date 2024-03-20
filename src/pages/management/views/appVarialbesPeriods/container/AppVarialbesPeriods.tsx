@@ -22,8 +22,7 @@ const AppVarialbesPeriods = () => {
   const [errorMsg, setErrorMsg] = useState("");
   const [openSucsses, setOpenSucsses] = useState(false);
   const [msg, setMsg] = useState("");
-  const { data, isLoading, refetch, isFetching } =
-    useAppVarialbesPeriodsQuery();
+  const { data, isLoading, refetch } = useAppVarialbesPeriodsQuery();
   const { mutate } = useAppVarialbesPeriodsDeleteQuery();
   const { t } = useTranslation();
   const navigate = useNavigate();
@@ -80,7 +79,7 @@ const AppVarialbesPeriods = () => {
           rows={rows}
           title={t("app_variables_periods")}
           totalCount={data?.data.content.length}
-          loading={isLoading || isFetching}
+          loading={isLoading}
         />
         <GenericDialog
           open={openDeleteDialog}
