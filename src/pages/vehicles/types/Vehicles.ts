@@ -2,7 +2,6 @@ export type Vehicle = {
     id?: string;
     name: string;
     image?: File | undefined | string;
-    description: string;
     price_by_time?: string;
     price_by_km?: string;
     need_note: boolean;

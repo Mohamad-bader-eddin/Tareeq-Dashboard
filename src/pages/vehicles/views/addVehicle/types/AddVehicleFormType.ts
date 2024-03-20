@@ -4,7 +4,6 @@ import * as Yup from "yup";
 export type initialValuesType = {
     name: string;
     image: File | undefined | string;
-    description: string;
     needNote: boolean;
     // priceByTime: number;
     // priceByKm: number;
@@ -12,12 +11,10 @@ export type initialValuesType = {
 
 export type validationSchemaType = Yup.ObjectSchema<{
     name: string;
-    description: string;
     // priceByTime: number;
     // priceByKm: number;
 }, Yup.AnyObject, {
     name: undefined;
-    description: undefined;
     // priceByTime: undefined;
     // priceByKm: undefined;
 }, "">

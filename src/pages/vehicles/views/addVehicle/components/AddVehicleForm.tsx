@@ -34,12 +34,6 @@ const AddVehicleForm = ({
             name="priceByKm"
             type="number"
           /> */}
-          <Input
-            formik={formik}
-            label={t("description")}
-            name="description"
-            textarea={true}
-          />
           <FormControlLabel
             onChange={formik.handleChange}
             value={formik.values["needNote"]}

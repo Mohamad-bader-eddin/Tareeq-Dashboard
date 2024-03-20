@@ -20,7 +20,6 @@ const useAddVehicleFormValidation = ({ data }: { data?: Vehicle }) => {
     name: data?.name || "",
     // priceByTime: Number(data?.price_by_time) || 0,
     // priceByKm: Number(data?.price_by_km) || 0,
-    description: data?.description || "",
     image: data?.image || undefined,
     needNote: data?.need_note || false,
   };
@@ -29,7 +28,6 @@ const useAddVehicleFormValidation = ({ data }: { data?: Vehicle }) => {
     name: Yup.string().required(t("required")),
     // priceByTime: Yup.number().required(t("required")),
     // priceByKm: Yup.number().required(t("required")),
-    description: Yup.string().required(t("required")),
     image: Yup.mixed()
       .test("fileSize", t("file_size_is_too_large"), (value) => {
         if (!value) return true;
@@ -64,7 +62,6 @@ const useAddVehicleFormValidation = ({ data }: { data?: Vehicle }) => {
             name: values.name,
             // price_by_time: values.priceByTime.toString(),
             // price_by_km: values.priceByKm.toString(),
-            description: values.description,
             image: values.image as File,
             need_note: values.needNote,
           },
@@ -89,7 +86,6 @@ const useAddVehicleFormValidation = ({ data }: { data?: Vehicle }) => {
           name: values.name,
           // price_by_time: values.priceByTime.toString(),
           // price_by_km: values.priceByKm.toString(),
-          description: values.description,
           image: values.image as File,
           need_note: values.needNote,
         },
