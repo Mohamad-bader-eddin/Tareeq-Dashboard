@@ -10,7 +10,7 @@ const useExportPendingOrdersQuery = () => {
     to: string;
   }) => {
     const response = await axiosInstance.get(
-      `/api/admin/order/getBystatus/pending?download=true&from=${from}&to=${to}`,
+      `/api/admin/order/getBystatus/pending?download=true&from=${from}&to=${to}&status=pending`,
       { responseType: "blob" }
     );
     return response;

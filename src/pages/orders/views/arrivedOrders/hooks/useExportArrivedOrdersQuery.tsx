@@ -10,7 +10,7 @@ const useExportArrivedOrdersQuery = () => {
     to: string;
   }) => {
     const response = await axiosInstance.get(
-      `/api/admin/order/getBystatus/arrived?download=true&from=${from}&to=${to}`,
+      `/api/admin/order/getBystatus/arrived?download=true&from=${from}&to=${to}&status=arrived`,
       { responseType: "blob" }
     );
     return response;

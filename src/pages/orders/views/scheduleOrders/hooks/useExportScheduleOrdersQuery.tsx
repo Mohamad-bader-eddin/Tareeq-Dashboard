@@ -10,7 +10,7 @@ const useExportScheduleOrdersQuery = () => {
     to: string;
   }) => {
     const response = await axiosInstance.get(
-      `/api/admin/order/getBystatus/scheduled?download=true&from=${from}&to=${to}`,
+      `/api/admin/order/getBystatus/scheduled?download=true&from=${from}&to=${to}&status=scheduled`,
       { responseType: "blob" }
     );
     return response;

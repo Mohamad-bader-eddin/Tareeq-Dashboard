@@ -10,7 +10,7 @@ const useExportActiveOrdersQuery = () => {
     to: string;
   }) => {
     const response = await axiosInstance.get(
-      `/api/admin/order/getBystatus/active?download=true&from=${from}&to=${to}`,
+      `/api/admin/order/getBystatus/active?download=true&from=${from}&to=${to}&status=active`,
       { responseType: "blob" }
     );
     return response;
