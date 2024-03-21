@@ -6,9 +6,10 @@ const useUpdateVehicleQuery = () => {
   const updateVehicle = ({ vehicleId, vehicle }: UpdateVehicleType) => {
     const formData = new FormData();
     formData.append("id", vehicle.id as string);
-    formData.append("image", vehicle.image as File);
+    if (vehicle.image) {
+      formData.append("image", vehicle.image as File);
+    }
     formData.append("name", vehicle.name);
-    formData.append("description", vehicle.description);
     formData.append("need_note", vehicle.need_note ? "1" : "0");
     return axiosMultipart.post(
       `/api/admin/vehicle-type/${vehicleId}`,

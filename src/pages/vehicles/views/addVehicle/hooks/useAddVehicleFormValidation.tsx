@@ -62,7 +62,10 @@ const useAddVehicleFormValidation = ({ data }: { data?: Vehicle }) => {
             name: values.name,
             // price_by_time: values.priceByTime.toString(),
             // price_by_km: values.priceByKm.toString(),
-            image: values.image as File,
+            image:
+              typeof values.image === "string"
+                ? undefined
+                : (values.image as File),
             need_note: values.needNote,
           },
         },
