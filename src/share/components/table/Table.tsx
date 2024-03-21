@@ -38,7 +38,7 @@ const Table = ({
   });
   return (
     <ThemeProvider theme={darkTheme}>
-      <Typography variant="h6" sx={{ marginBottom: "15px" }}>
+      <Typography variant="h6" sx={{ marginBottom: "10px" }}>
         {title ? title : ""} {totalCount ? ` - ${totalCount}` : ""}
       </Typography>
       <Box

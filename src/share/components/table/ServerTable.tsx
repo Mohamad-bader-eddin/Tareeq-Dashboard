@@ -37,7 +37,7 @@ const ServerTable = ({
   });
   return (
     <ThemeProvider theme={darkTheme}>
-      <Typography variant="h6" sx={{ marginBottom: "15px" }}>
+      <Typography variant="h6" sx={{ marginBottom: "12px" }}>
         {title ? title : ""} {totalCount ? ` - ${totalCount}` : ""}
       </Typography>
       <Box

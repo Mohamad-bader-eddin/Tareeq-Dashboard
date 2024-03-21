@@ -33,55 +33,64 @@ const HomeContainer = () => {
         </Backdrop>
       ) : (
         <>
-          <AutoAssignButton data={managementData?.data.content} />
           <Stack direction={"row"} flexWrap={"wrap"}>
             <Box sx={{ flex: 1, minWidth: "300px" }}>
               <Wedgit
-                icon={<AccessibilityIcon fontSize="large" />}
+                icon={<AccessibilityIcon fontSize="small" />}
                 title="Available Drivers"
                 value={data?.data?.content?.available_drivers}
               />
             </Box>
             <Box sx={{ flex: 1, minWidth: "300px" }}>
               <Wedgit
-                icon={<MinorCrashOutlinedIcon fontSize="large" />}
+                icon={<MinorCrashOutlinedIcon fontSize="small" />}
                 title="Drivers who have orders"
                 value={data?.data?.content?.drivers_orders}
               />
             </Box>
             <Box sx={{ flex: 1, minWidth: "300px" }}>
               <Wedgit
-                icon={<PeopleIcon fontSize="large" />}
+                icon={<PeopleIcon fontSize="small" />}
                 title="All Driver"
                 value={data?.data?.content?.all_drivers}
               />
+            </Box>
+            <Box sx={{ flex: 1, minWidth: "300px" }}>
+              <Stack
+                direction={"row"}
+                alignItems={"center"}
+                justifyContent={"center"}
+                height={"100%"}
+              >
+                <AutoAssignButton data={managementData?.data.content} />
+              </Stack>
             </Box>
           </Stack>
           <Stack direction={"row"} flexWrap={"wrap"}>
             <Box sx={{ flex: 1, minWidth: "230px" }}>
               <Wedgit
-                icon={<HourglassBottomIcon fontSize="large" />}
+                icon={<HourglassBottomIcon fontSize="small" />}
                 title="Pending Orders"
                 value={data?.data?.content?.pending_orders}
               />
             </Box>
             <Box sx={{ flex: 1, minWidth: "230px" }}>
               <Wedgit
-                icon={<OnlinePredictionIcon fontSize="large" />}
+                icon={<OnlinePredictionIcon fontSize="small" />}
                 title="Active Orders"
                 value={data?.data?.content?.active_orders}
               />
             </Box>
             <Box sx={{ flex: 1, minWidth: "230px" }}>
               <Wedgit
-                icon={<DoDisturbIcon fontSize="large" />}
+                icon={<DoDisturbIcon fontSize="small" />}
                 title="Canceled Orders"
                 value={data?.data?.content?.canceled_orders}
               />
             </Box>
             <Box sx={{ flex: 1, minWidth: "230px" }}>
               <Wedgit
-                icon={<AccessAlarmIcon fontSize="large" />}
+                icon={<AccessAlarmIcon fontSize="small" />}
                 title="Scheduled Orders"
                 value={data?.data?.content?.scheduled_orders}
               />
@@ -90,7 +99,7 @@ const HomeContainer = () => {
         </>
       )}
       <PaperContainer>
-        <Typography variant="h6" sx={{ marginBottom: "15px" }}>
+        <Typography variant="body1" sx={{ marginBottom: "5px" }}>
           {t("bird_eye")}
         </Typography>
         <Box height={"400px"}>

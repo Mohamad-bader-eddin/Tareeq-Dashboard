@@ -45,12 +45,14 @@ const AutoAssignButton = ({ data }: { data: Management[] }) => {
   return (
     <>
       <Button
-        variant="outlined"
+        variant="contained"
         color={click ? "success" : "error"}
         endIcon={<FiberManualRecordSharpIcon />}
         onClick={handleClick}
         size="small"
         sx={{
+          width: "100%",
+          padding: "10px",
           marginInlineStart: "20px",
           ".css-9tj150-MuiButton-endIcon": {
             marginInline: "8px -4px !important",
