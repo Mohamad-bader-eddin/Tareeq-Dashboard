@@ -21,7 +21,7 @@ const SettingsMenu = () => {
   return (
     <>
       <DropdownNavbar avatar={<Avatar />}>
-        <MenuItem
+        {/* <MenuItem
           sx={{
             "&:hover": {
               backgroundColor: darkMode ? theme.dark.hover : theme.light.hover,
@@ -34,7 +34,7 @@ const SettingsMenu = () => {
             }}
           />{" "}
           {t("profile")}
-        </MenuItem>
+        </MenuItem> */}
         <MenuItem
           sx={{
             "&:hover": {
