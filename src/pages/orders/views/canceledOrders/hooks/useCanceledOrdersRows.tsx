@@ -1,6 +1,7 @@
 import { format } from "date-fns";
 import { Order } from "../../../types/OrderType";
 import { OrderRow } from "../../../types/OrdersTableType";
+import { convertPriceToSY } from "../../../../../share/utils/convertPriceToSY";
 
 const useCanceledOrdersRows = ({ data }: { data: Order[] }) => {
   const rows: OrderRow[] = [];
@@ -10,7 +11,7 @@ const useCanceledOrdersRows = ({ data }: { data: Order[] }) => {
       customer: el?.user?.name,
       customerId: el?.user?.id,
       status: el?.status,
-      totalExpected: el?.total_expected,
+      totalExpected: convertPriceToSY(el?.total_expected),
       placedon: format(new Date(el?.created_at as Date), "dd/MM/yyyy"),
       shopper: el?.driver?.name,
       shopperId: el?.driver?.id,

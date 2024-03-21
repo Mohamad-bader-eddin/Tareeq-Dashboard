@@ -1,6 +1,7 @@
 import { format } from "date-fns";
 import { Order } from "../../../types/OrderType";
 import { OrderRow } from "../../../types/OrdersTableType";
+import { convertPriceToSY } from "../../../../../share/utils/convertPriceToSY";
 
 const useArrivedOrdersRows = ({ data }: { data: Order[] }) => {
   const rows: OrderRow[] = [];
@@ -10,8 +11,8 @@ const useArrivedOrdersRows = ({ data }: { data: Order[] }) => {
       customer: el.user.name,
       customerId: el.user.id,
       status: el.status,
-      totalExpected: el.total_expected,
-      totalPaid: el.total_paid,
+      totalExpected: convertPriceToSY(el?.total_expected),
+      totalPaid: convertPriceToSY(el.total_paid ? el.total_paid : 0),
       arrivedAt: format(
         new Date(el.arrive_to_customer_at as Date),
         "dd/MM/yyyy"

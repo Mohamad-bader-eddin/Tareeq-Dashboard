@@ -11,7 +11,7 @@ const useArrivedOrdersColumns = () => {
       {
         field: "id",
         headerName: t("id"),
-        flex: 1,
+        flex: 0.5,
         align: "center",
         headerAlign: "center",
       },
@@ -51,7 +51,7 @@ const useArrivedOrdersColumns = () => {
       {
         field: "totalPaid",
         headerName: t("total_paid"),
-        width: 100,
+        flex: 1,
         align: "center",
         headerAlign: "center",
       },

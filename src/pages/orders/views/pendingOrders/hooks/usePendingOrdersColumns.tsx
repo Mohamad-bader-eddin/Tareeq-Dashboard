@@ -17,7 +17,7 @@ const usePendingOrdersColumns = ({
       {
         field: "id",
         headerName: t("id"),
-        flex: 1,
+        flex: 0.5,
         align: "center",
         headerAlign: "center",
       },

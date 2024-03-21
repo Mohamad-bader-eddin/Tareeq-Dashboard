@@ -10,11 +10,11 @@ export type OrderRow = {
     customer: string;
     customerId: string;
     status: string;
-    totalExpected: number;
+    totalExpected: string;
     placedon?: string;
     shopper?: string;
     shopperId?: string;
-    totalPaid?: number;
+    totalPaid?: string;
     arrivedAt?: string;
     creditsUsed?: number;
     rating?: number;
