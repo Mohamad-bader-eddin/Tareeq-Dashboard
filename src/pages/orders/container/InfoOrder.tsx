@@ -25,6 +25,7 @@ import { GridRowId } from "@mui/x-data-grid";
 import GenericDialog from "../../../share/components/Dialog/GenericDialog";
 import { getErrorMessage } from "../../../share/utils/getErrorMessage";
 import useDeleteAdminNote from "../hooks/useDeleteAdminNote";
+import { convertPriceToSY } from "../../../share/utils/convertPriceToSY";
 
 const InfoOrder = () => {
   const [openDeleteDialog, setOpenDeleteDialog] = useState(false);
@@ -226,7 +227,9 @@ const InfoOrder = () => {
                     </span>
                     {t("total_expected")} :
                   </h5>
-                  <h5 className="val">{data?.data?.content?.total_expected}</h5>
+                  <h5 className="val">
+                    {convertPriceToSY(data?.data?.content?.total_expected)}
+                  </h5>
                 </div>
               </div>
               <div className="row">
@@ -237,7 +240,9 @@ const InfoOrder = () => {
                     </span>
                     {t("total_paid")} :
                   </h5>
-                  <h5 className="val">{data?.data?.content?.total_paid}</h5>
+                  <h5 className="val">
+                    {convertPriceToSY(data?.data?.content?.total_paid)}
+                  </h5>
                 </div>
               </div>
             </StyledInfo>

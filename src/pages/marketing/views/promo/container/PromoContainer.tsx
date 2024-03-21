@@ -36,11 +36,11 @@ const PromoContainer = () => {
   const handleInfo = (id: GridRowId) => {
     navigate(`/admin/marketing/promos/${id}`);
   };
-  const handleUserUsedThisCoupon = () => {
-    navigate("/admin/marketing/promo-used-copoun");
-  };
+  // const handleUserUsedThisCoupon = () => {
+  //   navigate("/admin/marketing/promo-used-copoun");
+  // };
   const { columns } = usePromoColumns({
-    handleUserUsedThisCoupon,
+    // handleUserUsedThisCoupon,
     handleOpenDialog,
     handleInfo,
   });

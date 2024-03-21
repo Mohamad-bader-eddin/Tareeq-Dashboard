@@ -22,6 +22,7 @@ import useVehiclesMapper from "../../createShopper/hooks/useVehiclesMapper";
 import GenericAlert from "../../../../../../../share/components/alert/GenericAlert";
 import TripOriginOutlinedIcon from "@mui/icons-material/TripOriginOutlined";
 import GenericEmbededMap from "../../../../../../../share/components/map/GenericEmbededMap";
+import { convertPriceToSY } from "../../../../../../../share/utils/convertPriceToSY";
 
 const InfoContainer = () => {
   const { t } = useTranslation();
@@ -164,7 +165,7 @@ const InfoContainer = () => {
                 {t("total_earn")} :
               </Typography>
               <Typography variant="h6">
-                {data?.data?.content?.total_earn}
+                {convertPriceToSY(data?.data?.content?.total_earn)}
               </Typography>
             </Stack>
             <Stack direction={"row"} alignItems={"center"}>
@@ -175,7 +176,7 @@ const InfoContainer = () => {
                 {t("daily_total_earn")} :
               </Typography>
               <Typography variant="h6">
-                {data?.data?.content?.daily_total_earn}
+                {convertPriceToSY(data?.data?.content?.daily_total_earn)}
               </Typography>
             </Stack>
           </Box>
