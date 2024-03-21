@@ -86,7 +86,7 @@ const GenericDialog = ({
             }}
             // color="info"
           >
-            {t("disagree")}
+            {t("cancel")}
           </Button>
           {hideAgreeBtn ? null : (
             <Button
