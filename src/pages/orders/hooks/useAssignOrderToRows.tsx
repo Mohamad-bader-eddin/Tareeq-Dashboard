@@ -6,7 +6,7 @@ const useAssignOrderToRows = ({ data }: { data: Drivers[] }) => {
   data?.forEach((el) =>
     rows.push({
       id: el.id as string,
-      shopper: el.name,
+      shopper: el.name + " " + el?.last_name,
     })
   );
   return { rows };

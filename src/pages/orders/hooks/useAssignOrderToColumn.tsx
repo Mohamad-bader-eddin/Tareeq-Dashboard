@@ -14,13 +14,13 @@ const useAssignOrderToColumn = ({
       headerAlign: "center",
       flex: 1,
     },
-    {
-      field: "completedTripsToday",
-      headerName: t("completed_trips_today"),
-      flex: 1,
-      align: "center",
-      headerAlign: "center",
-    },
+    // {
+    //   field: "completedTripsToday",
+    //   headerName: t("completed_trips_today"),
+    //   flex: 1,
+    //   align: "center",
+    //   headerAlign: "center",
+    // },
     {
       field: "action",
       headerName: t("assign_to"),

@@ -1,8 +1,7 @@
 export type Address = {
     address: string;
-    created_at: Date;
+    updated_at: Date;
     id: number;
-    is_save: boolean;
     lat: number;
     long: number;
     name: string;
@@ -32,8 +31,9 @@ export type ClientRows = {
 export type AddressRows = {
     id: number;
     address: string;
-    isSavedAddress: boolean;
     dateAdded: string;
+    lat: number;
+    long: number;
 }
 
 type Transactions = {

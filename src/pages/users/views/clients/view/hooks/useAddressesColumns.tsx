@@ -1,13 +1,11 @@
 import { GridActionsCellItem, GridColDef } from "@mui/x-data-grid";
-import { Dispatch, SetStateAction, useMemo } from "react";
+import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import PreviewIcon from "@mui/icons-material/Preview";
-import DeleteIcon from "@mui/icons-material/DeleteOutlined";
+import { Address } from "../../types/clients";
+// import DeleteIcon from "@mui/icons-material/DeleteOutlined";
 
-const useAddressesColumns = ({
-  setOpenDeleteDialog,
-  setOpenInfoDialog,
-}: useShoppersColumnsProps) => {
+const useAddressesColumns = ({ handleInfoAdress }: useShoppersColumnsProps) => {
   const { t } = useTranslation();
   const columns = useMemo(() => {
     const tableCol: GridColDef[] = [
@@ -20,17 +18,10 @@ const useAddressesColumns = ({
       },
       {
         field: "address",
-        headerName: t("address"),
+        headerName: t("saved_address"),
         align: "center",
         headerAlign: "center",
         flex: 1,
-      },
-      {
-        field: "isSavedAddress",
-        headerName: t("is_saved_address"),
-        flex: 1,
-        align: "center",
-        headerAlign: "center",
       },
       {
         field: "dateAdded",
@@ -45,20 +36,20 @@ const useAddressesColumns = ({
         flex: 1,
         align: "center",
         headerAlign: "center",
-        renderCell: () => {
+        renderCell: (params) => {
           return [
             <GridActionsCellItem
               icon={<PreviewIcon />}
               label="View"
               color="info"
-              onClick={() => setOpenInfoDialog(true)}
+              onClick={() => handleInfoAdress({ data: params.row })}
             />,
-            <GridActionsCellItem
-              icon={<DeleteIcon />}
-              label="Delete"
-              color="error"
-              onClick={() => setOpenDeleteDialog(true)}
-            />,
+            // <GridActionsCellItem
+            //   icon={<DeleteIcon />}
+            //   label="Delete"
+            //   color="error"
+            //   onClick={() => setOpenDeleteDialog(true)}
+            // />,
           ];
         },
       },
@@ -70,7 +61,8 @@ const useAddressesColumns = ({
 };
 
 type useShoppersColumnsProps = {
-  setOpenDeleteDialog: Dispatch<SetStateAction<boolean>>;
-  setOpenInfoDialog: Dispatch<SetStateAction<boolean>>;
+  // setOpenDeleteDialog: Dispatch<SetStateAction<boolean>>;
+  // eslint-disable-next-line no-unused-vars
+  handleInfoAdress: ({ data }: { data: Address }) => void;
 };
 export default useAddressesColumns;

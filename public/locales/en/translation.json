@@ -116,7 +116,7 @@
   "first_order_date": "First order Date",
   "completed_orders": "Completed orders",
   "address": "Address",
-  "is_saved_address": "Is Saved Address",
+  "saved_address": "Saved Address",
   "date_added": "Date Added",
   "addresses": "Addresses",
   "delete_all_addresses_for_this_user": "Delete All Addresses for this user",

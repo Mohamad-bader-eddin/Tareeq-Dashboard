@@ -116,7 +116,7 @@
   "first_order_date": "تاريخ أول طلب",
   "completed_orders": "طلبات المكتملة",
   "address": "عنوان",
-  "is_saved_address": "العنوان محفوظ؟",
+  "saved_address": "العنوان محفوظ",
   "date_added": "تاريخ الإضافة",
   "addresses": "عناوين",
   "delete_all_addresses_for_this_user": "حذف جميع العناوين من هذا المستخدم",

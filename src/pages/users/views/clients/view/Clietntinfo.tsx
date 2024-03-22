@@ -89,7 +89,7 @@ const Clietntinfo = () => {
           </PaperContainer>
           <PaperContainer>
             <Addresses
-              data={data?.data.content.address}
+              data={data?.data.content.addresses}
               isLoading={isLoading}
             />
           </PaperContainer>

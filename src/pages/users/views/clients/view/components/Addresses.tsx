@@ -5,10 +5,10 @@ import { Box, Stack } from "@mui/material";
 import Table from "../../../../../../share/components/table/Table";
 import { useTranslation } from "react-i18next";
 import GenericDialog from "../../../../../../share/components/Dialog/GenericDialog";
-import GenericMap from "../../../../../../share/components/map/GenericMap";
 // import DeleteIcon from "@mui/icons-material/Delete";
 // import useMedeaQueries from "../../../../../../share/utils/useMideaQuery";
 import { Address } from "../../types/clients";
+import GenericEmbededMap from "../../../../../../share/components/map/GenericEmbededMap";
 // import useDeleteAllAdresses from "../hooks/useDeleteAllAdresses";
 
 const Addresses = ({
@@ -18,15 +18,20 @@ const Addresses = ({
   data: Address[];
   isLoading: boolean;
 }) => {
-  const [openDeleteDialog, setOpenDeleteDialog] = useState(false);
   const [openInfoDialog, setOpenInfoDialog] = useState(false);
-  // const { tablet } = useMedeaQueries();
+  const [lat, setLat] = useState<number>();
+  const [long, setLong] = useState<number>();
   const { t } = useTranslation();
+  const handleInfoAdress = ({ data }: { data: Address }) => {
+    setOpenInfoDialog(true);
+    setLat(data.lat);
+    setLong(data.long);
+  };
   const { rows } = useAddressesRows({ data: data });
   const { columns } = useAddressesColumns({
-    setOpenDeleteDialog,
-    setOpenInfoDialog,
+    handleInfoAdress,
   });
+
   // const { mutate, isLoading: deleteLoading } = useDeleteAllAdresses();
   // const handleDeleteAllAddresses = () => {
   //   mutate(id);
@@ -58,17 +63,13 @@ const Addresses = ({
         loading={isLoading}
       />
       <GenericDialog
-        open={openDeleteDialog}
-        setOpen={setOpenDeleteDialog}
-        elementContent={t("delete_message")}
-        handleAgree={() => {}}
-      />
-      <GenericDialog
         open={openInfoDialog}
         setOpen={setOpenInfoDialog}
-        elementContent={<GenericMap />}
-        title={t("damascus")}
+        elementContent={
+          <GenericEmbededMap lat={lat || 33.513674} long={long || 36.276526} />
+        }
         handleAgree={() => {}}
+        hideAgreeBtn={true}
       />
     </Box>
   );
