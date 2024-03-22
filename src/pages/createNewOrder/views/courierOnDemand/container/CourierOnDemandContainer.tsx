@@ -37,16 +37,21 @@ const CourierOnDemandContainer = () => {
           {t("create_new_order")}
         </Typography>
         {phone ? (
-          <Box sx={{ height: "1329.6px", width: "100%" }}>
-            <iframe
-              ref={iframeRef}
-              src={`https://tareeq-map.netlify.app/#/admin/create-order?id=${phone.id}&token=${token}&name=${phone.name}`}
-              title="Iframe Title"
-              width={"100%"}
-              height={"1329.6px"}
-              style={{ border: "0", background: "transparent" }}
-            />
-          </Box>
+          <>
+            <Typography variant="h6" sx={{ mb: "15px" }}>
+              {t("client")} : {phone.name}
+            </Typography>
+            <Box sx={{ height: "1329.6px", width: "100%" }}>
+              <iframe
+                ref={iframeRef}
+                src={`https://tareeq-map.netlify.app/#/admin/create-order?id=${phone.id}&token=${token}`}
+                title="Iframe Title"
+                width={"100%"}
+                height={"1329.6px"}
+                style={{ border: "0", background: "transparent" }}
+              />
+            </Box>
+          </>
         ) : (
           <PhoneForm
             initialValues={initialValuesPhone}
