@@ -65,6 +65,7 @@ export type OrderPoint = {
 export type User = {
     id: string;
     name: string;
+    last_name: string;
     email: null;
     phone: string;
     phone_verified_at: Date;

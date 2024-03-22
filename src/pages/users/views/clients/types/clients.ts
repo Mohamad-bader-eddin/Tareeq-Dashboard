@@ -16,6 +16,7 @@ export type Client = {
     id: number;
     image: string;
     name: string;
+    last_name?: string;
     phone: string;
     phone_verified_at: Date;
     transactions: Transactions[]

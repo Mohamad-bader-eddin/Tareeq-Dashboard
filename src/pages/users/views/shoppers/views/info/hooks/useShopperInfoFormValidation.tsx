@@ -10,6 +10,7 @@ const useShopperInfoFormValidation = ({ data }: { data: Drivers }) => {
   const initialValues = {
     registerDate: new Date(data?.created_at as Date),
     name: data?.name || "",
+    last_name: data?.last_name || "",
     driverProfit: data?.driver_profit || "",
     phone: data?.phone || "",
     zone:

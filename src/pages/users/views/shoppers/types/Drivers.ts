@@ -4,6 +4,7 @@ import { Vehicle } from "../../../../vehicles/types/Vehicles";
 export type Drivers = {
     id?: string;
     name: string;
+    last_name?: string;
     phone: string;
     email?: string;
     password: string;

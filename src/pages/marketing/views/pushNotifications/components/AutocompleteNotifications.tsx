@@ -31,7 +31,7 @@ const AutocompleteNotifications = <T extends Record<string, unknown>>({
       <Box sx={{ mb: InputMargin }}>
         <Autocomplete
           loading={loading}
-          freeSolo
+          // freeSolo
           value={formik.values[name]}
           options={options}
           getOptionLabel={(option) => (option as NotificationsOptions).title}

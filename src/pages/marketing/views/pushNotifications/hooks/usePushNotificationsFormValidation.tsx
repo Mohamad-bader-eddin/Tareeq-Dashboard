@@ -29,13 +29,13 @@ const usePushNotificationsFormValidation = () => {
         name: Yup.string().required(t("required")),
       })
       .required(t("required")),
-    notification: Yup.object()
-      .shape({
-        id: Yup.string().required(t("required")),
-        title: Yup.string().required(t("required")),
-        message: Yup.string().required(t("required")),
-      })
-      .required(t("required")),
+    // notification: Yup.object()
+    //   .shape({
+    //     id: Yup.string().required(t("required")),
+    //     title: Yup.string().required(t("required")),
+    //     message: Yup.string().required(t("required")),
+    //   })
+    //   .required(t("required")),
     title: Yup.string().required(t("required")),
     message: Yup.string().required(t("required")),
   });

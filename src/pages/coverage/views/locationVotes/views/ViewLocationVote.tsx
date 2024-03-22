@@ -46,7 +46,11 @@ const ViewLocationVote = () => {
                   {t("client")} :
                 </h4>
                 <AppLink
-                  name={data?.data.content.user.name}
+                  name={
+                    data?.data.content.user.name +
+                    " " +
+                    data?.data.content.user?.last_name
+                  }
                   path={`/admin/users/clients/${data?.data.content.user_id}`}
                 />
                 {/* <h4 className="val">{data?.data.content.user.name}</h4> */}

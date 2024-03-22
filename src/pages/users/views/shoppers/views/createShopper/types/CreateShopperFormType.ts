@@ -4,7 +4,7 @@ import { Option } from "../../../../../../../share/types";
 
 export type initialValuesType = {
     name: string;
-    // email: string;
+    last_name: string;
     password: string;
     phone: string;
     driverProfit: string;

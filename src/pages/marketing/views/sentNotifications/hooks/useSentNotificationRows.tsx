@@ -6,7 +6,7 @@ const useSentNotificationRows = ({ data }: { data: SentNotification[] }) => {
   data?.forEach((el) =>
     rows.push({
       id: el?.id,
-      user: el?.user?.name,
+      user: el?.user?.name + " " + el?.user?.last_name,
       userType: el?.type,
       title: el?.title,
       message: el?.description,

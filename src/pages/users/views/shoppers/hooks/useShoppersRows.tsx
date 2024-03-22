@@ -6,7 +6,7 @@ const useShoppersRows = ({ data }: { data: Drivers[] }) => {
   data?.forEach((el) =>
     rows.push({
       id: el.id as string,
-      name: el.name,
+      name: el.name + " " + el?.last_name,
       phone: el.phone,
       shopperEarning: el.driver_profit as string,
       registerDate: format(new Date(el.created_at as Date), "dd/MM/yyyy"),

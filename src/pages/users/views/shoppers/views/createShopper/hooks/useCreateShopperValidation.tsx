@@ -15,7 +15,7 @@ const useCreateShopperValidation = () => {
   const { t } = useTranslation();
   const initialValues = {
     name: "",
-    // email: "",
+    last_name: "",
     password: "",
     phone: "",
     driverProfit: "",
@@ -121,6 +121,7 @@ const useCreateShopperValidation = () => {
         zone_id: values.zone?.id as string,
         vehicle_image: values.vehiclePicture as File,
         driver_image: values.shopperPicture as File,
+        last_name: values.last_name,
       },
       {
         onSuccess: (response) => {

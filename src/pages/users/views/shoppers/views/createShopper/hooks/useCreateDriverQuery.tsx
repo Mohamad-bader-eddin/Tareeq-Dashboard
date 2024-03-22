@@ -5,6 +5,9 @@ import { useMutation } from "react-query";
 const addDriver = (driver: Drivers) => {
   const formData = new FormData();
   formData.append("name", driver.name);
+  if (driver.last_name) {
+    formData.append("last_name", driver.last_name);
+  }
   formData.append("password", driver.password);
   formData.append("phone", driver.phone);
   formData.append("zone_id", driver.zone_id);

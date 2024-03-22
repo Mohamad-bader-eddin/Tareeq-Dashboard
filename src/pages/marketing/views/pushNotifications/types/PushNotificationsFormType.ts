@@ -17,11 +17,11 @@ export type validationSchemaType = Yup.ObjectSchema<
             name: string;
             id: string;
         };
-        notification: {
-            title: string;
-            message: string;
-            id: string;
-        };
+        // notification: {
+        //     title: string;
+        //     message: string;
+        //     id: string;
+        // };
         title: string;
         message: string;
     },
@@ -31,11 +31,11 @@ export type validationSchemaType = Yup.ObjectSchema<
             id: undefined;
             name: undefined;
         };
-        notification: {
-            id: undefined;
-            title: undefined;
-            message: undefined;
-        };
+        // notification: {
+        //     id: undefined;
+        //     title: undefined;
+        //     message: undefined;
+        // };
         title: undefined;
         message: undefined;
     },

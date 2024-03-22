@@ -5,6 +5,7 @@ import { Option } from "../../../../../../../share/types";
 export type initialValuesType = {
     registerDate: Date
     name: string;
+    last_name: string;
     phone: string;
     zone: Option | null;
     modelNumber: string;

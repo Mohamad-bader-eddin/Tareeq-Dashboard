@@ -44,6 +44,7 @@ const ShopperInfoForm = ({
             disabled={true}
           />
           <Input formik={formik} label={t("name")} name="name" />
+          <Input formik={formik} label={t("last_name")} name="last_name" />
           <Input formik={formik} label={t("phone")} name="phone" />
           <Input
             formik={formik}

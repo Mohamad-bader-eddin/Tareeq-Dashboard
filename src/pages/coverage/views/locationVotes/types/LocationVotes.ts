@@ -12,6 +12,7 @@ export type LocationVotes = {
 export type User = {
     id: number;
     name: string;
+    last_name: string;
     phone: string;
     platform: null;
     image: null;

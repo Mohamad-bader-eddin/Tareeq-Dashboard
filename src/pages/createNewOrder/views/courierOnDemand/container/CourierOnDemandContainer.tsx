@@ -39,7 +39,7 @@ const CourierOnDemandContainer = () => {
         {phone ? (
           <>
             <Typography variant="h6" sx={{ mb: "15px" }}>
-              {t("client")} : {phone.name}
+              {t("client")} : {phone.name} {phone?.last_name}
             </Typography>
             <Box sx={{ height: "1329.6px", width: "100%" }}>
               <iframe

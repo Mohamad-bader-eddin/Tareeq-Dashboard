@@ -20,6 +20,7 @@ export type SentNotificationRows = {
 type User = {
     id: number;
     name: string;
+    last_name: string;
     phone: string;
     platform: null;
     image: null;
