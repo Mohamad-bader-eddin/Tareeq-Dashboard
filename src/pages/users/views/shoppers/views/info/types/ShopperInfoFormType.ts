@@ -23,6 +23,7 @@ export type initialValuesType = {
 
 export type validationSchemaType = Yup.ObjectSchema<{
     name: string;
+    last_name: string;
     phone: string;
     zone: {
         name: string;
@@ -41,7 +42,7 @@ export type validationSchemaType = Yup.ObjectSchema<{
     };
 }, Yup.AnyObject, {
     name: undefined;
-    password: undefined;
+    last_name: undefined;
     phone: undefined;
     zone: {
         id: undefined;

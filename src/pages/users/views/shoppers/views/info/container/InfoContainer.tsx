@@ -58,10 +58,19 @@ const InfoContainer = () => {
   const { vehiclesOptions } = useVehiclesMapper({
     data: vehicles?.data.content,
   });
-  const { initialValues, onSubmit, validationSchema } =
-    useShopperInfoFormValidation({
-      data: data?.data.content,
-    });
+  const {
+    initialValues,
+    onSubmit,
+    validationSchema,
+    errorMsg: errorMsgDriver,
+    msg: msgDriver,
+    openError: openErrorDriver,
+    openSucsses: openSucssesDriver,
+    setOpenError: setOpenErrorDriver,
+    setOpenSucsses: setOpenSucssesDriver,
+  } = useShopperInfoFormValidation({
+    data: data?.data.content,
+  });
   const breadcrumbsTracks = [
     { path: "/admin/users/shoppers", name: t("drivers") },
   ];
@@ -99,6 +108,18 @@ const InfoContainer = () => {
           </PaperContainer>
         </>
       )}
+      <GenericAlert
+        open={openSucssesDriver}
+        setOpen={setOpenSucssesDriver}
+        type="success"
+        msg={msgDriver}
+      />
+      <GenericAlert
+        open={openErrorDriver}
+        setOpen={setOpenErrorDriver}
+        type="error"
+        msg={errorMsgDriver}
+      />
       <PaperContainer>
         <Typography variant="h6" sx={{ marginBottom: "15px" }}>
           {t("change_password")}

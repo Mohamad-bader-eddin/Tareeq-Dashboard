@@ -67,37 +67,36 @@ const useCreateShopperValidation = () => {
         name: Yup.string().required(t("required")),
       })
       .required(t("required")),
-    // vehiclePicture: Yup.mixed()
-    //   .test("fileSize", t("file_size_is_too_large"), (value) => {
-    //     if (!value) return false;
-    //     return (value as File).size <= 5242880; // 5MB
-    //   })
-    //   .test("fileType", t("invalid_file_type"), (value) => {
-    //     if (!value) return false;
-    //     const file = value as File;
-    //     return (
-    //       ["image/jpeg", "image/jpg", "image/png"].includes(file.type) ||
-    //       file.name.endsWith(".jpeg") ||
-    //       file.name.endsWith(".jpg") ||
-    //       file.name.endsWith(".png")
-    //     );
-    //   }),
-    // shopperPicture: Yup.mixed()
-    //   .test("fileSize", t("file_size_is_too_large"), (value) => {
-    //     if (!value) return false;
-    //     return (value as File).size <= 5242880; // 5MB
-    //   })
-    //   .test("fileType", t("invalid_file_type"), (value) => {
-    //     if (!value) return false;
-    //     const file = value as File;
-    //     return (
-    //       ["image/jpeg", "image/jpg", "image/png"].includes(file.type) ||
-    //       file.name.endsWith(".jpeg") ||
-    //       file.name.endsWith(".jpg") ||
-    //       file.name.endsWith(".png")
-    //     );
-    //   }),
-    // .required(t("image_is_required"))
+    vehiclePicture: Yup.mixed()
+      .test("fileSize", t("file_size_is_too_large"), (value) => {
+        if (!value) return true;
+        return (value as File).size <= 5242880; // 5MB
+      })
+      .test("fileType", t("invalid_file_type"), (value) => {
+        if (!value) return true;
+        const file = value as File;
+        return (
+          ["image/jpeg", "image/jpg", "image/png"].includes(file.type) ||
+          file.name.endsWith(".jpeg") ||
+          file.name.endsWith(".jpg") ||
+          file.name.endsWith(".png")
+        );
+      }),
+    shopperPicture: Yup.mixed()
+      .test("fileSize", t("file_size_is_too_large"), (value) => {
+        if (!value) return true;
+        return (value as File).size <= 5242880; // 5MB
+      })
+      .test("fileType", t("invalid_file_type"), (value) => {
+        if (!value) return true;
+        const file = value as File;
+        return (
+          ["image/jpeg", "image/jpg", "image/png"].includes(file.type) ||
+          file.name.endsWith(".jpeg") ||
+          file.name.endsWith(".jpg") ||
+          file.name.endsWith(".png")
+        );
+      }),
   });
 
   const onSubmit = (

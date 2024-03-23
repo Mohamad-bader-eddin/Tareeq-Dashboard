@@ -7,7 +7,7 @@ const fetchDriver = ({ queryKey }: { queryKey: QueryKey }) => {
 };
 
 const useInfoDriverQuery = (driverId: string) => {
-  return useQuery(["Drivers", driverId], fetchDriver);
+  return useQuery(["Drivers", driverId], fetchDriver, { cacheTime: 1 });
 };
 
 export default useInfoDriverQuery;

@@ -7,7 +7,7 @@ export type Drivers = {
     last_name?: string;
     phone: string;
     email?: string;
-    password: string;
+    password?: string;
     driver_profit?: string;
     zone_id: string;
     image?: string;
@@ -39,6 +39,7 @@ export type Drivers = {
     driver_image?: File | undefined | string;
     transactions?: transactions[];
     availability?: boolean;
+    vehicle_id?: string;
 }
 
 export type DriversRows = {

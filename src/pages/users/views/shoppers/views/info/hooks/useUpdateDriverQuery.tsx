@@ -1,14 +1,16 @@
+import { useMutation } from "react-query";
 import axiosMultipart from "../../../../../../../auth/axiosMultipart";
 import { Drivers } from "../../../types/Drivers";
-import { useMutation } from "react-query";
 
-const addDriver = (driver: Drivers) => {
+const updateDriver = (driver: Drivers) => {
+  console.log(driver);
+
   const formData = new FormData();
+  formData.append("id", driver.id as string);
   formData.append("name", driver.name);
   if (driver.last_name) {
     formData.append("last_name", driver.last_name);
   }
-  formData.append("password", driver.password as string);
   formData.append("phone", driver.phone);
   formData.append("zone_id", driver.zone_id);
   formData.append("driver_profit", driver.driver_profit as string);
@@ -19,13 +21,18 @@ const addDriver = (driver: Drivers) => {
   formData.append("plat_number", driver.plat_number);
   formData.append("description", driver.description);
   formData.append("vehicle_type_id", driver.vehicle_type_id);
-  formData.append("vehicle_image", driver.vehicle_image as File);
-  formData.append("driver_image", driver.driver_image as File);
-  return axiosMultipart.post("/api/admin/driver/store", formData);
+  formData.append("vehicle_id", driver.vehicle_id as string);
+  if (driver.vehicle_image) {
+    formData.append("vehicle_image", driver.vehicle_image as File);
+  }
+  if (driver.driver_image) {
+    formData.append("driver_image", driver.driver_image as File);
+  }
+  return axiosMultipart.post(`/api/admin/driver/${driver.id}`, formData);
 };
 
-const useCreateDriverQuery = () => {
-  return useMutation(addDriver);
+const useUpdateDriverQuery = () => {
+  return useMutation(updateDriver);
 };
 
-export default useCreateDriverQuery;
+export default useUpdateDriverQuery;

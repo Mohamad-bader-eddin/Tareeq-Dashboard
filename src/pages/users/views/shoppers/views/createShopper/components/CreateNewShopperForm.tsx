@@ -54,7 +54,6 @@ const CreateNewShopperForm = ({
             formik={formik}
             label={t("shopper_earning")}
             name="driverProfit"
-            type="number"
           />
           <AutocompleteInput
             formik={formik}
