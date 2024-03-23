@@ -67,11 +67,11 @@ const useShopperInfoFormValidation = ({ data }: { data: Drivers }) => {
       .required(t("required")),
     carPicture: Yup.mixed()
       .test("fileSize", t("file_size_is_too_large"), (value) => {
-        if (!value) return true;
+        if (!value || typeof value === "string") return true;
         return (value as File).size <= 5242880; // 5MB
       })
       .test("fileType", t("invalid_file_type"), (value) => {
-        if (!value) return true;
+        if (!value || typeof value === "string") return true;
         const file = value as File;
         return (
           ["image/jpeg", "image/jpg", "image/png"].includes(file.type) ||
@@ -82,11 +82,11 @@ const useShopperInfoFormValidation = ({ data }: { data: Drivers }) => {
       }),
     shopperPicture: Yup.mixed()
       .test("fileSize", t("file_size_is_too_large"), (value) => {
-        if (!value) return true;
+        if (!value || typeof value === "string") return true;
         return (value as File).size <= 5242880; // 5MB
       })
       .test("fileType", t("invalid_file_type"), (value) => {
-        if (!value) return true;
+        if (!value || typeof value === "string") return true;
         const file = value as File;
         return (
           ["image/jpeg", "image/jpg", "image/png"].includes(file.type) ||
@@ -115,8 +115,14 @@ const useShopperInfoFormValidation = ({ data }: { data: Drivers }) => {
         description: values.description,
         vehicle_type_id: values.vehicleType?.id as string,
         zone_id: values.zone?.id as string,
-        vehicle_image: values.carPicture as File,
-        driver_image: values.shopperPicture as File,
+        vehicle_image:
+          typeof values.carPicture === "string"
+            ? undefined
+            : (values.carPicture as File),
+        driver_image:
+          typeof values.shopperPicture === "string"
+            ? undefined
+            : (values.shopperPicture as File),
         last_name: values.last_name,
         vehicle_id: data.vehicle?.id,
       },
