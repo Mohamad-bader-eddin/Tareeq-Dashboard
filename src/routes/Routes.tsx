@@ -32,7 +32,6 @@ import OperationTimeContainer from "../pages/management/views/operationTime/cont
 import AppVarialbesPeriods from "../pages/management/views/appVarialbesPeriods/container/AppVarialbesPeriods";
 import AddAppVarialbesPeriods from "../pages/management/views/appVarialbesPeriods/views/add/container/AddAppVarialbesPeriods";
 import OtherAppVariables from "../pages/management/views/otherAppVariables/container/OtherAppVariables";
-import ShopperLimitContainer from "../pages/management/views/shopperLimit/container/ShopperLimitContainer";
 import AppPhoneNumberContainer from "../pages/management/views/appPhoneNumber/container/AppPhoneNumberContainer";
 import MessagesContainer from "../pages/management/views/messages/container/MessagesContainer";
 import ViewMessageContainer from "../pages/management/views/messages/views/ViewMessageContainer";
@@ -57,6 +56,8 @@ import NotificationContainer from "../pages/management/views/notifications/conta
 import NotificationsContainer from "../pages/marketing/views/notifications/container/NotificationsContainer";
 import AddNotificationsContainer from "../pages/marketing/views/notifications/views/add/container/AddNotificationsContainer";
 import InfoNotificationsContainer from "../pages/marketing/views/notifications/views/info/container/InfoNotificationsContainer";
+import AutoAssignRadiusContainer from "../pages/management/views/autoAssignRadius/container/AutoAssignRadiusContainer";
+import ShopperLimitContainer from "../pages/management/views/shopperLimit/container/ShopperLimitContainer";
 
 const Routes = () => {
   return (
@@ -444,6 +445,14 @@ const Routes = () => {
         element={
           <RequireAuth allowedRoles={["admin"]}>
             <OtherAppVariables />
+          </RequireAuth>
+        }
+      />
+      <Route
+        path="/admin/management/auto-assign-radius"
+        element={
+          <RequireAuth allowedRoles={["admin"]}>
+            <AutoAssignRadiusContainer />
           </RequireAuth>
         }
       />

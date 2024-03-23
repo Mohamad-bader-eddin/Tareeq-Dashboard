@@ -163,12 +163,16 @@ export const SidebarData = [
       //   path: "/admin/management/other-app-variables",
       // },
       {
-        title: "shopper_limit",
-        path: "/admin/management/shopper-limit",
+        title: "auto_assign_radius",
+        path: "/admin/management/auto-assign-radius",
       },
       {
         title: "app_phone_number",
         path: "/admin/management/app-phone-number",
+      },
+      {
+        title: "shopper_limit",
+        path: "/admin/management/shopper-limit",
       },
       // {
       //   title: "notifications",

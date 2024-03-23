@@ -69,7 +69,7 @@ const ShoppersContainer = () => {
   const handleAddShopper = () => {
     navigate("/admin/users/shoppers/add-shopper");
   };
-  const { mutate } = useDriverDeleteQuery();
+  const { mutate, isLoading: deleteLoading } = useDriverDeleteQuery();
   const [paginationModel, setPaginationModel] = useState({
     page: 0,
     pageSize: 10,
@@ -181,6 +181,7 @@ const ShoppersContainer = () => {
           open={openDeleteDialog}
           setOpen={setOpenDeleteDialog}
           deleteType={true}
+          agreeLoading={deleteLoading}
           elementContent={t("delete_message")}
           handleAgree={handleAgree}
         />

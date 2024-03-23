@@ -13,10 +13,10 @@ const useShopperLimitFormValidation = ({ data }: { data: Management[] }) => {
   const [openSucsses, setOpenSucsses] = useState(false);
   const [msg, setMsg] = useState("");
   const { mutate } = useUpdateManagementQuery();
-  const shopperLimit = data?.find((el) => el.key === "shoper_limit");
+  const radius = data?.find((el) => el.key === "auto_assign_radius");
   const { t } = useTranslation();
   const initialValues = {
-    shopperLimit: shopperLimit?.value || "",
+    shopperLimit: radius?.value || "",
   };
 
   const validationSchema = Yup.object({
@@ -29,7 +29,7 @@ const useShopperLimitFormValidation = ({ data }: { data: Management[] }) => {
   ) => {
     mutate(
       {
-        key: "shoper_limit",
+        key: "auto_assign_radius",
         value: values.shopperLimit,
       },
       {
