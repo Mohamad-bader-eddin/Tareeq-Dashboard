@@ -251,5 +251,7 @@
   "add_notification": "إضافة إشعار",
   "notes": "ملاحظات",
   "search_notification": "بحث عن إشعار",
-  "admin": "مدير"
+  "admin": "مدير",
+  "password_confirmation": "تأكيد كلمة السر",
+  "old_password": "كلمة السر القديمة"
 }

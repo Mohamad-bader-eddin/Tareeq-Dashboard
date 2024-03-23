@@ -251,5 +251,7 @@
   "add_notification": "Add Notification",
   "notes": "Notes",
   "search_notification": "Search Notification",
-  "admin": "Admin"
+  "admin": "Admin",
+  "password_confirmation": "Password Confirmation",
+  "old_password": "Old Password"
 }

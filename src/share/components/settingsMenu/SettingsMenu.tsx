@@ -18,6 +18,12 @@ const SettingsMenu = () => {
     jsCookie.remove("user");
     navigate("/login", { replace: true });
   };
+  const handleAddAdmin = () => {
+    navigate("/admin/management/add-admin");
+  };
+  const handleChangePassword = () => {
+    navigate("/admin/management/setting");
+  };
   return (
     <>
       <DropdownNavbar avatar={<Avatar />}>
@@ -41,6 +47,7 @@ const SettingsMenu = () => {
               backgroundColor: darkMode ? theme.dark.hover : theme.light.hover,
             },
           }}
+          onClick={handleAddAdmin}
         >
           <ListItemIcon
             sx={
@@ -59,6 +66,7 @@ const SettingsMenu = () => {
               backgroundColor: darkMode ? theme.dark.hover : theme.light.hover,
             },
           }}
+          onClick={handleChangePassword}
         >
           <ListItemIcon
             sx={

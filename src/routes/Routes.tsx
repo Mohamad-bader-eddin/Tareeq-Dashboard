@@ -58,6 +58,8 @@ import AddNotificationsContainer from "../pages/marketing/views/notifications/vi
 import InfoNotificationsContainer from "../pages/marketing/views/notifications/views/info/container/InfoNotificationsContainer";
 import AutoAssignRadiusContainer from "../pages/management/views/autoAssignRadius/container/AutoAssignRadiusContainer";
 import ShopperLimitContainer from "../pages/management/views/shopperLimit/container/ShopperLimitContainer";
+import AddAdminContainer from "../pages/management/views/addAdmin/container/AddAdminContainer";
+import ChangePasswordContainer from "../pages/management/views/changePassword/container/ChangePasswordContainer";
 
 const Routes = () => {
   return (
@@ -469,6 +471,22 @@ const Routes = () => {
         element={
           <RequireAuth allowedRoles={["admin"]}>
             <AppPhoneNumberContainer />
+          </RequireAuth>
+        }
+      />
+      <Route
+        path="/admin/management/add-admin"
+        element={
+          <RequireAuth allowedRoles={["admin"]}>
+            <AddAdminContainer />
+          </RequireAuth>
+        }
+      />
+      <Route
+        path="/admin/management/setting"
+        element={
+          <RequireAuth allowedRoles={["admin"]}>
+            <ChangePasswordContainer />
           </RequireAuth>
         }
       />
