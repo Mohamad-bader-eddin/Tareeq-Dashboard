@@ -60,6 +60,7 @@ import AutoAssignRadiusContainer from "../pages/management/views/autoAssignRadiu
 import ShopperLimitContainer from "../pages/management/views/shopperLimit/container/ShopperLimitContainer";
 import AddAdminContainer from "../pages/management/views/addAdmin/container/AddAdminContainer";
 import ChangePasswordContainer from "../pages/management/views/changePassword/container/ChangePasswordContainer";
+import WhatsappContainer from "../pages/management/views/whatsapp/container/WhatsappContainer";
 
 const Routes = () => {
   return (
@@ -487,6 +488,14 @@ const Routes = () => {
         element={
           <RequireAuth allowedRoles={["admin"]}>
             <ChangePasswordContainer />
+          </RequireAuth>
+        }
+      />
+      <Route
+        path="/admin/management/Whatsapp"
+        element={
+          <RequireAuth allowedRoles={["admin"]}>
+            <WhatsappContainer />
           </RequireAuth>
         }
       />

@@ -174,6 +174,10 @@ export const SidebarData = [
         title: "shopper_limit",
         path: "/admin/management/shopper-limit",
       },
+      {
+        title: "WhatsApp",
+        path: "/admin/management/Whatsapp",
+      },
       // {
       //   title: "notifications",
       //   path: "/admin/management/notifications",
