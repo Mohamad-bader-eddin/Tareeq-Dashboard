@@ -44,14 +44,14 @@ const HomeContainer = () => {
             <Box sx={{ flex: 1, minWidth: "300px" }}>
               <Wedgit
                 icon={<MinorCrashOutlinedIcon fontSize="small" />}
-                title="Drivers who have orders"
+                title="Active Drivers"
                 value={data?.data?.content?.drivers_orders}
               />
             </Box>
             <Box sx={{ flex: 1, minWidth: "300px" }}>
               <Wedgit
                 icon={<PeopleIcon fontSize="small" />}
-                title="All Driver"
+                title="All Drivers"
                 value={data?.data?.content?.all_drivers}
               />
             </Box>
