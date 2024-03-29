@@ -5,6 +5,7 @@ import { useTranslation } from "react-i18next";
 import SelectInput from "../../../../../../../share/components/select/SelectInput";
 import SubmitButton from "../../../../../../../share/components/submitButton/SubmitButton";
 import { Box } from "@mui/material";
+import DateInput from "../../../../../../../share/components/date/DateInput";
 
 const AddPromoCodeForm = ({
   initialValues,
@@ -25,7 +26,15 @@ const AddPromoCodeForm = ({
   const typeOptions = [
     {
       value: "once",
-      key: t("once"),
+      key: t("discount"),
+    },
+    {
+      value: "period",
+      key: t("promo_with_deadline"),
+    },
+    {
+      value: "always",
+      key: t("cash_back"),
     },
   ];
   return (
@@ -57,6 +66,13 @@ const AddPromoCodeForm = ({
               name="type"
               options={typeOptions}
             />
+            {formik.values?.type === "period" && (
+              <DateInput
+                formik={formik}
+                label={t("deadline")}
+                name="deadline_date"
+              />
+            )}
             <Box sx={{ width: "200px" }}>
               <SubmitButton
                 name={t("save")}

@@ -52,8 +52,8 @@ const AutoAssignButton = ({ data }: { data: Management[] }) => {
         size="small"
         sx={{
           width: "100%",
-          padding: "10px",
-          marginInlineStart: "20px",
+          padding: "14px",
+          marginInline: "6px",
           ".css-9tj150-MuiButton-endIcon": {
             marginInline: "8px -4px !important",
           },

@@ -253,5 +253,8 @@
   "search_notification": "بحث عن إشعار",
   "admin": "مدير",
   "password_confirmation": "تأكيد كلمة السر",
-  "old_password": "كلمة السر القديمة"
+  "old_password": "كلمة السر القديمة",
+  "discount": "خصم",
+  "promo_with_deadline": "عروض مع وقت نهائي",
+  "cash_back": "استرجاع الكاش"
 }

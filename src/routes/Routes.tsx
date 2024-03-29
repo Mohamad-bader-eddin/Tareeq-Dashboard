@@ -348,7 +348,7 @@ const Routes = () => {
         }
       />
       <Route
-        path="/admin/marketing/promo-used-copoun"
+        path="/admin/marketing/promo-used-copoun/:id"
         element={
           <RequireAuth allowedRoles={["admin"]}>
             <UserUsedThisCouponContainer />

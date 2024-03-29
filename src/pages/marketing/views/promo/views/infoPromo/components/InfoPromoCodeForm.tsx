@@ -5,6 +5,7 @@ import SelectInput from "../../../../../../../share/components/select/SelectInpu
 import SubmitButton from "../../../../../../../share/components/submitButton/SubmitButton";
 import { Box } from "@mui/material";
 import { AddPromoCodeFormType } from "../../addPromoCode/types/AddPromoCodeFormType";
+import DateInput from "../../../../../../../share/components/date/DateInput";
 
 const InfoPromoCodeForm = ({
   initialValues,
@@ -25,7 +26,15 @@ const InfoPromoCodeForm = ({
   const typeOptions = [
     {
       value: "once",
-      key: t("once"),
+      key: t("discount"),
+    },
+    {
+      value: "period",
+      key: t("promo_with_deadline"),
+    },
+    {
+      value: "always",
+      key: t("cash_back"),
     },
   ];
   return (
@@ -57,6 +66,13 @@ const InfoPromoCodeForm = ({
               name="type"
               options={typeOptions}
             />
+            {formik.values?.type === "period" && (
+              <DateInput
+                formik={formik}
+                label={t("deadline")}
+                name="deadline_date"
+              />
+            )}
             <Box sx={{ width: "200px" }}>
               <SubmitButton
                 name={t("edit")}

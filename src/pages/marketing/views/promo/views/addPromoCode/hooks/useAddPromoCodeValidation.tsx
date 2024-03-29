@@ -5,6 +5,7 @@ import { initialValuesType } from "../types/AddPromoCodeFormType";
 import { useState } from "react";
 import useAddPromoQuery from "./useAddPromoQuery";
 import { getErrorMessage } from "../../../../../../../share/utils/getErrorMessage";
+import { format } from "date-fns";
 
 const useAddPromoCodeValidation = () => {
   const [openError, setOpenError] = useState(false);
@@ -19,6 +20,7 @@ const useAddPromoCodeValidation = () => {
     description: "",
     type: "",
     isActive: "false",
+    deadline_date: undefined,
   };
 
   const validationSchema = Yup.object({
@@ -37,8 +39,11 @@ const useAddPromoCodeValidation = () => {
         code: values.code,
         amount: values.amount,
         description: values.description,
-        is_active: Boolean(values.isActive),
+        is_active: values.isActive === "true" ? true : false,
         type: values.type,
+        deadline_date: values.deadline_date
+          ? format(values.deadline_date, "yyyy-MM-dd")
+          : undefined,
       },
       {
         onSuccess: (response) => {

@@ -5,14 +5,19 @@ import Table from "../../../../../../share/components/table/Table";
 import useUserUsedThisCouponColumns from "./hooks/useUserUsedThisCouponColumns";
 import useUserUsedThisCouponRows from "./hooks/useUserUsedThisCouponRows";
 import Breadcrumb from "../../../../../../share/components/breadcrumbs/Breadcrumb";
+import { useParams } from "react-router-dom";
+import usePromoIdQuery from "./hooks/usePromoIdQuery";
 
 const UserUsedThisCouponContainer = () => {
   const { t } = useTranslation();
+  const { id } = useParams();
+  const { data, isLoading } = usePromoIdQuery(id as string);
   const { columns } = useUserUsedThisCouponColumns();
-  const { initialRows } = useUserUsedThisCouponRows();
+  const { rows } = useUserUsedThisCouponRows({ data: data?.data?.content });
   const breadcrumbsTracks = [
     { path: "/admin/marketing/promo", name: t("promo") },
   ];
+
   return (
     <Layout>
       <Breadcrumb
@@ -22,10 +27,10 @@ const UserUsedThisCouponContainer = () => {
       <PaperContainer>
         <Table
           columns={columns}
-          rows={initialRows}
+          rows={rows}
           title={t("user_used_this_coupon")}
-          totalCount={80}
-          loading={false}
+          totalCount={data?.data?.content?.used_promos.length}
+          loading={isLoading}
         />
       </PaperContainer>
     </Layout>

@@ -10,7 +10,7 @@ const useUserUsedThisCouponColumns = () => {
       {
         field: "id",
         headerName: t("id"),
-        width: 200,
+        flex: 1,
         align: "center",
         headerAlign: "center",
       },
@@ -19,10 +19,13 @@ const useUserUsedThisCouponColumns = () => {
         headerName: t("user"),
         align: "center",
         headerAlign: "center",
-        width: 250,
+        flex: 1,
         renderCell: (params) => {
           return (
-            <AppLink path="/admin/users/clients/info" name={params.value} />
+            <AppLink
+              path={`/admin/users/clients/${params.row.userId}`}
+              name={params.value}
+            />
           );
         },
       },
@@ -31,14 +34,14 @@ const useUserUsedThisCouponColumns = () => {
         headerName: t("amount"),
         align: "center",
         headerAlign: "center",
-        width: 250,
+        flex: 1,
       },
       {
         field: "createdAt",
         headerName: t("created_at"),
         align: "center",
         headerAlign: "center",
-        width: 250,
+        flex: 1,
       },
     ];
     return tableCol;

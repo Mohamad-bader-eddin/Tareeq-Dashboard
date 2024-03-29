@@ -1,67 +1,18 @@
-import { GridRowsProp } from "@mui/x-data-grid";
-import {
-  randomId,
-  randomCreatedDate,
-  randomPrice,
-  randomTraderName,
-} from "@mui/x-data-grid-generator";
-import { useMemo } from "react";
+import { format } from "date-fns";
+import { Promo, UsedPromoRows } from "../../../types/promoType";
 
-const useUserUsedThisCouponRows = () => {
-  const initialRows = useMemo(() => {
-    const tableRows: GridRowsProp = [
-      {
-        id: randomId(),
-        user: randomTraderName(),
-        amount: randomPrice(),
-        createdAt: randomCreatedDate().toLocaleString("en-uk", {
-          day: "numeric",
-          month: "short",
-          year: "numeric",
-          hour: "numeric",
-          minute: "numeric",
-        }),
-      },
-      {
-        id: randomId(),
-        user: randomTraderName(),
-        amount: randomPrice(),
-        createdAt: randomCreatedDate().toLocaleString("en-uk", {
-          day: "numeric",
-          month: "short",
-          year: "numeric",
-          hour: "numeric",
-          minute: "numeric",
-        }),
-      },
-      {
-        id: randomId(),
-        user: randomTraderName(),
-        amount: randomPrice(),
-        createdAt: randomCreatedDate().toLocaleString("en-uk", {
-          day: "numeric",
-          month: "short",
-          year: "numeric",
-          hour: "numeric",
-          minute: "numeric",
-        }),
-      },
-      {
-        id: randomId(),
-        user: randomTraderName(),
-        amount: randomPrice(),
-        createdAt: randomCreatedDate().toLocaleString("en-uk", {
-          day: "numeric",
-          month: "short",
-          year: "numeric",
-          hour: "numeric",
-          minute: "numeric",
-        }),
-      },
-    ];
-    return tableRows;
-  }, []);
-  return { initialRows };
+const useUserUsedThisCouponRows = ({ data }: { data: Promo }) => {
+  const rows: UsedPromoRows[] = [];
+  data?.used_promos?.forEach((el) =>
+    rows.push({
+      id: el.id,
+      amount: data.amount,
+      user: el?.user?.name + " " + el?.user?.last_name,
+      userId: el?.user?.id,
+      createdAt: format(new Date(el.created_at), "dd/MM/yyyy"),
+    })
+  );
+  return { rows };
 };
 
 export default useUserUsedThisCouponRows;

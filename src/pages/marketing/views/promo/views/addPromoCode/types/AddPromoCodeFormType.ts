@@ -7,6 +7,7 @@ export type initialValuesType = {
   description: string;
   isActive: string;
   type: string;
+  deadline_date?: Date
 };
 
 export type validationSchemaType = Yup.ObjectSchema<

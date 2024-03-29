@@ -253,5 +253,8 @@
   "search_notification": "Search Notification",
   "admin": "Admin",
   "password_confirmation": "Password Confirmation",
-  "old_password": "Old Password"
+  "old_password": "Old Password",
+  "discount": "Discount",
+  "promo_with_deadline": "Promo with Deadline",
+  "cash_back": "Cash Back"
 }
