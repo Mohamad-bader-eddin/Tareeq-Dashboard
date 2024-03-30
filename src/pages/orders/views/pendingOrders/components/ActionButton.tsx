@@ -19,10 +19,10 @@ import { PaginationModel } from "../../../../../share/types";
 const ActionButton = ({ type, id, page }: ActionButtonProps) => {
   const navigate = useNavigate();
   const { t } = useTranslation();
-  const { refetch: pendingRefetch } = usePendingOrdersQuery(
-    page.page,
-    page.pageSize
-  );
+  const { refetch: pendingRefetch } = usePendingOrdersQuery({
+    page: page.page,
+    limit: page.pageSize,
+  });
   const [openErrorCancel, setOpenErrorCancel] = useState(false);
   const [errorMsgCancel, setErrorMsgCancel] = useState("");
   const [openSucssesCancel, setOpenSucssesCancel] = useState(false);

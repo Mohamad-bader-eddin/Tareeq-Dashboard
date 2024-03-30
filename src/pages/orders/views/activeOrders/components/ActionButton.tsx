@@ -21,10 +21,10 @@ import { PaginationModel } from "../../../../../share/types";
 const ActionButton = ({ type, id, page }: ActionButtonProps) => {
   const navigate = useNavigate();
   const { t } = useTranslation();
-  const { refetch: activeRefetch } = useAvtiveOrdersQuery(
-    page.page,
-    page.pageSize
-  );
+  const { refetch: activeRefetch } = useAvtiveOrdersQuery({
+    page: page.page,
+    limit: page.pageSize,
+  });
   const [openErrorCancel, setOpenErrorCancel] = useState(false);
   const [errorMsgCancel, setErrorMsgCancel] = useState("");
   const [openSucssesCancel, setOpenSucssesCancel] = useState(false);

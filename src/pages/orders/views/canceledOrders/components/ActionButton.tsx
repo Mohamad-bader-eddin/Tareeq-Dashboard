@@ -18,10 +18,10 @@ import { PaginationModel } from "../../../../../share/types";
 const ActionButton = ({ type, id, page }: ActionButtonProps) => {
   const navigate = useNavigate();
   const { t } = useTranslation();
-  const { refetch: canceledRefetch } = useCanceledOrdersQuery(
-    page.page,
-    page.pageSize
-  );
+  const { refetch: canceledRefetch } = useCanceledOrdersQuery({
+    page: page.page,
+    limit: page.pageSize,
+  });
   const [openErrorReactivate, setOpenErrorReactivate] = useState(false);
   const [errorMsgReactivate, setErrorMsgReactivate] = useState("");
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
