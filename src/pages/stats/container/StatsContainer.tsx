@@ -39,7 +39,7 @@ const StatsContainer = () => {
     driver_id: shopper ? shopper.id : "0",
   });
   useEffect(() => {
-    if (statType) {
+    if (statType && fromDate && toDate) {
       refetch();
     }
   }, [statType, period, fromDate, toDate, refetch, shopper]);

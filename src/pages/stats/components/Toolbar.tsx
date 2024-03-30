@@ -1,5 +1,5 @@
 import { Box, Button, Stack } from "@mui/material";
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import SelectInput from "./SelectInput";
 import { useTranslation } from "react-i18next";
 import useFilterToolbarOptions from "../hooks/useFilterToolbarOptions";
@@ -54,11 +54,6 @@ const Toolbar = ({
         return;
     }
   };
-
-  useEffect(() => {
-    handlePeroidClick("monthly");
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   return (
     <Box>
