@@ -11,24 +11,36 @@ import useExportCanceledOrdersQuery from "../hooks/useExportCanceledOrdersQuery"
 import { format } from "date-fns";
 import { useState } from "react";
 import ServerTable from "../../../../../share/components/table/ServerTable";
+import AdvanceSearchDialog from "../../../components/AdvanceSearchDialog";
 
 const CanceledOrdersContainer = () => {
   const { mobileL } = useMedeaQueries();
   const { t } = useTranslation();
-  const [paginationModel, setPaginationModel] = useState({
-    page: 0,
-    pageSize: 10,
-  });
-  const { data, isLoading } = useCanceledOrdersQuery(
-    paginationModel.page,
-    paginationModel.pageSize
-  );
-  const { columns } = useCanceledOrdersColumns(paginationModel);
-  const { rows } = useCanceledOrdersRows({ data: data?.data.content });
   const { mutate, isLoading: exportLoading } = useExportCanceledOrdersQuery();
   const [openDialog, setOpenDialog] = useState(false);
   const [from, setFrom] = useState<Date | null>(null);
   const [to, setTo] = useState<Date | null>(null);
+  const [openAdvanceSearchDialog, setOpenAdvanceSearchDialog] = useState(false);
+  const [orderNumber, setOrderNumber] = useState("");
+  const [phone, setPhone] = useState("");
+  const [name, setName] = useState("");
+  const [fromDate, setFromDate] = useState<Date | null>(null);
+  const [toDate, setToDate] = useState<Date | null>(null);
+  const [paginationModel, setPaginationModel] = useState({
+    page: 0,
+    pageSize: 10,
+  });
+  const { data, isLoading, refetch } = useCanceledOrdersQuery({
+    page: paginationModel.page,
+    limit: paginationModel.pageSize,
+    orderNumber: orderNumber,
+    fromDate: fromDate ? format(fromDate, "yyyy-MM-dd") : undefined,
+    toDate: toDate ? format(toDate, "yyyy-MM-dd") : undefined,
+    phone: phone,
+    name: name,
+  });
+  const { columns } = useCanceledOrdersColumns(paginationModel);
+  const { rows } = useCanceledOrdersRows({ data: data?.data.content });
   const handleExportClick = () => {
     setOpenDialog((prev) => !prev);
   };
@@ -54,6 +66,13 @@ const CanceledOrdersContainer = () => {
       }
     );
   };
+  const handleSearchClick = () => {
+    setOpenAdvanceSearchDialog((prev) => !prev);
+  };
+  const handleSearchAgree = () => {
+    refetch();
+    setOpenAdvanceSearchDialog(false);
+  };
   return (
     <Layout>
       <PaperContainer>
@@ -72,6 +91,24 @@ const CanceledOrdersContainer = () => {
               setTo={setTo}
               handleAgree={handleAgree}
               agreeLoading={exportLoading}
+            />
+          </Box>
+          <Box sx={{ marginInlineStart: "15px" }}>
+            <AdvanceSearchDialog
+              openDialog={openAdvanceSearchDialog}
+              setOpenDialog={setOpenAdvanceSearchDialog}
+              orderNumber={orderNumber}
+              setOrderNumber={setOrderNumber}
+              from={fromDate}
+              setFrom={setFromDate}
+              to={toDate}
+              setTo={setToDate}
+              phone={phone}
+              setPhone={setPhone}
+              name={name}
+              setName={setName}
+              handleAgree={handleSearchAgree}
+              handleClick={handleSearchClick}
             />
           </Box>
         </Stack>
