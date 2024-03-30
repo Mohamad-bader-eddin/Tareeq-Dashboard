@@ -48,3 +48,10 @@ body {
 *::-webkit-scrollbar-thumb:hover {
     background: var(--main-color);
 }
+
+.MuiDataGrid-columnHeaderTitle,
+.MuiDataGrid-cellContent {
+    line-height: 1.5 !important;
+    white-space: break-spaces !important;
+    text-align: center !important;
+}

@@ -12,6 +12,7 @@ const useShoppersRows = ({ data }: { data: Drivers[] }) => {
       registerDate: format(new Date(el.created_at as Date), "dd/MM/yyyy"),
       zone: el?.zone?.name,
       online: el?.availability,
+      completedOrdersToday: el?.daily_completed_orders,
     })
   );
   return { rows };

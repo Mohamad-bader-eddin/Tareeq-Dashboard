@@ -13,6 +13,7 @@ export type Drivers = {
     image?: string;
     current_lat?: number;
     current_long?: number;
+    daily_completed_orders?: number;
     zone?: Zone;
     vehicle?: {
         id: string;

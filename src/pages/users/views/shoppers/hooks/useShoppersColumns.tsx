@@ -71,13 +71,13 @@ const useShoppersColumns = ({
       //     );
       //   },
       // },
-      // {
-      //   field: "completedOrdersToday",
-      //   headerName: t("completed_orders_today"),
-      //   width: 150,
-      //   align: "center",
-      //   headerAlign: "center",
-      // },
+      {
+        field: "completedOrdersToday",
+        headerName: t("completed_orders_today"),
+        flex: 1,
+        align: "center",
+        headerAlign: "center",
+      },
       {
         field: "shopperEarning",
         headerName: t("shopper_earning"),
