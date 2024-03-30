@@ -257,5 +257,11 @@
   "old_password": "Old Password",
   "discount": "Discount",
   "promo_with_deadline": "Promo with Deadline",
-  "cash_back": "Cash Back"
+  "cash_back": "Cash Back",
+  "search": "Search",
+  "advance_search": "Advance Search",
+  "from_date": "From Date",
+  "to_date": "To Date",
+  "client_phone": "Client Phone",
+  "client_name": "Client Name"
 }

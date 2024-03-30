@@ -11,18 +11,9 @@ import useExportArrivedOrdersQuery from "../hooks/useExportArrivedOrdersQuery";
 import { useState } from "react";
 import { format } from "date-fns";
 import ServerTable from "../../../../../share/components/table/ServerTable";
+import AdvanceSearchDialog from "../../../components/AdvanceSearchDialog";
 
 const ArrivedOrdersContainer = () => {
-  const [paginationModel, setPaginationModel] = useState({
-    page: 0,
-    pageSize: 10,
-  });
-  const { data, isLoading } = useArrivedOrdersQuery(
-    paginationModel.page,
-    paginationModel.pageSize
-  );
-  const { columns } = useArrivedOrdersColumns();
-  const { rows } = useArrivedOrdersRows({ data: data?.data.content });
   const { t } = useTranslation();
   const { mobileL } = useMedeaQueries();
   const { mutate, isLoading: exportLoading } = useExportArrivedOrdersQuery();
@@ -54,6 +45,35 @@ const ArrivedOrdersContainer = () => {
       }
     );
   };
+  const [openAdvanceSearchDialog, setOpenAdvanceSearchDialog] = useState(false);
+  const [orderNumber, setOrderNumber] = useState("");
+  const [phone, setPhone] = useState("");
+  const [name, setName] = useState("");
+  const [fromDate, setFromDate] = useState<Date | null>(null);
+  const [toDate, setToDate] = useState<Date | null>(null);
+  const [paginationModel, setPaginationModel] = useState({
+    page: 0,
+    pageSize: 10,
+  });
+  const { data, isLoading, refetch } = useArrivedOrdersQuery({
+    page: paginationModel.page,
+    limit: paginationModel.pageSize,
+    orderNumber: orderNumber,
+    fromDate: fromDate ? format(fromDate, "yyyy-MM-dd") : undefined,
+    toDate: toDate ? format(toDate, "yyyy-MM-dd") : undefined,
+    phone: phone,
+    name: name,
+  });
+  const { columns } = useArrivedOrdersColumns();
+  const { rows } = useArrivedOrdersRows({ data: data?.data.content });
+  const handleSearchClick = () => {
+    setOpenAdvanceSearchDialog((prev) => !prev);
+  };
+  const handleSearchAgree = () => {
+    refetch();
+    setOpenAdvanceSearchDialog(false);
+  };
+
   return (
     <Layout>
       <PaperContainer>
@@ -72,6 +92,24 @@ const ArrivedOrdersContainer = () => {
               setTo={setTo}
               handleAgree={handleAgree}
               agreeLoading={exportLoading}
+            />
+          </Box>
+          <Box sx={{ marginInlineStart: "15px" }}>
+            <AdvanceSearchDialog
+              openDialog={openAdvanceSearchDialog}
+              setOpenDialog={setOpenAdvanceSearchDialog}
+              orderNumber={orderNumber}
+              setOrderNumber={setOrderNumber}
+              from={fromDate}
+              setFrom={setFromDate}
+              to={toDate}
+              setTo={setToDate}
+              phone={phone}
+              setPhone={setPhone}
+              name={name}
+              setName={setName}
+              handleAgree={handleSearchAgree}
+              handleClick={handleSearchClick}
             />
           </Box>
         </Stack>

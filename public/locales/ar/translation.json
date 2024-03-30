@@ -257,5 +257,11 @@
   "old_password": "كلمة السر القديمة",
   "discount": "خصم",
   "promo_with_deadline": "عروض مع وقت نهائي",
-  "cash_back": "استرجاع الكاش"
+  "cash_back": "استرجاع الكاش",
+  "search": "بحث",
+  "advance_search": "بحث المتقدم",
+  "from_date": "من تاريخ",
+  "to_date": "إلى تاريخ",
+  "client_phone": "رقم الهاتف الزبون",
+  "client_name": "اسم الزبون"
 }
