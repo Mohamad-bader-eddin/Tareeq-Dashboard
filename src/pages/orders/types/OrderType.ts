@@ -14,7 +14,7 @@ export type Order = {
     driver: Driver;
     user: User;
     order_points: OrderPoint[];
-    rate?: Rate;
+    rate?: number;
     admin_note?: string;
     cancel_reason?: {
         id: string;
@@ -29,13 +29,6 @@ export type ActivityLogs = {
     id: string;
     description: string;
     causer: string;
-    created_at: Date
-}
-
-export type Rate = {
-    id: string;
-    order_id: string;
-    rate: number;
     created_at: Date
 }
 

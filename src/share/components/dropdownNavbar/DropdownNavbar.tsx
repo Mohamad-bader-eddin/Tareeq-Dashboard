@@ -43,7 +43,7 @@ const DropdownNavbar = ({ avatar, children }: DropdownNavbarProps) => {
           elevation: 0,
           sx: {
             maxHeight: "300px",
-            overflow: "auto",
+            msOverflowY: "auto",
             filter: `drop-shadow(0px 2px 8px ${
               darkMode ? theme.dark.shadow : theme.light.shadow
             })`,

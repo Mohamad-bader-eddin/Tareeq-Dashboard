@@ -263,5 +263,6 @@
   "from_date": "من تاريخ",
   "to_date": "إلى تاريخ",
   "client_phone": "رقم الهاتف الزبون",
-  "client_name": "اسم الزبون"
+  "client_name": "اسم الزبون",
+  "user_note": "ملاحظة الزبون"
 }

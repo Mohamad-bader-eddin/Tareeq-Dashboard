@@ -20,7 +20,7 @@ const useArrivedOrdersRows = ({ data }: { data: Order[] }) => {
       shopper: el?.driver?.name,
       shopperId: el?.driver?.id,
       creditsUsed: el?.credits_used,
-      rating: el?.rate?.rate,
+      rating: el?.rate,
     })
   );
   return { rows };

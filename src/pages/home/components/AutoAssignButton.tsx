@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { Management } from "../../management/types";
 import useUpdateManagementQuery from "../../management/hooks/useUpdateManagementQuery";
 import { getErrorMessage } from "../../../share/utils/getErrorMessage";
+import LoadingButton from "@mui/lab/LoadingButton";
 
 const AutoAssignButton = ({ data }: { data: Management[] }) => {
   const { t } = useTranslation();
@@ -13,7 +14,7 @@ const AutoAssignButton = ({ data }: { data: Management[] }) => {
   const [errorMsg, setErrorMsg] = useState("");
   const [openSucsses, setOpenSucsses] = useState(false);
   const [msg, setMsg] = useState("");
-  const { mutate } = useUpdateManagementQuery();
+  const { mutate, isLoading } = useUpdateManagementQuery();
   const [click, setClick] = useState(true);
   const autoAssign = data?.find((el) => el.key === "auto_assign_enabeled");
   const handleClick = () => {
@@ -44,23 +45,43 @@ const AutoAssignButton = ({ data }: { data: Management[] }) => {
   }, [autoAssign?.value]);
   return (
     <>
-      <Button
-        variant="contained"
-        color={click ? "success" : "error"}
-        endIcon={<FiberManualRecordSharpIcon />}
-        onClick={handleClick}
-        size="small"
-        sx={{
-          width: "100%",
-          padding: "14px",
-          marginInline: "6px",
-          ".css-9tj150-MuiButton-endIcon": {
-            marginInline: "8px -4px !important",
-          },
-        }}
-      >
-        {t("auto_assign_is")} {click ? t("on") : t("off")}
-      </Button>
+      {isLoading ? (
+        <LoadingButton
+          loading
+          loadingIndicator="Loading…"
+          variant="outlined"
+          size="small"
+          sx={{
+            width: "100%",
+            padding: "14px",
+            marginInline: "6px",
+            ".css-9tj150-MuiButton-endIcon": {
+              marginInline: "8px -4px !important",
+            },
+          }}
+        >
+          Fetch data
+        </LoadingButton>
+      ) : (
+        <Button
+          variant="contained"
+          color={click ? "success" : "error"}
+          endIcon={<FiberManualRecordSharpIcon />}
+          onClick={handleClick}
+          size="small"
+          sx={{
+            width: "100%",
+            padding: "14px",
+            marginInline: "6px",
+            ".css-9tj150-MuiButton-endIcon": {
+              marginInline: "8px -4px !important",
+            },
+          }}
+        >
+          {t("auto_assign_is")} {click ? t("on") : t("off")}
+        </Button>
+      )}
+
       <GenericAlert
         open={openSucsses}
         setOpen={setOpenSucsses}

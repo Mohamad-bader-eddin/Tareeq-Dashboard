@@ -263,5 +263,6 @@
   "from_date": "From Date",
   "to_date": "To Date",
   "client_phone": "Client Phone",
-  "client_name": "Client Name"
+  "client_name": "Client Name",
+  "user_note": "User Note"
 }

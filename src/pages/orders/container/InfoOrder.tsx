@@ -244,6 +244,15 @@ const InfoOrder = () => {
                     {convertPriceToSY(data?.data?.content?.total_paid)}
                   </h5>
                 </div>
+                <div className="col-6">
+                  <h5 className="atr">
+                    <span>
+                      <TripOriginOutlinedIcon sx={{ fontSize: "10px" }} />
+                    </span>
+                    {t("user_note")} :
+                  </h5>
+                  <h5 className="val">{data?.data?.content?.user_note}</h5>
+                </div>
               </div>
             </StyledInfo>
           </PaperContainer>
