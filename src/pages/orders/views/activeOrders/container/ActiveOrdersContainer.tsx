@@ -11,24 +11,36 @@ import useExportActiveOrdersQuery from "../hooks/useExportActiveOrdersQuery";
 import { format } from "date-fns";
 import { useState } from "react";
 import ServerTable from "../../../../../share/components/table/ServerTable";
+import AdvanceSearchDialog from "../../../components/AdvanceSearchDialog";
 
 const ActiveOrdersContainer = () => {
   const { mobileL } = useMedeaQueries();
   const { t } = useTranslation();
-  const [paginationModel, setPaginationModel] = useState({
-    page: 0,
-    pageSize: 10,
-  });
-  const { data, isLoading } = useAvtiveOrdersQuery(
-    paginationModel.page,
-    paginationModel.pageSize
-  );
-  const { columns } = useActiveOrdersContainerColumn(paginationModel);
-  const { rows } = useActiveOrdersContainerRows({ data: data?.data.content });
   const { mutate, isLoading: exportLoading } = useExportActiveOrdersQuery();
   const [openDialog, setOpenDialog] = useState(false);
   const [from, setFrom] = useState<Date | null>(null);
   const [to, setTo] = useState<Date | null>(null);
+  const [openAdvanceSearchDialog, setOpenAdvanceSearchDialog] = useState(false);
+  const [orderNumber, setOrderNumber] = useState("");
+  const [phone, setPhone] = useState("");
+  const [name, setName] = useState("");
+  const [fromDate, setFromDate] = useState<Date | null>(null);
+  const [toDate, setToDate] = useState<Date | null>(null);
+  const [paginationModel, setPaginationModel] = useState({
+    page: 0,
+    pageSize: 10,
+  });
+  const { data, isLoading, refetch } = useAvtiveOrdersQuery({
+    page: paginationModel.page,
+    limit: paginationModel.pageSize,
+    orderNumber: orderNumber,
+    fromDate: fromDate ? format(fromDate, "yyyy-MM-dd") : undefined,
+    toDate: toDate ? format(toDate, "yyyy-MM-dd") : undefined,
+    phone: phone,
+    name: name,
+  });
+  const { columns } = useActiveOrdersContainerColumn(paginationModel);
+  const { rows } = useActiveOrdersContainerRows({ data: data?.data.content });
   const handleExportClick = () => {
     setOpenDialog((prev) => !prev);
   };
@@ -54,6 +66,13 @@ const ActiveOrdersContainer = () => {
       }
     );
   };
+  const handleSearchClick = () => {
+    setOpenAdvanceSearchDialog((prev) => !prev);
+  };
+  const handleSearchAgree = () => {
+    refetch();
+    setOpenAdvanceSearchDialog(false);
+  };
 
   return (
     <Layout>
@@ -73,6 +92,24 @@ const ActiveOrdersContainer = () => {
               setTo={setTo}
               handleAgree={handleAgree}
               agreeLoading={exportLoading}
+            />
+          </Box>
+          <Box sx={{ marginInlineStart: "15px" }}>
+            <AdvanceSearchDialog
+              openDialog={openAdvanceSearchDialog}
+              setOpenDialog={setOpenAdvanceSearchDialog}
+              orderNumber={orderNumber}
+              setOrderNumber={setOrderNumber}
+              from={fromDate}
+              setFrom={setFromDate}
+              to={toDate}
+              setTo={setToDate}
+              phone={phone}
+              setPhone={setPhone}
+              name={name}
+              setName={setName}
+              handleAgree={handleSearchAgree}
+              handleClick={handleSearchClick}
             />
           </Box>
         </Stack>

@@ -1,5 +1,5 @@
 import { Box } from "@mui/material";
-import { LocalizationProvider, MobileDatePicker } from "@mui/x-date-pickers";
+import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
 import { Dispatch, SetStateAction } from "react";
@@ -24,10 +24,13 @@ const DateExport = ({ value, setValue, label }: DateExportProps) => {
     >
       <LocalizationProvider dateAdapter={AdapterDateFns}>
         <DemoContainer components={["MobileDatePicker"]}>
-          <MobileDatePicker
+          <DatePicker
             onChange={(value) => handleSetValue(value as Date)}
             value={value}
             label={label}
+            slotProps={{
+              field: { clearable: true, onClear: () => {} },
+            }}
           />
         </DemoContainer>
       </LocalizationProvider>

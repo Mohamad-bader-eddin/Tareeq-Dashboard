@@ -71,11 +71,6 @@ const ArrivedOrdersContainer = () => {
   };
   const handleSearchAgree = () => {
     refetch();
-    setOrderNumber("");
-    setFromDate(null);
-    setToDate(null);
-    setPhone("");
-    setName("");
     setOpenAdvanceSearchDialog(false);
   };
 
