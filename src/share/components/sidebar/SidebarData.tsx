@@ -3,7 +3,7 @@ import StyleIcon from "@mui/icons-material/Style";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import GroupIcon from "@mui/icons-material/Group";
 // import LocationOnIcon from "@mui/icons-material/LocationOn";
-// import BarChartIcon from "@mui/icons-material/BarChart";
+import BarChartIcon from "@mui/icons-material/BarChart";
 import MapIcon from "@mui/icons-material/Map";
 import LocalActivityIcon from "@mui/icons-material/LocalActivity";
 import SettingsSuggestIcon from "@mui/icons-material/SettingsSuggest";
@@ -93,11 +93,11 @@ export const SidebarData = [
   //   path: "/admin/bird-eye",
   //   icon: <LocationOnIcon />,
   // },
-  // {
-  //   title: "stats",
-  //   path: "/admin/stats",
-  //   icon: <BarChartIcon />,
-  // },
+  {
+    title: "stats",
+    path: "/admin/stats",
+    icon: <BarChartIcon />,
+  },
   {
     title: "slider",
     path: "/admin/slider",

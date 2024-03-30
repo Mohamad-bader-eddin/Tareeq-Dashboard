@@ -12,36 +12,36 @@ const StatTypeForm = ({
 }: StatTypeFormType) => {
   const { t } = useTranslation();
   const options = [
+    // {
+    //   value: "orders",
+    //   key: t("orders"),
+    // },
+    // {
+    //   value: "percentageOrders",
+    //   key: t("percentage_orders"),
+    // },
     {
-      value: "orders",
-      key: t("orders"),
-    },
-    {
-      value: "percentageOrders",
-      key: t("percentage_orders"),
-    },
-    {
-      value: "TimeToAssign",
+      value: "time_to_assign",
       key: t("time_to_assign"),
     },
     {
-      value: "timeToCustomer",
+      value: "time_to_customer",
       key: t("time_to_customer"),
     },
+    // {
+    //   value: "tripTime",
+    //   key: t("trip_time"),
+    // },
+    // {
+    //   value: "fullServiceTime",
+    //   key: t("full_service_time"),
+    // },
+    // {
+    //   value: "averageAcceptanceRatio",
+    //   key: t("average_acceptance_ratio"),
+    // },
     {
-      value: "tripTime",
-      key: t("trip_time"),
-    },
-    {
-      value: "fullServiceTime",
-      key: t("full_service_time"),
-    },
-    {
-      value: "averageAcceptanceRatio",
-      key: t("average_acceptance_ratio"),
-    },
-    {
-      value: "averageRatings",
+      value: "average_rating",
       key: t("average_ratings"),
     },
   ];

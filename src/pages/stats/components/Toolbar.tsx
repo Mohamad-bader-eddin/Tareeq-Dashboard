@@ -1,23 +1,15 @@
 import { Box, Button, Stack } from "@mui/material";
-import { Dispatch, SetStateAction, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import SelectInput from "./SelectInput";
 import { useTranslation } from "react-i18next";
-import { randomTraderName } from "@mui/x-data-grid-generator";
 import useFilterToolbarOptions from "../hooks/useFilterToolbarOptions";
 import DateInput from "./DateInput";
 import useMedeaQueries from "../../../share/utils/useMideaQuery";
 import { StatType } from "../types/StatType";
-
-const shopperOptions = [
-  {
-    value: randomTraderName(),
-    key: randomTraderName(),
-  },
-  {
-    value: randomTraderName(),
-    key: randomTraderName(),
-  },
-];
+import useDeiversQuery from "../hooks/useDeiversQuery";
+import useDriverMapper from "../hooks/useDriverMapper";
+import AutoCompleteInput from "./AutoCompleteInput";
+import { Option } from "../../../share/types";
 
 const Toolbar = ({
   filter,
@@ -39,6 +31,10 @@ const Toolbar = ({
   });
   const { t } = useTranslation();
   const { laptopL, laptop } = useMedeaQueries();
+  const { data: driverData, isLoading: driverLoading } = useDeiversQuery();
+  const { driversOptions } = useDriverMapper({
+    data: driverData?.data.content,
+  });
 
   const handlePeroidClick = (period: "daily" | "weekly" | "monthly") => {
     switch (period) {
@@ -59,6 +55,11 @@ const Toolbar = ({
     }
   };
 
+  useEffect(() => {
+    handlePeroidClick("monthly");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <Box>
       <Stack direction={laptopL ? "column" : "row"}>
@@ -71,15 +72,16 @@ const Toolbar = ({
                 mt: "8px",
               }}
             >
-              <SelectInput
-                label={t("shopper")}
+              <AutoCompleteInput
+                label={t("driver")}
                 selectValue={shopper}
                 setSelectValue={setShopper}
-                options={shopperOptions}
+                options={driversOptions}
+                loading={driverLoading}
               />
             </Box>
             {statType === "orders" ||
-            statType === "averageRatings" ||
+            // statType === "average_rating" ||
             statType === "percentageOrders" ? (
               <Box
                 sx={{
@@ -165,8 +167,8 @@ const Toolbar = ({
 };
 
 type ToolbarProps = {
-  shopper: string;
-  setShopper: Dispatch<SetStateAction<string>>;
+  shopper: Option | null;
+  setShopper: Dispatch<SetStateAction<Option | null>>;
   filter: string;
   setFilter: Dispatch<SetStateAction<string>>;
   fromDate: Date | null;

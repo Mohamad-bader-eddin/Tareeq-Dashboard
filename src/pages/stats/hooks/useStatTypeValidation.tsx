@@ -19,7 +19,6 @@ const useStatTypeValidation = ({ setStatType }: useStatTypeValidationProps) => {
     values: initialValuesType,
     formikHelpers: FormikHelpers<initialValuesType>
   ) => {
-    console.log("Form Data :", values);
     setStatType(values.statType as StatType);
     formikHelpers.resetForm();
   };

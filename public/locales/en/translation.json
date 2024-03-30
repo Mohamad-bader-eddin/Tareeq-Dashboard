@@ -213,6 +213,7 @@
   "date": "Date",
   "return_statistic_type": "Return To Statistic Type",
   "drivers": "Drivers",
+  "driver": "Driver",
   "vehicles": "Vehicles",
   "vehicle": "Vehicle",
   "image": "Image",

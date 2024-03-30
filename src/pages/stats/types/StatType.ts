@@ -1,1 +1,1 @@
-export type StatType = "orders" | "percentageOrders" | "TimeToAssign" | "timeToCustomer" | "tripTime" | "fullServiceTime" | "averageAcceptanceRatio" | "averageRatings"
+export type StatType = "orders" | "percentageOrders" | "time_to_assign" | "time_to_customer" | "tripTime" | "fullServiceTime" | "averageAcceptanceRatio" | "average_rating"
