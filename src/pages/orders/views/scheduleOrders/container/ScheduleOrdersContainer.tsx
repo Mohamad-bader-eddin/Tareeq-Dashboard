@@ -20,6 +20,7 @@ import useExportScheduleOrdersQuery from "../hooks/useExportScheduleOrdersQuery"
 import { format } from "date-fns";
 import ServerTable from "../../../../../share/components/table/ServerTable";
 import { useNotifications } from "../../../../../context/Notifications";
+import AdvanceSearchDialog from "../../../components/AdvanceSearchDialog";
 
 const ScheduleOrdersContainer = () => {
   const { mobileL } = useMedeaQueries();
@@ -29,14 +30,25 @@ const ScheduleOrdersContainer = () => {
   const [errorMsg, setErrorMsg] = useState("");
   const [openSucsses, setOpenSucsses] = useState(false);
   const [msg, setMsg] = useState("");
+  const [openAdvanceSearchDialog, setOpenAdvanceSearchDialog] = useState(false);
+  const [orderNumber, setOrderNumber] = useState("");
+  const [phone, setPhone] = useState("");
+  const [name, setName] = useState("");
+  const [fromDate, setFromDate] = useState<Date | null>(null);
+  const [toDate, setToDate] = useState<Date | null>(null);
   const [paginationModel, setPaginationModel] = useState({
     page: 0,
     pageSize: 10,
   });
-  const { data, isLoading, refetch } = useScheduleOrdersQuery(
-    paginationModel.page,
-    paginationModel.pageSize
-  );
+  const { data, isLoading, refetch } = useScheduleOrdersQuery({
+    page: paginationModel.page,
+    limit: paginationModel.pageSize,
+    orderNumber: orderNumber,
+    fromDate: fromDate ? format(fromDate, "yyyy-MM-dd") : undefined,
+    toDate: toDate ? format(toDate, "yyyy-MM-dd") : undefined,
+    phone: phone,
+    name: name,
+  });
   const { columns } = useScheduleOrdersColumns({
     setOpen: setOPenAssignDialog,
     setIdOrder,
@@ -109,6 +121,13 @@ const ScheduleOrdersContainer = () => {
       }
     );
   };
+  const handleSearchClick = () => {
+    setOpenAdvanceSearchDialog((prev) => !prev);
+  };
+  const handleSearchAgree = () => {
+    refetch();
+    setOpenAdvanceSearchDialog(false);
+  };
   const { notification } = useNotifications();
   useEffect(() => {
     if (notification.length > 0) {
@@ -134,6 +153,24 @@ const ScheduleOrdersContainer = () => {
               setTo={setTo}
               handleAgree={handleAgree}
               agreeLoading={exportLoading}
+            />
+          </Box>
+          <Box sx={{ marginInlineStart: "15px" }}>
+            <AdvanceSearchDialog
+              openDialog={openAdvanceSearchDialog}
+              setOpenDialog={setOpenAdvanceSearchDialog}
+              orderNumber={orderNumber}
+              setOrderNumber={setOrderNumber}
+              from={fromDate}
+              setFrom={setFromDate}
+              to={toDate}
+              setTo={setToDate}
+              phone={phone}
+              setPhone={setPhone}
+              name={name}
+              setName={setName}
+              handleAgree={handleSearchAgree}
+              handleClick={handleSearchClick}
             />
           </Box>
         </Stack>

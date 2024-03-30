@@ -1,4 +1,4 @@
-import { Button } from "@mui/material";
+import { Box, Button } from "@mui/material";
 import { Dispatch, SetStateAction } from "react";
 import { useTranslation } from "react-i18next";
 import SearchIcon from "@mui/icons-material/Search";
@@ -45,7 +45,7 @@ const AdvanceSearchDialog = ({
         handleAgree={handleAgree}
         title={t("advance_search")}
         elementContent={
-          <>
+          <Box sx={{ marginTop: "10px" }}>
             <CustomInput
               label={t("order_no")}
               value={orderNumber}
@@ -67,7 +67,7 @@ const AdvanceSearchDialog = ({
               value={name}
               setValue={setName}
             />
-          </>
+          </Box>
         }
       />
     </>
