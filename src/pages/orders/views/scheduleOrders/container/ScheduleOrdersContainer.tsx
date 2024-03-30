@@ -21,6 +21,7 @@ import { format } from "date-fns";
 import ServerTable from "../../../../../share/components/table/ServerTable";
 import { useNotifications } from "../../../../../context/Notifications";
 import AdvanceSearchDialog from "../../../components/AdvanceSearchDialog";
+import { OrderFilterType } from "../../../types/OrderQueryType";
 
 const ScheduleOrdersContainer = () => {
   const { mobileL } = useMedeaQueries();
@@ -36,6 +37,9 @@ const ScheduleOrdersContainer = () => {
   const [name, setName] = useState("");
   const [fromDate, setFromDate] = useState<Date | null>(null);
   const [toDate, setToDate] = useState<Date | null>(null);
+  const [queryParams, setQueryParams] = useState<OrderFilterType>(
+    {} as OrderFilterType
+  );
   const [paginationModel, setPaginationModel] = useState({
     page: 0,
     pageSize: 10,
@@ -43,11 +47,11 @@ const ScheduleOrdersContainer = () => {
   const { data, isLoading, refetch } = useScheduleOrdersQuery({
     page: paginationModel.page,
     limit: paginationModel.pageSize,
-    orderNumber: orderNumber,
-    fromDate: fromDate ? format(fromDate, "yyyy-MM-dd") : undefined,
-    toDate: toDate ? format(toDate, "yyyy-MM-dd") : undefined,
-    phone: phone,
-    name: name,
+    orderNumber: queryParams.orderNumber,
+    fromDate: queryParams.fromDate,
+    toDate: queryParams.toDate,
+    phone: queryParams.phone,
+    name: queryParams.name,
   });
   const { columns } = useScheduleOrdersColumns({
     setOpen: setOPenAssignDialog,
@@ -125,6 +129,13 @@ const ScheduleOrdersContainer = () => {
     setOpenAdvanceSearchDialog((prev) => !prev);
   };
   const handleSearchAgree = () => {
+    setQueryParams({
+      fromDate: fromDate ? format(fromDate, "yyyy-MM-dd") : undefined,
+      toDate: toDate ? format(toDate, "yyyy-MM-dd") : undefined,
+      orderNumber: orderNumber,
+      name: name,
+      phone: phone,
+    });
     refetch();
     setOpenAdvanceSearchDialog(false);
   };

@@ -7,3 +7,11 @@ export type OrderQueryType = {
     phone?: string;
     name?: string;
 }
+
+export type OrderFilterType = {
+    orderNumber?: string;
+    fromDate?: string;
+    toDate?: string;
+    phone?: string;
+    name?: string;
+}
