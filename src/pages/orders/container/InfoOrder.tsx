@@ -163,7 +163,7 @@ const InfoOrder = () => {
                   </h5>
                   <h5 className="val">
                     {" "}
-                    {data?.data?.content?.distance_expected} - KM
+                    {data?.data?.content?.real_distance} - KM
                   </h5>
                 </div>
               </div>
