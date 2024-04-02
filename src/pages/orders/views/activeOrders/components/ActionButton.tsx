@@ -142,12 +142,14 @@ const ActionButton = ({ type, id, page }: ActionButtonProps) => {
         setOpen={setOpenErrorCancel}
         type="error"
         msg={errorMsgCancel}
+        inRow={true}
       />
       <GenericAlert
         open={openSucssesCancel}
         setOpen={setOpenSucssesCancel}
         type="success"
         msg={msgCancel}
+        inRow={true}
       />
     </div>
   );

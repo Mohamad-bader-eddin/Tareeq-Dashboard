@@ -24,6 +24,8 @@ const ActionButton = ({ type, id, page }: ActionButtonProps) => {
   });
   const [openErrorReactivate, setOpenErrorReactivate] = useState(false);
   const [errorMsgReactivate, setErrorMsgReactivate] = useState("");
+  const [openSucssesReactivate, setOpenSucssesReactivate] = useState(false);
+  const [msgReactivate, setMsgReactivate] = useState("");
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [openReactivateDialog, setOPenReactivateDialog] = useState(false);
   const { mutate: reactivateMutate, isLoading } = useReactivateOrderQuery();
@@ -46,7 +48,9 @@ const ActionButton = ({ type, id, page }: ActionButtonProps) => {
 
   const handleAgreeReactivate = () => {
     reactivateMutate(id as GridRowId, {
-      onSuccess: () => {
+      onSuccess: (response) => {
+        setOpenSucssesReactivate(true);
+        setMsgReactivate(response.data.message);
         canceledRefetch();
         setOPenReactivateDialog(false);
       },
@@ -95,13 +99,15 @@ const ActionButton = ({ type, id, page }: ActionButtonProps) => {
         setOpen={setOpenErrorReactivate}
         type="error"
         msg={errorMsgReactivate}
+        inRow={true}
       />
-      {/* <GenericAlert
+      <GenericAlert
         open={openSucssesReactivate}
         setOpen={setOpenSucssesReactivate}
         type="success"
         msg={msgReactivate}
-      /> */}
+        inRow={true}
+      />
     </div>
   );
 };

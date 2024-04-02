@@ -9,7 +9,13 @@ const Alert = forwardRef<HTMLDivElement, AlertProps>(function Alert(
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
 
-const GenericAlert = ({ open, setOpen, type, msg }: GenericAlertProps) => {
+const GenericAlert = ({
+  open,
+  setOpen,
+  type,
+  msg,
+  inRow,
+}: GenericAlertProps) => {
   //   const handleClose = (
   //     _event?: React.SyntheticEvent | Event,
   //     reason?: string
@@ -25,6 +31,7 @@ const GenericAlert = ({ open, setOpen, type, msg }: GenericAlertProps) => {
       open={open}
       autoHideDuration={6000}
       onClose={() => setOpen(false)}
+      sx={inRow ? { bottom: "auto !important" } : {}}
     >
       <Alert
         onClose={() => setOpen(false)}
@@ -42,6 +49,7 @@ type GenericAlertProps = {
   setOpen: Dispatch<SetStateAction<boolean>>;
   type: "success" | "error" | "warning";
   msg: string;
+  inRow?: boolean;
 };
 
 export default GenericAlert;
