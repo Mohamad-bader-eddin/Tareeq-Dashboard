@@ -15,6 +15,7 @@ import { useTranslation } from "react-i18next";
 import jsCookie from "js-cookie";
 import useManagementQuery from "../../management/hooks/useManagementQuery";
 import AutoAssignButton from "../components/AutoAssignButton";
+import { WedgitWrapper } from "../style/Wedgit.style";
 
 const HomeContainer = () => {
   const { data, isLoading } = useHomeQuery();
@@ -34,28 +35,28 @@ const HomeContainer = () => {
       ) : (
         <>
           <Stack direction={"row"} flexWrap={"wrap"}>
-            <Box sx={{ flex: 1, minWidth: "300px" }}>
+            <WedgitWrapper>
               <Wedgit
                 icon={<AccessibilityIcon fontSize="small" />}
                 title="Available Drivers"
                 value={data?.data?.content?.available_drivers}
               />
-            </Box>
-            <Box sx={{ flex: 1, minWidth: "300px" }}>
+            </WedgitWrapper>
+            <WedgitWrapper>
               <Wedgit
                 icon={<MinorCrashOutlinedIcon fontSize="small" />}
                 title="Active Drivers"
                 value={data?.data?.content?.drivers_orders}
               />
-            </Box>
-            <Box sx={{ flex: 1, minWidth: "300px" }}>
+            </WedgitWrapper>
+            <WedgitWrapper>
               <Wedgit
                 icon={<PeopleIcon fontSize="small" />}
                 title="All Drivers"
                 value={data?.data?.content?.all_drivers}
               />
-            </Box>
-            <Box sx={{ flex: 1, minWidth: "300px" }}>
+            </WedgitWrapper>
+            <WedgitWrapper>
               <Stack
                 direction={"row"}
                 alignItems={"center"}
@@ -64,37 +65,35 @@ const HomeContainer = () => {
               >
                 <AutoAssignButton data={managementData?.data.content} />
               </Stack>
-            </Box>
-          </Stack>
-          <Stack direction={"row"} flexWrap={"wrap"}>
-            <Box sx={{ flex: 1, minWidth: "230px" }}>
+            </WedgitWrapper>
+            <WedgitWrapper>
               <Wedgit
                 icon={<HourglassBottomIcon fontSize="small" />}
                 title="Pending Orders"
                 value={data?.data?.content?.pending_orders}
               />
-            </Box>
-            <Box sx={{ flex: 1, minWidth: "230px" }}>
+            </WedgitWrapper>
+            <WedgitWrapper>
               <Wedgit
                 icon={<OnlinePredictionIcon fontSize="small" />}
                 title="Active Orders"
                 value={data?.data?.content?.active_orders}
               />
-            </Box>
-            <Box sx={{ flex: 1, minWidth: "230px" }}>
+            </WedgitWrapper>
+            <WedgitWrapper>
               <Wedgit
                 icon={<DoDisturbIcon fontSize="small" />}
                 title="Canceled Orders"
                 value={data?.data?.content?.canceled_orders}
               />
-            </Box>
-            <Box sx={{ flex: 1, minWidth: "230px" }}>
+            </WedgitWrapper>
+            <WedgitWrapper>
               <Wedgit
                 icon={<AccessAlarmIcon fontSize="small" />}
                 title="Scheduled Orders"
                 value={data?.data?.content?.scheduled_orders}
               />
-            </Box>
+            </WedgitWrapper>
           </Stack>
         </>
       )}

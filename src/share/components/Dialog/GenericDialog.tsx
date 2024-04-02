@@ -31,13 +31,12 @@ const GenericDialog = ({
   elementContent,
   fullScreen,
   deleteType,
-  assignTo,
   hideAgreeBtn,
   handleAgree,
   agreeLoading,
 }: GenericDialogProps) => {
   const { darkMode } = useDarkMode();
-  const { laptop } = useMedeaQueries();
+  const { tablet } = useMedeaQueries();
   const { t } = useTranslation();
   const darkTheme = createTheme({
     palette: {
@@ -56,11 +55,9 @@ const GenericDialog = ({
         onClose={handleClose}
         fullScreen={fullScreen}
         sx={{
-          ".css-1t1j96h-MuiPaper-root-MuiDialog-paper": {
-            minWidth: laptop ? "fit-content" : assignTo ? "970px" : "800px",
-          },
-          ".css-1qxadfk-MuiPaper-root-MuiDialog-paper": {
-            minWidth: laptop ? "fit-content" : assignTo ? "970px" : "800px",
+          "& > div > div": {
+            width: tablet ? "100%" : "75%",
+            maxWidth: "unset",
           },
         }}
       >
