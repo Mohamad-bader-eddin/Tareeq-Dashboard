@@ -14,7 +14,6 @@ export type initialValuesType = {
     platNumber: string;
     minifactureYear: string;
     color: string;
-    description: string;
     vehicleType: Option | null;
     shopperPicture: File | undefined | string;
     vehiclePicture: File | undefined | string;
@@ -35,7 +34,6 @@ export type validationSchemaType = Yup.ObjectSchema<{
     platNumber: string;
     minifactureYear: string;
     color: string;
-    description: string;
     vehicleType: {
         name: string;
         id: string;
@@ -55,7 +53,6 @@ export type validationSchemaType = Yup.ObjectSchema<{
     platNumber: undefined;
     minifactureYear: undefined;
     color: undefined;
-    description: undefined;
     vehicleType: {
         id: undefined;
         name: undefined;

@@ -33,7 +33,7 @@ export type Drivers = {
     plat_number: string;
     minifacture_year: string;
     color: string;
-    description: string;
+    description?: string;
     vehicle_type_id: string;
     created_at?: Date;
     vehicle_image?: File | undefined | string;

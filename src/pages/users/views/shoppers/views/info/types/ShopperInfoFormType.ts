@@ -14,7 +14,6 @@ export type initialValuesType = {
     driverProfit: string;
     minifactureYear: string;
     color: string;
-    description: string;
     vehicleType: Option | null;
     // isOnline: boolean;
     carPicture: File | undefined | string;
@@ -35,7 +34,6 @@ export type validationSchemaType = Yup.ObjectSchema<{
     driverProfit: string;
     minifactureYear: string;
     color: string;
-    description: string;
     vehicleType: {
         name: string;
         id: string;
@@ -54,7 +52,6 @@ export type validationSchemaType = Yup.ObjectSchema<{
     driverProfit: undefined;
     minifactureYear: undefined;
     color: undefined;
-    description: undefined;
     vehicleType: {
         id: undefined;
         name: undefined;

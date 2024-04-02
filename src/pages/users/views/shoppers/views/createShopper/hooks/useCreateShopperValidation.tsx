@@ -25,7 +25,6 @@ const useCreateShopperValidation = () => {
     platNumber: "",
     minifactureYear: "",
     color: "",
-    description: "",
     vehicleType: null,
     shopperPicture: undefined,
     vehiclePicture: undefined,
@@ -60,7 +59,6 @@ const useCreateShopperValidation = () => {
     platNumber: Yup.string().required(t("required")),
     minifactureYear: Yup.string().required(t("required")),
     color: Yup.string().required(t("required")),
-    description: Yup.string().required(t("required")),
     vehicleType: Yup.object()
       .shape({
         id: Yup.string().required(t("required")),
@@ -115,7 +113,6 @@ const useCreateShopperValidation = () => {
         model_number: values.modelNumber,
         minifacture_year: values.minifactureYear,
         plat_number: values.platNumber,
-        description: values.description,
         vehicle_type_id: values.vehicleType?.id as string,
         zone_id: values.zone?.id as string,
         vehicle_image: values.vehiclePicture as File,

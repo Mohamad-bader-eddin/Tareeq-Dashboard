@@ -17,7 +17,6 @@ const addDriver = (driver: Drivers) => {
   formData.append("model_number", driver.model_number);
   formData.append("minifacture_year", driver.minifacture_year);
   formData.append("plat_number", driver.plat_number);
-  formData.append("description", driver.description);
   formData.append("vehicle_type_id", driver.vehicle_type_id);
   formData.append("vehicle_image", driver.vehicle_image as File);
   formData.append("driver_image", driver.driver_image as File);

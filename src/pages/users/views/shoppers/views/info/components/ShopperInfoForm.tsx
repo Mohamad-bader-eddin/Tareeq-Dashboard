@@ -72,12 +72,6 @@ const ShopperInfoForm = ({
             name="minifactureYear"
           />
           <Input formik={formik} label={t("color")} name="color" />
-          <Input
-            formik={formik}
-            label={t("description")}
-            name="description"
-            textarea={true}
-          />
           <Stack direction={"row"} alignItems={"center"}>
             <Box sx={{ flex: "1" }}>
               <AutocompleteInput

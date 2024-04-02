@@ -19,7 +19,6 @@ const updateDriver = (driver: Drivers) => {
   formData.append("model_number", driver.model_number);
   formData.append("minifacture_year", driver.minifacture_year);
   formData.append("plat_number", driver.plat_number);
-  formData.append("description", driver.description);
   formData.append("vehicle_type_id", driver.vehicle_type_id);
   formData.append("vehicle_id", driver.vehicle_id as string);
   if (driver.vehicle_image) {
