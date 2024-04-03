@@ -25,6 +25,7 @@ import { getToken, onMessage } from "firebase/messaging";
 import { messaging } from "./firebase/config";
 import { useNotifications } from "./context/Notifications";
 import { useFcmToken } from "./context/FcmToken";
+import { useOtherNotifications } from "./context/OtherNotifications";
 
 const queryClient = new QueryClient();
 
@@ -37,6 +38,7 @@ function App() {
   const { setUser } = useAuth();
   const navigate = useNavigate();
   const { setNotification } = useNotifications();
+  const { setOtherNotification } = useOtherNotifications();
   const { setFcmToken } = useFcmToken();
 
   useEffect(() => {
@@ -81,20 +83,37 @@ function App() {
   }, []);
 
   onMessage(messaging, (payload) => {
-    setNotification((prev) => [
-      ...prev,
-      {
-        body: payload.data?.body as string,
-        title: payload.data?.title as string,
-        content: payload.data?.content as string,
-      },
-    ]);
     if (payload.data?.title.includes("scheduled")) {
+      setNotification((prev) => [
+        ...prev,
+        {
+          body: payload.data?.body as string,
+          title: payload.data?.title as string,
+          content: payload.data?.content as string,
+        },
+      ]);
       const sound2 = new Audio("/audio/audio2.wav");
       sound2.play();
-    } else {
+    } else if (payload.data?.title.includes("New")) {
+      setNotification((prev) => [
+        ...prev,
+        {
+          body: payload.data?.body as string,
+          title: payload.data?.title as string,
+          content: payload.data?.content as string,
+        },
+      ]);
       const sound1 = new Audio("/audio/audio1.wav");
       sound1.play();
+    } else {
+      setOtherNotification((prev) => [
+        ...prev,
+        {
+          body: payload.data?.body as string,
+          title: payload.data?.title as string,
+          content: payload.data?.content as string,
+        },
+      ]);
     }
   });
 

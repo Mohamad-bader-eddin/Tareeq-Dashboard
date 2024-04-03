@@ -22,6 +22,7 @@ import ServerTable from "../../../../../share/components/table/ServerTable";
 import { useNotifications } from "../../../../../context/Notifications";
 import AdvanceSearchDialog from "../../../components/AdvanceSearchDialog";
 import { OrderFilterType } from "../../../types/OrderQueryType";
+import { useOtherNotifications } from "../../../../../context/OtherNotifications";
 
 const PendingOrdersContainer = () => {
   const { mobileL } = useMedeaQueries();
@@ -138,11 +139,12 @@ const PendingOrdersContainer = () => {
     setOpenAdvanceSearchDialog(false);
   };
   const { notification } = useNotifications();
+  const { otherNotification } = useOtherNotifications();
   useEffect(() => {
-    if (notification.length > 0) {
+    if (notification.length > 0 || otherNotification.length > 0) {
       refetch();
     }
-  }, [notification, refetch]);
+  }, [notification, otherNotification, refetch]);
 
   return (
     <Layout>

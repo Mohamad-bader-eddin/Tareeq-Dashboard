@@ -11,6 +11,7 @@ import Spinner from "./share/components/Spinner.tsx";
 import { AuthProvider } from "./context/Auth.tsx";
 import { NotificationsProvider } from "./context/Notifications.tsx";
 import { FcmTokenProvider } from "./context/FcmToken.tsx";
+import { OtherNotificationsProvider } from "./context/OtherNotifications.tsx";
 
 i18n
   .use(initReactI18next)
@@ -40,9 +41,11 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
     <HashRouter>
       <AuthProvider>
         <NotificationsProvider>
-          <FcmTokenProvider>
-            <App />
-          </FcmTokenProvider>
+          <OtherNotificationsProvider>
+            <FcmTokenProvider>
+              <App />
+            </FcmTokenProvider>
+          </OtherNotificationsProvider>
         </NotificationsProvider>
       </AuthProvider>
     </HashRouter>
