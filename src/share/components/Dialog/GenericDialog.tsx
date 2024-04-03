@@ -36,7 +36,7 @@ const GenericDialog = ({
   agreeLoading,
 }: GenericDialogProps) => {
   const { darkMode } = useDarkMode();
-  const { tablet } = useMedeaQueries();
+  const { laptop } = useMedeaQueries();
   const { t } = useTranslation();
   const darkTheme = createTheme({
     palette: {
@@ -56,7 +56,7 @@ const GenericDialog = ({
         fullScreen={fullScreen}
         sx={{
           "& > div > div": {
-            width: tablet ? "100%" : "75%",
+            width: laptop ? "100%" : "60%",
             maxWidth: "unset",
           },
         }}
