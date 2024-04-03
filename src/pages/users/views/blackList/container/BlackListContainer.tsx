@@ -23,7 +23,7 @@ const BlackListContainer = () => {
   const [msgDelete, setMsgDelete] = useState("");
   const { t } = useTranslation();
   const { data, isLoading, refetch } = useBlackListQuery();
-  const { mutate } = useBlackListDeleteQuery();
+  const { mutate, isLoading: deleteLoading } = useBlackListDeleteQuery();
   const {
     initialValues,
     onSubmit,
@@ -79,6 +79,7 @@ const BlackListContainer = () => {
           elementContent={t("delete_message")}
           deleteType={true}
           handleAgree={handleAgree}
+          agreeLoading={deleteLoading}
         />
         <GenericAlert
           open={openSucsses}

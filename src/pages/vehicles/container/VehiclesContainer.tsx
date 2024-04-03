@@ -34,7 +34,7 @@ const VehiclesContainer = () => {
   };
   const { columns } = useVehiclesColumns({ handleInfo, handleOpenDialog });
   const { rows } = useVehiclesRows({ data: data?.data.content });
-  const { mutate } = useVehiclesDeleteQuery();
+  const { mutate, isLoading: deleteLoading } = useVehiclesDeleteQuery();
   const handleAddVehicle = () => {
     navigate("/admin/vehicles/add-vehicle");
   };
@@ -83,6 +83,7 @@ const VehiclesContainer = () => {
           handleAgree={handleAgree}
           deleteType={true}
           elementContent={t("delete_message")}
+          agreeLoading={deleteLoading}
         />
         <GenericAlert
           open={openError}

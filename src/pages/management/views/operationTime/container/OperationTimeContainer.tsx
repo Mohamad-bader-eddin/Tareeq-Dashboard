@@ -55,7 +55,7 @@ const OperationTimeContainer = () => {
     handleOpenDialog,
   });
   const { rows } = useOperationTimeContainerRows({ data: data?.data.content });
-  const { mutate } = useDeleteOperationTimesQuery();
+  const { mutate, isLoading: deleteLoading } = useDeleteOperationTimesQuery();
   const handleAgree = () => {
     mutate(selectedId as GridRowId, {
       onSuccess: (response) => {
@@ -156,6 +156,7 @@ const OperationTimeContainer = () => {
           elementContent={t("delete_message")}
           handleAgree={handleAgree}
           deleteType={true}
+          agreeLoading={deleteLoading}
         />
         <GenericAlert
           open={openSucsses}

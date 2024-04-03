@@ -41,7 +41,7 @@ const LocationVotesContainer = () => {
   const handleInfoLocationVote = (id: GridRowId) => {
     navigate(`/admin/coverage/location-vote-info/${id}`);
   };
-  const { mutate } = useDeleteLocationVotesQuery();
+  const { mutate, isLoading: deleteLoading } = useDeleteLocationVotesQuery();
   const { columns } = useLocationVotesColumns({
     handleInfoLocationVote,
     handleOpenDialog,
@@ -121,6 +121,7 @@ const LocationVotesContainer = () => {
           elementContent={t("delete_message")}
           handleAgree={handleAgree}
           deleteType={true}
+          agreeLoading={deleteLoading}
         />
         <GenericAlert
           open={openError}

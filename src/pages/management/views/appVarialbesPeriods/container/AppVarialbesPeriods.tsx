@@ -23,7 +23,8 @@ const AppVarialbesPeriods = () => {
   const [openSucsses, setOpenSucsses] = useState(false);
   const [msg, setMsg] = useState("");
   const { data, isLoading, refetch } = useAppVarialbesPeriodsQuery();
-  const { mutate } = useAppVarialbesPeriodsDeleteQuery();
+  const { mutate, isLoading: deleteLoading } =
+    useAppVarialbesPeriodsDeleteQuery();
   const { t } = useTranslation();
   const navigate = useNavigate();
   const handleAddAppVarialbesPeriod = () => {
@@ -87,6 +88,7 @@ const AppVarialbesPeriods = () => {
           elementContent={t("delete_message")}
           handleAgree={handleAgree}
           deleteType={true}
+          agreeLoading={deleteLoading}
         />
         <GenericAlert
           open={openError}

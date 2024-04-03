@@ -25,7 +25,7 @@ const PromoContainer = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const { data, isLoading, refetch } = usePromosQuery();
-  const { mutate } = useDeleteQuery();
+  const { mutate, isLoading: deleteLoading } = useDeleteQuery();
   const handleOpenDialog = (id: GridRowId) => {
     setOpenDeleteDialog(true);
     setSelectedId(id);
@@ -91,6 +91,7 @@ const PromoContainer = () => {
           elementContent={t("delete_message")}
           deleteType={true}
           handleAgree={handleAgree}
+          agreeLoading={deleteLoading}
         />
         <GenericAlert
           open={openError}

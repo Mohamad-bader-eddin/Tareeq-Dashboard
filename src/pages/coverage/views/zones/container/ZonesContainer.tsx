@@ -29,7 +29,7 @@ const ZonesContainer = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
   const { data, isLoading, refetch } = useZoneQuery();
-  const { mutate } = useDeleteZoneQuery();
+  const { mutate, isLoading: deleteLoading } = useDeleteZoneQuery();
   const handleAddZone = () => {
     navigate("/admin/coverage/add-zones");
   };
@@ -83,6 +83,7 @@ const ZonesContainer = () => {
           elementContent={t("delete_message")}
           handleAgree={handleAgree}
           deleteType={true}
+          agreeLoading={deleteLoading}
         />
         <GenericAlert
           open={openError}

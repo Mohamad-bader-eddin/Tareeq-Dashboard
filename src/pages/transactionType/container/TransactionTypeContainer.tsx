@@ -37,7 +37,7 @@ const TransactionTypeContainer = () => {
     handleOpenDialog,
   });
   const { rows } = useTransactionTypeRows({ data: data?.data.content });
-  const { mutate } = useTransactionsTypeDeleteQuery();
+  const { mutate, isLoading: deleteLoading } = useTransactionsTypeDeleteQuery();
   const handleAddTransactionType = () => {
     navigate("/admin/transaction-type/add");
   };
@@ -86,6 +86,7 @@ const TransactionTypeContainer = () => {
           handleAgree={handleAgree}
           deleteType={true}
           elementContent={t("delete_message")}
+          agreeLoading={deleteLoading}
         />
         <GenericAlert
           open={openError}

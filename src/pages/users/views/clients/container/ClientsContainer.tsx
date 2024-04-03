@@ -42,7 +42,7 @@ const ClientsContainer = () => {
   };
   const { rows } = useClientsRows({ data: data?.data.content });
   const { columns } = useClientsColumns({ handleInfo, handleOpenDialog });
-  const { mutate } = useClientDelete();
+  const { mutate, isLoading: deleteLoading } = useClientDelete();
   const handleAgree = () => {
     mutate(selectedId as GridRowId, {
       onSuccess: (response) => {
@@ -119,6 +119,7 @@ const ClientsContainer = () => {
           handleAgree={handleAgree}
           deleteType={true}
           elementContent={t("delete_message")}
+          agreeLoading={deleteLoading}
         />
         <GenericAlert
           open={openError}

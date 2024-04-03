@@ -28,7 +28,7 @@ const PolygonsContainer = () => {
   };
   const { t } = useTranslation();
   const { data, isLoading, refetch } = useZoneQuery();
-  const { mutate } = useDeleteZoneQuery();
+  const { mutate, isLoading: deleteLoading } = useDeleteZoneQuery();
   const navigate = useNavigate();
   const handleAddPolygon = () => {
     navigate("/admin/coverage/add-polygons");
@@ -86,6 +86,7 @@ const PolygonsContainer = () => {
           elementContent={t("delete_message")}
           deleteType={true}
           handleAgree={handleAgree}
+          agreeLoading={deleteLoading}
         />
         <GenericAlert
           open={openError}

@@ -24,7 +24,7 @@ const SliderContainer = () => {
   const [msg, setMsg] = useState("");
   const { t } = useTranslation();
   const { data, isLoading, refetch } = useSliderQuery();
-  const { mutate } = useSliderDeleteQuery();
+  const { mutate, isLoading: deleteLoading } = useSliderDeleteQuery();
   const navigate = useNavigate();
   const handleInfo = (id: GridRowId) => {
     navigate(`/admin/slider/${id}`);
@@ -85,6 +85,7 @@ const SliderContainer = () => {
           handleAgree={handleAgree}
           deleteType={true}
           elementContent={t("delete_message")}
+          agreeLoading={deleteLoading}
         />
         <GenericAlert
           open={openError}
