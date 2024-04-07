@@ -15,9 +15,9 @@ const useArrivedOrdersRows = ({ data }: { data: Order[] }) => {
       totalPaid: convertPriceToSY(el.total_paid ? el.total_paid : 0),
       arrivedAt: format(
         new Date(el.arrive_to_customer_at as Date),
-        "dd/MM/yyyy"
+        "dd/MM/yyyy HH:mm:ss"
       ),
-      shopper: el?.driver?.name,
+      shopper: el?.driver?.name + " " + el?.driver?.last_name,
       shopperId: el?.driver?.id,
       creditsUsed: el?.credits_used,
       rating: el?.rate,

@@ -7,7 +7,7 @@ const fetchClient = ({ queryKey }: { queryKey: QueryKey }) => {
 };
 
 const useClientInfoQuery = (clientId: string) => {
-  return useQuery(["clients", clientId], fetchClient);
+  return useQuery(["clients", clientId], fetchClient, { cacheTime: 1 });
 };
 
 export default useClientInfoQuery;

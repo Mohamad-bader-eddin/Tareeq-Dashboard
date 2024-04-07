@@ -12,8 +12,11 @@ const useScheduleOrdersRows = ({ data }: { data: Order[] }) => {
       customerId: el.user.id,
       status: el.status,
       totalExpected: convertPriceToSY(el?.total_expected),
-      placedon: format(new Date(el.created_at as Date), "dd/MM/yyyy"),
-      scheduledAt: format(new Date(el.order_date as Date), "dd/MM/yyyy"),
+      placedon: format(new Date(el.created_at as Date), "dd/MM/yyyy HH:mm:ss"),
+      scheduledAt: format(
+        new Date(el.order_date as Date),
+        "dd/MM/yyyy HH:mm:ss"
+      ),
     })
   );
   return { rows };

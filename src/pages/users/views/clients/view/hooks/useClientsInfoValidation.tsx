@@ -17,6 +17,7 @@ const useClientsInfoValidation = ({ data }: { data: Client }) => {
   const initialValues = {
     joinDate: new Date(data?.created_at) || null,
     name: data?.name || "",
+    last_name: data?.last_name || "",
     phone: data?.phone || "",
     birthDate: null,
     isVerified: false,
@@ -25,6 +26,7 @@ const useClientsInfoValidation = ({ data }: { data: Client }) => {
   const validationSchema = Yup.object({
     // joinDate: Yup.date().required(t("required")).nullable(),
     name: Yup.string().required(t("required")),
+    last_name: Yup.string().required(t("required")),
     // email: Yup.string()
     //   .email(t("invalid_email_format"))
     //   .required(t("required")),
@@ -40,13 +42,14 @@ const useClientsInfoValidation = ({ data }: { data: Client }) => {
       {
         name: values.name,
         phone: values.phone,
+        last_name: values.last_name,
       },
       {
         onSuccess: (response) => {
           setOpenSucsses(true);
           setMsg(response.data.message);
           formikHelpers.setSubmitting(false);
-          formikHelpers.resetForm();
+          // formikHelpers.resetForm();
         },
         onError: (error) => {
           setOpenError(true);

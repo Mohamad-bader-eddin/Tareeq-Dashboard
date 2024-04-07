@@ -6,4 +6,5 @@ export type WalletRow = {
     amount: string;
     reason: string;
     createdAt: string;
+    order_id?: string;
 }

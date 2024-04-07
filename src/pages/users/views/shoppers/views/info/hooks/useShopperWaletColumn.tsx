@@ -14,6 +14,13 @@ const useShopperWaletColumn = () => {
         headerAlign: "center",
       },
       {
+        field: "order_id",
+        headerName: t("order_no"),
+        flex: 1,
+        align: "center",
+        headerAlign: "center",
+      },
+      {
         field: "amount",
         headerName: t("amount"),
         align: "center",

@@ -85,34 +85,34 @@ function App() {
   onMessage(messaging, (payload) => {
     if (payload.data?.title.includes("scheduled")) {
       setNotification((prev) => [
-        ...prev,
         {
           body: payload.data?.body as string,
           title: payload.data?.title as string,
           content: payload.data?.content as string,
         },
+        ...prev,
       ]);
       const sound2 = new Audio("/audio/audio2.wav");
       sound2.play();
     } else if (payload.data?.title.includes("New")) {
       setNotification((prev) => [
-        ...prev,
         {
           body: payload.data?.body as string,
           title: payload.data?.title as string,
           content: payload.data?.content as string,
         },
+        ...prev,
       ]);
       const sound1 = new Audio("/audio/audio1.wav");
       sound1.play();
     } else {
       setOtherNotification((prev) => [
-        ...prev,
         {
           body: payload.data?.body as string,
           title: payload.data?.title as string,
           content: payload.data?.content as string,
         },
+        ...prev,
       ]);
     }
   });

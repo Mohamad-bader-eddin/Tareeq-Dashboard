@@ -2,10 +2,10 @@ import { GridActionsCellItem, GridColDef, GridRowId } from "@mui/x-data-grid";
 import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import PreviewIcon from "@mui/icons-material/Preview";
-import DeleteIcon from "@mui/icons-material/DeleteOutlined";
+// import DeleteIcon from "@mui/icons-material/DeleteOutlined";
 
 const useTransactionTypeColumns = ({
-  handleOpenDialog,
+  // handleOpenDialog,
   handleInfo,
 }: useTransactionTypeColumnsProps) => {
   const { t } = useTranslation();
@@ -53,12 +53,12 @@ const useTransactionTypeColumns = ({
               color="info"
               onClick={() => handleInfo(params.id)}
             />,
-            <GridActionsCellItem
-              icon={<DeleteIcon />}
-              label="Delete"
-              color="error"
-              onClick={() => handleOpenDialog(params.id)}
-            />,
+            // <GridActionsCellItem
+            //   icon={<DeleteIcon />}
+            //   label="Delete"
+            //   color="error"
+            //   onClick={() => handleOpenDialog(params.id)}
+            // />,
           ];
         },
       },

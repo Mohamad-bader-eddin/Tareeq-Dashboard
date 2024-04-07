@@ -207,7 +207,12 @@ const InfoContainer = () => {
         <Table
           columns={columns}
           rows={rows}
-          title={t("shopper_wallet")}
+          title={
+            t("shopper_wallet") +
+            ` (${t("total")}: ${convertPriceToSY(
+              data?.data.content.total_earn
+            )})`
+          }
           loading={isLoading}
         />
       </PaperContainer>

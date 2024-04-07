@@ -9,10 +9,11 @@ import ExportButton from "../../../../../share/components/exportButton/ExportBut
 import useMedeaQueries from "../../../../../share/utils/useMideaQuery";
 import useExportCanceledOrdersQuery from "../hooks/useExportCanceledOrdersQuery";
 import { format } from "date-fns";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ServerTable from "../../../../../share/components/table/ServerTable";
 import AdvanceSearchDialog from "../../../components/AdvanceSearchDialog";
 import { OrderFilterType } from "../../../types/OrderQueryType";
+import { useOtherNotifications } from "../../../../../context/OtherNotifications";
 
 const CanceledOrdersContainer = () => {
   const { mobileL } = useMedeaQueries();
@@ -84,6 +85,12 @@ const CanceledOrdersContainer = () => {
     refetch();
     setOpenAdvanceSearchDialog(false);
   };
+  const { otherNotification } = useOtherNotifications();
+  useEffect(() => {
+    if (otherNotification.length > 0) {
+      refetch();
+    }
+  }, [otherNotification, refetch]);
   return (
     <Layout>
       <PaperContainer>

@@ -7,6 +7,20 @@ const useClientsWaletColumn = () => {
   const columns = useMemo(() => {
     const tableCol: GridColDef[] = [
       {
+        field: "id",
+        headerName: t("id"),
+        align: "center",
+        headerAlign: "center",
+        flex: 1,
+      },
+      {
+        field: "order_id",
+        headerName: t("order_no"),
+        align: "center",
+        headerAlign: "center",
+        flex: 1,
+      },
+      {
         field: "amount",
         headerName: t("amount"),
         align: "center",

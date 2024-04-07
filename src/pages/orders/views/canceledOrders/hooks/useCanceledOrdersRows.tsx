@@ -12,11 +12,16 @@ const useCanceledOrdersRows = ({ data }: { data: Order[] }) => {
       customerId: el?.user?.id,
       status: el?.status,
       totalExpected: convertPriceToSY(el?.total_expected),
-      placedon: format(new Date(el?.created_at as Date), "dd/MM/yyyy"),
-      shopper: el?.driver?.name,
+      placedon: format(new Date(el?.created_at as Date), "dd/MM/yyyy HH:mm:ss"),
+      shopper: el?.driver?.last_name
+        ? el?.driver?.name + " " + el?.driver?.last_name
+        : el?.driver?.name,
       shopperId: el?.driver?.id,
       canceledAt: el?.cancel_reason
-        ? format(new Date(el.cancel_reason?.created_at as Date), "dd/MM/yyyy")
+        ? format(
+            new Date(el.cancel_reason?.created_at as Date),
+            "dd/MM/yyyy HH:mm:ss"
+          )
         : "-",
       reason: el?.cancel_reason?.title,
     })

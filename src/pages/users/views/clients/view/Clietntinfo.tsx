@@ -18,6 +18,7 @@ import Spinner from "../../../../../share/components/Spinner";
 import GenericAlert from "../../../../../share/components/alert/GenericAlert";
 import useAddFundsFormValidation from "./hooks/useAddFundsFormValidation";
 import GenericEmbededMap from "../../../../../share/components/map/GenericEmbededMap";
+import { convertPriceToSY } from "../../../../../share/utils/convertPriceToSY";
 
 const Clietntinfo = () => {
   const { t } = useTranslation();
@@ -138,7 +139,12 @@ const Clietntinfo = () => {
           columns={columns}
           rows={rows}
           loading={isLoading}
-          title={t("client_wallet")}
+          title={
+            t("client_wallet") +
+            ` (${t("total")}: ${convertPriceToSY(
+              data?.data.content.total_earn
+            )})`
+          }
         />
       </PaperContainer>
     </Layout>

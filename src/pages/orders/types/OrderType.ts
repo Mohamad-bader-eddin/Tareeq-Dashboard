@@ -43,6 +43,7 @@ export type Driver = {
     availability: boolean;
     verify_code: null;
     created_at: Date;
+    last_name: string;
 }
 
 export type OrderPoint = {

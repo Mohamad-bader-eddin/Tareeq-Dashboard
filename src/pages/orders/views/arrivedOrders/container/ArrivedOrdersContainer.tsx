@@ -8,11 +8,12 @@ import { Box, Stack } from "@mui/material";
 import ExportButton from "../../../../../share/components/exportButton/ExportButton";
 import useMedeaQueries from "../../../../../share/utils/useMideaQuery";
 import useExportArrivedOrdersQuery from "../hooks/useExportArrivedOrdersQuery";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { format } from "date-fns";
 import ServerTable from "../../../../../share/components/table/ServerTable";
 import AdvanceSearchDialog from "../../../components/AdvanceSearchDialog";
 import { OrderFilterType } from "../../../types/OrderQueryType";
+import { useOtherNotifications } from "../../../../../context/OtherNotifications";
 
 const ArrivedOrdersContainer = () => {
   const { t } = useTranslation();
@@ -84,6 +85,12 @@ const ArrivedOrdersContainer = () => {
     refetch();
     setOpenAdvanceSearchDialog(false);
   };
+  const { otherNotification } = useOtherNotifications();
+  useEffect(() => {
+    if (otherNotification.length > 0) {
+      refetch();
+    }
+  }, [otherNotification, refetch]);
 
   return (
     <Layout>

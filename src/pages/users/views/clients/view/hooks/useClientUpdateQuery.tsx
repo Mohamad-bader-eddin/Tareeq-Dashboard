@@ -11,6 +11,7 @@ const useClientUpdateQuery = (clientId: number) => {
 type Client = {
   name?: string;
   phone?: string;
+  last_name?: string;
 };
 
 export default useClientUpdateQuery;

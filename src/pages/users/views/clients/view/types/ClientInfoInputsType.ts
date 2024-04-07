@@ -4,6 +4,7 @@ import * as Yup from "yup";
 export type initialValuesType = {
     joinDate: Date | null;
     name: string;
+    last_name: string;
     phone: string;
     birthDate?: Date | null;
     isVerified?: boolean
@@ -12,11 +13,13 @@ export type initialValuesType = {
 export type validationSchemaType = Yup.ObjectSchema<{
     // joinDate: Date | null;
     name: string;
+    last_name: string;
     phone: string;
     // birthDate: Date | null;
 }, Yup.AnyObject, {
     // joinDate: undefined;
     name: undefined;
+    last_name: undefined;
     phone: undefined;
     // birthDate: undefined;
 }, "">

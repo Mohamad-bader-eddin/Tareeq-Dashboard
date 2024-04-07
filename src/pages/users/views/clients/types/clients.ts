@@ -41,6 +41,7 @@ type Transactions = {
     status: string;
     amount: string;
     created_at: Date;
+    order_id?: string;
     transaction_type?: {
         id: string;
         description: string;

@@ -10,7 +10,6 @@ import { useEffect, useState } from "react";
 import { GridRowId } from "@mui/x-data-grid";
 import useAssignOrderQuery from "../../../hooks/useAssignOrderQuery";
 import GenericAlert from "../../../../../share/components/alert/GenericAlert";
-import useDeiversQuery from "../../../../users/views/shoppers/hooks/useDeiversQuery";
 import usePendingOrdersQuery from "../hooks/usePendingOrdersQuery";
 import { Box, Stack, Typography } from "@mui/material";
 import { getErrorMessage } from "../../../../../share/utils/getErrorMessage";
@@ -23,6 +22,7 @@ import { useNotifications } from "../../../../../context/Notifications";
 import AdvanceSearchDialog from "../../../components/AdvanceSearchDialog";
 import { OrderFilterType } from "../../../types/OrderQueryType";
 import { useOtherNotifications } from "../../../../../context/OtherNotifications";
+import useDriverOnlineQuery from "../../../hooks/useDriverOnlineQuery";
 
 const PendingOrdersContainer = () => {
   const { mobileL } = useMedeaQueries();
@@ -85,7 +85,7 @@ const PendingOrdersContainer = () => {
     page: 0,
     pageSize: 10,
   });
-  const { data: driverData, isLoading: driverLoading } = useDeiversQuery(
+  const { data: driverData, isLoading: driverLoading } = useDriverOnlineQuery(
     driverPaginationModel.page,
     driverPaginationModel.pageSize
   );
