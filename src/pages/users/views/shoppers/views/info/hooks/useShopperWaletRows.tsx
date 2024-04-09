@@ -8,10 +8,10 @@ const useShopperWaletRows = ({ data }: { data: Drivers }) => {
   data?.transactions?.forEach((el) =>
     rows.push({
       id: el?.id,
-      order_id: el?.order_id,
+      order_id: el.order_id ? el.order_id : "Added by admin",
       amount: convertPriceToSY(parseInt(el?.amount)),
       reason: el?.transaction_type?.description as string,
-      createdAt: format(new Date(el.created_at as Date), "dd/MM/yyyy"),
+      createdAt: format(new Date(el.created_at as Date), "dd/MM/yyyy HH:mm:ss"),
       transactionId: el.id,
     })
   );
