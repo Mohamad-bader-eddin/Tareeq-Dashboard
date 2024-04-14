@@ -61,7 +61,13 @@ const PasswordInput = ({ formik, label, name }: PasswordInputProps) => {
               </InputAdornment>
             ),
           }}
-          sx={{ width: "100%", direction: "ltr" }}
+          sx={{
+            width: "100%",
+            direction: "ltr",
+            "& input , & label": {
+              fontSize: "14px",
+            },
+          }}
         />
       </Box>
     </ThemeProvider>
