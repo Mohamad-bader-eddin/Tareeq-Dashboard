@@ -138,7 +138,7 @@ const InfoOrder = () => {
       ) : (
         <>
           <PaperContainer>
-            <Typography variant="h6" sx={{ marginBottom: "10px" }}>
+            <Typography variant="body1" sx={{ marginBottom: "10px" }}>
               {t("info")} ( {t("order_no")} {data?.data?.content?.id} )
             </Typography>
             <StyledInfo $darkMode={darkMode}>
@@ -298,7 +298,7 @@ const InfoOrder = () => {
         ) : (
           <>
             <PaperContainer>
-              <Typography variant="h6" sx={{ marginBottom: "10px" }}>
+              <Typography variant="body1" sx={{ marginBottom: "10px" }}>
                 {t("admin_note")}
               </Typography>
               <AdminNoteForm

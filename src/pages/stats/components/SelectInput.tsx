@@ -32,8 +32,13 @@ const SelectInput = ({
     <ThemeProvider theme={darkTheme}>
       <Box sx={{ mb: InputMargin }}>
         <FormControl fullWidth>
-          <InputLabel>{label}</InputLabel>
-          <Select label={label} value={selectValue} onChange={handleChange}>
+          <InputLabel sx={{ fontSize: "14px" }}>{label}</InputLabel>
+          <Select
+            label={label}
+            value={selectValue}
+            onChange={handleChange}
+            sx={{ fontSize: "14px" }}
+          >
             {options.map((option, index) => (
               <MenuItem key={index} value={option.value}>
                 {option.key}

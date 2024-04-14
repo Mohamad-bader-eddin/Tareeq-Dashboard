@@ -73,7 +73,9 @@ const ActionButton = ({ type, id, page }: ActionButtonProps) => {
         disableElevation
         onClick={handleClick}
         endIcon={<KeyboardArrowDownIcon />}
+        size="small"
         sx={{
+          fontSize: "12px",
           ".css-9tj150-MuiButton-endIcon": {
             marginInline: "8px -4px !important",
           },
@@ -82,16 +84,23 @@ const ActionButton = ({ type, id, page }: ActionButtonProps) => {
         {t("actions")}
       </Button>
       <Menu anchorEl={anchorEl} open={open} onClose={handleClose}>
-        <MenuItem onClick={handleTrack} disableRipple>
-          <TravelExploreIcon sx={{ marginInlineEnd: "15px" }} />
+        <MenuItem onClick={handleTrack} disableRipple sx={{ fontSize: "14px" }}>
+          <TravelExploreIcon
+            sx={{ marginInlineEnd: "15px" }}
+            fontSize="small"
+          />
           {t("track")}
         </MenuItem>
-        <MenuItem onClick={handleInfo} disableRipple>
-          <HelpOutlineIcon sx={{ marginInlineEnd: "15px" }} />
+        <MenuItem onClick={handleInfo} disableRipple sx={{ fontSize: "14px" }}>
+          <HelpOutlineIcon sx={{ marginInlineEnd: "15px" }} fontSize="small" />
           {t("info")}
         </MenuItem>
-        <MenuItem onClick={handleCancel} disableRipple>
-          <DoDisturbIcon sx={{ marginInlineEnd: "15px" }} />
+        <MenuItem
+          onClick={handleCancel}
+          disableRipple
+          sx={{ fontSize: "14px" }}
+        >
+          <DoDisturbIcon sx={{ marginInlineEnd: "15px" }} fontSize="small" />
           {t("cancel")}
         </MenuItem>
       </Menu>

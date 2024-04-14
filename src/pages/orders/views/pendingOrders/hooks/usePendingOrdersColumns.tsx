@@ -72,6 +72,8 @@ const usePendingOrdersColumns = ({
               <Button
                 variant="outlined"
                 color="error"
+                size="small"
+                sx={{ fontSize: "12px" }}
                 onClick={() => {
                   setOpen(true);
                   setIdOrder(params.id);

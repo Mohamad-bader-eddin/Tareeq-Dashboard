@@ -54,10 +54,12 @@ const StatsContainer = () => {
                 variant="outlined"
                 onClick={() => setStatType(undefined)}
                 color="error"
+                size="small"
                 sx={{
                   ".css-1d6wzja-MuiButton-startIcon": {
                     marginInline: "-8px 4px !important",
                   },
+                  fontSize: "12px",
                 }}
                 startIcon={<ArrowBackIcon />}
               >

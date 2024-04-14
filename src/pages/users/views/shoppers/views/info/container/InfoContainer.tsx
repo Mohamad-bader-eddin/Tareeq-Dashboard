@@ -179,24 +179,24 @@ const InfoContainer = () => {
               alignItems={"center"}
               sx={{ marginBottom: "20px" }}
             >
-              <Typography variant="h6" sx={{ fontWeight: "bold" }}>
+              <Typography variant="body1" sx={{ fontWeight: "bold" }}>
                 <Typography component={"span"} sx={{ marginInlineEnd: "6px" }}>
                   <TripOriginOutlinedIcon sx={{ fontSize: "10px" }} />
                 </Typography>
                 {t("total_earn")} :
               </Typography>
-              <Typography variant="h6">
+              <Typography variant="body1">
                 {convertPriceToSY(data?.data?.content?.total_earn)}
               </Typography>
             </Stack>
             <Stack direction={"row"} alignItems={"center"}>
-              <Typography variant="h6" sx={{ fontWeight: "bold" }}>
+              <Typography variant="body1" sx={{ fontWeight: "bold" }}>
                 <Typography component={"span"} sx={{ marginInlineEnd: "6px" }}>
                   <TripOriginOutlinedIcon sx={{ fontSize: "10px" }} />
                 </Typography>
                 {t("daily_total_earn")} :
               </Typography>
-              <Typography variant="h6">
+              <Typography variant="body1">
                 {convertPriceToSY(data?.data?.content?.daily_total_earn)}
               </Typography>
             </Stack>

@@ -20,6 +20,9 @@ const DateExport = ({ value, setValue, label }: DateExportProps) => {
         "&>div>div": {
           width: "100%",
         },
+        "& input , & label": {
+          fontSize: "14px",
+        },
       }}
     >
       <LocalizationProvider dateAdapter={AdapterDateFns}>

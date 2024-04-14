@@ -38,7 +38,9 @@ const ActionButton = ({ type, id }: ActionButtonProps) => {
         disableElevation
         onClick={handleClick}
         endIcon={<KeyboardArrowDownIcon />}
+        size="small"
         sx={{
+          fontSize: "12px",
           ".css-9tj150-MuiButton-endIcon": {
             marginInline: "8px -4px !important",
           },
@@ -47,12 +49,15 @@ const ActionButton = ({ type, id }: ActionButtonProps) => {
         {t("actions")}
       </Button>
       <Menu anchorEl={anchorEl} open={open} onClose={handleClose}>
-        <MenuItem onClick={handleTrack} disableRipple>
-          <TravelExploreIcon sx={{ marginInlineEnd: "15px" }} />
+        <MenuItem onClick={handleTrack} disableRipple sx={{ fontSize: "14px" }}>
+          <TravelExploreIcon
+            fontSize="small"
+            sx={{ marginInlineEnd: "15px" }}
+          />
           {t("track")}
         </MenuItem>
-        <MenuItem onClick={handleInfo} disableRipple>
-          <HelpOutlineIcon sx={{ marginInlineEnd: "15px" }} />
+        <MenuItem onClick={handleInfo} disableRipple sx={{ fontSize: "14px" }}>
+          <HelpOutlineIcon fontSize="small" sx={{ marginInlineEnd: "15px" }} />
           {t("info")}
         </MenuItem>
       </Menu>

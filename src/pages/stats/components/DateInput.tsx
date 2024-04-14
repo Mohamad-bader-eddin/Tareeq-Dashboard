@@ -48,6 +48,9 @@ const DateInput = ({ date, setDate, label, disabled }: DateInputProps) => {
           "&>div>div": {
             width: "100%",
           },
+          "& input , & label": {
+            fontSize: "14px",
+          },
         }}
       >
         <LocalizationProvider dateAdapter={AdapterDateFns}>

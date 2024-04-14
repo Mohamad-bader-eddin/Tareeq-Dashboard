@@ -20,7 +20,12 @@ const CustomInput = ({ label, type, value, setValue }: InputProps) => {
           onChange={(e) => setValue(e.target.value)}
           value={value}
           variant="outlined"
-          sx={{ width: "100%" }}
+          sx={{
+            width: "100%",
+            "& input , & label": {
+              fontSize: "14px",
+            },
+          }}
         />
       </Box>
     </ThemeProvider>

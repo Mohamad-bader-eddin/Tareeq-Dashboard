@@ -45,7 +45,9 @@ const UploadImage = <T extends Record<string, unknown>>({
           component="label"
           variant="outlined"
           endIcon={<CloudUploadIcon />}
+          size="small"
           sx={{
+            fontSize: "14px",
             ".css-9tj150-MuiButton-endIcon": {
               marginInline: "8px -4px !important",
             },

@@ -61,7 +61,7 @@ const GenericDialog = ({
           },
         }}
       >
-        <DialogTitle>{title}</DialogTitle>
+        <DialogTitle sx={{ fontSize: "16px" }}>{title}</DialogTitle>
         <DialogContent>
           {typeof elementContent === "string" ? (
             <DialogContentText>{elementContent}</DialogContentText>
@@ -74,6 +74,7 @@ const GenericDialog = ({
             onClick={handleClose}
             variant="contained"
             sx={{
+              fontSize: "12px",
               marginInlineEnd: "8px",
               backgroundColor: "gray",
               color: "white",
@@ -91,6 +92,7 @@ const GenericDialog = ({
               onClick={handleAgree}
               variant="contained"
               color={deleteType ? "error" : "info"}
+              sx={{ fontSize: "12px" }}
             >
               {t("agree")}
             </Button>

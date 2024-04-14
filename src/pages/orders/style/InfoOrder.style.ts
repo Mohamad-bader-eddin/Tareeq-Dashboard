@@ -14,9 +14,10 @@ export const StyledInfo = styled.div<{ $darkMode: boolean }>`
       flex-wrap: wrap;
 
       .atr {
+        font-size: 14px;
         color: ${(props) =>
     props.$darkMode ? props.theme.dark.label : props.theme.light.label};
-        font-weight: 800;
+        font-weight: 700;
         margin-inline-end: 15px;
         display: flex;
         align-items: center;
@@ -29,6 +30,7 @@ export const StyledInfo = styled.div<{ $darkMode: boolean }>`
       }
       .val {
         font-weight: 600;
+        font-size: 14px;
       }
     }
   }

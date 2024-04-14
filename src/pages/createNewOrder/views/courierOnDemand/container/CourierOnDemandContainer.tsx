@@ -33,12 +33,12 @@ const CourierOnDemandContainer = () => {
   return (
     <Layout>
       <PaperContainer>
-        <Typography variant="h6" sx={{ mb: "15px" }}>
+        <Typography variant="body1" sx={{ mb: "15px" }}>
           {t("create_new_order")}
         </Typography>
         {phone ? (
           <>
-            <Typography variant="h6" sx={{ mb: "15px" }}>
+            <Typography variant="body1" sx={{ mb: "5px" }}>
               {t("client")} : {phone.name} {phone?.last_name}
             </Typography>
             <Box sx={{ height: "1329.6px", width: "100%" }}>

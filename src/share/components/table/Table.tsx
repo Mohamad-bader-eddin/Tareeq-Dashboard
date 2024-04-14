@@ -38,7 +38,7 @@ const Table = ({
   });
   return (
     <ThemeProvider theme={darkTheme}>
-      <Typography variant="h6" sx={{ marginBottom: "10px" }}>
+      <Typography variant="body1" sx={{ marginBottom: "10px" }}>
         {title ? title : ""} {totalCount ? ` - ${totalCount}` : ""}
       </Typography>
       <Box
@@ -61,6 +61,7 @@ const Table = ({
             loadingOverlay: LoadingSkeleton,
           }}
           sx={{
+            fontSize: "13px",
             direction: "ltr",
             ".css-wop1k0-MuiDataGrid-footerContainer,.css-128fb87-MuiDataGrid-toolbarContainer":
               { direction: "ltr" },

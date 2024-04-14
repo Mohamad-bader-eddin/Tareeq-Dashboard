@@ -6,6 +6,7 @@ export const ClientInfo = styled.div<{ $darkMode: boolean }>`
   align-items: center;
   margin-bottom: 20px;
     .atr {
+      font-size: 14px;
         color: ${(props) =>
     props.$darkMode ? props.theme.dark.label : props.theme.light.label};
         font-weight: 800;
@@ -20,6 +21,7 @@ export const ClientInfo = styled.div<{ $darkMode: boolean }>`
         }
       }
       .val {
+        font-size: 14px;
         font-weight: 600;
       }
 `

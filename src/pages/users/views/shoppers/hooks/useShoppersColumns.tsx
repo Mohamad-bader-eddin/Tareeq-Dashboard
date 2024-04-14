@@ -97,7 +97,8 @@ const useShoppersColumns = ({
               <Button
                 endIcon={<FiberManualRecordIcon />}
                 color="success"
-                sx={{ cursor: "default" }}
+                size="small"
+                sx={{ cursor: "default", fontSize: "12px" }}
               >
                 {t("online")}
               </Button>
@@ -107,7 +108,8 @@ const useShoppersColumns = ({
             <Button
               endIcon={<FiberManualRecordIcon />}
               color="error"
-              sx={{ cursor: "default" }}
+              size="small"
+              sx={{ cursor: "default", fontSize: "12px" }}
             >
               {t("offline")}
             </Button>

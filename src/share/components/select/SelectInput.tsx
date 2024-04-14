@@ -32,7 +32,7 @@ const SelectInput = <T extends Record<string, unknown>>({
           fullWidth
           error={Boolean(formik.touched[name] && formik.errors[name])}
         >
-          <InputLabel>{label}</InputLabel>
+          <InputLabel sx={{ fontSize: "14px" }}>{label}</InputLabel>
           <Select
             name={name}
             label={label}
@@ -40,6 +40,7 @@ const SelectInput = <T extends Record<string, unknown>>({
             onChange={formik.handleChange}
             error={Boolean(formik.touched[name] && formik.errors[name])}
             onBlur={formik.handleBlur}
+            sx={{ fontSize: "14px" }}
           >
             {options.map((option, index) => (
               <MenuItem key={index} value={option.value}>
