@@ -51,7 +51,7 @@ const SidebarLink = ({
               >
                 <div className="content">
                   <div className="icon">{icon}</div>
-                  <Typography variant="body1">{t(title)}</Typography>
+                  <Typography variant="body2">{t(title)}</Typography>
                 </div>
                 <Stack direction={"row"} alignItems={"center"}>
                   {open ? <ExpandLess /> : <ExpandMore />}
@@ -65,7 +65,7 @@ const SidebarLink = ({
                     {/* <div className="icon">
                       <FiberManualRecordIcon sx={{ fontSize: "18px" }} />
                     </div> */}
-                    <Typography variant="body1" sx={{ marginInline: "20px" }}>
+                    <Typography variant="body2" sx={{ marginInline: "20px" }}>
                       {t(item.title)}
                     </Typography>
                   </div>
@@ -78,7 +78,7 @@ const SidebarLink = ({
             <A to={path} $darkMode={darkMode}>
               <div className="content">
                 <div className="icon">{icon}</div>
-                <Typography variant="body1">{t(title)}</Typography>
+                <Typography variant="body2">{t(title)}</Typography>
               </div>
             </A>
           </LinkItem>
