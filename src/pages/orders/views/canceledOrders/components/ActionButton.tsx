@@ -14,6 +14,7 @@ import GenericDialog from "../../../../../share/components/Dialog/GenericDialog"
 import GenericAlert from "../../../../../share/components/alert/GenericAlert";
 import { getErrorMessage } from "../../../../../share/utils/getErrorMessage";
 import { PaginationModel } from "../../../../../share/types";
+import TravelExploreIcon from "@mui/icons-material/TravelExplore";
 
 const ActionButton = ({ type, id, page }: ActionButtonProps) => {
   const navigate = useNavigate();
@@ -61,6 +62,10 @@ const ActionButton = ({ type, id, page }: ActionButtonProps) => {
       },
     });
   };
+  const handleTrack = () => {
+    navigate(`/admin/orders/track-order/${type}/${id}`);
+    setAnchorEl(null);
+  };
   return (
     <div>
       <Button
@@ -78,6 +83,10 @@ const ActionButton = ({ type, id, page }: ActionButtonProps) => {
         {t("actions")}
       </Button>
       <Menu anchorEl={anchorEl} open={open} onClose={handleClose}>
+        <MenuItem onClick={handleTrack} disableRipple>
+          <TravelExploreIcon sx={{ marginInlineEnd: "15px" }} />
+          {t("track")}
+        </MenuItem>
         <MenuItem onClick={handleInfo} disableRipple>
           <HelpOutlineIcon sx={{ marginInlineEnd: "15px" }} />
           {t("info")}

@@ -12,14 +12,16 @@ const useArrivedOrdersRows = ({ data }: { data: Order[] }) => {
       customerId: el.user.id,
       status: el.status,
       totalExpected: convertPriceToSY(el?.total_expected),
-      totalPaid: convertPriceToSY(el.total_paid ? el.total_paid : 0),
+      totalPaid: el?.credits_used
+        ? convertPriceToSY(el.total_paid ? el.total_paid + el?.credits_used : 0)
+        : convertPriceToSY(el.total_paid ? el.total_paid : 0),
       arrivedAt: format(
         new Date(el.arrive_to_customer_at as Date),
         "dd/MM/yyyy HH:mm:ss"
       ),
       shopper: el?.driver?.name + " " + el?.driver?.last_name,
       shopperId: el?.driver?.id,
-      creditsUsed: el?.credits_used,
+      creditsUsed: convertPriceToSY(el?.credits_used ? el?.credits_used : 0),
       rating: el?.rate,
     })
   );

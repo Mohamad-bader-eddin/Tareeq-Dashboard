@@ -16,7 +16,7 @@ export type OrderRow = {
     shopperId?: string;
     totalPaid?: string;
     arrivedAt?: string;
-    creditsUsed?: number;
+    creditsUsed?: string;
     rating?: number;
     reason?: string;
     scheduledAt?: string;

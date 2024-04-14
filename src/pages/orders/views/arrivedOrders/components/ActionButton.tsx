@@ -7,6 +7,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { GridRowId } from "@mui/x-data-grid";
+import TravelExploreIcon from "@mui/icons-material/TravelExplore";
 
 const ActionButton = ({ type, id }: ActionButtonProps) => {
   const navigate = useNavigate();
@@ -22,6 +23,10 @@ const ActionButton = ({ type, id }: ActionButtonProps) => {
 
   const handleInfo = () => {
     navigate(`/admin/orders/info-orders/${type}/${id}`);
+    setAnchorEl(null);
+  };
+  const handleTrack = () => {
+    navigate(`/admin/orders/track-order/${type}/${id}`);
     setAnchorEl(null);
   };
 
@@ -42,6 +47,10 @@ const ActionButton = ({ type, id }: ActionButtonProps) => {
         {t("actions")}
       </Button>
       <Menu anchorEl={anchorEl} open={open} onClose={handleClose}>
+        <MenuItem onClick={handleTrack} disableRipple>
+          <TravelExploreIcon sx={{ marginInlineEnd: "15px" }} />
+          {t("track")}
+        </MenuItem>
         <MenuItem onClick={handleInfo} disableRipple>
           <HelpOutlineIcon sx={{ marginInlineEnd: "15px" }} />
           {t("info")}

@@ -11,7 +11,7 @@ const fetchDeivers = ({ queryKey }: { queryKey: QueryKey }) => {
 
 const useDriverOnlineQuery = (page: number, limit: number) => {
   return useQuery(
-    ["drivers", page ? page + 1 : 1, limit ? limit : 10],
+    ["online-drivers", page ? page + 1 : 1, limit ? limit : 10],
     fetchDeivers,
     {
       enabled: !!page || !!limit,

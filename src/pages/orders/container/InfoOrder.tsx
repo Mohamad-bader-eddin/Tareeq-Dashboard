@@ -241,7 +241,18 @@ const InfoOrder = () => {
                     {t("total_paid")} :
                   </h5>
                   <h5 className="val">
-                    {convertPriceToSY(data?.data?.content?.total_paid)}
+                    {data?.data?.content?.credits_used
+                      ? convertPriceToSY(
+                          data?.data?.content?.total_paid
+                            ? data?.data?.content?.total_paid +
+                                data?.data?.content?.credits_used
+                            : 0
+                        )
+                      : convertPriceToSY(
+                          data?.data?.content?.total_paid
+                            ? data?.data?.content?.total_paid
+                            : 0
+                        )}
                   </h5>
                 </div>
                 <div className="col-6">

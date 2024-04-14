@@ -1,7 +1,5 @@
 export const convertPriceToSY = (price: number) => {
-    const formattedPrice = new Intl.NumberFormat('en-SY', {
-        style: 'currency',
-        currency: 'SYP',
-    }).format(price);
+    const absFormattedNumber = Math.abs(price).toLocaleString('en-SY');
+    const formattedPrice = price < 0 ? `SYP -${absFormattedNumber}` : `SYP ${absFormattedNumber}`;
     return formattedPrice
 } 

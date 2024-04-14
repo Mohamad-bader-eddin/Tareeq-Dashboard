@@ -13,7 +13,7 @@ const usePendingOrdersRows = ({ data }: { data: Order[] }) => {
       status: el.status,
       totalExpected: convertPriceToSY(el?.total_expected),
       placedon: format(new Date(el.created_at as Date), "dd/MM/yyyy HH:mm:ss"),
-      shopper: el?.driver?.name,
+      shopper: el?.driver?.name + " " + el?.driver?.last_name,
       shopperId: el?.driver?.id,
     })
   );

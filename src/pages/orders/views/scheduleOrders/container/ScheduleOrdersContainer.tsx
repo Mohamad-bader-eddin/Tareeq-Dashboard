@@ -9,7 +9,6 @@ import GenericDialog from "../../../../../share/components/Dialog/GenericDialog"
 import { useTranslation } from "react-i18next";
 import { GridRowId } from "@mui/x-data-grid";
 import GenericAlert from "../../../../../share/components/alert/GenericAlert";
-import useDeiversQuery from "../../../../users/views/shoppers/hooks/useDeiversQuery";
 import useAssignOrderQuery from "../../../hooks/useAssignOrderQuery";
 import useScheduleOrdersQuery from "../hooks/useScheduleOrdersQuery";
 import { Box, Stack, Typography } from "@mui/material";
@@ -23,6 +22,7 @@ import { useNotifications } from "../../../../../context/Notifications";
 import AdvanceSearchDialog from "../../../components/AdvanceSearchDialog";
 import { OrderFilterType } from "../../../types/OrderQueryType";
 import { useOtherNotifications } from "../../../../../context/OtherNotifications";
+import useDriverOnlineQuery from "../../../hooks/useDriverOnlineQuery";
 
 const ScheduleOrdersContainer = () => {
   const { mobileL } = useMedeaQueries();
@@ -85,7 +85,7 @@ const ScheduleOrdersContainer = () => {
     page: 0,
     pageSize: 10,
   });
-  const { data: driverData, isLoading: driverLoading } = useDeiversQuery(
+  const { data: driverData, isLoading: driverLoading } = useDriverOnlineQuery(
     driverPaginationModel.page,
     driverPaginationModel.pageSize
   );
