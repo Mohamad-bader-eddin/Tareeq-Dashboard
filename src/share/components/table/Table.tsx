@@ -62,6 +62,7 @@ const Table = ({
             // toolbar: CustomToolbar,
             loadingOverlay: LoadingSkeleton,
           }}
+          disableColumnMenu={laptop ? true : false}
           sx={{
             fontSize: laptop ? "11px" : "14px",
             direction: "ltr",
