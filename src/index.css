@@ -50,8 +50,25 @@ body {
 }
 
 .MuiDataGrid-columnHeaderTitle,
-.MuiDataGrid-cellContent {
+.MuiDataGrid-cellContent,
+.MuiDataGrid-cell {
     line-height: 1.5 !important;
     white-space: break-spaces !important;
     text-align: center !important;
+}
+
+
+@media(max-width: 992px) {
+
+    .MuiDataGrid-columnHeaderTitleContainer,
+    .MuiDataGrid-columnHeaderTitleContainerContent,
+    .MuiDataGrid-columnHeaderTitle,
+    .MuiDataGrid-cellContent,
+    .MuiDataGrid-cell {
+        overflow: unset !important;
+    }
+
+    .MuiDataGrid-columnSeparator {
+        visibility: hidden !important;
+    }
 }

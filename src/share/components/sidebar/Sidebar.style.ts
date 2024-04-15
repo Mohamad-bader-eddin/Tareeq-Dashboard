@@ -8,7 +8,7 @@ export const SideBar = styled.nav<{ $openSidebar: boolean, $darkMode: boolean }>
   height: 100vh;
   background-color: ${(props) => props.$darkMode ? props.theme.dark.sidebar : props.theme.light.sidebar};
   box-shadow: 2px 0.125rem 0.25rem ${(props) => props.$darkMode ? props.theme.dark.shadow : props.theme.light.shadow};
-  padding: ${(props) => (props.$openSidebar ? `20px` : `20px 5px`)};
+  padding: ${(props) => (props.$openSidebar ? `20px` : `20px 0px`)};
   text-align: center;
   transition: width ${TRANSITION};
   overflow-y: auto;

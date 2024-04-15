@@ -9,6 +9,7 @@ import {
 } from "@mui/x-data-grid";
 import LoadingSkeleton from "./LoadingSkeleton";
 import { useState } from "react";
+import useMedeaQueries from "../../utils/useMideaQuery";
 
 // function CustomToolbar() {
 //   return (
@@ -27,6 +28,7 @@ const Table = ({
   ...props
 }: TableType) => {
   const { darkMode } = useDarkMode();
+  const { laptop } = useMedeaQueries();
   const darkTheme = createTheme({
     palette: {
       mode: darkMode ? "dark" : "light",
@@ -61,7 +63,7 @@ const Table = ({
             loadingOverlay: LoadingSkeleton,
           }}
           sx={{
-            fontSize: "13px",
+            fontSize: laptop ? "11px" : "14px",
             direction: "ltr",
             ".css-wop1k0-MuiDataGrid-footerContainer,.css-128fb87-MuiDataGrid-toolbarContainer":
               { direction: "ltr" },

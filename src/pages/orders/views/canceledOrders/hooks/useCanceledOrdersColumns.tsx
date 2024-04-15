@@ -58,7 +58,7 @@ const useCanceledOrdersColumns = (paginationModel: PaginationModel) => {
       {
         field: "canceledAt",
         headerName: t("canceled_at"),
-        width: 175,
+        flex: 1,
         align: "center",
         headerAlign: "center",
       },
