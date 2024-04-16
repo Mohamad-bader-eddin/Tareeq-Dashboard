@@ -74,22 +74,29 @@ const useScheduleOrdersColumns = ({
         align: "center",
         headerAlign: "center",
         renderCell: (params) => {
-          return (
-            <Box>
-              <Button
-                variant="outlined"
-                color="error"
-                size="small"
-                sx={{ fontSize: "12px" }}
-                onClick={() => {
-                  setOpen(true);
-                  setIdOrder(params.id);
-                }}
-              >
-                {t("assign_to")}
-              </Button>
-            </Box>
-          );
+          if (params.value) {
+            <AppLink
+              path={`/admin/users/shoppers/${params.row.shopperId}`}
+              name={params.value}
+            />;
+          } else {
+            return (
+              <Box>
+                <Button
+                  variant="outlined"
+                  color="error"
+                  size="small"
+                  sx={{ fontSize: "12px" }}
+                  onClick={() => {
+                    setOpen(true);
+                    setIdOrder(params.id);
+                  }}
+                >
+                  {t("assign_to")}
+                </Button>
+              </Box>
+            );
+          }
         },
       },
       {

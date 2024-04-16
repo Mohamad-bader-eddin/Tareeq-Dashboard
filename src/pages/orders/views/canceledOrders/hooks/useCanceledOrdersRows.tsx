@@ -17,11 +17,8 @@ const useCanceledOrdersRows = ({ data }: { data: Order[] }) => {
         ? el?.driver?.name + " " + el?.driver?.last_name
         : el?.driver?.name,
       shopperId: el?.driver?.id,
-      canceledAt: el?.cancel_reason
-        ? format(
-            new Date(el.cancel_reason?.created_at as Date),
-            "dd/MM/yyyy HH:mm:ss"
-          )
+      canceledAt: el?.updated_at
+        ? format(new Date(el.updated_at), "dd/MM/yyyy HH:mm:ss")
         : "-",
       reason: el?.cancel_reason?.title,
     })

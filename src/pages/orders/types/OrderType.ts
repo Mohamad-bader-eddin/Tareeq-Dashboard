@@ -22,6 +22,7 @@ export type Order = {
         created_at: Date
     };
     credits_used?: number;
+    updated_at?: Date;
     activityLogs?: ActivityLogs[]
 }
 
