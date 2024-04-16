@@ -87,6 +87,13 @@ const useCanceledOrdersColumns = (paginationModel: PaginationModel) => {
         valueOptions: ["Cancel from Admin", "Cancel from client"],
       },
       {
+        field: "type",
+        headerName: t("type"),
+        flex: 1,
+        align: "center",
+        headerAlign: "center",
+      },
+      {
         field: "action",
         headerName: t("action"),
         flex: 1,

@@ -68,6 +68,13 @@ const useScheduleOrdersColumns = ({
         headerAlign: "center",
       },
       {
+        field: "type",
+        headerName: t("type"),
+        flex: 1,
+        align: "center",
+        headerAlign: "center",
+      },
+      {
         field: "shopper",
         headerName: t("shopper"),
         flex: 1,

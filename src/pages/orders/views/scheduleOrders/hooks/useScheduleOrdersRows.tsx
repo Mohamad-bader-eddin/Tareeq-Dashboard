@@ -19,6 +19,7 @@ const useScheduleOrdersRows = ({ data }: { data: Order[] }) => {
         new Date(el.order_date as Date),
         "dd/MM/yyyy HH:mm:ss"
       ),
+      type: el?.type ? el.type : "",
     })
   );
   return { rows };

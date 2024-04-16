@@ -11,6 +11,7 @@ export type OrderRow = {
     customerId: string;
     status: string;
     totalExpected: string;
+    type: string;
     placedon?: string;
     shopper?: string;
     shopperId?: string;

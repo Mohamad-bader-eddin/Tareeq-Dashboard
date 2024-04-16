@@ -62,7 +62,6 @@ const useArrivedOrdersColumns = () => {
         align: "center",
         headerAlign: "center",
       },
-
       {
         field: "shopper",
         headerName: t("shopper"),
@@ -88,6 +87,13 @@ const useArrivedOrdersColumns = () => {
       {
         field: "rating",
         headerName: t("rating"),
+        flex: 1,
+        align: "center",
+        headerAlign: "center",
+      },
+      {
+        field: "type",
+        headerName: t("type"),
         flex: 1,
         align: "center",
         headerAlign: "center",

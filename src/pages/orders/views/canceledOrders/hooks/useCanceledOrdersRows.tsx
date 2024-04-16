@@ -21,6 +21,7 @@ const useCanceledOrdersRows = ({ data }: { data: Order[] }) => {
         ? format(new Date(el.updated_at), "dd/MM/yyyy HH:mm:ss")
         : "-",
       reason: el?.cancel_reason?.title,
+      type: el?.type ? el.type : "",
     })
   );
   return { rows };

@@ -68,6 +68,13 @@ const useActiveOrdersContainerColumn = (paginationModel: PaginationModel) => {
         },
       },
       {
+        field: "type",
+        headerName: t("type"),
+        flex: 1,
+        align: "center",
+        headerAlign: "center",
+      },
+      {
         field: "action",
         headerName: t("action"),
         flex: 1,

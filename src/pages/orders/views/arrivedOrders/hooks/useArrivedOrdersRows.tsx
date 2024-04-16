@@ -23,6 +23,7 @@ const useArrivedOrdersRows = ({ data }: { data: Order[] }) => {
       shopperId: el?.driver?.id,
       creditsUsed: convertPriceToSY(el?.credits_used ? el?.credits_used : 0),
       rating: el?.rate,
+      type: el?.type ? el.type : "",
     })
   );
   return { rows };
