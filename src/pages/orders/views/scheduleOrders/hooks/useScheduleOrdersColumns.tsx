@@ -82,10 +82,12 @@ const useScheduleOrdersColumns = ({
         headerAlign: "center",
         renderCell: (params) => {
           if (params.value) {
-            <AppLink
-              path={`/admin/users/shoppers/${params.row.shopperId}`}
-              name={params.value}
-            />;
+            return (
+              <AppLink
+                path={`/admin/users/shoppers/${params.row.shopperId}`}
+                name={params.value}
+              />
+            );
           } else {
             return (
               <Box>
