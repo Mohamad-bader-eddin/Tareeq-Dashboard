@@ -178,6 +178,10 @@ export const SidebarData = [
         title: "WhatsApp",
         path: "/admin/management/Whatsapp",
       },
+      {
+        title: "Youtube",
+        path: "/admin/management/youtube",
+      },
       // {
       //   title: "notifications",
       //   path: "/admin/management/notifications",

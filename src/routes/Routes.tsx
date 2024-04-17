@@ -61,6 +61,7 @@ import ShopperLimitContainer from "../pages/management/views/shopperLimit/contai
 import AddAdminContainer from "../pages/management/views/addAdmin/container/AddAdminContainer";
 import ChangePasswordContainer from "../pages/management/views/changePassword/container/ChangePasswordContainer";
 import WhatsappContainer from "../pages/management/views/whatsapp/container/WhatsappContainer";
+import YoutubeContainer from "../pages/management/views/youtube/container/YoutubeContainer";
 
 const Routes = () => {
   return (
@@ -496,6 +497,14 @@ const Routes = () => {
         element={
           <RequireAuth allowedRoles={["admin"]}>
             <WhatsappContainer />
+          </RequireAuth>
+        }
+      />
+      <Route
+        path="/admin/management/youtube"
+        element={
+          <RequireAuth allowedRoles={["admin"]}>
+            <YoutubeContainer />
           </RequireAuth>
         }
       />
