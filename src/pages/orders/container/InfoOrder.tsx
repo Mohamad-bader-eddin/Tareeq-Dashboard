@@ -287,38 +287,36 @@ const InfoOrder = () => {
           loading={false}
         />
       </PaperContainer> */}
-      {type === "arrived" ? (
-        isLoading ? (
-          <Backdrop
-            sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
-            open={isLoading}
-          >
-            <Spinner />
-          </Backdrop>
-        ) : (
-          <>
-            <PaperContainer>
-              <Typography variant="body1" sx={{ marginBottom: "10px" }}>
-                {t("admin_note")}
-              </Typography>
-              <AdminNoteForm
-                initialValues={initialValues}
-                onSubmit={onSubmit}
-                validationSchema={validationSchema}
-              />
-            </PaperContainer>
-            <PaperContainer>
-              <Table
-                columns={notesColumns}
-                rows={rows}
-                loading={adminNotesLoading}
-                title={t("notes")}
-                totalCount={adminNotesData?.data?.content.length}
-              />
-            </PaperContainer>
-          </>
-        )
-      ) : null}
+      {isLoading ? (
+        <Backdrop
+          sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+          open={isLoading}
+        >
+          <Spinner />
+        </Backdrop>
+      ) : (
+        <>
+          <PaperContainer>
+            <Typography variant="body1" sx={{ marginBottom: "10px" }}>
+              {t("admin_note")}
+            </Typography>
+            <AdminNoteForm
+              initialValues={initialValues}
+              onSubmit={onSubmit}
+              validationSchema={validationSchema}
+            />
+          </PaperContainer>
+          <PaperContainer>
+            <Table
+              columns={notesColumns}
+              rows={rows}
+              loading={adminNotesLoading}
+              title={t("notes")}
+              totalCount={adminNotesData?.data?.content.length}
+            />
+          </PaperContainer>
+        </>
+      )}
       <GenericDialog
         open={openDeleteDialog}
         setOpen={setOpenDeleteDialog}

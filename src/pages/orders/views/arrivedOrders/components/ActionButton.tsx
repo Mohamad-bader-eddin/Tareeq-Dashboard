@@ -8,10 +8,12 @@ import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { GridRowId } from "@mui/x-data-grid";
 import TravelExploreIcon from "@mui/icons-material/TravelExplore";
+import useMedeaQueries from "../../../../../share/utils/useMideaQuery";
 
 const ActionButton = ({ type, id }: ActionButtonProps) => {
   const navigate = useNavigate();
   const { t } = useTranslation();
+  const { laptop } = useMedeaQueries();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -40,7 +42,7 @@ const ActionButton = ({ type, id }: ActionButtonProps) => {
         endIcon={<KeyboardArrowDownIcon />}
         size="small"
         sx={{
-          fontSize: "12px",
+          fontSize: laptop ? "8px" : "12px",
           ".css-9tj150-MuiButton-endIcon": {
             marginInline: "8px -4px !important",
           },

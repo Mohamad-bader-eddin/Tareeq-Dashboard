@@ -14,10 +14,12 @@ import GenericDialog from "../../../../../share/components/Dialog/GenericDialog"
 import GenericAlert from "../../../../../share/components/alert/GenericAlert";
 import useCancelOrderQuery from "../../../hooks/useCancelOrderQuery";
 import { PaginationModel } from "../../../../../share/types";
+import useMedeaQueries from "../../../../../share/utils/useMideaQuery";
 
 const ActionButton = ({ type, id, page }: ActionButtonProps) => {
   const navigate = useNavigate();
   const { t } = useTranslation();
+  const { laptop } = useMedeaQueries();
   const { refetch: scheduleRefetch } = useScheduleOrdersQuery({
     page: page.page,
     limit: page.pageSize,
@@ -75,7 +77,7 @@ const ActionButton = ({ type, id, page }: ActionButtonProps) => {
         endIcon={<KeyboardArrowDownIcon />}
         size="small"
         sx={{
-          fontSize: "12px",
+          fontSize: laptop ? "8px" : "12px",
           ".css-9tj150-MuiButton-endIcon": {
             marginInline: "8px -4px !important",
           },

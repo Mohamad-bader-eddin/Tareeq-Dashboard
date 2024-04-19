@@ -68,7 +68,7 @@ const ServerTable = ({
               loadingOverlay: LoadingSkeleton,
             }}
             sx={{
-              fontSize: laptop ? "10px" : "14px",
+              fontSize: laptop ? "9px" : "14px",
               direction: "ltr",
               ".css-wop1k0-MuiDataGrid-footerContainer,.css-128fb87-MuiDataGrid-toolbarContainer":
                 { direction: "ltr" },
