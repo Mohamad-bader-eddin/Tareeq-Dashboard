@@ -7,10 +7,11 @@ const useStatsQuery = ({
   to,
   type,
   driver_id,
+  filter,
 }: useStatsQueryProps) => {
   const fetchStats = () => {
     return axiosInstance.get(
-      `/api/admin/stats?model=${model}&type=${type}&from=${from}&to=${to}&driver_id=${driver_id}`
+      `/api/admin/stats?model=${model}&type=${type}&from=${from}&to=${to}&driver_id=${driver_id}&filter=${filter}`
     );
   };
   return useQuery(["stats", model, from, to], fetchStats, { enabled: false });
@@ -22,6 +23,7 @@ type useStatsQueryProps = {
   from?: string;
   to?: string;
   driver_id: string;
+  filter?: string;
 };
 
 export default useStatsQuery;

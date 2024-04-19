@@ -37,6 +37,7 @@ const StatsContainer = () => {
     from: fromDate ? format(fromDate, "yyyy-MM-dd") : undefined,
     to: toDate ? format(toDate, "yyyy-MM-dd") : undefined,
     driver_id: shopper ? shopper.id : "0",
+    filter: filter ? filter : undefined,
   });
   useEffect(() => {
     if (statType && fromDate && toDate) {

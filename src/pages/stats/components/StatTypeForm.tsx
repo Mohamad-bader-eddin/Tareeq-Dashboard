@@ -12,10 +12,10 @@ const StatTypeForm = ({
 }: StatTypeFormType) => {
   const { t } = useTranslation();
   const options = [
-    // {
-    //   value: "orders",
-    //   key: t("orders"),
-    // },
+    {
+      value: "orders",
+      key: t("orders"),
+    },
     // {
     //   value: "percentageOrders",
     //   key: t("percentage_orders"),
