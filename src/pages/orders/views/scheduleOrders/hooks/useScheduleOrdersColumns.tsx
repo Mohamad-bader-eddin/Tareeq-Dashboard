@@ -5,6 +5,7 @@ import AppLink from "../../../../../share/components/link/AppLink";
 import { Dispatch, SetStateAction, useMemo } from "react";
 import ActionButton from "../components/ActionButton";
 import { PaginationModel } from "../../../../../share/types";
+import useMedeaQueries from "../../../../../share/utils/useMideaQuery";
 
 const useScheduleOrdersColumns = ({
   setOpen,
@@ -12,6 +13,7 @@ const useScheduleOrdersColumns = ({
   paginationModel,
 }: useScheduleOrdersColumnsProps) => {
   const { t } = useTranslation();
+  const { laptop } = useMedeaQueries();
   const columns = useMemo(() => {
     const tableCol: GridColDef[] = [
       {
@@ -95,7 +97,7 @@ const useScheduleOrdersColumns = ({
                   variant="outlined"
                   color="error"
                   size="small"
-                  sx={{ fontSize: "12px" }}
+                  sx={{ fontSize: laptop ? "8px" : "12px" }}
                   onClick={() => {
                     setOpen(true);
                     setIdOrder(params.id);
