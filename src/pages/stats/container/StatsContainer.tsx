@@ -37,13 +37,21 @@ const StatsContainer = () => {
     from: fromDate ? format(fromDate, "yyyy-MM-dd") : undefined,
     to: toDate ? format(toDate, "yyyy-MM-dd") : undefined,
     driver_id: shopper ? shopper.id : "0",
-    filter: filter ? filter : undefined,
+    filter: filter !== "" ? filter : undefined,
   });
   useEffect(() => {
     if (statType && fromDate && toDate) {
       refetch();
     }
   }, [statType, period, fromDate, toDate, refetch, shopper]);
+
+  const handleReturn = () => {
+    setStatType(undefined);
+    setShopper(null);
+    setFilter("");
+    setFromDate(null);
+    setToDate(null);
+  };
 
   return (
     <Layout>
@@ -53,7 +61,7 @@ const StatsContainer = () => {
             <Box sx={{ width: "300px", marginBottom: "10px" }}>
               <Button
                 variant="outlined"
-                onClick={() => setStatType(undefined)}
+                onClick={handleReturn}
                 color="error"
                 size="small"
                 sx={{
