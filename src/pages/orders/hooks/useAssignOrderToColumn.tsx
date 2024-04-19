@@ -22,6 +22,13 @@ const useAssignOrderToColumn = ({
       headerAlign: "center",
     },
     {
+      field: "type",
+      headerName: t("type"),
+      flex: 1,
+      align: "center",
+      headerAlign: "center",
+    },
+    {
       field: "action",
       headerName: t("assign_to"),
       flex: 1,

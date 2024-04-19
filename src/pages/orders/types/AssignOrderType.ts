@@ -7,4 +7,5 @@ export type AssignDriver = {
     id: string,
     shopper: string;
     completedTripsToday?: number;
+    type: string;
 }
