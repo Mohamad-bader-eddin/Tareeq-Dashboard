@@ -32,7 +32,8 @@ const AddAppVarialbesPeriodsForm = ({
             <MathInfo>
               <h3>Taxi Variables:</h3>
               <h4 className="math">
-                Total = X + ( Y * ( expected_kilometers ) + ( Z * Minutes))
+                Total = X + ( Y * ( Expected Kilometers ) + ( Z * Minutes)) + E
+                + (W * Waiting time)
               </h4>
               {/* <h4 className="math">
                 Total = X + ( Y * pow ( expected_kilometers , power ) ) + ( Z *
