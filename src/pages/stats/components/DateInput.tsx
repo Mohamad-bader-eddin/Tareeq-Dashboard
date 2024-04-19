@@ -85,6 +85,9 @@ const DateInput = ({ date, setDate, label, disabled }: DateInputProps) => {
                     helperText: errorMessage,
                     sx: { direction: "ltr" },
                   },
+                  field: {
+                    readOnly: true,
+                  },
                 }}
               />
             </DemoContainer>

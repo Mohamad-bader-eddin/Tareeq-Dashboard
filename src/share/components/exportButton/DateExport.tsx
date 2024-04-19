@@ -32,7 +32,7 @@ const DateExport = ({ value, setValue, label }: DateExportProps) => {
             value={value}
             label={label}
             slotProps={{
-              field: { clearable: true, onClear: () => {} },
+              field: { clearable: true, onClear: () => {}, readOnly: true },
             }}
           />
         </DemoContainer>

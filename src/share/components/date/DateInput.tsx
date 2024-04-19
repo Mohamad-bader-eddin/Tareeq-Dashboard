@@ -105,6 +105,9 @@ const DateInput = <T extends Record<string, unknown>>({
                       ),
                     sx: { direction: "ltr" },
                   },
+                  field: {
+                    readOnly: true,
+                  },
                 }}
               />
             </DemoContainer>

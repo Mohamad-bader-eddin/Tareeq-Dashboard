@@ -51,7 +51,7 @@ const PushNotificationsForm = ({
               options={options}
               loading={isLoading}
             />
-            {formik.values.userType?.name === "one-user" && (
+            {formik.values.userType?.name === "Specific Client" && (
               <AutocompleteInput
                 options={userOptions}
                 label={t("search_user")}
@@ -60,7 +60,7 @@ const PushNotificationsForm = ({
                 loading={clientsIsLoading}
               />
             )}
-            {formik.values.userType?.name === "one-driver" && (
+            {formik.values.userType?.name === "Specific Driver" && (
               <AutocompleteInput
                 options={driversOptions}
                 label={t("search_driver")}
