@@ -6,6 +6,7 @@ export type OrderQueryType = {
     toDate?: string;
     phone?: string;
     name?: string;
+    lasName?: string;
 }
 
 export type OrderFilterType = {
@@ -14,4 +15,5 @@ export type OrderFilterType = {
     toDate?: string;
     phone?: string;
     name?: string;
+    lasName?: string;
 }

@@ -49,7 +49,7 @@ const usePushNotificationsFormValidation = () => {
         notification_template_id: values.notification?.id as string,
         type_id: values.userType?.id as string,
         id:
-          values.userType?.name === "one-user"
+          values.userType?.name === "Specific Client"
             ? values.user?.id
             : values.driver?.id,
         description: values.message,

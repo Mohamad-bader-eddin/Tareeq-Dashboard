@@ -36,6 +36,7 @@ const ScheduleOrdersContainer = () => {
   const [orderNumber, setOrderNumber] = useState("");
   const [phone, setPhone] = useState("");
   const [name, setName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [fromDate, setFromDate] = useState<Date | null>(null);
   const [toDate, setToDate] = useState<Date | null>(null);
   const [queryParams, setQueryParams] = useState<OrderFilterType>(
@@ -53,6 +54,7 @@ const ScheduleOrdersContainer = () => {
     toDate: queryParams.toDate,
     phone: queryParams.phone,
     name: queryParams.name,
+    lasName: queryParams.lasName,
   });
   const { columns } = useScheduleOrdersColumns({
     setOpen: setOPenAssignDialog,
@@ -136,6 +138,7 @@ const ScheduleOrdersContainer = () => {
       orderNumber: orderNumber,
       name: name,
       phone: phone,
+      lasName: lastName,
     });
     refetch();
     setOpenAdvanceSearchDialog(false);
@@ -184,6 +187,8 @@ const ScheduleOrdersContainer = () => {
               setName={setName}
               handleAgree={handleSearchAgree}
               handleClick={handleSearchClick}
+              lastName={lastName}
+              setLastName={setLastName}
             />
           </Box>
         </Stack>

@@ -10,8 +10,9 @@ const fetchActiveOrders = ({ queryKey }: { queryKey: QueryKey }) => {
   const toDate = queryKey[5];
   const phone = queryKey[6];
   const name = queryKey[7];
+  const lastName = queryKey[8];
   return axiosInstance.get(
-    `/api/admin/order/getBystatus/active?page=${page}&limit=${limit}&order_id=${orderNumber}&from=${fromDate}&to=${toDate}&phone=${phone}&name=${name}`
+    `/api/admin/order/getBystatus/active?page=${page}&limit=${limit}&order_id=${orderNumber}&from=${fromDate}&to=${toDate}&phone=${phone}&name=${name}&last_name=${lastName}`
   );
 };
 
@@ -23,6 +24,7 @@ const useAvtiveOrdersQuery = ({
   toDate,
   name,
   phone,
+  lasName,
 }: OrderQueryType) => {
   return useQuery(
     [
@@ -34,6 +36,7 @@ const useAvtiveOrdersQuery = ({
       toDate,
       phone,
       name,
+      lasName,
     ],
     fetchActiveOrders,
     {

@@ -21,6 +21,8 @@ const AdvanceSearchDialog = ({
   setOrderNumber,
   phone,
   setPhone,
+  lastName,
+  setLastName,
 }: AdvanceSearchDialogProps) => {
   const { t } = useTranslation();
   return (
@@ -68,6 +70,11 @@ const AdvanceSearchDialog = ({
               value={name}
               setValue={setName}
             />
+            <CustomInput
+              label={t("last_name")}
+              value={lastName}
+              setValue={setLastName}
+            />
           </Box>
         }
       />
@@ -88,6 +95,8 @@ type AdvanceSearchDialogProps = {
   setPhone: Dispatch<SetStateAction<string>>;
   name: string;
   setName: Dispatch<SetStateAction<string>>;
+  lastName: string;
+  setLastName: Dispatch<SetStateAction<string>>;
   handleAgree: () => void;
   handleClick: () => void;
 };
