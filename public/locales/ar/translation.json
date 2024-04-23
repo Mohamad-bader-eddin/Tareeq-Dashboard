@@ -264,6 +264,7 @@
   "to_date": "إلى تاريخ",
   "client_phone": "رقم الهاتف الزبون",
   "client_name": "اسم الزبون",
+  "client_last_name": "كنية الزبون",
   "user_note": "ملاحظة الزبون",
   "total": "مجموع"
 }

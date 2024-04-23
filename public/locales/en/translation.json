@@ -264,6 +264,7 @@
   "to_date": "To Date",
   "client_phone": "Client Phone",
   "client_name": "Client Name",
+  "client_last_name": "Client Last name",
   "user_note": "User Note",
   "total": "Total"
 }

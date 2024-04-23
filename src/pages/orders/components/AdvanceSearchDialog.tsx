@@ -71,7 +71,7 @@ const AdvanceSearchDialog = ({
               setValue={setName}
             />
             <CustomInput
-              label={t("last_name")}
+              label={t("client_last_name")}
               value={lastName}
               setValue={setLastName}
             />
