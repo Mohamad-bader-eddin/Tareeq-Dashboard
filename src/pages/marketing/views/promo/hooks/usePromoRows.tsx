@@ -8,7 +8,7 @@ const usePromoRows = ({ data }: { data: Promo[] }) => {
   data?.forEach((el) =>
     rows.push({
       id: el.id as string,
-      amount: convertPriceToSY(parseInt(el?.amount)),
+      amount: convertPriceToSY(parseFloat(el?.amount)),
       type: getType(el.type),
       code: el.code,
       isActive: el.is_active,
