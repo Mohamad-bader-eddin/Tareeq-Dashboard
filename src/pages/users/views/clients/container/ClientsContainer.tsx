@@ -15,22 +15,39 @@ import useExportClientsQuery from "../hooks/useExportClientsQuery";
 import ServerTable from "../../../../../share/components/table/ServerTable";
 import { format } from "date-fns";
 import ExportButton from "../../../../../share/components/exportButton/ExportButton";
+import { UserQueryFilterType } from "../../../types/QueryType";
+import { Box, Stack } from "@mui/material";
+import useMedeaQueries from "../../../../../share/utils/useMideaQuery";
+import AdvanceSearchDialog from "../components/AdvanceSearchDialog";
 
 const ClientsContainer = () => {
   const [openDeleteDialog, setOpenDeleteDialog] = useState(false);
+  const { mobileL } = useMedeaQueries();
   const [selectedId, setSelectedId] = useState<GridRowId | null>(null);
   const [openError, setOpenError] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
   const [openSucsses, setOpenSucsses] = useState(false);
   const [msg, setMsg] = useState("");
+  const [openAdvanceSearchDialog, setOpenAdvanceSearchDialog] = useState(false);
+  const [id, setId] = useState("");
+  const [phone, setPhone] = useState("");
+  const [name, setName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [queryParams, setQueryParams] = useState<UserQueryFilterType>(
+    {} as UserQueryFilterType
+  );
   const [paginationModel, setPaginationModel] = useState({
     page: 0,
     pageSize: 10,
   });
-  const { data, isLoading, refetch } = useClientsQuery(
-    paginationModel.page,
-    paginationModel.pageSize
-  );
+  const { data, isLoading, refetch } = useClientsQuery({
+    page: paginationModel.page,
+    limit: paginationModel.pageSize,
+    id: queryParams.id,
+    phone: queryParams.phone,
+    name: queryParams.name,
+    last_name: queryParams.last_name,
+  });
   const { t } = useTranslation();
   const navigate = useNavigate();
   const handleInfo = (id: GridRowId) => {
@@ -88,21 +105,57 @@ const ClientsContainer = () => {
       }
     );
   };
+  const handleSearchClick = () => {
+    setOpenAdvanceSearchDialog((prev) => !prev);
+  };
+  const handleSearchAgree = () => {
+    setQueryParams({
+      id: id,
+      name: name,
+      phone: phone,
+      last_name: lastName,
+    });
+    refetch();
+    setOpenAdvanceSearchDialog(false);
+  };
 
   return (
     <Layout>
       <PaperContainer>
-        <ExportButton
-          handleClick={handleExportClick}
-          openDialog={openDialog}
-          setOpenDialog={setOpenDialog}
-          from={from}
-          setFrom={setFrom}
-          to={to}
-          setTo={setTo}
-          handleAgree={handleAgreeDownload}
-          agreeLoading={exportLoading}
-        />
+        <Stack
+          direction={mobileL ? "column" : "row"}
+          alignItems={mobileL ? "start" : "center"}
+        >
+          <Box>
+            <ExportButton
+              handleClick={handleExportClick}
+              openDialog={openDialog}
+              setOpenDialog={setOpenDialog}
+              from={from}
+              setFrom={setFrom}
+              to={to}
+              setTo={setTo}
+              handleAgree={handleAgreeDownload}
+              agreeLoading={exportLoading}
+            />
+          </Box>
+          <Box sx={{ marginInlineStart: "15px" }}>
+            <AdvanceSearchDialog
+              openDialog={openAdvanceSearchDialog}
+              setOpenDialog={setOpenAdvanceSearchDialog}
+              id={id}
+              setId={setId}
+              phone={phone}
+              setPhone={setPhone}
+              name={name}
+              setName={setName}
+              handleAgree={handleSearchAgree}
+              handleClick={handleSearchClick}
+              lastName={lastName}
+              setLastName={setLastName}
+            />
+          </Box>
+        </Stack>
         <ServerTable
           columns={columns}
           rows={rows}

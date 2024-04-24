@@ -20,6 +20,8 @@ import useExportDriversQuery from "../hooks/useExportDriversQuery";
 import ServerTable from "../../../../../share/components/table/ServerTable";
 import { format } from "date-fns";
 import ExportButton from "../../../../../share/components/exportButton/ExportButton";
+import { UserQueryFilterType } from "../../../types/QueryType";
+import AdvanceSearchDialog from "../components/AdvanceSearchDialog";
 
 const ShoppersContainer = () => {
   const { mobileL } = useMedeaQueries();
@@ -29,6 +31,14 @@ const ShoppersContainer = () => {
   const [errorMsg, setErrorMsg] = useState("");
   const [openSucsses, setOpenSucsses] = useState(false);
   const [msg, setMsg] = useState("");
+  const [openAdvanceSearchDialog, setOpenAdvanceSearchDialog] = useState(false);
+  const [id, setId] = useState("");
+  const [phone, setPhone] = useState("");
+  const [name, setName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [queryParams, setQueryParams] = useState<UserQueryFilterType>(
+    {} as UserQueryFilterType
+  );
   const { t } = useTranslation();
   const navigate = useNavigate();
   const { mutate: availabilityMutate, isLoading: availabilityLoading } =
@@ -74,10 +84,14 @@ const ShoppersContainer = () => {
     page: 0,
     pageSize: 10,
   });
-  const { data, isLoading, refetch } = useDeiversQuery(
-    paginationModel.page,
-    paginationModel.pageSize
-  );
+  const { data, isLoading, refetch } = useDeiversQuery({
+    page: paginationModel.page,
+    limit: paginationModel.pageSize,
+    id: queryParams.id,
+    phone: queryParams.phone,
+    name: queryParams.name,
+    last_name: queryParams.last_name,
+  });
   const { rows } = useShoppersRows({ data: data?.data.content });
   const handleAgree = () => {
     mutate(selectedId as GridRowId, {
@@ -124,6 +138,19 @@ const ShoppersContainer = () => {
       }
     );
   };
+  const handleSearchClick = () => {
+    setOpenAdvanceSearchDialog((prev) => !prev);
+  };
+  const handleSearchAgree = () => {
+    setQueryParams({
+      id: id,
+      name: name,
+      phone: phone,
+      last_name: lastName,
+    });
+    refetch();
+    setOpenAdvanceSearchDialog(false);
+  };
   return (
     <Layout>
       <PaperContainer>
@@ -156,6 +183,22 @@ const ShoppersContainer = () => {
               setTo={setTo}
               handleAgree={handleAgreeDownload}
               agreeLoading={exportLoading}
+            />
+          </Box>
+          <Box sx={{ marginInlineStart: "15px" }}>
+            <AdvanceSearchDialog
+              openDialog={openAdvanceSearchDialog}
+              setOpenDialog={setOpenAdvanceSearchDialog}
+              id={id}
+              setId={setId}
+              phone={phone}
+              setPhone={setPhone}
+              name={name}
+              setName={setName}
+              handleAgree={handleSearchAgree}
+              handleClick={handleSearchClick}
+              lastName={lastName}
+              setLastName={setLastName}
             />
           </Box>
         </Stack>

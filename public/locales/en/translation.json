@@ -266,5 +266,8 @@
   "client_name": "Client Name",
   "client_last_name": "Client Last name",
   "user_note": "User Note",
-  "total": "Total"
+  "total": "Total",
+  "driver_phone": "Driver Phone",
+  "driver_name": "Driver Name",
+  "driver_last_name": "Driver Last name"
 }

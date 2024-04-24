@@ -266,5 +266,8 @@
   "client_name": "اسم الزبون",
   "client_last_name": "كنية الزبون",
   "user_note": "ملاحظة الزبون",
-  "total": "مجموع"
+  "total": "مجموع",
+  "driver_phone": "رقم الهاتف السائق",
+  "driver_name": "اسم السائق",
+  "driver_last_name": "كنية السائق"
 }
