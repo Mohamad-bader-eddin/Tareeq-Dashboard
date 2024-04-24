@@ -47,7 +47,19 @@ const AddPromoCodeForm = ({
         return (
           <Form>
             <Input formik={formik} label={t("code")} name="code" />
-            <Input formik={formik} label={t("amount")} name="amount" />
+            <SelectInput
+              formik={formik}
+              label={t("type")}
+              name="type"
+              options={typeOptions}
+            />
+            <Input
+              formik={formik}
+              label={`${t("amount")}${
+                formik.values.type === "always" ? " %" : ""
+              }`}
+              name="amount"
+            />
             <Input
               formik={formik}
               label={t("description")}
@@ -59,12 +71,6 @@ const AddPromoCodeForm = ({
               label={t("is_active")}
               name="isActive"
               options={options}
-            />
-            <SelectInput
-              formik={formik}
-              label={t("type")}
-              name="type"
-              options={typeOptions}
             />
             {formik.values?.type === "period" && (
               <DateInput
