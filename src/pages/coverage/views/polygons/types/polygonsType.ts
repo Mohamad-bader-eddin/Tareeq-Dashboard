@@ -23,3 +23,8 @@ type PolygonStore = {
 export type PolygonsStore = {
     polygons: PolygonStore[]
 }
+
+export type PolygonImport = {
+    file: File;
+    zone_id: string;
+}

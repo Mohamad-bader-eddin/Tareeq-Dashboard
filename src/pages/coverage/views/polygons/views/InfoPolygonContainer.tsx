@@ -29,13 +29,13 @@ const InfoPolygonContainer = () => {
         <Typography variant="h6" sx={{ mb: "20px" }}>
           {t("info")}
         </Typography>
-        <Box height={"600px"}>
+        <Box height={"440px"}>
           <iframe
             ref={iframeRef}
             src={`https://tareeq-map.netlify.app/#/admin/coverage/polygons?id=${id}&token=${token}`}
             title="Iframe Title"
             width={"100%"}
-            height={"597.6px"}
+            height={"440px"}
             style={{ border: "0", background: "transparent" }}
           />
         </Box>

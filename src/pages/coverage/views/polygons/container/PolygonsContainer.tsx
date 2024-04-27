@@ -71,7 +71,7 @@ const PolygonsContainer = () => {
             mb: "20px",
           }}
         >
-          {t("add_polygon")}
+          {t("import_polygon")}
         </Button>
         <Table
           columns={columns}

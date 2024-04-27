@@ -11,7 +11,9 @@ import SubmitButton from "../../../../../../share/components/submitButton/Submit
 import AutocompleteInput from "../../../../../../share/components/autoComplete/AutocompleteInput";
 import useZoneQuery from "../../../../../../share/hooks/useZoneQuery";
 import useZoneMaper from "../../../../../../share/hooks/useZoneMaper";
-import PolygonsMap from "../../components/PolygonsMap";
+import UploadExcelButton from "../../components/UploadExcelButton";
+import { Box } from "@mui/material";
+// import PolygonsMap from "../../components/PolygonsMap";
 
 const AddPolygonsForm = ({
   initialValues,
@@ -39,7 +41,12 @@ const AddPolygonsForm = ({
               options={options}
               loading={isLoading}
             />
-            <PolygonsMap formik={formik} />
+            <UploadExcelButton
+              formik={formik}
+              name="file"
+              title="Upload File"
+            />
+            {/* <PolygonsMap formik={formik} /> */}
             {/* <FieldArray name="locations">
               {({ push, remove }) => (
                 <Box>
@@ -144,10 +151,12 @@ const AddPolygonsForm = ({
                 </Box>
               )}
             </FieldArray> */}
-            <SubmitButton
-              name={t("add")}
-              disabled={!formik.isValid || formik.isSubmitting}
-            />
+            <Box sx={{ width: "200px" }}>
+              <SubmitButton
+                name={t("add")}
+                disabled={!formik.isValid || formik.isSubmitting}
+              />
+            </Box>
           </Form>
         );
       }}

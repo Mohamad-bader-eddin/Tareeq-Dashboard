@@ -9,7 +9,7 @@ export type Location = {
 
 export type initialValuesType = {
     zone: Option | null;
-    locations: Location[];
+    file: File | undefined;
 };
 
 export type validationSchemaType = Yup.ObjectSchema<{
@@ -17,6 +17,7 @@ export type validationSchemaType = Yup.ObjectSchema<{
         name: string;
         id: string;
     };
+    file: unknown;
     // locations: {
     //     latitude: number;
     //     longitude: number;
@@ -26,6 +27,7 @@ export type validationSchemaType = Yup.ObjectSchema<{
         id: undefined;
         name: undefined;
     };
+    file: undefined
     // locations: "";
 }, "">
 

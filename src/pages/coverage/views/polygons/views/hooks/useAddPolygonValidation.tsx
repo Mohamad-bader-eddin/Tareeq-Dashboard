@@ -1,7 +1,7 @@
 import * as Yup from "yup";
 import { FormikHelpers } from "formik";
 import { useTranslation } from "react-i18next";
-import { Location, initialValuesType } from "../types/AddPolygonsFormType";
+import { initialValuesType } from "../types/AddPolygonsFormType";
 import { useState } from "react";
 import useAddPolugonQuery from "./useAddPolugonQuery";
 import { getErrorMessage } from "../../../../../../share/utils/getErrorMessage";
@@ -15,7 +15,8 @@ const useAddPolygonValidation = () => {
   const { mutate } = useAddPolugonQuery();
   const initialValues: initialValuesType = {
     zone: null,
-    locations: [{} as Location],
+    // locations: [{} as Location],
+    file: undefined,
   };
 
   const validationSchema = Yup.object().shape({
@@ -25,6 +26,13 @@ const useAddPolygonValidation = () => {
         name: Yup.string().required(t("required")),
       })
       .required(t("required")),
+    file: Yup.mixed()
+      .required("File is required")
+      .test("fileType", "Only Excel files are allowed", (value) => {
+        if (!value) return true; // No file selected, validation passed
+        const file = value as File;
+        return file.name.endsWith(".xlsx");
+      }),
     // locations: Yup.array().of(
     //   Yup.object().shape({
     //     latitude: Yup.number()
@@ -43,14 +51,15 @@ const useAddPolygonValidation = () => {
     values: initialValuesType,
     formikHelpers: FormikHelpers<initialValuesType>
   ) => {
-    const polygons = values.locations.map((loc) => ({
-      lat: loc.latitude,
-      long: loc.longitude,
-      zone_id: values.zone?.id as string,
-    }));
+    // const polygons = values.locations.map((loc) => ({
+    //   lat: loc.latitude,
+    //   long: loc.longitude,
+    //   zone_id: values.zone?.id as string,
+    // }));
     mutate(
       {
-        polygons,
+        file: values?.file as File,
+        zone_id: values.zone?.id as string,
       },
       {
         onSuccess: (response) => {
@@ -66,8 +75,8 @@ const useAddPolygonValidation = () => {
         },
       }
     );
-    console.log("Form Data :", polygons);
-    formikHelpers.resetForm();
+    // console.log("Form Data :", polygons);
+    // formikHelpers.resetForm();
   };
   return {
     initialValues,

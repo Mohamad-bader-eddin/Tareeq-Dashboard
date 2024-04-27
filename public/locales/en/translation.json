@@ -145,6 +145,7 @@
   "location_votes": "Location Votes",
   "add_zone": "Add Zone",
   "add_polygon": "Add Polygon",
+  "import_polygon": "Import Polygon",
   "zone_name": "Zone name",
   "latitude": "Latitude",
   "longitude": "Longitude",

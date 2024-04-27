@@ -145,6 +145,7 @@
   "location_votes": "تصويتات الموقع",
   "add_zone": "إضافة موقع",
   "add_polygon": "إضافة مضلع",
+  "import_polygon": "استيراد مضلع",
   "zone_name": "اسم المنطقة",
   "latitude": "خط العرض",
   "longitude": "خط الطول",

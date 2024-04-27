@@ -1,9 +1,12 @@
 import { useMutation } from "react-query";
-import axiosInstance from "../../../../../../auth/axiosUtils";
-import { PolygonsStore } from "../../types/polygonsType";
+import { PolygonImport } from "../../types/polygonsType";
+import axiosMultipart from "../../../../../../auth/axiosMultipart";
 
-const addPolygon = (polygon: PolygonsStore) => {
-  return axiosInstance.post("/api/admin/polygon/store", polygon);
+const addPolygon = (polygon: PolygonImport) => {
+  const formData = new FormData();
+  formData.append("file", polygon.file);
+  formData.append("zone_id", polygon.zone_id);
+  return axiosMultipart.post("/api/admin/polygon/import", formData);
 };
 
 const useAddPolugonQuery = () => {

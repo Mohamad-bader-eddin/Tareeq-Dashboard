@@ -1,7 +1,7 @@
 import { GridActionsCellItem, GridColDef, GridRowId } from "@mui/x-data-grid";
 import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
-import BorderColorIcon from "@mui/icons-material/BorderColor";
+import PreviewIcon from "@mui/icons-material/Preview";
 import DeleteIcon from "@mui/icons-material/DeleteOutlined";
 
 const usePolygonsColumns = ({
@@ -34,7 +34,7 @@ const usePolygonsColumns = ({
         renderCell: (params) => {
           return [
             <GridActionsCellItem
-              icon={<BorderColorIcon />}
+              icon={<PreviewIcon />}
               label="View"
               color="info"
               onClick={() => handleInfoPolygon(params.id)}
