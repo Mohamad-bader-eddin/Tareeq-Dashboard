@@ -270,5 +270,6 @@
   "total": "مجموع",
   "driver_phone": "رقم الهاتف السائق",
   "driver_name": "اسم السائق",
-  "driver_last_name": "كنية السائق"
+  "driver_last_name": "كنية السائق",
+  "start_at": "بدأ في"
 }

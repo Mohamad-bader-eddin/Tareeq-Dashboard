@@ -184,7 +184,7 @@ const InfoOrder = () => {
                     </span>
                     {t("assigned_at")} :
                   </h5>
-                  <h5 className="val">{data?.data?.content?.started_at}</h5>
+                  <h5 className="val">{data?.data?.content?.assign_at}</h5>
                 </div>
               </div>
               <div className="row">
@@ -255,6 +255,17 @@ const InfoOrder = () => {
                         )}
                   </h5>
                 </div>
+                <div className="col-6">
+                  <h5 className="atr">
+                    <span>
+                      <TripOriginOutlinedIcon sx={{ fontSize: "10px" }} />
+                    </span>
+                    {t("start_at")} :
+                  </h5>
+                  <h5 className="val">{data?.data?.content?.started_at}</h5>
+                </div>
+              </div>
+              <div className="row">
                 <div className="col-6">
                   <h5 className="atr">
                     <span>

@@ -270,5 +270,6 @@
   "total": "Total",
   "driver_phone": "Driver Phone",
   "driver_name": "Driver Name",
-  "driver_last_name": "Driver Last name"
+  "driver_last_name": "Driver Last name",
+  "start_at": "Started At"
 }
