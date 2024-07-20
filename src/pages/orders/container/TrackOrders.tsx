@@ -58,7 +58,7 @@ const TrackOrders = () => {
         </Typography>
         <Box height={"400px"}>
           <iframe
-            src={`https://tareeq-map.netlify.app/#/admin/track-order?id=${id}&token=${token}`}
+            src={`https://maps.tareeq.app/#/admin/track-order?id=${id}&token=${token}`}
             title="Iframe Title"
             width={"100%"}
             height={"400px"}

@@ -32,7 +32,7 @@ const InfoPolygonContainer = () => {
         <Box height={"440px"}>
           <iframe
             ref={iframeRef}
-            src={`https://tareeq-map.netlify.app/#/admin/coverage/polygons?id=${id}&token=${token}`}
+            src={`https://maps.tareeq.app/#/admin/coverage/polygons?id=${id}&token=${token}`}
             title="Iframe Title"
             width={"100%"}
             height={"440px"}

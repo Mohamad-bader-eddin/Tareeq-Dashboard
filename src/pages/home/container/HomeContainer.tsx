@@ -103,7 +103,7 @@ const HomeContainer = () => {
         </Typography>
         <Box height={"400px"}>
           <iframe
-            src={`https://tareeq-map.netlify.app/#/admin/bird-eye?token=${token}`}
+            src={`https://maps.tareeq.app/#/admin/bird-eye?token=${token}`}
             title="Iframe Title"
             width={"100%"}
             height={"400px"}

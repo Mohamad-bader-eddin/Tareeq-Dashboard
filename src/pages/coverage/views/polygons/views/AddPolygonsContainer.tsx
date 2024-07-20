@@ -45,7 +45,7 @@ const AddPolygonsContainer = () => {
         {/* <Box height={"600px"}>
           <iframe
             ref={iframeRef}
-            src={`https://tareeq-map.netlify.app/#/admin/coverage/add-polygons-map?token=${token}`}
+            src={`https://maps.tareeq.app/#/admin/coverage/add-polygons-map?token=${token}`}
             title="Iframe Title"
             width={"100%"}
             height={"597.6px"}

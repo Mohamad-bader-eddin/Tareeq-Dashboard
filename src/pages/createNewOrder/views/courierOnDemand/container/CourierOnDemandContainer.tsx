@@ -44,7 +44,7 @@ const CourierOnDemandContainer = () => {
             <Box sx={{ height: "1329.6px", width: "100%" }}>
               <iframe
                 ref={iframeRef}
-                src={`https://tareeq-map.netlify.app/#/admin/create-order?id=${phone.id}&token=${token}`}
+                src={`https://maps.tareeq.app/#/admin/create-order?id=${phone.id}&token=${token}`}
                 title="Iframe Title"
                 width={"100%"}
                 height={"1329.6px"}
