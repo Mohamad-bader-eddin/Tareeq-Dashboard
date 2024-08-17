@@ -271,5 +271,6 @@
   "driver_phone": "رقم الهاتف السائق",
   "driver_name": "اسم السائق",
   "driver_last_name": "كنية السائق",
-  "start_at": "بدأ في"
+  "start_at": "بدأ في",
+  "accepted_on_location": "تم القبول في الموقع"
 }

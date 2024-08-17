@@ -275,6 +275,17 @@ const InfoOrder = () => {
                   </h5>
                   <h5 className="val">{data?.data?.content?.user_note}</h5>
                 </div>
+                <div className="col-6">
+                  <h5 className="atr">
+                    <span>
+                      <TripOriginOutlinedIcon sx={{ fontSize: "10px" }} />
+                    </span>
+                    {t("accepted_on_location")} :
+                  </h5>
+                  <h5 className="val">
+                    {data?.data?.content?.accepted_on_location}
+                  </h5>
+                </div>
               </div>
             </StyledInfo>
           </PaperContainer>

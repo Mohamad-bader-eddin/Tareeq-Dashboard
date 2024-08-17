@@ -271,5 +271,6 @@
   "driver_phone": "Driver Phone",
   "driver_name": "Driver Name",
   "driver_last_name": "Driver Last name",
-  "start_at": "Started At"
+  "start_at": "Started At",
+  "accepted_on_location": "Accepted on Location"
 }
