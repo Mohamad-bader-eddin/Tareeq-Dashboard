@@ -238,6 +238,7 @@
   "extra_value": "Extra value (E)",
   "initial_value": "Initial value (X)",
   "daily_total_earn": "Daily Total Earn",
+  "daily_kilometer":"Daily Kilometer",
   "total_earn": "Total Earn",
   "transaction_type": "Transaction Type",
   "add_transaction_type": "Add Transaction Type",

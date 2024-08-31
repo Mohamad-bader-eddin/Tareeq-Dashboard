@@ -116,7 +116,17 @@ function App() {
       ]);
     }
   });
+  if (navigator.serviceWorker) {
+    console.log("my service is working");
+    navigator.serviceWorker.addEventListener('message', (event) => {
+    console.log("got message from my service");
 
+      if (event.data && event.data.type === 'PLAY_SOUND') {
+        const audio = new Audio(event.data.sound);
+        audio.play().catch((error) => console.error('Failed to play sound:', error));
+        }
+    });
+  }
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider theme={theme}>

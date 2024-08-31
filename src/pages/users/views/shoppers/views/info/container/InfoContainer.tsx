@@ -200,6 +200,18 @@ const InfoContainer = () => {
                 {convertPriceToSY(data?.data?.content?.daily_total_earn)}
               </Typography>
             </Stack>
+            <Stack direction={"row"} alignItems={"center"}>
+              <Typography variant="body1" sx={{ fontWeight: "bold" }}>
+                <Typography component={"span"} sx={{ marginInlineEnd: "6px" }}>
+                  <TripOriginOutlinedIcon sx={{ fontSize: "10px" }} />
+                </Typography>
+                {t("daily_kilometer")} :
+              </Typography>
+              <Typography variant="body1">
+                {data?.data?.content?.daily_total_km +" K.M"}
+              </Typography>
+            </Stack>
+
           </Box>
         </PaperContainer>
       )}

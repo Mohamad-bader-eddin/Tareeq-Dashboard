@@ -35,6 +35,8 @@ const AddFundsForm = ({
               options={transactionOptions}
             />
             <Input formik={formik} label={t("amount")} name="amount" />
+            <Input formik={formik} label={t("order_no")} name="order_id" />
+
             <Box sx={{ width: "200px" }}>
               <SubmitButton
                 name={t("save")}

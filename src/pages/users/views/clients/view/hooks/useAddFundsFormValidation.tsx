@@ -17,10 +17,12 @@ const useAddFundsFormValidation = (id: string) => {
   const { mutate } = useAddFundsWalletQuery();
   const initialValues = {
     amount: "",
+    order_id:null,
     transactionType: null,
   };
   const validationSchema = Yup.object({
     amount: Yup.string().required(t("required")),
+    order_id:Yup.number().positive().nullable(),
     transactionType: Yup.object()
       .shape({
         id: Yup.string().required(t("required")),

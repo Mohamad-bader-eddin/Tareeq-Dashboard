@@ -20,19 +20,43 @@ firebase.initializeApp(firebaseConfig);
 
 // Retrieve firebase messaging
 // eslint-disable-next-line no-undef
+console.log("firebase init");
 const messaging = firebase.messaging();
 
 // messaging.onBackgroundMessage(function (payload) {
-messaging.onBackgroundMessage(function () {
-  // console.log("Received background message ", payload);
-  // const notificationTitle = payload.notification.title;
-  // const notificationOptions = {
-  //   body: payload.notification.body,
-  //   icon: payload.notification.icon,
-  // };
-  // // eslint-disable-next-line no-restricted-globals
-  // return self.registration.showNotification(
-  //   notificationTitle,
-  //   notificationOptions
-  // );
+messaging.onBackgroundMessage(function (payload) {
+  console.log("Received background message ", payload);
+  const data = payload.data;
+  const notificationTitle = data.title;
+  var notificationOptions ;
+console.log(data);
+if (payload.data?.title.includes("New")) {
+    console.log("new order");
+
+    var notificationOptions = {
+        body: data.body,
+        data:{sound: "/public/audio/audio1.wav"}
+    };
+
+}
+else if(payload.data?.title.includes("scheduled")){
+
+    var notificationOptions = {
+        body: data.body,
+        data:{sound: "/public/audio/audio2.wav"}
+    };
+
+}
+self.clients.matchAll({ type: 'window' }).then((clients) => {
+  if (clients.length > 0) {
+    clients[0].postMessage({
+      type: 'PLAY_SOUND',
+      sound: "/audio/audio1.wav"
+    });
+  }
+});
+  return self.registration.showNotification(
+    notificationTitle,
+    notificationOptions
+  );
 });
