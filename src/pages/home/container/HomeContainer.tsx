@@ -44,9 +44,9 @@ const HomeContainer = () => {
             </WedgitWrapper>
             <WedgitWrapper>
               <Wedgit
-                icon={<MinorCrashOutlinedIcon fontSize="small" />}
-                title="Active Drivers"
-                value={data?.data?.content?.drivers_orders}
+                icon={<OnlinePredictionIcon fontSize="small" />}
+                title="Active Orders"
+                value={data?.data?.content?.active_orders}
               />
             </WedgitWrapper>
             <WedgitWrapper>
@@ -75,9 +75,9 @@ const HomeContainer = () => {
             </WedgitWrapper>
             <WedgitWrapper>
               <Wedgit
-                icon={<OnlinePredictionIcon fontSize="small" />}
-                title="Active Orders"
-                value={data?.data?.content?.active_orders}
+                icon={<MinorCrashOutlinedIcon fontSize="small" />}
+                title="Arrived Odrers"
+                value={data?.data?.content?.drivers_orders}
               />
             </WedgitWrapper>
             <WedgitWrapper>

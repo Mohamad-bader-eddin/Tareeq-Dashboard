@@ -20,43 +20,30 @@ firebase.initializeApp(firebaseConfig);
 
 // Retrieve firebase messaging
 // eslint-disable-next-line no-undef
-console.log("firebase init");
 const messaging = firebase.messaging();
 
-// messaging.onBackgroundMessage(function (payload) {
 messaging.onBackgroundMessage(function (payload) {
-  console.log("Received background message ", payload);
-  const data = payload.data;
-  const notificationTitle = data.title;
-  var notificationOptions ;
-console.log(data);
-if (payload.data?.title.includes("New")) {
-    console.log("new order");
+  // messaging.onBackgroundMessage(function () {
+  // console.log("Received background message ", payload);
+  const notificationTitle = payload?.notification?.title
+    ? payload?.notification?.title
+    : "Tareeq";
+  const notificationOptions = {
+    body: payload?.notification?.body
+      ? payload?.notification?.body
+      : "New Notification",
+    icon: "./images/icon.png",
+  };
+  // eslint-disable-next-line no-restricted-globals
+  self.registration.showNotification(notificationTitle, notificationOptions);
 
-    var notificationOptions = {
-        body: data.body,
-        data:{sound: "/public/audio/audio1.wav"}
-    };
-
-}
-else if(payload.data?.title.includes("scheduled")){
-
-    var notificationOptions = {
-        body: data.body,
-        data:{sound: "/public/audio/audio2.wav"}
-    };
-
-}
-self.clients.matchAll({ type: 'window' }).then((clients) => {
-  if (clients.length > 0) {
-    clients[0].postMessage({
-      type: 'PLAY_SOUND',
-      sound: "/audio/audio1.wav"
+  // Play audio
+  // Post message to clients to play audio
+  self.clients.matchAll({ includeUncontrolled: true }).then((clients) => {
+    clients.forEach((client) => {
+      client.postMessage({
+        type: "PLAY_AUDIO",
+      });
     });
-  }
-});
-  return self.registration.showNotification(
-    notificationTitle,
-    notificationOptions
-  );
+  });
 });

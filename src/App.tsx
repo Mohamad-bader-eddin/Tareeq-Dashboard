@@ -26,6 +26,7 @@ import { messaging } from "./firebase/config";
 import { useNotifications } from "./context/Notifications";
 import { useFcmToken } from "./context/FcmToken";
 import { useOtherNotifications } from "./context/OtherNotifications";
+import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 
 const queryClient = new QueryClient();
 
@@ -58,6 +59,9 @@ function App() {
 
   const VITE_APP_VAPID_KEY =
     "BDCJ6vx2pRNdMcf2mhjecpY0stmOluPrfdlUFjCp_Bf3BugM-3fGpxB0d1aIorSKry_OFSs0bsUznEI-tH2Igdc";
+
+  // Register service worker
+  serviceWorkerRegistration.register();
 
   async function requestPermission() {
     //requesting permission using Notification API
@@ -116,17 +120,17 @@ function App() {
       ]);
     }
   });
-  if (navigator.serviceWorker) {
-    console.log("my service is working");
-    navigator.serviceWorker.addEventListener('message', (event) => {
-    console.log("got message from my service");
 
-      if (event.data && event.data.type === 'PLAY_SOUND') {
-        const audio = new Audio(event.data.sound);
-        audio.play().catch((error) => console.error('Failed to play sound:', error));
-        }
-    });
-  }
+  navigator.serviceWorker.addEventListener("message", (event) => {
+    if (event.data && event.data.type === "PLAY_AUDIO") {
+      // Play audio when a background message is received
+      const audio = new Audio("/audio/audio1.wav");
+      audio.play().catch((error) => {
+        console.error("Audio play failed: ", error);
+      });
+    }
+  });
+
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider theme={theme}>
