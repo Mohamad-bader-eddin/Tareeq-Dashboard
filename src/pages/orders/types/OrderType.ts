@@ -69,6 +69,8 @@ export type User = {
     platform: null;
     image: null;
     created_at: Date;
+    completed_orders_count?: number;
+    canceled_orders_count?: number
 }
 
 export type OrderLogType = {

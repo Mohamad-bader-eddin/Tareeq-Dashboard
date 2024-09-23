@@ -2,14 +2,23 @@ import { Paper } from "@mui/material";
 import { useDarkMode } from "../../../context/DarkMode";
 import { theme } from "../../utils/theme";
 
-const PaperContainer = ({ children, margin, padding }: PaperContainerProps) => {
+const PaperContainer = ({
+  children,
+  margin,
+  padding,
+  color,
+}: PaperContainerProps) => {
   const { darkMode } = useDarkMode();
   return (
     <Paper
       elevation={3}
       sx={{
-        color: darkMode ? theme.dark.text : theme.light.text,
-        backgroundColor: darkMode ? theme.dark.sidebar : theme.light.sidebar,
+        color: color ? "white" : darkMode ? theme.dark.text : theme.light.text,
+        backgroundColor: color
+          ? color
+          : darkMode
+          ? theme.dark.sidebar
+          : theme.light.sidebar,
         margin: margin ? margin : "20px",
         padding: padding ? padding : "10px",
         boxShadow: darkMode
@@ -26,6 +35,7 @@ type PaperContainerProps = {
   children: React.ReactNode;
   margin?: string;
   padding?: string;
+  color?: string;
 };
 
 export default PaperContainer;

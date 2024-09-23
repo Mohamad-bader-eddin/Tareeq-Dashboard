@@ -4,7 +4,7 @@ import ClientInfoInputs from "./components/ClientInfoInputs";
 import { useTranslation } from "react-i18next";
 import useClientsInfoValidation from "./hooks/useClientsInfoValidation";
 import Addresses from "./components/Addresses";
-import { Backdrop, Typography } from "@mui/material";
+import { Backdrop, Stack, Typography } from "@mui/material";
 // import ChangePasswordForm from "../../../components/ChangePasswordForm";
 // import useChangePasswordValidation from "../../../hooks/useChangePasswordValidation";
 import AddFundsForm from "../../../components/AddFundsForm";
@@ -19,6 +19,10 @@ import GenericAlert from "../../../../../share/components/alert/GenericAlert";
 import useAddFundsFormValidation from "./hooks/useAddFundsFormValidation";
 import GenericEmbededMap from "../../../../../share/components/map/GenericEmbededMap";
 import { convertPriceToSY } from "../../../../../share/utils/convertPriceToSY";
+import { WedgitWrapper } from "./style/Wedgit.style";
+import Wedgit from "./components/Wedgit";
+import DoDisturbIcon from "@mui/icons-material/DoDisturb";
+import OnlinePredictionIcon from "@mui/icons-material/OnlinePrediction";
 
 const Clietntinfo = () => {
   const { t } = useTranslation();
@@ -69,6 +73,24 @@ const Clietntinfo = () => {
         </Backdrop>
       ) : (
         <>
+          <Stack direction={"row"} flexWrap={"wrap"}>
+            <WedgitWrapper>
+              <Wedgit
+                icon={<OnlinePredictionIcon fontSize="small" />}
+                title="Active Orders"
+                value={data?.data.content.completed_orders_count || 0}
+                color="green"
+              />
+            </WedgitWrapper>
+            <WedgitWrapper>
+              <Wedgit
+                icon={<DoDisturbIcon fontSize="small" />}
+                title="Canceled Orders"
+                value={data?.data.content.canceled_orders_count || 0}
+                color="#ad2222"
+              />
+            </WedgitWrapper>
+          </Stack>
           <PaperContainer>
             <ClientInfoInputs
               initialValues={initialValues}

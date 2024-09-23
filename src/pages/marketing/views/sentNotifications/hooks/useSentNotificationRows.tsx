@@ -10,7 +10,10 @@ const useSentNotificationRows = ({ data }: { data: SentNotification[] }) => {
       userType: el?.type,
       title: el?.title,
       message: el?.description,
-      createdAt: format(new Date(el.created_at), "dd/MM/yyyy"),
+      createdAt: format(
+        new Date(el?.created_at as Date),
+        "dd/MM/yyyy HH:mm:ss"
+      ),
     })
   );
   return { rows };

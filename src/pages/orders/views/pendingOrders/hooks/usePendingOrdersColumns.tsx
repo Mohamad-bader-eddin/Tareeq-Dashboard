@@ -1,11 +1,11 @@
 import { Box, Button } from "@mui/material";
 import { GridColDef, GridRowId } from "@mui/x-data-grid";
 import { useTranslation } from "react-i18next";
-import AppLink from "../../../../../share/components/link/AppLink";
 import { Dispatch, SetStateAction, useMemo } from "react";
 import ActionButton from "../components/ActionButton";
 import { PaginationModel } from "../../../../../share/types";
 import useMedeaQueries from "../../../../../share/utils/useMideaQuery";
+import AppLinkClient from "../../../components/AppLinkClient";
 
 const usePendingOrdersColumns = ({
   setOpen,
@@ -28,12 +28,12 @@ const usePendingOrdersColumns = ({
         headerName: t("customer"),
         align: "center",
         headerAlign: "center",
-        flex: 1,
+        flex: 1.5,
         renderCell: (params) => {
           return (
-            <AppLink
+            <AppLinkClient
               path={`/admin/users/clients/${params.row.customerId}`}
-              name={params.value}
+              data={params.value}
             />
           );
         },

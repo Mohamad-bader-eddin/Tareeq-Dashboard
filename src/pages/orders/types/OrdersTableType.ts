@@ -7,7 +7,11 @@ export type OrdersTableType = {
 
 export type OrderRow = {
     id: string;
-    customer: string;
+    customer: {
+        name: string;
+        completed_orders_count?: number;
+        canceled_orders_count?: number;
+    };
     customerId: string;
     status: string;
     totalExpected: string;
