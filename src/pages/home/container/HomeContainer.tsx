@@ -76,7 +76,7 @@ const HomeContainer = () => {
             <WedgitWrapper>
               <Wedgit
                 icon={<MinorCrashOutlinedIcon fontSize="small" />}
-                title="Arrived Odrers"
+                title="Arrived Orders"
                 value={data?.data?.content?.drivers_orders}
               />
             </WedgitWrapper>
