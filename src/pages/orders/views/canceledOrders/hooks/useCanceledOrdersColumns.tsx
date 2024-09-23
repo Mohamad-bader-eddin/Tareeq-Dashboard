@@ -17,7 +17,7 @@ const useCanceledOrdersColumns = (paginationModel: PaginationModel) => {
         headerAlign: "center",
       },
       {
-        field: "customer",
+        field: "customerName",
         headerName: t("customer"),
         align: "center",
         headerAlign: "center",

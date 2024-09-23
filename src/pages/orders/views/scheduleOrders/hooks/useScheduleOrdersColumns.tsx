@@ -24,7 +24,7 @@ const useScheduleOrdersColumns = ({
         headerAlign: "center",
       },
       {
-        field: "customer",
+        field: "customerName",
         headerName: t("customer"),
         align: "center",
         headerAlign: "center",

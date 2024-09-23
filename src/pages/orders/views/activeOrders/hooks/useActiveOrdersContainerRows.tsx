@@ -8,7 +8,7 @@ const usePendingOrdersRows = ({ data }: { data: Order[] }) => {
   data?.forEach((el) =>
     rows.push({
       id: el.id,
-      customer: el.user.name + " " + el?.user?.last_name,
+      customerName: el.user.name + " " + el?.user?.last_name,
       customerId: el.user.id,
       status: el.status,
       totalExpected: convertPriceToSY(el?.total_expected),
