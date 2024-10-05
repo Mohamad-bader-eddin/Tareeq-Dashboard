@@ -4,7 +4,7 @@ import { Option } from "../../../share/types";
 
 export type initialValuesType = {
     amount: string;
-    order_id:number|null;
+    order_id:string|number|null;
     transactionType: Option | null;
 }
 

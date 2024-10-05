@@ -37,5 +37,6 @@ export type ClientInfoInputsProps = {
 export type TransactionType = {
     amount: string;
     transaction_type_id: string;
+    order_id:string;
     user_id: string;
 }
