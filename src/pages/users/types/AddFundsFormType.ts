@@ -38,7 +38,7 @@ export type AddFundsFormType = {
 
 export type TransactionType = {
     amount: string;
-    order_id:number|null;
+    order_id:string;
     transaction_type_id: string;
     driver_id: string;
 }
