@@ -77,7 +77,7 @@ const Clietntinfo = () => {
             <WedgitWrapper>
               <Wedgit
                 icon={<OnlinePredictionIcon fontSize="small" />}
-                title="Active Orders"
+                title="Arrived Orders"
                 value={data?.data.content.completed_orders_count || 0}
                 color="green"
               />
