@@ -23,10 +23,12 @@ import AdvanceSearchDialog from "../../../components/AdvanceSearchDialog";
 import { OrderFilterType } from "../../../types/OrderQueryType";
 import { useOtherNotifications } from "../../../../../context/OtherNotifications";
 import useDriverOnlineQuery from "../../../hooks/useDriverOnlineQuery";
+import useReAssignOrderQuey from "../hooks/useReAssignOrderQuey";
 
 const PendingOrdersContainer = () => {
   const { mobileL } = useMedeaQueries();
   const [openAssignDialog, setOPenAssignDialog] = useState(false);
+  const [openReAssignDialog, setOPenReAssignDialog] = useState(false);
   const [idOrder, setIdOrder] = useState<GridRowId | null>(null);
   const [openError, setOpenError] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
@@ -60,6 +62,7 @@ const PendingOrdersContainer = () => {
     setOpen: setOPenAssignDialog,
     setIdOrder,
     paginationModel,
+    setOpenReAssign: setOPenReAssignDialog
   });
   const { rows } = usePendingOrdersRows({ data: data?.data.content });
   const { mutate } = useAssignOrderQuery();
@@ -140,6 +143,26 @@ const PendingOrdersContainer = () => {
     });
     refetch();
     setOpenAdvanceSearchDialog(false);
+  };
+ const { isLoading: reAssignLoading  , mutate : reAssignMutate} = useReAssignOrderQuey()
+  const handleReAssignOrder = () => {
+    reAssignMutate(
+      {
+        orderId :idOrder as string,
+      },
+      {
+        onSuccess: (response) => {
+          setOpenSucsses(true);
+          setMsg(response.data.message);
+          setOPenReAssignDialog(false);
+        },
+        onError: (error) => {
+          setOpenError(true);
+          setErrorMsg(getErrorMessage(error));
+          setOPenReAssignDialog(false);
+        },
+      }
+    );
   };
   const { notification } = useNotifications();
   const { otherNotification } = useOtherNotifications();
@@ -233,6 +256,13 @@ const PendingOrdersContainer = () => {
           setOpen={setOpenSucsses}
           type="success"
           msg={msg}
+        />
+        <GenericDialog
+          open={openReAssignDialog}
+          setOpen={setOPenReAssignDialog}
+          elementContent="Are you sure you want to AutoAssign ?"
+          handleAgree={handleReAssignOrder}
+          agreeLoading={reAssignLoading}
         />
       </PaperContainer>
     </Layout>

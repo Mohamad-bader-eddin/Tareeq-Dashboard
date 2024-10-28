@@ -36,6 +36,18 @@ i18n
     },
   });
 
+  navigator.serviceWorker.addEventListener("message", (event) => {
+    console.log("event",event);
+    
+    if (event.data && event.data.type === "PLAY_AUDIO") {
+      // Play audio when a background message is received
+      const audio = new Audio("/audio/audio1.wav");
+      audio.play().catch((error) => {
+        console.error("Audio play failed: ", error);
+      });
+    }
+  });
+
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <Suspense fallback={<Spinner />}>
     <HashRouter>

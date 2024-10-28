@@ -25,25 +25,30 @@ const messaging = firebase.messaging();
 messaging.onBackgroundMessage(function (payload) {
   // messaging.onBackgroundMessage(function () {
   // console.log("Received background message ", payload);
-  const notificationTitle = payload?.notification?.title
-    ? payload?.notification?.title
-    : "Tareeq";
-  const notificationOptions = {
-    body: payload?.notification?.body
-      ? payload?.notification?.body
-      : "New Notification",
-    icon: "./images/icon.png",
-  };
+  // const notificationTitle = payload?.notification?.title
+  //   ? payload?.notification?.title
+  //   : "Tareeq";
+  // const notificationOptions = {
+  //   body: payload?.notification?.body
+  //     ? payload?.notification?.body
+  //     : "New Notification",
+  //   icon: "./images/icon.png",
+  // };  
   // eslint-disable-next-line no-restricted-globals
-  self.registration.showNotification(notificationTitle, notificationOptions);
+  // self.registration.showNotification(notificationTitle, notificationOptions);
 
   // Play audio
   // Post message to clients to play audio
+if(payload?.notification?.title.includes("New Order")){
   self.clients.matchAll({ includeUncontrolled: true }).then((clients) => {
-    clients.forEach((client) => {
-      client.postMessage({
-        type: "PLAY_AUDIO",
-      });
-    });
+    // clients.forEach((client) => {
+    //   client.postMessage({
+    //     type: "PLAY_AUDIO",
+    //   });
+    // });
+    clients[0].postMessage({
+      type: "PLAY_AUDIO",
+    })
   });
+}
 });

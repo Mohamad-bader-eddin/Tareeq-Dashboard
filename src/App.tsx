@@ -121,16 +121,6 @@ function App() {
     }
   });
 
-  navigator.serviceWorker.addEventListener("message", (event) => {
-    if (event.data && event.data.type === "PLAY_AUDIO") {
-      // Play audio when a background message is received
-      const audio = new Audio("/audio/audio1.wav");
-      audio.play().catch((error) => {
-        console.error("Audio play failed: ", error);
-      });
-    }
-  });
-
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider theme={theme}>

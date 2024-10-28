@@ -6,11 +6,13 @@ import ActionButton from "../components/ActionButton";
 import { PaginationModel } from "../../../../../share/types";
 import useMedeaQueries from "../../../../../share/utils/useMideaQuery";
 import AppLinkClient from "../../../components/AppLinkClient";
+import AutorenewIcon from '@mui/icons-material/Autorenew';
 
 const usePendingOrdersColumns = ({
   setOpen,
   setIdOrder,
   paginationModel,
+  setOpenReAssign
 }: usePendingOrdersColumnsProps) => {
   const { t } = useTranslation();
   const { laptop } = useMedeaQueries();
@@ -95,6 +97,26 @@ const usePendingOrdersColumns = ({
         },
       },
       {
+        field: "reassign",
+        headerName: t("reassign"),
+        flex: 0.5,
+        align: "center",
+        headerAlign: "center",
+        renderCell:(params) =>{
+          return(<Button
+            endIcon={<AutorenewIcon />}
+            color="info"
+            size="small"
+            sx={{fontSize: "12px" }}
+            onClick={()=>{
+              setOpenReAssign(true)
+              setIdOrder(params.id)
+            }}
+          >
+          </Button>)
+        }
+      },
+      {
         field: "action",
         headerName: t("action"),
         flex: 1,
@@ -121,5 +143,6 @@ type usePendingOrdersColumnsProps = {
   setOpen: Dispatch<SetStateAction<boolean>>;
   setIdOrder: Dispatch<SetStateAction<GridRowId | null>>;
   paginationModel: PaginationModel;
+  setOpenReAssign: Dispatch<SetStateAction<boolean>>;
 };
 export default usePendingOrdersColumns;
