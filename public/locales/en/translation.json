@@ -274,5 +274,6 @@
   "driver_last_name": "Driver Last name",
   "start_at": "Started At",
   "accepted_on_location": "Accepted on Location",
-  "reassign": "Re-Assign"
+  "reassign": "Re-Assign",
+  "percentage" : "Percentage"
 }

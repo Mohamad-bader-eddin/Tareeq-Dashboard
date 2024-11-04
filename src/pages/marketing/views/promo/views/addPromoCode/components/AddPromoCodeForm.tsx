@@ -36,6 +36,10 @@ const AddPromoCodeForm = ({
       value: "always",
       key: t("cash_back"),
     },
+    {
+      value: "percentage",
+      key: t("percentage"),
+    },
   ];
   return (
     <Formik
