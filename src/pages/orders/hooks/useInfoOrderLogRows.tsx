@@ -8,7 +8,7 @@ const useInfoOrderLogRows = ({ data }: { data: Order }) => {
       id: el.id,
       log: el.description,
       user: el.causer,
-      created_at: format(new Date(el.created_at), "dd/MM/yyyy"),
+      created_at: format(new Date(el.created_at), "dd/MM/yyyy HH:mm:ss"),
     })
   );
   return { orderLogsRows };
