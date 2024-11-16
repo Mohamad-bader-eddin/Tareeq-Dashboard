@@ -275,5 +275,6 @@
   "start_at": "Started At",
   "accepted_on_location": "Accepted on Location",
   "reassign": "Re-Assign",
-  "percentage" : "Percentage"
+  "percentage" : "Percentage",
+  "distance_to_client" : "Distance to Client"
 }

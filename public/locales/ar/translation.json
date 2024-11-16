@@ -275,5 +275,6 @@
   "start_at": "بدأ في",
   "accepted_on_location": "تم القبول في الموقع",
   "reassign" : "إعادة إسناد",
-  "percentage" : "نسبة المئوية"
+  "percentage" : "نسبة المئوية",
+  "distance_to_client" : "المسافة إلى الزبون"
 }

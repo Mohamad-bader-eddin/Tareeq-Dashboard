@@ -287,6 +287,17 @@ const InfoOrder = () => {
                   </h5>
                 </div>
               </div>
+              <div className="row">
+                <div className="col-6">
+                <h5 className="atr">
+                    <span>
+                      <TripOriginOutlinedIcon sx={{ fontSize: "10px" }} />
+                    </span>
+                    {t("distance_to_client")} :
+                  </h5>
+                  <h5 className="val">{data?.data?.content?.distance_to_client || 0} KM</h5>
+                </div>
+              </div>
             </StyledInfo>
           </PaperContainer>
           <PaperContainer>
