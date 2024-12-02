@@ -182,9 +182,44 @@ const InfoOrder = () => {
                     <span>
                       <TripOriginOutlinedIcon sx={{ fontSize: "10px" }} />
                     </span>
+                    {t("total_expected")} :
+                  </h5>
+                  <h5 className="val">
+                    {convertPriceToSY(data?.data?.content?.total_expected)}
+                  </h5>
+                </div>
+              </div>
+              <div className="row">
+                <div className="col-6">
+                  <h5 className="atr">
+                    <span>
+                      <TripOriginOutlinedIcon sx={{ fontSize: "10px" }} />
+                    </span>
                     {t("assigned_at")} :
                   </h5>
                   <h5 className="val">{data?.data?.content?.assign_at}</h5>
+                </div>
+                <div className="col-6">
+                  <h5 className="atr">
+                    <span>
+                      <TripOriginOutlinedIcon sx={{ fontSize: "10px" }} />
+                    </span>
+                    {t("total_paid")} :
+                  </h5>
+                  <h5 className="val">
+                    {data?.data?.content?.credits_used
+                      ? convertPriceToSY(
+                        data?.data?.content?.total_paid
+                          ? data?.data?.content?.total_paid +
+                          data?.data?.content?.credits_used
+                          : 0
+                      )
+                      : convertPriceToSY(
+                        data?.data?.content?.total_paid
+                          ? data?.data?.content?.total_paid
+                          : 0
+                      )}
+                  </h5>
                 </div>
               </div>
               <div className="row">
@@ -202,12 +237,54 @@ const InfoOrder = () => {
                     <span>
                       <TripOriginOutlinedIcon sx={{ fontSize: "10px" }} />
                     </span>
+                    {t("accepted_on_location")} :
+                  </h5>
+                  <h5 className="val">
+                    {data?.data?.content?.accepted_on_location}
+                  </h5>
+                </div>
+              </div>
+              <div className="row">
+                <div className="col-6">
+                  <h5 className="atr">
+                    <span>
+                      <TripOriginOutlinedIcon sx={{ fontSize: "10px" }} />
+                    </span>
                     {t("arrive_to_customer_location")} :
                   </h5>
                   <h5 className="val">
                     {" "}
                     {data?.data?.content?.arrive_to_customer_at}
                   </h5>
+                </div>
+                <div className="col-6">
+                  <h5 className="atr">
+                    <span>
+                      <TripOriginOutlinedIcon sx={{ fontSize: "10px" }} />
+                    </span>
+                    {t("distance_to_client")} :
+                  </h5>
+                  <h5 className="val">{data?.data?.content?.distance_to_client || 0} KM</h5>
+                </div>
+              </div>
+              <div className="row">
+                <div className="col-6">
+                  <h5 className="atr">
+                    <span>
+                      <TripOriginOutlinedIcon sx={{ fontSize: "10px" }} />
+                    </span>
+                    {t("start_at")} :
+                  </h5>
+                  <h5 className="val">{data?.data?.content?.started_at}</h5>
+                </div>
+                <div className="col-6">
+                  <h5 className="atr">
+                    <span>
+                      <TripOriginOutlinedIcon sx={{ fontSize: "10px" }} />
+                    </span>
+                    {t("user_note")} :
+                  </h5>
+                  <h5 className="val">{data?.data?.content?.user_note}</h5>
                 </div>
               </div>
               <div className="row">
@@ -219,83 +296,6 @@ const InfoOrder = () => {
                     {t("arrived_at")} :
                   </h5>
                   <h5 className="val">{data?.data?.content?.completed_at}</h5>
-                </div>
-                <div className="col-6">
-                  <h5 className="atr">
-                    <span>
-                      <TripOriginOutlinedIcon sx={{ fontSize: "10px" }} />
-                    </span>
-                    {t("total_expected")} :
-                  </h5>
-                  <h5 className="val">
-                    {convertPriceToSY(data?.data?.content?.total_expected)}
-                  </h5>
-                </div>
-              </div>
-              <div className="row">
-                <div className="col-6">
-                  <h5 className="atr">
-                    <span>
-                      <TripOriginOutlinedIcon sx={{ fontSize: "10px" }} />
-                    </span>
-                    {t("total_paid")} :
-                  </h5>
-                  <h5 className="val">
-                    {data?.data?.content?.credits_used
-                      ? convertPriceToSY(
-                          data?.data?.content?.total_paid
-                            ? data?.data?.content?.total_paid +
-                                data?.data?.content?.credits_used
-                            : 0
-                        )
-                      : convertPriceToSY(
-                          data?.data?.content?.total_paid
-                            ? data?.data?.content?.total_paid
-                            : 0
-                        )}
-                  </h5>
-                </div>
-                <div className="col-6">
-                  <h5 className="atr">
-                    <span>
-                      <TripOriginOutlinedIcon sx={{ fontSize: "10px" }} />
-                    </span>
-                    {t("start_at")} :
-                  </h5>
-                  <h5 className="val">{data?.data?.content?.started_at}</h5>
-                </div>
-              </div>
-              <div className="row">
-                <div className="col-6">
-                  <h5 className="atr">
-                    <span>
-                      <TripOriginOutlinedIcon sx={{ fontSize: "10px" }} />
-                    </span>
-                    {t("user_note")} :
-                  </h5>
-                  <h5 className="val">{data?.data?.content?.user_note}</h5>
-                </div>
-                <div className="col-6">
-                  <h5 className="atr">
-                    <span>
-                      <TripOriginOutlinedIcon sx={{ fontSize: "10px" }} />
-                    </span>
-                    {t("accepted_on_location")} :
-                  </h5>
-                  <h5 className="val">
-                    {data?.data?.content?.accepted_on_location}
-                  </h5>
-                </div>
-              </div>
-              <div className="row">
-                <div className="col-6">
-                <h5 className="atr">
-                    <span>
-                      <TripOriginOutlinedIcon sx={{ fontSize: "10px" }} />
-                    </span>
-                    {t("distance_to_client")} :
-                  </h5>
-                  <h5 className="val">{data?.data?.content?.distance_to_client || 0} KM</h5>
                 </div>
               </div>
             </StyledInfo>
